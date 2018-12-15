@@ -1,0 +1,54 @@
+#app {
+  height: 600px;
+  width: 900px;
+  display: block;
+  background-color: #aaa;
+}
+#lsp {
+  position: fixed;
+  float: left;
+  height: 960px;
+  width: 6%;
+  display: block;
+  background-color: #ddd;
+}
+.lspButton {
+  padding: 10px;
+}
+#rsp {
+  margin-left: 6%;
+  position: fixed;
+  float: right;
+  height: 960px;
+  width: 1780px;
+  background-color: #eee;
+}
+#personPanel {
+  position: fixed;
+  float: right;
+  height: 960px;
+  width: 1780px;
+  background-color: yellow;
+}
+#personListPanel, #personInfoPanel {
+  position: relative;
+  height: 450px;
+}
+#personInfoPanel{
+  /* margin-top: 25%; */
+}
+#personList {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+td {
+  padding: 5px;
+  border: 2px solid black;
+}
+.formFields {
+  padding: 5px;
+  margin-left: 50px;
+}
+/* #list { */
+  /* overflow: auto; */
+/* } */
