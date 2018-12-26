@@ -1,0 +1,169 @@
+WEBVTT
+
+00:02.220 --> 00:08.790
+We learned about imports and exports and not record feature of next generation javascript art classes
+
+00:09.390 --> 00:14.190
+if you're coming from some other programming language you might already know classes.
+
+00:14.250 --> 00:17.880
+Classes are essentially blueprints for objects.
+
+00:17.880 --> 00:24.390
+In our case here for javascript objects a class is created with the class keyword and a class can have
+
+00:24.390 --> 00:27.860
+both properties and methods.
+
+00:28.110 --> 00:33.720
+Methods are simply functions attached to classes where properties are variables that have two classes.
+
+00:33.720 --> 00:39.440
+You could say will use both Findus course and it will obviously always explain what we're doing here.
+
+00:39.480 --> 00:46.850
+When we add such a property or method a class is instantiated like this with the new keyword.
+
+00:46.980 --> 00:50.790
+And this might of course look familiar to you if you worked a bit with javascript.
+
+00:50.850 --> 00:56.190
+You might notice from construct the functions and indeed classes are kind of a more convenient way of
+
+00:56.190 --> 01:02.520
+creating constructor functions so you create javascript objects with classes as blueprints.
+
+01:02.520 --> 01:06.290
+That's the idea and classes all support inheritance.
+
+01:06.300 --> 01:12.030
+Which means you have another class which you inherit from taking all its properties and methods and
+
+01:12.030 --> 01:15.140
+potentially adding new properties and methods.
+
+01:15.350 --> 01:17.110
+Although it might look familiar to you.
+
+01:17.250 --> 01:19.450
+You might notice from prototypes.
+
+01:19.470 --> 01:21.860
+Let's have a look at classes in action.
+
+01:22.260 --> 01:24.160
+Let's create a new class here.
+
+01:24.270 --> 01:27.310
+All name person just like this.
+
+01:27.330 --> 01:30.570
+Then you have curly braces to mark the class body.
+
+01:30.690 --> 01:38.070
+And now there we can start using properties now in its simplest form or properties added by adding a
+
+01:38.070 --> 01:41.760
+constructor that is a default function method.
+
+01:41.820 --> 01:47.490
+You can add to any class which will be executed whenever you instantiate the class and the method is
+
+01:47.490 --> 01:52.470
+created just with the name of the Meffert parentheses and then call the braces.
+
+01:52.860 --> 01:59.070
+And then there we can now set up properties with this keyword and we could write this name equals max
+
+01:59.070 --> 02:00.290
+for example.
+
+02:00.750 --> 02:02.590
+We can also add a method.
+
+02:02.880 --> 02:12.720
+Print my name and there we could simply output this name referring to the Name property we created.
+
+02:12.720 --> 02:20.250
+Now we can use this class to store an instance in a constant with new person and then we can execute
+
+02:20.260 --> 02:21.510
+person.
+
+02:21.510 --> 02:23.870
+Print my name.
+
+02:24.150 --> 02:27.780
+If we now let's run we C-Max.
+
+02:27.950 --> 02:30.930
+This is how easy we can use a class.
+
+02:30.960 --> 02:33.420
+Now I said that classes can also inherit.
+
+02:33.450 --> 02:43.620
+So what we can do is we can create another class human and there we might also add a constructor to
+
+02:43.620 --> 02:51.060
+set this Chandor equal to male or female of course if you want but what ever you want and you could
+
+02:51.060 --> 02:55.680
+at Brint gender and then output console lock.
+
+02:55.770 --> 02:57.840
+This gender.
+
+02:58.180 --> 03:04.420
+And now if a person extends then that's a keyword word again extends human.
+
+03:04.660 --> 03:12.280
+Now we inherit this property and this method print gender and we can use both on the person as well
+
+03:12.730 --> 03:17.390
+so we can also call a person print gender like that.
+
+03:17.390 --> 03:21.720
+However before we run to successfully we're actually let's try it.
+
+03:21.820 --> 03:28.480
+We'll get an error that we must call the super constructor in the derived class and that's important.
+
+03:28.630 --> 03:34.320
+If you are extending another class and you are implementing the constructor which you don't have to.
+
+03:34.330 --> 03:41.280
+But if you are then you have to add Super this special super method in the constructor.
+
+03:41.320 --> 03:47.470
+It's a keyword and it simply executes the parent constructor to which you of course have to to correct
+
+03:47.470 --> 03:49.540
+to initialize the parent class.
+
+03:49.570 --> 03:56.340
+So now you had clear and run you'll see Max and mail and obviously you could now go into your person
+
+03:56.350 --> 04:02.740
+class and still set gender dare to FEMA which is not 100 percent correct here but just to show case
+
+04:02.740 --> 04:03.880
+that this works.
+
+04:03.940 --> 04:08.960
+Now you see we print female even though we're still calling Brint gender here.
+
+04:09.070 --> 04:17.800
+But it is extended by person so these are classes and classes are used by react to create its components.
+
+04:17.800 --> 04:20.960
+At least as is one of the two ways of creating components.
+
+04:20.980 --> 04:26.500
+This is how you will see me use it in this course and it's important to understand that classes are
+
+04:26.500 --> 04:33.850
+just blueprints for javascript objects and are very comparable to constructor functions where inheritance
+
+04:33.880 --> 04:35.640
+is comparable to prototypes.

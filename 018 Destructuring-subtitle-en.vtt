@@ -1,0 +1,124 @@
+WEBVTT
+
+00:02.160 --> 00:04.340
+So we learned about rest and spread.
+
+00:04.350 --> 00:11.110
+There's one next generation feature I definitely want to cover and that's called destructuring.
+
+00:11.250 --> 00:18.070
+Destructuring allows you to easily extract array elements or object properties and store them in variables.
+
+00:18.180 --> 00:23.460
+When you first hear about that it might sound like the exact thing the spread operator does but actually
+
+00:23.460 --> 00:24.840
+it's a different thing.
+
+00:24.890 --> 00:32.300
+Spratt takes out all elements all properties and distributes them in a new array or object or wherever
+
+00:32.300 --> 00:33.630
+you're using it.
+
+00:33.810 --> 00:41.820
+Destructuring allows you to pull out single elements or properties and store them in variables for arrays
+
+00:42.270 --> 00:43.820
+and objects.
+
+00:43.950 --> 00:46.130
+Now for arrays it looks like this.
+
+00:46.140 --> 00:48.050
+If we have an array with two elements.
+
+00:48.130 --> 00:54.900
+Hello and max then we can use these strange looking syntax on the left side of the equals sign which
+
+00:54.900 --> 01:03.480
+looks like we are treating and erate but we are not to assign the variables a and b to a hello and Max
+
+01:03.480 --> 01:12.630
+respectively and for optic destructuring it's the same syntax with curly braces and where in aere destructuring
+
+01:12.640 --> 01:17.090
+the order defines which property we take for Optik destructuring.
+
+01:17.130 --> 01:24.180
+It's a property name so curly braes name Curly brace on the left side targets the name property of the
+
+01:24.180 --> 01:30.150
+object on the right side and pulls out the value which is why logging age would yield undefined.
+
+01:30.180 --> 01:33.120
+We're not pulling this out of the optic here.
+
+01:33.120 --> 01:34.730
+So does this structuring.
+
+01:34.830 --> 01:42.280
+Let's also have a look at decent practice back in Jay Espen Let's start with our numbers array again
+
+01:42.580 --> 01:46.430
+which has the numbers 1 2 and 3.
+
+01:46.630 --> 01:49.450
+And now let's say we want to get the numbers 1 and 2.
+
+01:49.840 --> 01:55.750
+Then we can use this array syntax on the left side of the equal sign and choose any variable names of
+
+01:55.810 --> 02:02.980
+our choice like number one and number two and we assign this equal to the number is aere.
+
+02:03.380 --> 02:12.200
+If I now Konsole are number one and number two and I run this you see 1 and 2 being locked because I'm
+
+02:12.200 --> 02:14.890
+pulling these two out of the array.
+
+02:14.900 --> 02:18.050
+I'm not polling free if I want to get free.
+
+02:18.060 --> 02:21.130
+By the way ultimately Now I'm free here.
+
+02:21.170 --> 02:27.740
+You don't have to rename it though and you'll leave out the one space with an empty space here in your
+
+02:28.340 --> 02:30.140
+declaration on the left side.
+
+02:30.140 --> 02:33.630
+Now if you had run you get one and free.
+
+02:33.650 --> 02:35.710
+That's aere destructuring.
+
+02:35.750 --> 02:42.910
+Now object destructuring is also ordered by our project as we'll use it in this course.
+
+02:42.920 --> 02:46.250
+However it's not supported by Jay Espen here.
+
+02:46.250 --> 02:47.750
+So I can show it to you.
+
+02:47.780 --> 02:50.320
+But it did showed his syntax on the slide.
+
+02:50.480 --> 02:56.600
+It's just syntax where you use to call the braces on the left and target a property with its property
+
+02:56.600 --> 02:57.170
+name.
+
+02:57.170 --> 03:03.620
+In this course I won't use Steese destructuring syntax too often but I want you to be aware of the existence
+
+03:03.620 --> 03:09.800
+of them and that they are nice ways of conveniently pulling out certain elements from an array or properties
+
+03:09.800 --> 03:11.840
+with their values from an object.

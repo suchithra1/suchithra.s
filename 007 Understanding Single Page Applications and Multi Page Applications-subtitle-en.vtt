@@ -1,0 +1,133 @@
+WEBVTT
+
+00:02.210 --> 00:09.050
+What do we talk about react or also about angular and view as a side note we also have to keep in mind
+
+00:09.140 --> 00:14.620
+that we can essentially bolt two kinds of Web applications with all these libraries and frameworks.
+
+00:14.750 --> 00:18.980
+We can't build a single page application or a multi-page application.
+
+00:18.980 --> 00:22.400
+Now what's the difference in a single page application.
+
+00:22.400 --> 00:29.540
+We only get back one single file byte a server and we get back to fall at the first time to use a wizard
+
+00:29.600 --> 00:31.570
+to page sort of first time to use a wizard.
+
+00:31.580 --> 00:40.430
+Exxon-Mobile dot com Deira ofter everything is managed with javascript with re-act the entire page consists
+
+00:40.520 --> 00:45.770
+of components which are rendered and handled by javascript.
+
+00:46.070 --> 00:53.150
+On the other hand in a multi-page application we get back multiple HMO pages where each page has to
+
+00:53.150 --> 00:54.680
+content for a given route.
+
+00:54.740 --> 01:02.090
+Given you are l we visited for example or come an example the com slash users we get back to different
+
+01:02.090 --> 01:02.630
+pages.
+
+01:02.630 --> 01:04.370
+That's important.
+
+01:04.370 --> 01:10.550
+Now on multi-page applications we might also use react but only to create little widgets.
+
+01:10.580 --> 01:17.570
+So to say so individually contained components we dump into that page but not the entire page it's managed
+
+01:17.570 --> 01:18.880
+by react.
+
+01:18.890 --> 01:24.410
+We also see this on some pages but the more popular approach these days is to single page application
+
+01:24.410 --> 01:30.830
+approach because if you manage the entire page with javascript you never have to go back to the server
+
+01:30.860 --> 01:32.030
+and reload the page.
+
+01:32.180 --> 01:37.850
+And that is an amazing user experience because everything happens instantly and even if the user needs
+
+01:37.850 --> 01:44.300
+to wait you're showing a spinner or you're still presenting a reactive web app you're not just showing
+
+01:44.570 --> 01:47.620
+a loading page or the user can't do anything.
+
+01:48.020 --> 01:54.680
+So in single page applications our page is bulked up with components and every component is a re-act
+
+01:54.680 --> 02:03.740
+component and the entire page also is managed by a rude re-act component and is just under reacts control
+
+02:04.040 --> 02:06.480
+in the multi-page application the other hand.
+
+02:06.740 --> 02:13.550
+We also could split up our app into theoretical components but actually a lot of the page is just going
+
+02:13.550 --> 02:19.740
+to be normal HVM and C is US code and some widgets we dump in like an image gallery or something like
+
+02:19.740 --> 02:22.290
+that is managed by react.
+
+02:22.430 --> 02:30.210
+So the entire page is not under-react control the individual widgets don't know of each other's existence.
+
+02:30.250 --> 02:36.080
+Therefore in the single application case which is the case we'll cover indice course we typically only
+
+02:36.080 --> 02:43.070
+have one re-act Dom render call this method you saw in the previous lectures where we trade our first
+
+02:43.070 --> 02:44.120
+app.
+
+02:44.120 --> 02:49.970
+Now we only need one because we have one root app component there which is mounted to the DOM which
+
+02:49.970 --> 02:56.090
+hosts all of her re-act components in a multi-page application we would typically call react on render
+
+02:56.090 --> 03:00.490
+more often to render our different components in different places of the app.
+
+03:00.530 --> 03:06.230
+You saw that react on render allows you to pick a place in your HMO code where you want to render your
+
+03:06.230 --> 03:13.220
+app and therefore you have these widgets which don't know of each other's existence.
+
+03:13.220 --> 03:15.880
+Now you can build such an application too.
+
+03:15.980 --> 03:18.950
+And do you react code you write won't differ.
+
+03:18.980 --> 03:21.120
+So discours actually covers both.
+
+03:21.260 --> 03:27.260
+But I will focus on the single page application case since that also allows us to use some libraries
+
+03:27.260 --> 03:28.750
+like re-act router.
+
+03:28.820 --> 03:34.500
+It is the most popular way of creating web apps these days and all also the approach.
+
+03:34.550 --> 03:36.230
+I can only recommend to you.

@@ -1,0 +1,244 @@
+WEBVTT
+
+00:02.250 --> 00:06.000
+We learn a lot about classes and aero functions.
+
+00:06.210 --> 00:11.700
+Let's now turn our heads towards new operators will be able to use in the future of javascript and we
+
+00:11.700 --> 00:17.340
+already can use today in our Riak project to spread into the rest operators.
+
+00:17.400 --> 00:20.840
+Actually it's only one operator free dots.
+
+00:20.850 --> 00:25.020
+Yes this may look strange but the operator is just free dots.
+
+00:25.080 --> 00:32.010
+Now if we call it spread or rest depends on where we use it the spread operator is used to split up
+
+00:32.100 --> 00:35.160
+every elements or object properties.
+
+00:35.250 --> 00:38.510
+So we spread up an array or object.
+
+00:38.640 --> 00:47.160
+For example if we have an old array and we want to add all the elements from that old array to a new
+
+00:47.160 --> 00:54.150
+array and additionally add a 1 in a two element this first index would be what he was three dots in
+
+00:54.150 --> 01:00.330
+front of all the array will simply pull out all the elements and added to the new array which we created
+
+01:00.330 --> 01:01.630
+with square brackets.
+
+01:01.860 --> 01:04.870
+And of course then we can add more elements to it.
+
+01:04.890 --> 01:11.140
+So we just use to normalize index with square brackets to create an array the same for your object.
+
+01:11.190 --> 01:17.850
+We create a new object with call braces with the new prop but then we also have dot dot dot.
+
+01:17.880 --> 01:26.670
+Old object to pull out all the properties of the old object and their values and add them as key value
+
+01:26.670 --> 01:31.350
+pairs too didn't you object as a side note if the old object.
+
+01:31.350 --> 01:33.350
+Also ahead a new property.
+
+01:33.480 --> 01:36.220
+It would be overridden by a new prop 5 here.
+
+01:36.300 --> 01:40.920
+So our own property takes precedence dishonesty spread operator.
+
+01:41.010 --> 01:48.660
+Now the rest operator is the same operator but used differently here it's used to merge a list of function
+
+01:48.660 --> 01:50.270
+arguments into an array.
+
+01:50.460 --> 01:52.270
+And this shows us where we use it.
+
+01:52.380 --> 01:55.190
+We use it in a function argument list.
+
+01:55.220 --> 01:57.380
+Here is an example sort.
+
+01:57.370 --> 02:00.740
+Our X receives an unlimited amount of arguments.
+
+02:00.750 --> 02:09.420
+So one argument to free or whatever with dot dot dot we only write one argument or X but we may actually
+
+02:09.420 --> 02:14.120
+receive more than one and they will all be merged together into an array.
+
+02:14.130 --> 02:20.790
+So then we can apply Array methods to our argument list or do whatever we want to do with our conveniently
+
+02:20.790 --> 02:22.210
+stored arguments.
+
+02:22.410 --> 02:26.090
+Let's have a look at both such as NJ Esben then.
+
+02:26.170 --> 02:31.600
+So let's start with the spread operator or create an array of numbers.
+
+02:31.870 --> 02:35.310
+So once you free add as many as you want.
+
+02:35.350 --> 02:42.820
+Now I want to create a new array new numbers and as you saw spread is now simply used by adding free
+
+02:42.820 --> 02:44.140
+dots.
+
+02:44.140 --> 02:49.430
+Then the old array numbers and then potentially you don't have to do that.
+
+02:49.660 --> 02:53.260
+New numbers like 4 and again that is optional.
+
+02:53.770 --> 02:56.070
+With that final console log.
+
+02:56.170 --> 02:58.130
+New numbers here.
+
+02:59.450 --> 03:07.250
+And I had run we get one two three four the older array with all its elements and the new element.
+
+03:07.250 --> 03:09.320
+And actually we don't add the old element.
+
+03:09.350 --> 03:15.350
+If we were to do that without the dots it would be included as one element inside the new element.
+
+03:15.350 --> 03:20.170
+It really pulled out the old elements as you can clearly see.
+
+03:20.300 --> 03:26.750
+So that's the spread operator and you will see me use this for out this course a couple of times on
+
+03:26.750 --> 03:35.880
+both arrays and objects to for example conveniently copy arrays or add properties to an object whilst
+
+03:35.880 --> 03:38.780
+safely copying that old object.
+
+03:38.780 --> 03:44.020
+Again I will obviously also always mention why I'm using that operator when a do in the course.
+
+03:44.180 --> 03:46.500
+Just be aware that it exists.
+
+03:46.790 --> 03:53.200
+Let's now see the same for objects all create a personal object here where I have a name.
+
+03:53.210 --> 04:01.980
+Let's say Max and now I will have a new person object which is a javascript object and new one whereas
+
+04:02.020 --> 04:09.630
+First of all use to spread operator on person to copy all the property value pairs of the old object
+
+04:09.930 --> 04:12.390
+and potentially and that's all optional.
+
+04:12.510 --> 04:14.200
+Add a new property.
+
+04:14.460 --> 04:21.630
+And now if I console log new person you may ignore this error which is owned by J has been decent X
+
+04:21.630 --> 04:24.500
+will be supported in our course project.
+
+04:24.810 --> 04:30.300
+We do this you see object as Brinton's year with named Max at age 28.
+
+04:30.480 --> 04:36.730
+So it's taking the old person and distributing it into the new person that's the spread operator.
+
+04:36.780 --> 04:44.210
+Now the rest operator which is used less often though is used in a function and you could of course
+
+04:44.250 --> 04:46.690
+also use 6 arrow function.
+
+04:46.830 --> 04:53.760
+So there we could have a filter function whatever you want to name it and we get a couple of arcs and
+
+04:53.760 --> 04:59.460
+you don't have to use X year olds named as a or whatever you want but you have to use the free dots
+
+04:59.460 --> 05:00.590
+in front of it.
+
+05:00.990 --> 05:03.780
+So then there you can simply return.
+
+05:03.790 --> 05:09.960
+We could use the inline syntax here to write it all in one line without you return key word here I'll
+
+05:09.960 --> 05:10.760
+use return.
+
+05:10.770 --> 05:16.710
+You could return our X and then let's say we call the built in filter method which is available on arrays
+
+05:16.800 --> 05:23.320
+and keep in mind the dots here are used as a rest operator and that merge the arguments into an array.
+
+05:23.340 --> 05:31.230
+So we can use aere methods like filter filter will execute a function on every element in the past in
+
+05:31.230 --> 05:31.900
+array.
+
+05:32.040 --> 05:38.580
+So here we would get our element and then we could use the inline arrow function to simply say return
+
+05:38.580 --> 05:39.830
+true or false.
+
+05:39.830 --> 05:45.300
+Which filter expects if the element is equal to 1.
+
+05:45.300 --> 05:47.540
+Now that might be a lot of CYNICUS you don't know.
+
+05:47.640 --> 05:53.760
+Free equals signs checks for type and value equality so that Al also has to be a number.
+
+05:53.820 --> 05:57.510
+And does it just the arrow function that we pass to the built in filter method.
+
+05:57.510 --> 06:00.130
+So this has nothing to do with rest or spread.
+
+06:00.310 --> 06:07.220
+We have that we could call filter and let's it a log to see something Konsole law filter.
+
+06:07.230 --> 06:15.480
+So our focus or function here on let's say 1 2 free and actually we should only log 1 year as an array
+
+06:15.480 --> 06:21.600
+though because we filter desiré which is created with the rest operator with the free dots year.
+
+06:21.870 --> 06:27.960
+So that's Reston spread again spread is to use such off the free dots you will see more often in this
+
+06:27.960 --> 06:28.690
+course.

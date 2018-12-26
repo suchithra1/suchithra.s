@@ -1,0 +1,274 @@
+WEBVTT
+
+00:02.230 --> 00:06.720
+So noted we had a look at the basics off re-act what reactor's about.
+
+00:06.760 --> 00:11.350
+Let me explain what this course is about and what we're going to cover in this course.
+
+00:11.380 --> 00:16.690
+We're almost done getting started only a couple of more words I want to spend on how you get the most
+
+00:16.690 --> 00:23.920
+out of this course and then we'll be leaving this module there after you'll actually find an optional
+
+00:23.920 --> 00:26.980
+second module in this optional module.
+
+00:26.980 --> 00:31.790
+I will walk you through the most important next generation javascript features.
+
+00:31.870 --> 00:37.570
+We're going to use in this course when writing re-act applications you typically use quite a lot of
+
+00:37.570 --> 00:42.830
+these next gen features like Aero functions or classes.
+
+00:42.910 --> 00:48.790
+You do this because this allows you to write cleaner re-act code and it's defacto standard to use all
+
+00:48.790 --> 00:53.970
+these features if you already feel comfortable using next generation javascript features.
+
+00:53.980 --> 00:55.190
+So if you already know.
+
+00:55.210 --> 00:55.720
+Yes.
+
+00:55.770 --> 00:57.070
+6 and so on.
+
+00:57.220 --> 01:01.290
+Then you can skip the next module and I will mention this there too.
+
+01:01.360 --> 01:06.850
+Otherwise you've got a nice module we're all ensure that we're all on the same page and that you've
+
+01:06.850 --> 01:11.620
+got solid fundamentals about all these features we're about to use and you can always go back to that
+
+01:11.620 --> 01:16.860
+module if you later in the course encounter something that looks strange or new to you.
+
+01:17.320 --> 01:24.640
+After this optional module the real second module is the module where we dive into the re-act basics.
+
+01:24.670 --> 01:31.210
+That's of course a super important module you will learn how you can create re-act components that there
+
+01:31.210 --> 01:35.820
+is more than one way of doing so and how you can communicate between components.
+
+01:35.890 --> 01:42.130
+How in re-act application is generally built but this section also includes things like how we can we
+
+01:42.160 --> 01:49.280
+output lists or how can we render some content conditionally there after it's time to dive into debugging
+
+01:49.450 --> 01:51.730
+because we all make mistakes.
+
+01:51.790 --> 01:54.400
+You will write code that fails.
+
+01:54.400 --> 01:56.610
+That's natural that happens to everyone.
+
+01:56.800 --> 02:03.280
+It's super important that you don't know how to recover how to debug your application how to find that
+
+02:03.340 --> 02:03.960
+error.
+
+02:04.090 --> 02:06.090
+That makes your program crash.
+
+02:06.160 --> 02:10.980
+We'll have a look at this endless debugging module offer debugging.
+
+02:11.050 --> 02:13.090
+We'll dive into styling.
+
+02:13.090 --> 02:19.690
+How can we style our re-act components and how can we make sure that the styling we apply to a component
+
+02:20.140 --> 02:24.880
+only gets applied to that component and not to average components as well.
+
+02:24.880 --> 02:27.410
+We'll take a look at that in this model.
+
+02:27.430 --> 02:34.600
+Thereafter we'll dive deeper into components we'll already have learn a lot about them but here we will
+
+02:34.600 --> 02:36.850
+learn which lifecycle they follow.
+
+02:37.060 --> 02:43.870
+We will learn how we can cleverly control Webber react should check for updates often component or not.
+
+02:43.990 --> 02:50.440
+And much more so that is truly an important module which will make sure that you understand the internals
+
+02:50.470 --> 02:57.170
+of react and that you got the tools you need for bigger or more advanced re-act applications.
+
+02:57.360 --> 03:03.790
+That you will have learned a lot about components but were far from being done well then dive into HTP
+
+03:03.790 --> 03:05.210
+requests.
+
+03:05.260 --> 03:09.100
+How can we connect our re-act application to the outside world.
+
+03:09.130 --> 03:13.510
+How can we fetch data from a server or ascended to that server.
+
+03:13.780 --> 03:21.130
+How can we do all of that in a single page or in a multi-page application with a synchronous HTP requests
+
+03:21.370 --> 03:28.720
+Ajax that is will have a look at in this module and thereafter we'll dive into routing routing is a
+
+03:28.720 --> 03:35.540
+core feature when building single page applications because with routing we can actually handle different
+
+03:35.540 --> 03:44.590
+view or else like Slash user and slash products and render different pages even though technically we
+
+03:44.590 --> 03:52.600
+only have one HVM our page and we simply parse d u r l with javascript and pre-rendered parts of the
+
+03:52.600 --> 03:57.190
+dom that need to be pre-rendered to display a new page.
+
+03:57.190 --> 04:03.520
+That sounds very complex and that is why we will use a package for this routing is a super important
+
+04:03.520 --> 04:05.670
+and key module of this course.
+
+04:05.660 --> 04:13.330
+Therefore Now one important note at this point all these concepts are always taught in theory and with
+
+04:13.330 --> 04:15.030
+tiny demo projects.
+
+04:15.280 --> 04:22.150
+We will also have an overarching course project the Berger Boler and eligible regularly go back to that
+
+04:22.150 --> 04:27.830
+project and apply the features you learn the previous module to the Course project.
+
+04:27.850 --> 04:33.190
+So we will start by planning and creating it then we will use advanced component concepts we will apply
+
+04:33.190 --> 04:40.210
+styling and we'll also apply routeing there so that we can gradually see our product become better and
+
+04:40.210 --> 04:40.930
+better.
+
+04:40.930 --> 04:47.380
+And so that you always have a great way of seeing all these things not just in theory or in tiny demo
+
+04:47.380 --> 04:50.630
+projects but in a real project.
+
+04:50.650 --> 04:54.460
+So the things I mentioned here are only the overarching topics.
+
+04:54.490 --> 04:59.860
+Discours actually has more modules because we have all these in-between practice orientated modules
+
+05:00.250 --> 05:01.500
+back to the outline though.
+
+05:02.030 --> 05:07.600
+After routing We'll dive into forums and validation in almost any web application you build.
+
+05:07.640 --> 05:12.770
+You need to fetch user input and it this module I will show you how to do this in a dynamic way and
+
+05:12.770 --> 05:19.410
+how to validate user input and thereafter it's time for redox redux and more relax.
+
+05:19.460 --> 05:25.850
+We'll dive deeply into redux which is the independent third party library but which of course is used
+
+05:25.880 --> 05:32.090
+in many re-act projects will start at the basics We'll learn why we might want to use relax and then
+
+05:32.090 --> 05:38.240
+we will learn more advanced use cases like using asynchronous actions in redox and way more.
+
+05:38.240 --> 05:42.280
+This is an important module and I can't wait to dive into this.
+
+05:42.320 --> 05:49.130
+And then also apply to the Course project together with you after read X will dive into authentication.
+
+05:49.130 --> 05:55.070
+Probably every web application has some sort of authentication allowing users to sign up and sign in
+
+05:55.430 --> 05:55.850
+here.
+
+05:55.880 --> 05:57.810
+I will show you how to implement this.
+
+05:57.830 --> 06:01.750
+I will always ask and all these modules focus on the client side.
+
+06:01.790 --> 06:05.000
+So on the react side and not on the server side.
+
+06:05.180 --> 06:11.690
+But of course I will explain how to implement authentication so that it works with any backend that
+
+06:11.690 --> 06:17.380
+supports this kind authentication will of course also apply this to the Course project.
+
+06:17.380 --> 06:24.560
+After all indication we'll dive into testing only an introduction to be honest because testing is enough
+
+06:24.560 --> 06:31.160
+content where you can create enough content about testing to fill an entire course but I want to introduce
+
+06:31.160 --> 06:37.280
+you to how your test re-act applications which tools you use and how to think about testing re-act apps
+
+06:38.000 --> 06:43.400
+after testing will of course all learn how to deploy and react application so how to really ship it
+
+06:43.430 --> 06:44.910
+to a real server.
+
+06:45.200 --> 06:45.980
+And there are.
+
+06:46.030 --> 06:53.750
+I got loads of bonus content for example a whole module about animating reactor locations possible next
+
+06:53.750 --> 06:57.140
+steps where you could dive into after finishing this module.
+
+06:57.140 --> 07:04.100
+A module about next J.S. which is basically a library building up on react and making suicide rendered
+
+07:04.100 --> 07:11.480
+applications a breeze module where we will build our own workflow our own project from scratch with
+
+07:11.480 --> 07:15.310
+web Pech and a couple of build tools and way more.
+
+07:15.350 --> 07:18.080
+So a lot of content in this course.
+
+07:18.080 --> 07:23.030
+It has the length it has for a reason and the end and I can't wait to dive into it together with you.
+
+07:23.030 --> 07:26.480
+So why don't we do that and just start with the course.

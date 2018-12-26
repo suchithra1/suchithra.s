@@ -1,0 +1,172 @@
+WEBVTT
+
+00:02.290 --> 00:09.990
+Another feature which Next-Generation javascript offers is about writing modular code so javascript
+
+00:09.990 --> 00:12.980
+code you split up over multiple files.
+
+00:13.170 --> 00:17.500
+And obviously we already can split our code over multiple files.
+
+00:17.670 --> 00:22.720
+We just have to import them in the correct order in our age html files.
+
+00:22.920 --> 00:30.060
+And the idea behind export and import statements and so-called modules is that inside of a javascript
+
+00:30.060 --> 00:37.260
+file we can import content from a number of file so that the javascript files themselves know their
+
+00:37.260 --> 00:38.850
+dependencies.
+
+00:38.850 --> 00:40.510
+It might look like this.
+
+00:40.530 --> 00:46.830
+We have one fall person touch us and there we have this constant person which stores a javascript object
+
+00:47.430 --> 00:49.380
+and then this is the interesting part.
+
+00:49.440 --> 00:57.210
+We export this the default keyword all does a special keyword marking this as the default export of
+
+00:57.210 --> 01:04.290
+this file and we can import this somewhere else and the import statement will be shown in a second.
+
+01:04.290 --> 01:10.620
+We also might have a number of fall where we export multiple things here a constant named clean which
+
+01:10.620 --> 01:15.810
+holds a function dnt and base data which holds a number in a third file.
+
+01:15.810 --> 01:24.130
+We might need to import from person yes and utility to us so apt or genius requires import statements.
+
+01:24.180 --> 01:29.970
+And here are a couple of different import syntax as you will see in the score's person JSE as you see
+
+01:30.250 --> 01:38.460
+uses the default keyword the default keyword simply means if we just import something from that file
+
+01:38.670 --> 01:40.890
+it will always be our default export.
+
+01:40.890 --> 01:49.470
+So in this case a person constant therefore in implored person from person yes we can name person whatever
+
+01:49.470 --> 01:54.480
+we want which is why a printed twice year person or P R S doesn't matter.
+
+01:54.480 --> 02:00.940
+It always refers to the thing you marked as the default with the default keyword for utility.
+
+02:00.990 --> 02:03.240
+Yes it's a bit different there.
+
+02:03.390 --> 02:13.050
+We import from two different constants and therefore the import syntax uses the curly braces to explicitly
+
+02:13.050 --> 02:16.170
+target specific things from that file.
+
+02:16.170 --> 02:21.890
+These are so-called named exports because we import the stuff by its name.
+
+02:21.900 --> 02:28.500
+We import the clean constant by its name and we import Baystate by its name because we didn't mark anything
+
+02:28.500 --> 02:29.410
+as the default.
+
+02:29.520 --> 02:35.870
+So for javascript to know what exactly were pointing to we need to give it the exact name and the name
+
+02:35.870 --> 02:37.860
+goes between call embraces.
+
+02:37.950 --> 02:43.770
+By the way you could also write this as one import statement with Baystate a comma clean or the other
+
+02:43.770 --> 02:44.870
+way around.
+
+02:44.880 --> 02:47.910
+So these are imports and exports.
+
+02:47.970 --> 02:53.570
+You write all of this in your javascript files and will heavily use this for all the scores.
+
+02:53.760 --> 03:00.420
+Now as with all these next generation javascript features it won't run like this in all browsers.
+
+03:00.420 --> 03:05.460
+Not even the most modern browsers support all the features will use in this project.
+
+03:05.460 --> 03:11.700
+Therefore in the next course module I'll also show you how to quickly set up a project which in the
+
+03:11.710 --> 03:18.330
+end just compounds all these next generation javascript features to current generalised good features
+
+03:18.630 --> 03:24.720
+so that we as a developer can use the next generation javascript without us shipping code that runs
+
+03:24.720 --> 03:25.940
+nowhere.
+
+03:25.980 --> 03:28.090
+So back to the imports and exports.
+
+03:28.090 --> 03:32.290
+This is the syntax we use and you will see getting use a lot in this course.
+
+03:32.310 --> 03:38.370
+You might also see some variations because we can also write this differently when we have a default
+
+03:38.400 --> 03:39.330
+export.
+
+03:39.330 --> 03:44.700
+You already saw that person is the name you can choose totally on your own.
+
+03:44.760 --> 03:47.970
+It doesn't matter here if you use person or PR s.
+
+03:48.210 --> 03:54.450
+If you have a named export you actually have to use the exact name defined in the file with the export
+
+03:54.450 --> 03:55.770
+keyword.
+
+03:55.770 --> 03:57.400
+Still what you can do.
+
+03:57.480 --> 04:03.540
+You can assign an alias which you then again can freely choose in the file you are importing it with
+
+04:03.540 --> 04:09.510
+the as keyword or if you have multiple named exports in a file.
+
+04:09.510 --> 04:16.940
+You can import everything with this start special character and then assign an alias and bundled.
+
+04:16.950 --> 04:23.340
+In this case would be a javascript object which exposes all constants and whatever you export in the
+
+04:23.580 --> 04:31.320
+file as properties so that you simply have bundled Daut based data bundled Daut clean to access the
+
+04:31.320 --> 04:32.430
+export of things.
+
+04:32.460 --> 04:36.780
+That's up to you and you will see me use these things for all the course.
+
+04:36.780 --> 04:39.020
+The most common use search is the top one.
+
+04:39.030 --> 04:41.700
+Import Cauley braes something called the raise from.

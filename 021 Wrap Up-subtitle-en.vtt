@@ -1,0 +1,43 @@
+WEBVTT
+
+00:01.980 --> 00:07.780
+With that I want to conclude this Marchal we've learned a lot about next generation javascript and some
+
+00:07.780 --> 00:09.580
+important javascript concepts.
+
+00:09.580 --> 00:15.430
+In general you will meet a lot of the things you'll learn about in this module throughout the course.
+
+00:15.460 --> 00:16.790
+Don't be confused by it.
+
+00:16.840 --> 00:18.330
+It's still javascript.
+
+00:18.490 --> 00:21.070
+Just using some more modern features.
+
+00:21.070 --> 00:23.740
+That's just how we write re-act apps.
+
+00:23.890 --> 00:26.760
+The next module will now start with free act.
+
+00:26.770 --> 00:32.300
+Now I will show you how to quickly create a project set up where we can use all these features while
+
+00:32.340 --> 00:36.360
+still shipping code that works in older browsers too.
+
+00:36.440 --> 00:38.200
+With that you're well-prepared.
+
+00:38.200 --> 00:43.660
+Always feel free to go back to this marshal and have a look at a given feature if you forgot how it
+
+00:43.660 --> 00:47.640
+worked and you meet it in the course and want to refresh your knowledge.
+
+00:47.710 --> 00:50.080
+And with that let's dive into re-act.

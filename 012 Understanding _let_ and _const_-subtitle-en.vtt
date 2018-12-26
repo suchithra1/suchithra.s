@@ -1,0 +1,121 @@
+WEBVTT
+
+00:02.210 --> 00:07.600
+Let's dive right into it with LET and Konst these are two keywords who are going to see a lot in this
+
+00:07.600 --> 00:13.970
+course especially Konst lead and Konst are different ways of creating variables.
+
+00:13.970 --> 00:17.920
+You know we are we are it creates a variable in javascript.
+
+00:17.930 --> 00:21.580
+Now the thing is some variables never really change.
+
+00:21.590 --> 00:23.750
+They are so-called constants.
+
+00:23.900 --> 00:25.360
+Technically though they are.
+
+00:25.370 --> 00:33.020
+They are all just variables because javascript only knows war with as 6 a words of javascript two different
+
+00:33.020 --> 00:41.180
+keywords were introduced let and Konst are still works but you're highly encouraged to use LET and Konst
+
+00:41.870 --> 00:42.730
+let is.
+
+00:42.770 --> 00:50.030
+So to say Don't you want to use it for variable values and Konst are all changing something behind the
+
+00:50.030 --> 00:52.750
+scenes about the scope of variables.
+
+00:52.850 --> 00:58.940
+But the most important takeaway here is use LET if you want to create a variable that really is variable.
+
+00:58.940 --> 01:05.600
+Use Konst if you plan on creating a constant value so something which you only assign once and never
+
+01:05.600 --> 01:06.400
+change.
+
+01:06.500 --> 01:09.710
+And that is the case more often than you might think.
+
+01:09.770 --> 01:16.490
+In this course you will never see where you will only see lat and Konst and mostly it's Konst so it
+
+01:16.490 --> 01:17.780
+shouldn't confuse you.
+
+01:17.900 --> 01:24.590
+It's simply the same as a rule are just in a more modern way and in the case of Konst all the clearly
+
+01:24.590 --> 01:28.570
+showing days is never going to receive a new value.
+
+01:28.850 --> 01:34.340
+Now since it is always a bit clearer in practice let's have a look at it for this.
+
+01:34.340 --> 01:35.950
+It's best if you is a genius Ben.
+
+01:35.970 --> 01:36.730
+Dot com.
+
+01:36.740 --> 01:42.920
+That's another web editor which makes it easy for us to enter ASM javascript and see some console output
+
+01:43.490 --> 01:50.130
+for that disable H.T. mail and output up there and instead to enable Javascript and cons..
+
+01:50.250 --> 01:55.780
+Now on the left side you can right next generation javascript on the right side you'll see the output.
+
+01:55.820 --> 01:57.460
+So there we can create a variable.
+
+01:57.500 --> 02:08.640
+My name set an equal to max console lock my name and if you now had control enter you'll see Max on
+
+02:08.640 --> 02:09.260
+the right.
+
+02:09.270 --> 02:12.300
+Not that new to you probably.
+
+02:12.300 --> 02:19.550
+Obviously we can then set my name to menu and if we Denne console log my name again.
+
+02:19.710 --> 02:25.210
+It might also not totally surprise you that if you clear and run this again you'll see Max.
+
+02:25.230 --> 02:29.220
+From the first statement and menu from the second one.
+
+02:29.310 --> 02:31.310
+Now if change was to let.
+
+02:31.310 --> 02:32.770
+Nothing's going to change.
+
+02:32.790 --> 02:39.750
+Hitting run still works and the exact same way if you use Konst though like this.
+
+02:39.780 --> 02:43.210
+Then clearing and running this will output Max.
+
+02:43.260 --> 02:50.480
+But then throw an error or since we try to reassign a constant variable which is kind of a strange name.
+
+02:50.720 --> 02:53.480
+This is constant is the idea behind Konst.
+
+02:53.550 --> 02:59.100
+You can say this should never get a new value and if you didn't accidentally write some code where you
+
+02:59.100 --> 03:03.580
+reassign it you get the error and hence a chance to improve your code.
