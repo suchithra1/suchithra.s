@@ -1,0 +1,69 @@
+.App {
+  position: relative;
+  background-color: grey;
+  width: 1360px;
+  height: 650px;
+}
+
+.SidePanel{
+  /* position: absolute; */
+  float: left;
+  width: 200px;
+  height: 650px;
+  background-color:darksalmon;
+}
+
+.RightPanel {
+  /* position: absolute; */
+  float: right;
+  width: 1160px;
+  height: 650px;
+  background-color:cornsilk;
+}
+
+.PersonPanel {
+  /* position: absolute; */
+  float: right;
+  width: 1160px;
+  height: 650px;
+  background-color:cornflowerblue;
+}
+
+button{
+  margin:6px;
+}
+
+#itemButton{
+  padding: 10px;
+  margin: 5px;
+  width: 70px;
+}
+
+#id {
+  position: relative;
+  font: bolder;
+  font-family: 'Courier New', Courier, monospace;
+  color: black;
+}
+
+#list {
+  font-family: 'Courier New', Courier, monospace;
+  color: blue;
+  
+}
+
+table,th,td {
+  margin: 10px;
+   border: 1px solid black;
+  
+}
+
+.Form {
+  padding: 3px;
+  font: initial;
+}
+
+#inputFName, #inputId, #inputLName, #inputEmail, #inputBDate {
+width:140px;
+height: 15px;
+}
