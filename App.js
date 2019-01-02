@@ -1,30 +1,39 @@
 import React, { Component } from 'react';
-import SidePanel from './SidePanel.js'
 import './App.css';
+import SidePanel from './SidePanel.js';
 import PersonPanel from './PersonPanel.js';
-import RightPanel from './RightPanel';
- 
 
 class App extends Component {
-
-  // constructor(props){
-  //   super(props);
-  //   } 
-     
-       
- 
-
-  personInfo = () => {
-    console.log('clicked');
-    // document.getElementById('rsp').innerHTML = <PersonPanel/>;      
+  
+  state = {
+    persons : [],
+    showPersonPanel: false
   }
- 
+   
+  personClicked = () => {
+    console.log('clicked');
+    this.setState ({showPersonPanel: true})
+  }
+
+  // componentDidMount() {
+  //   //  import('./person.json')
+  //   //   .then(response => this.setState({ data: response.default }))
+  //   const data = require('./person.json');
+  //   this.setState({ persons : data })
+  //   console.log(this.state.persons);
+  // }
+
   render() {
+    let personPanel = null;
+    if(this.state.showPersonPanel) {
+      personPanel = <PersonPanel/>
+    }
+
     return (
-      <div className="App">
-        <SidePanel click={this.personInfo}/>
-        {/* <RightPanel /> */}
-        <PersonPanel/>
+      <div className='App'>
+        <SidePanel click={this.personClicked}/>
+        {personPanel}
+        
       </div>
     );
   }

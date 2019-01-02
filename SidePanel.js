@@ -3,15 +3,16 @@ import './App.css';
 
 const sidePanel = (props) => {
     return (
-        <aside className="SidePanel">
-            <div>
-                <button id="itemButton" onClick={props.click}>Person</button>
+        <aside>
+            <div className="LeftPanel">
+                <div>          
+                    <button id="itemButton" onClick= {props.click}>Person</button>
+                </div>
+                <div>    
+                    <button id="itemButton">Address</button>
+                </div>
             </div>
-            <div>
-                <button id="itemButton">Address</button>
-            </div>
-        </aside>
-            
+        </aside>    
     );
 }
 

@@ -1,69 +1,61 @@
 .App {
-  position: relative;
-  background-color: grey;
-  width: 1360px;
-  height: 650px;
-}
+  /* position: relative; */
+  background-color:burlywood;
+  width: 1920px;
+  height: 945px;
+}  
 
-.SidePanel{
-  /* position: absolute; */
+.LeftPanel {
   float: left;
-  width: 200px;
-  height: 650px;
-  background-color:darksalmon;
-}
-
-.RightPanel {
   /* position: absolute; */
-  float: right;
-  width: 1160px;
-  height: 650px;
-  background-color:cornsilk;
+  background-color:coral;
+  width: 120px;
+  height: 945px;
 }
 
-.PersonPanel {
-  /* position: absolute; */
-  float: right;
-  width: 1160px;
-  height: 650px;
-  background-color:cornflowerblue;
+#itemButton {
+  padding: 5px;
+  margin: 7px;
+  width: 60px;
 }
 
-button{
-  margin:6px;
-}
-
-#itemButton{
-  padding: 10px;
-  margin: 5px;
-  width: 70px;
-}
-
-#id {
-  position: relative;
-  font: bolder;
-  font-family: 'Courier New', Courier, monospace;
-  color: black;
-}
-
-#list {
-  font-family: 'Courier New', Courier, monospace;
-  color: blue;
-  
+.Record {
+  border: 2px solid coral;
+  border-collapse: collapse;
 }
 
 table,th,td {
-  margin: 10px;
-   border: 1px solid black;
-  
+  margin:30px;
+  padding: 5px;
+  border-collapse: collapse;
+  border: 3px solid coral;
 }
 
-.Form {
-  padding: 3px;
-  font: initial;
+#add,#submit,#reset {
+  margin-top: 10px;
+  margin-left: 60px;
+} 
+
+
+.PersonPanel {
+  position: absolute;
+  background-color:blanchedalmond;
+  float:right;
+  margin-left:120px;
+  width: 1800px;
+  height: 945px;
 }
 
-#inputFName, #inputId, #inputLName, #inputEmail, #inputBDate {
-width:140px;
-height: 15px;
+.PersonInfo {
+  /* border:5px solid coral; */
+  width: 600px;
+  height: 300px;
+  padding: 10px;
+  margin:50px;
+}
+
+.FormFields {
+  margin:2px;
+  padding: 5px;
+  margin-left: 50px;
 }

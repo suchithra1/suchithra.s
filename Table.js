@@ -1,28 +1,17 @@
 import React from 'react';
 import './App.css';
 
-const table = () => {
+const table = (props) => {
+    
     return(
-        <table className="Table" >
-            <tr>
-                <th>ID</th>
-                <th>FIRSTNAME</th>
-                <th>LASTNAME</th>
-                <th>EMAIL</th>
-                <th>BIRTHDATE</th>
-                <th>ACTION</th>
-            </tr>  
-            <tr>
-                <td>%id%</td>
-                <td>%firstname%</td>
-                <td>%lastname%</td>
-                <td>%email%</td>
-                <td>%birthdate%</td>
-                <td>
-                    <button> DELETE</button>
-                </td>    
-            </tr>
-        </table>   
+        <tr className="Record">
+                <td>{props.data.id}</td>
+                <td>{props.data.firstName}</td>
+                <td>{props.data.lastName}</td>
+                <td>{props.data.email}</td>
+                <td>{props.data.birthDate}</td>
+                <td><input type="button" id="deleteButton" onClick={props.click} value="DELETE" /></td>
+        </tr>
     );
 }
 
