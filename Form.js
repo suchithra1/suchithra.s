@@ -34,7 +34,7 @@ const form = (props) => {
                     type="text" placeholder="Enter BirthDate" name="birthdate" value={props.birthDate}
                     onChange={props.handleInputChange} />
             </div>
-            <button id="submit" onSubmit = {props.handleFormSubmit}>SUBMIT</button>
+            <button id="submit" onSubmit = {props.click}>SUBMIT</button>
             <button id="reset">RESET</button>
         </div>
     );

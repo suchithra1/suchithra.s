@@ -10,7 +10,7 @@ const table = (props) => {
                 <td>{props.data.lastName}</td>
                 <td>{props.data.email}</td>
                 <td>{props.data.birthDate}</td>
-                <td><input type="button" id="deleteButton" onClick={props.click} value="DELETE" /></td>
+                <td><input type="button" id="deleteButton" onClick={props.remove} value="DELETE" /></td>
         </tr>
     );
 }
