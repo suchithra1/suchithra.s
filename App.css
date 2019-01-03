@@ -1,6 +1,6 @@
 .App {
   /* position: relative; */
-  background-color:burlywood;
+  background-color:lavenderblush;
   width: 1920px;
   height: 945px;
 }  
@@ -8,7 +8,7 @@
 .LeftPanel {
   float: left;
   /* position: absolute; */
-  background-color:coral;
+  background-color:cornsilk; 
   width: 120px;
   height: 945px;
 }
@@ -20,7 +20,7 @@
 }
 
 .Record {
-  border: 2px solid coral;
+  border: 1px solid black;
   border-collapse: collapse;
 }
 
@@ -28,7 +28,11 @@ table,th,td {
   margin:30px;
   padding: 5px;
   border-collapse: collapse;
-  border: 3px solid coral;
+  border: 1px solid black;
+}
+
+th {
+  background-color: cornsilk;
 }
 
 #add,#submit,#reset {

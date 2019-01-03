@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SidePanel from './SidePanel.js';
 import PersonPanel from './PersonPanel.js';
+import PropTypes from 'prop-types';
 
 class App extends Component {
   
@@ -37,6 +38,11 @@ class App extends Component {
       </div>
     );
   }
+}
+
+App.propTypes = {
+  persons : PropTypes.array,
+  showPersonPanel: PropTypes.bool
 }
 
 export default App;

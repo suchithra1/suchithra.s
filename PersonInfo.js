@@ -7,17 +7,18 @@ const personInfo = (props) => {
 
     return (
       <div className="PersonInfo">
-          {/* <Table data={props.items} />  */}
+          {/* <Table content={props.persons} />  */}
           {/* { props.persons.map((person) => < Form data={person}/>)} */}
-                  
-          { <Form 
-              handleFormSubmit = { props.handleFormSubmit } 
-              handleInputChange={ props.handleInputChange }
+                             
+        { <Form 
               id = { props.persons.id }
               firstName = { props.persons.firstName }
-              lastName ={ props.persons.lastName}
+              lastName = { props.persons.lastName}
               email = { props.persons.email}
               birthDate = {props.persons.birthDate}
+              formSubmit = { props.submitClick } 
+              inputChange= { props.change }
+              formReset = {props.resetClick}
           />}
         </div>
       );
