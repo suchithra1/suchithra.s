@@ -1,0 +1,421 @@
+WEBVTT
+
+00:02.130 --> 00:07.580
+In the last lecture we made sure that we show a spinner a loader to the user what's the request is on
+
+00:07.580 --> 00:08.320
+its way.
+
+00:08.510 --> 00:14.870
+That's of course a good thing to do it improves our user experience because user clearly sees that something
+
+00:14.870 --> 00:15.820
+is happening.
+
+00:15.830 --> 00:22.500
+It's also an improvement to the user experience if we show error messages in case something fails.
+
+00:22.520 --> 00:27.810
+And here again there are different places where you could show such an error message.
+
+00:27.860 --> 00:36.020
+I simply want to set up some global error handler which shows a modal Swiftie error message but doesn't
+
+00:36.020 --> 00:43.910
+use the modal here because I don't want to be stuck to this container to the Bergere Boulder container.
+
+00:44.130 --> 00:49.550
+I don't want to have a flexible way of showing an error no matter which component and which container
+
+00:49.640 --> 00:50.770
+it occurs.
+
+00:51.020 --> 00:59.120
+So therefore my modal is going to get added to a higher level in the application and I want to have
+
+00:59.370 --> 01:07.910
+a higher level off the application so some higher component and Asperger Bodor container where I catch
+
+01:08.000 --> 01:13.610
+errors and where I then make sure that my error or modal is displayed.
+
+01:13.610 --> 01:17.390
+Now where can we set this up.
+
+01:17.390 --> 01:19.970
+How can we control this.
+
+01:19.970 --> 01:27.440
+I simply want to create a higher order component with which I can wrap the buger builder or which I'll
+
+01:27.440 --> 01:34.250
+actually use in that second way I showed you for using higher order components so that we can simply
+
+01:34.250 --> 01:40.850
+wrap any component which should have this error or modal with it and can conveniently add the error
+
+01:40.850 --> 01:43.490
+handling functionality to it.
+
+01:43.490 --> 01:50.480
+So for this I'm going to create a new higher order component in a folder which I'll name with error
+
+01:50.510 --> 01:51.610
+handler.
+
+01:51.830 --> 02:00.380
+I'm using this syntax with error handler because I want to use is second way of creating a high order
+
+02:00.380 --> 02:06.020
+component which will be used here on the X board and not used as.
+
+02:06.070 --> 02:07.090
+X code.
+
+02:07.400 --> 02:16.310
+So they're all add added with air handler dot J as file and this file here now will take the following
+
+02:16.310 --> 02:17.380
+form.
+
+02:17.480 --> 02:20.810
+It will be a function with error handler.
+
+02:20.960 --> 02:28.490
+And this should be a function which takes the wrapped component as an input and which then returns a
+
+02:28.530 --> 02:31.370
+function which receives props.
+
+02:31.580 --> 02:37.310
+And of course simply returns Steese I'm Chia's X including the wrapped component.
+
+02:37.460 --> 02:42.400
+So for that we need to import re-act from re-act.
+
+02:42.590 --> 02:49.100
+And now here I of course want to return the wrapped component and distribute any Propst this component
+
+02:49.100 --> 02:54.360
+might receive on it because I don't know these props but I definitely don't want to lose them.
+
+02:54.370 --> 02:59.790
+I then want to export does with error handler function the default.
+
+02:59.990 --> 03:03.670
+But now I also want to use my Or add my error or modal.
+
+03:03.670 --> 03:05.990
+So for that I need to import two things.
+
+03:05.990 --> 03:16.170
+The modal component of course from the components you or I modal folder and there D-Mo. js file.
+
+03:16.440 --> 03:24.880
+And since I want to place it next to it I need to alks component from the ox folder in the HLC folder.
+
+03:24.990 --> 03:33.100
+So now I can wrap that all with alks like this and at the modal next to it.
+
+03:33.180 --> 03:37.680
+Don't use a self-closing tag here because in the modal of course I want to output something.
+
+03:37.680 --> 03:44.220
+For now I'll just say something didn't work just like that.
+
+03:44.360 --> 03:47.630
+Now we can't find you in this but this is what I want to show right now.
+
+03:47.630 --> 03:54.520
+Now let's see if this works if we save this we now have our higher order component.
+
+03:54.710 --> 03:57.100
+Let's now use this on the Bergere Boulder.
+
+03:57.140 --> 03:58.430
+There I will.
+
+03:58.460 --> 04:04.430
+Or it at the top so with error handler starting with a lowercase character because we're not going to
+
+04:04.430 --> 04:13.750
+use it j as X and now all navigate to my HNC folder and there are 2D with air handler folder Anthi with
+
+04:13.750 --> 04:20.710
+error handler J as follow of course and then take that with error handler function where importing and
+
+04:20.710 --> 04:24.820
+wrap the burger Boulder with it like this.
+
+04:24.820 --> 04:31.480
+Now with this if we go back to the with air handler function set to show like this so to true simply
+
+04:31.510 --> 04:36.440
+on the model if we save this and go back we should always see something didn't work.
+
+04:36.580 --> 04:40.120
+Now obviously we only want to show this if we got an error.
+
+04:40.120 --> 04:47.910
+So we need to set show to something else and that something else needs to come from the wrapped component
+
+04:47.920 --> 04:49.840
+we need that information.
+
+04:49.990 --> 04:56.890
+If it did fail to get that information we should add a second argument to our higher order function
+
+04:56.890 --> 04:57.490
+here.
+
+04:57.720 --> 05:05.670
+The ex-US instance which was used so that we can set up an error handler a global error handler on it.
+
+05:05.830 --> 05:13.960
+Now to use staed instance here I will change this functional component into a class based one.
+
+05:14.200 --> 05:21.730
+So here I will return class which should now extend the component object from react so I need to import
+
+05:21.730 --> 05:26.830
+that class extends component as you can see it's an anonymous class.
+
+05:26.830 --> 05:30.280
+I don't set up a name here because I never use that class.
+
+05:30.280 --> 05:31.350
+I return it here.
+
+05:31.360 --> 05:37.090
+It's a class factory essentially with error handler creates these classes.
+
+05:37.460 --> 05:44.080
+No in there we clearly need a render method where we in the end return what we return and our functional
+
+05:44.080 --> 05:45.200
+component here.
+
+05:45.310 --> 05:52.480
+So simply return that of course prop's is now this prop's since we changed it to a class.
+
+05:52.600 --> 05:54.040
+We can't get rid of that part.
+
+05:54.040 --> 06:03.940
+Down there now and now with this we can add component did mount here and in component did mount we can
+
+06:03.940 --> 06:14.170
+now set up our axes listeners so on the access instance here we can now set up our global interceptor
+
+06:14.260 --> 06:20.450
+which also allows us to handle errors so I'll add entire sectors here.
+
+06:21.300 --> 06:28.000
+Then responds and then with you is at a function I want to use.
+
+06:28.230 --> 06:33.330
+So this function here will get the response and then do something with it but I'm not really interested
+
+06:33.330 --> 06:36.150
+in that first argument so I'll pass null here.
+
+06:36.150 --> 06:38.330
+The second argument is the one I'm interested in.
+
+06:38.430 --> 06:42.120
+That's the error case where I get an error here.
+
+06:42.150 --> 06:44.680
+I don't want to show my error or modal.
+
+06:44.760 --> 06:45.800
+So for dead.
+
+06:45.810 --> 06:55.260
+Now add a state where I will simply set error to null initially and in here I will then set were called
+
+06:55.290 --> 06:58.660
+this set state and set error.
+
+06:58.780 --> 07:06.060
+Q The error I'm getting here back from firebase and this happens to be an object which also contains
+
+07:06.060 --> 07:08.860
+an error message on the message property.
+
+07:08.880 --> 07:14.100
+You can simply Konsole lock that error to see how this object looks like.
+
+07:14.190 --> 07:16.350
+So now I'm setting that error here.
+
+07:16.410 --> 07:17.230
+Once we.
+
+07:17.260 --> 07:19.980
+Well Godwine Now what else.
+
+07:20.010 --> 07:26.010
+All to do is add a new Interesse setter for a request.
+
+07:26.280 --> 07:32.720
+So they call us and I'm not really interested in the request but there's one thing I want to do in there.
+
+07:32.790 --> 07:40.320
+I want to call this said state and clear any errors so that whenever I send the request I don't have
+
+07:40.320 --> 07:44.850
+my error set up anymore so that I definitely clear it here.
+
+07:45.180 --> 07:53.700
+So now on the mobile I will only show it if this state error is not null essentially.
+
+07:54.060 --> 08:01.830
+And that in there I can output this state error and then again there will be a message property on the
+
+08:01.920 --> 08:08.260
+error object returned by firebase there just one more thing we have to do.
+
+08:08.450 --> 08:15.790
+The modal component we create it also exposes the click property which occurs when we click the backdrop.
+
+08:15.950 --> 08:20.980
+And in this case of course I also want to clear the error because then we click the modal.
+
+08:20.990 --> 08:22.600
+I don't want to show it any more.
+
+08:22.610 --> 08:29.620
+I have to get rid of the error so the ad clicked here and there I will call a method.
+
+08:29.630 --> 08:39.060
+I have to create in my with error handler component or name it error or confirmed handler.
+
+08:39.500 --> 08:46.500
+This simply is a method where able to call this set state and set error to null two.
+
+08:46.970 --> 08:51.800
+And I will assign it here this error confirmed handler.
+
+08:51.800 --> 08:56.450
+Now with this set up here there's one more thing I want to do.
+
+08:56.480 --> 09:03.740
+Does state error message which I'm outputting here will throw an error initially because the mold component
+
+09:03.740 --> 09:07.730
+is always present even if we don't show it there.
+
+09:08.030 --> 09:15.350
+So what I'll do is ultimately at turn their expression where else say this state error questionmark
+
+09:15.410 --> 09:16.850
+only if it does not.
+
+09:16.850 --> 09:21.130
+Now then I'll output that otherwise all output null so output nothing.
+
+09:21.140 --> 09:27.710
+Now with that if I save this and go back to the application will get cannot read Property interceptors
+
+09:27.950 --> 09:30.930
+which makes sense because we try to run this on.
+
+09:30.930 --> 09:35.800
+X yes but we don't receive X is we expect to get it as an argument.
+
+09:35.870 --> 09:41.150
+But in the Bergere Buller where I use with error handler I'm only passing the burger Boulter component
+
+09:41.420 --> 09:42.960
+the wrapped component.
+
+09:42.980 --> 09:50.070
+So here I simply have to pass x years which we are importing here and which is our x' instance.
+
+09:50.110 --> 09:55.790
+Now with that there's one more thing we have to do in our intercessors We of course have to return something
+
+09:56.030 --> 09:57.170
+when sending the request.
+
+09:57.170 --> 10:00.860
+We have to return the request conflict so that the request can continue.
+
+10:01.010 --> 10:06.830
+And for the response I also want to implement the response handler here where I simply returned a response
+
+10:06.950 --> 10:09.490
+does the shortest possible syntax for doing that.
+
+10:09.500 --> 10:14.690
+Now with that if we save all of that and we go back to the application and we add a burglar.
+
+10:14.900 --> 10:16.480
+This should still work.
+
+10:16.580 --> 10:17.100
+It does.
+
+10:17.120 --> 10:19.010
+We can still save a burger.
+
+10:19.190 --> 10:24.140
+Now let's mess something up and let's see if that also works in the Broga builder container where we
+
+10:24.140 --> 10:25.480
+sent the request.
+
+10:25.700 --> 10:32.390
+If we now change that you r l and maybe remove the dot Jason which I said is a valid or an important
+
+10:32.390 --> 10:38.490
+part of the API endpoint of forward a firebase database we're sending the request to year.
+
+10:38.660 --> 10:40.530
+So if we remove that it should fail.
+
+10:40.610 --> 10:46.910
+So now if we try to store a burger we indeed get a network error message here.
+
+10:47.210 --> 10:50.440
+Now closing by clicking on the backdrop doesn't work though.
+
+10:50.450 --> 10:53.400
+Let's quickly check why this is the case.
+
+10:53.420 --> 10:55.350
+Let me quickly have a look.
+
+10:55.370 --> 11:01.580
+I'm using the wrong prop in the motile of course clicked is for the backdrop that prop the backdrop
+
+11:01.580 --> 11:05.920
+exposes the motile then uses modal closed dishonesty method.
+
+11:05.930 --> 11:07.470
+We try to execute here.
+
+11:07.520 --> 11:09.600
+So this is the property we should implement.
+
+11:09.710 --> 11:12.360
+So modal closed is the correct problem.
+
+11:12.590 --> 11:17.480
+Now with that again if we try to send this with the wrong you are l we get the error.
+
+11:17.660 --> 11:19.700
+But we can dismiss it.
+
+11:19.700 --> 11:25.380
+So now we got global error handling in place and I'm going to fix that order as you are Allegan.
+
+11:25.610 --> 11:30.580
+So now we're handling both the success case anti-euro case we're showing a lower as long as needed.
+
+11:30.650 --> 11:37.400
+And with that we get a robust application with a reusable higher order component which we can wrap around
+
+11:37.490 --> 11:41.140
+any component which uses axes to handle its errors.

@@ -1,0 +1,100 @@
+WEBVTT
+
+00:01.990 --> 00:07.330
+So in the last lecture we do get at this firebase project and we had changed the rules.
+
+00:07.470 --> 00:14.730
+Now let's start sending HTB requests to this endpoint and to send HTP requests.
+
+00:14.730 --> 00:18.970
+We of course should install a new package in our course project.
+
+00:19.050 --> 00:25.830
+We do this with NPM install dash dash save x yes is the package I want to install because you're just
+
+00:25.830 --> 00:27.690
+like any HTP module.
+
+00:27.730 --> 00:31.890
+Want to use axes to set my age to keep the requests.
+
+00:31.890 --> 00:38.210
+You can of course use different Ajax package but actually is really great and I can only recommend it.
+
+00:38.250 --> 00:43.260
+Thereafter we can restart the daemon opens her with NPM start.
+
+00:43.530 --> 00:47.290
+And now of course we want to add access to our application.
+
+00:47.550 --> 00:55.020
+In the last course module use all different ways of adding it adding it by creating an access instance
+
+00:55.290 --> 01:00.000
+or simply importing it and potentially setting up some defaults.
+
+01:00.000 --> 01:08.700
+Now I will added by adding xes instance but you could also just imported globally and set these global
+
+01:08.700 --> 01:10.940
+defaults you saw in the last module.
+
+01:11.010 --> 01:12.900
+Definitely play around with both.
+
+01:12.930 --> 01:15.110
+Choose whichever one you like more.
+
+01:15.210 --> 01:22.900
+Now to create an instance of X years I'm going to create a new file and I'm going to name these X's
+
+01:23.310 --> 01:30.600
+orders dot Jesus because of go use that for all the order related stuff in there there I now need to
+
+01:30.630 --> 01:38.010
+import x years from the ex-US package and then call X create and pass a javascript object to configure
+
+01:38.010 --> 01:38.780
+it.
+
+01:38.790 --> 01:46.050
+Now there are set up the base you are l to that lbf I just copied from firebase dessous your you are
+
+01:46.050 --> 01:50.760
+Alwar you want to send your request to to store your data in the database.
+
+01:50.820 --> 01:55.260
+And again just in case you missed it it's this part.
+
+01:55.440 --> 02:02.280
+You can see under database Dator that is what I set up as my default base your L here of course does
+
+02:02.330 --> 02:08.820
+it says which gets created here should be stored in some constants or a constant or variable and naming
+
+02:08.820 --> 02:09.910
+it instance here.
+
+02:10.110 --> 02:13.520
+And then I can export this as the file default.
+
+02:13.530 --> 02:18.100
+Now I have my own access instance configured for this your et al.
+
+02:18.140 --> 02:23.670
+This is also the reason why I use this instance approach because later in the course when we add authentication
+
+02:23.760 --> 02:27.230
+we'll all use a different u r l with x yes.
+
+02:27.240 --> 02:34.230
+So I don't want to set to space you or as a global default even though for the moment I could do that.
+
+02:34.260 --> 02:36.640
+So now we get the access instance created.
+
+02:36.690 --> 02:37.570
+That's great.
+
+02:37.590 --> 02:40.440
+Let's now Vaun to actually sending requester.

@@ -1,0 +1,403 @@
+WEBVTT
+
+00:02.170 --> 00:05.240
+In the last lecture we made sure that can handle errors.
+
+00:05.310 --> 00:12.030
+And with that we get a robust application which allows us to post our orders to our backend that already
+
+00:12.030 --> 00:12.750
+is a lot.
+
+00:12.750 --> 00:14.810
+Now there's one more thing I want to do though.
+
+00:15.000 --> 00:18.460
+I also want to be able to get some data from the back end.
+
+00:18.900 --> 00:23.000
+And why don't we get our ingredients from there.
+
+00:23.040 --> 00:25.960
+So the ingredients which we set up like this.
+
+00:26.040 --> 00:33.120
+Why don't we get the ingredients dynamically from the back end for that let's go to firebase forest
+
+00:33.460 --> 00:35.620
+and let's close the orders node.
+
+00:35.640 --> 00:41.160
+Now let's add a new note by clicking on the plus directly next to your root name here.
+
+00:41.160 --> 00:50.400
+And let's name this ingredients then add this plus your on the right to add a nested element and there
+
+00:50.400 --> 00:54.740
+in credence should really just be our key value pairs.
+
+00:54.750 --> 00:57.870
+So there we might have sell it with a value of zero.
+
+00:57.870 --> 01:03.760
+Click this add button then and now add more and let's add meat with a value of zero.
+
+01:04.080 --> 01:08.010
+Let's add bacon with a value of zero.
+
+01:08.010 --> 01:11.760
+So I'm using the same ingredients as before because I only support these.
+
+01:11.850 --> 01:16.600
+But you could of course now add more to both your frontal code and your back end.
+
+01:17.130 --> 01:20.490
+And let me also add she's here.
+
+01:21.450 --> 01:24.480
+And of course you could also set up different starting values.
+
+01:24.480 --> 01:28.240
+So now we get that ingredient note here SD You are added to it.
+
+01:28.320 --> 01:32.510
+You will need to append dot Jason to really Xs though.
+
+01:32.610 --> 01:39.630
+And now the goal is to initialize our ingredients here with the ingredients we just stored on firebase.
+
+01:39.840 --> 01:42.070
+So still in the burger Bolar component.
+
+01:42.210 --> 01:48.210
+And once you set up the state dynamically and you learned that a good place for fetching data is component
+
+01:48.310 --> 01:48.740
+date.
+
+01:48.760 --> 01:51.340
+MT So this is the method I want to use.
+
+01:51.450 --> 01:58.990
+So add it to your component did mount like this and there I now want to reach out with xes.
+
+01:59.010 --> 02:04.740
+So I'm using Access with a get request and reach out to that you are ill just copied with Dot Jason
+
+02:04.740 --> 02:05.480
+at the end.
+
+02:05.910 --> 02:12.600
+So this will now send the request to get our ingredients and then add then block your to handle the
+
+02:12.600 --> 02:18.210
+response we get back and that response should of course contain our ingredients object.
+
+02:18.210 --> 02:25.210
+So now the goal is to set our state here ingredients to that object.
+
+02:25.230 --> 02:31.130
+So I'm actually going to set this to null initially here because we're now fetching it from the database.
+
+02:31.530 --> 02:40.680
+And there I will now call this set state and set ingredients equal to response.
+
+02:40.680 --> 02:45.860
+And there there will be a data object which actually contains the data we fetched.
+
+02:45.960 --> 02:53.970
+Now if we save that and we go back to our application here you'll see we get an error because now when
+
+02:53.970 --> 03:00.420
+we try to look for our ingredients at the start of the app that of course fails because initially we
+
+03:00.630 --> 03:07.110
+now know really fetching it at the start and that's a typical use case in applications you fetched data
+
+03:07.110 --> 03:08.220
+when it loads.
+
+03:08.400 --> 03:13.490
+So parts of the UI which depend on the data will therefore fail.
+
+03:13.830 --> 03:21.000
+Now this of course can easily be that by checking if we have ingredients before rendering anything which
+
+03:21.000 --> 03:27.420
+depends on ingredients like the burger you know there are a couple of ways where we can handle this.
+
+03:27.630 --> 03:29.940
+I want to handle it here in my container.
+
+03:29.970 --> 03:37.140
+I want to show a spinner instead of the burger and instead of the bulled controls whilst I am waiting
+
+03:37.140 --> 03:39.240
+for the ingredients to load.
+
+03:39.240 --> 03:49.220
+So to do that I'll add another variable here which I'll name burger and this will be the burger and
+
+03:49.220 --> 03:54.270
+the bold controls so cut it from there and assign it to that variable.
+
+03:54.320 --> 04:02.720
+And now of course this will fail due to us having adjacent elements here in JS X which is not liked
+
+04:02.720 --> 04:03.350
+by default.
+
+04:03.350 --> 04:11.060
+As you learned but you can ever return an array or use our alks helper component here essentially.
+
+04:11.180 --> 04:13.250
+So I'll wrap it with that.
+
+04:13.250 --> 04:17.570
+Keep in mind that's not rendering anything to the screen so we're not destroying our layout.
+
+04:17.870 --> 04:24.220
+But Burger's should of course actually only be that if we have the ingredients so I'll actually overwrite
+
+04:24.220 --> 04:31.500
+the variable buger which all set prior to that burger where I will use the Spener and then I only want
+
+04:31.500 --> 04:37.560
+to override it if this state ingredients is basically not null.
+
+04:37.620 --> 04:40.310
+So there will only be the case if it was loaded.
+
+04:40.350 --> 04:46.430
+So move my code where I overwrite the program variable inside of this if statement.
+
+04:46.440 --> 04:49.750
+So now by default the burger is just a spinner.
+
+04:49.950 --> 04:56.460
+And now it can output it here below the modal output Bergere with single call Brace's.
+
+04:56.520 --> 05:02.280
+However with all the face and number issue the order summary will also use the ingredients and therefore
+
+05:02.280 --> 05:03.050
+fail.
+
+05:03.090 --> 05:10.510
+So here we should simply also add something in said order summary to no by default.
+
+05:10.890 --> 05:16.650
+And then at the same check we're actually we already have that check of course where we override that
+
+05:16.710 --> 05:21.810
+order summary variable with the order summary if ingredients are set.
+
+05:21.810 --> 05:25.210
+So let's add does ofter does Bruegel code here maybe.
+
+05:25.380 --> 05:30.380
+So now we are overwriting the order summary in that same if statement we traded a second ago.
+
+05:30.660 --> 05:34.460
+Of course I also want to make sure that we override this.
+
+05:34.460 --> 05:41.880
+Again if loading was set so ofter does if Stape and where we check for ingredients or ADD does old if
+
+05:41.880 --> 05:47.040
+statement where we check for the loading state to override order summary when needed.
+
+05:47.040 --> 05:52.080
+So now when we save this and go back to the application you saw that spinner for a fraction of a second
+
+05:52.320 --> 05:53.220
+and they're after you.
+
+05:53.340 --> 05:59.600
+You can get going and you can create that burger which you can see is still handled correctly.
+
+05:59.640 --> 06:01.110
+So this all works.
+
+06:01.140 --> 06:06.810
+The cool thing now is if we go to firebase and we update our ingredients so that for example we always
+
+06:07.110 --> 06:08.720
+start with meat.
+
+06:09.000 --> 06:13.850
+We can simply set meat to one year and confirm with enter and then go back to our burger.
+
+06:13.860 --> 06:17.920
+And if we now reloaded you'll see we already start with one meat.
+
+06:17.940 --> 06:19.550
+So that's pretty cool.
+
+06:19.560 --> 06:22.560
+So now we're also fetching this from the back end.
+
+06:22.740 --> 06:28.770
+And now we really improved our application and we have both a post and a get request.
+
+06:28.800 --> 06:36.660
+Now the good thing is we're showing the spare but if we now are removing dead Jason and you're off our
+
+06:36.660 --> 06:43.920
+your all where we getting the rience just as an example if we're removing death and we go back we don't
+
+06:43.950 --> 06:46.590
+get the error or Modelo that's not cool.
+
+06:46.590 --> 06:51.140
+Why are we not getting that that can be hard to spot.
+
+06:51.290 --> 06:57.350
+The reason they actually can be found in our with air handler function we're setting up our interest
+
+06:57.350 --> 06:58.030
+centers.
+
+06:58.060 --> 07:06.020
+Any component did mount hook and it worked great for the post request but think about that lifecycle
+
+07:06.020 --> 07:07.350
+diagram.
+
+07:07.610 --> 07:14.570
+There you see component did mount is actually called after all child components have been rendered which
+
+07:14.570 --> 07:19.960
+means ofter a component did mound was completed in the child components.
+
+07:19.970 --> 07:24.590
+Now think about our with error handler here.
+
+07:24.590 --> 07:30.180
+We're wrapping this wrap component which is our Bergere Boulder container for example because there
+
+07:30.260 --> 07:33.920
+we are using with air handler on the export.
+
+07:34.130 --> 07:40.250
+So we're essentially wrapping the Bergere Boulder and that of course has one application component did
+
+07:40.250 --> 07:47.960
+mount Indy with error handler will only be called once component did mount was called here and since
+
+07:47.960 --> 07:54.800
+we reach out to the web in component did mount of the wrap component we never set up our interceptors.
+
+07:54.830 --> 07:58.950
+The fix is simple we use component will mount.
+
+07:59.090 --> 08:05.020
+This will be called before the child components are rendered and we're not causing side effects here.
+
+08:05.120 --> 08:11.420
+We're just registering the interceptors and we want to do that before the child components are rendered.
+
+08:11.420 --> 08:18.530
+Now if dad if we save this and we reload the application we get that error or motile But then we get
+
+08:18.530 --> 08:23.360
+another error that we fail to set our state.
+
+08:23.420 --> 08:30.680
+The reason for this is that the then block gets executed in our Bergere Boulder even though we have
+
+08:30.680 --> 08:31.750
+an error.
+
+08:32.090 --> 08:38.630
+Now the reason for dead simply is that we're not having a catch method here in component did mount of
+
+08:38.630 --> 08:39.850
+the Bergere Boulder.
+
+08:40.250 --> 08:47.570
+If we catch an error there and simply don't do anything with it for example then we will already not
+
+08:47.570 --> 08:53.960
+get this anymore because now we're not calling the then lock anymore.
+
+08:53.960 --> 08:58.480
+We can still dismiss the network error and our application is now broken.
+
+08:58.520 --> 09:06.730
+So we probably would want to handle that specific error case here for this specific page by for example
+
+09:06.740 --> 09:08.890
+also setting DUI here.
+
+09:09.050 --> 09:13.740
+So there we could also set some error state.
+
+09:13.790 --> 09:22.830
+So now in the Bergere Boulder which is null initially or faults maybe and then inside here if we get
+
+09:22.890 --> 09:29.410
+an error if we catch this then we call set state and set error or.
+
+09:29.550 --> 09:30.490
+True.
+
+09:30.830 --> 09:35.880
+Now with that we can go down to the render method and we want to output an error message for disk case
+
+09:35.880 --> 09:38.480
+for our application becomes unusable.
+
+09:38.490 --> 09:40.200
+Here we set Bergere to Spener.
+
+09:40.200 --> 09:45.650
+Now we actually don't want to show the spinner but our application is not usable at all.
+
+09:45.750 --> 09:50.520
+Error message if we have D error or equal to true.
+
+09:50.700 --> 09:56.640
+So we could check if this state error or if that is true and we actually want to show a paragraph or
+
+09:56.640 --> 10:00.800
+we say ingredients can't be loaded.
+
+10:01.070 --> 10:03.140
+This is our worst case scenario.
+
+10:03.180 --> 10:07.360
+Otherwise we're showing the spinner or we're overwriting it with ingredients if we got them.
+
+10:07.410 --> 10:11.640
+So now if we save this we get the spinner and then we see ingredients can be loaded.
+
+10:11.640 --> 10:15.000
+Now our application is broken but at least we show it to the user.
+
+10:15.120 --> 10:20.840
+Of course once we fix that link by adding dot Jason at the end again.
+
+10:20.850 --> 10:23.760
+Now of course the ingredients will load.
+
+10:23.970 --> 10:29.260
+As you can see here we see the spinner for a fraction of a second the ingredients are there and we can
+
+10:29.260 --> 10:32.360
+continue using our application just fine.
+
+10:32.460 --> 10:34.320
+So it is now all working.
+
+10:34.320 --> 10:40.290
+Now we get a really robust application where we are both storing orders and we're fetching content.
+
+10:40.290 --> 10:46.930
+Now of course we could also implement code to fetch the orders from our database from our back end here.
+
+10:46.950 --> 10:53.430
+So data is something we want to work on next routing being able to switch pages even though technically
+
+10:53.700 --> 10:56.910
+we only have one page in that single page application.

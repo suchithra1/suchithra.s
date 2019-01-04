@@ -1,0 +1,295 @@
+WEBVTT
+
+00:02.180 --> 00:07.040
+Now in this march we obviously had a lot of logic to our burger Boulder again.
+
+00:07.130 --> 00:14.510
+There is one improvement or fix we should apply to it though can be subtle to spot but it really improves
+
+00:14.510 --> 00:15.780
+our application.
+
+00:16.100 --> 00:21.030
+Let's have a look at this with air handler higher order component there.
+
+00:21.110 --> 00:27.110
+We obviously added our interceptors in component will mount and of course it makes sense to have them
+
+00:27.110 --> 00:34.160
+there because we wanted to make sure that we can reset errors and hence show this error or motile we
+
+00:34.160 --> 00:36.620
+set up in this higher order component.
+
+00:36.800 --> 00:44.290
+We have one issue though does with error handler method can be wrapped around multiple components.
+
+00:44.300 --> 00:47.790
+That's the whole idea of having this higher order component.
+
+00:47.840 --> 00:52.940
+Otherwise we could have put death code directly into the burger boulder if that were the only component
+
+00:52.940 --> 00:54.260
+where we want to use that.
+
+00:54.260 --> 00:56.880
+Right now it is the only component we're using it.
+
+00:56.900 --> 01:02.760
+But again our higher order component is of course not limited to the program builder.
+
+01:03.170 --> 01:12.710
+The problem we have is if we add this higher order component with error handler to our components we'll
+
+01:12.710 --> 01:19.070
+call compote and we'll mount again and again of course because the class component we return is higher
+
+01:19.070 --> 01:26.270
+order component is created every time this is wrapped around an existing component.
+
+01:26.270 --> 01:34.840
+So every time we call with air handler on the element we're exporting as we do in the Bergere Boulder.
+
+01:34.940 --> 01:40.440
+So we're actually attaching multiple interceptors in our application and we're attaching them to the
+
+01:40.440 --> 01:42.740
+same access instance.
+
+01:43.040 --> 01:48.020
+The problem of course is we don't have to right now but we will face later in the course.
+
+01:48.090 --> 01:54.920
+DB mentioned routing will lead to the problem once we have more pages where we might use with error
+
+01:54.920 --> 01:55.910
+handler.
+
+01:55.910 --> 02:03.130
+We of course create this instance here multiple time discommode and here and therefore all the old injuries
+
+02:03.130 --> 02:03.950
+setters.
+
+02:03.980 --> 02:09.740
+So all the interceptors we set up when we wrapped this around another component which might not be needed
+
+02:09.740 --> 02:12.170
+anymore still exist.
+
+02:12.170 --> 02:18.260
+So we have a lot of dead interceptors sitting in memory which actually are not dead but which still
+
+02:18.440 --> 02:21.430
+react to our requests.
+
+02:21.560 --> 02:29.630
+And the worst case they lead to errors or do somehow change the state of our application.
+
+02:29.690 --> 02:36.410
+But even in the best case they leak memory because that's code that still runs that is not required
+
+02:36.410 --> 02:37.250
+anymore.
+
+02:37.490 --> 02:43.850
+So we should actually remove the satirise when this component gets unmounted.
+
+02:43.880 --> 02:50.470
+So when does a specific instance of our with error handler wrapper is not needed anymore.
+
+02:50.570 --> 02:59.360
+And there actually is a lifecycle for this to its component will unmount.
+
+02:59.420 --> 03:06.470
+Now as the names of just days is a lifecycle method which is executed at the point of time a component
+
+03:06.560 --> 03:08.590
+isn't required anymore.
+
+03:09.200 --> 03:16.910
+Now to be able to remove an intercept or here we need to store a reference to the interceptors we create
+
+03:17.210 --> 03:19.840
+in properties off does class.
+
+03:19.880 --> 03:22.190
+Now we have to state property already.
+
+03:22.310 --> 03:25.550
+We can't simply add new properties.
+
+03:25.550 --> 03:34.340
+So for that I will simply create a new property on the fly by using this the this keyword to refer to
+
+03:34.340 --> 03:36.890
+the class that any name of your choice.
+
+03:37.100 --> 03:46.880
+All named ISDE request enter center or maybe like this request interceptor and we'll stored the result
+
+03:46.940 --> 03:54.140
+of our interceptor set up which is just a reference to the address center passed back by Access automatically.
+
+03:54.310 --> 03:58.490
+And I'll do the same for the response interceptor here.
+
+03:58.520 --> 04:07.190
+So now I have two new properties in my class and I can now use these properties in will unmount to remove
+
+04:07.190 --> 04:09.400
+the receptors there.
+
+04:09.410 --> 04:18.050
+We can now simply use X years interceptors just like we created them but now we can also x' request
+
+04:18.080 --> 04:19.070
+and response there.
+
+04:19.080 --> 04:24.670
+In-call eject and eject now requires the reference to the interceptor.
+
+04:24.830 --> 04:33.390
+So here this request interceptor and ultimately duplicators to also do the same for the response for
+
+04:33.410 --> 04:34.560
+the response object.
+
+04:34.580 --> 04:39.210
+All the call eject and then called response interceptor.
+
+04:39.590 --> 04:41.360
+And now with that we got this set up.
+
+04:41.370 --> 04:48.160
+Incomputable unknown and we should remove our interceptors with that preventing memory leaks.
+
+04:48.200 --> 04:54.530
+Now to quickly see if that works I'll save that file and then I'll go into the aperture as far which
+
+04:54.530 --> 04:56.600
+is where we add the Burgard Boulder.
+
+04:56.960 --> 05:03.760
+And I want to add some code to remove it after some time just to see if we'll unmount gets caught.
+
+05:04.040 --> 05:13.340
+So there I will simply console lock will unmount and I want to output this request intercept or in this
+
+05:13.610 --> 05:19.080
+response and Precentor D2 properties we added to see if they are set at the beginning of Will amount
+
+05:19.100 --> 05:21.450
+moan because I'm using them thereafter.
+
+05:21.860 --> 05:27.050
+So now if that's saved let's go back to actually yes and to make sure that Bergere Boulder disappears
+
+05:27.080 --> 05:31.920
+after a while all temporarily adding state to my app component.
+
+05:32.030 --> 05:37.850
+It is a class based component so I can of course do this and I will simply a show property which is
+
+05:37.850 --> 05:45.110
+true initially and I will then use it here with this stage show to show the Bergere builder or show
+
+05:45.110 --> 05:50.510
+null which essentially removes the Bergere boulder of course because it's only added to the dorm if
+
+05:50.510 --> 05:51.640
+Show is true.
+
+05:51.860 --> 05:53.910
+So now I just need a way to you.
+
+05:53.960 --> 05:57.550
+Well unset show off for a while and for dead.
+
+05:57.560 --> 05:59.500
+And again this is all just for testing.
+
+05:59.570 --> 06:05.750
+I'll add component did mount here and there I will simply use to normal a set time method provided by
+
+06:05.750 --> 06:06.750
+Javascript.
+
+06:06.950 --> 06:14.990
+And after five seconds I want to execute this function year and in that function I'll call set state
+
+06:15.320 --> 06:17.170
+and set show to 4.
+
+06:17.180 --> 06:19.810
+And again I will remove this code in a second.
+
+06:19.820 --> 06:23.240
+It's only there to test if this works.
+
+06:23.330 --> 06:25.900
+If it does call will unmount.
+
+06:26.210 --> 06:28.150
+So if all that that saved us.
+
+06:28.370 --> 06:31.590
+And now let's reload the application we see the.
+
+06:32.000 --> 06:33.480
+Let's wait five seconds.
+
+06:34.880 --> 06:41.050
+I wish Tennessee will unmount and we see Ciro's 0 and that's actually correct because these are simply
+
+06:41.050 --> 06:42.070
+the ideas.
+
+06:42.220 --> 06:49.690
+There are ideas being kept the memory by access for both the request and response interceptors So two
+
+06:49.690 --> 06:53.170
+different lists of interest centers and they start with index zero.
+
+06:53.200 --> 06:56.700
+We added one to each list one request and one response control center.
+
+06:56.710 --> 06:58.960
+So that is why we see two Ciro's here.
+
+06:59.110 --> 07:01.630
+So what we can see is it does work.
+
+07:01.660 --> 07:09.740
+We can now remove that Cancellara step and unmount it does it successfully get this reference to the
+
+07:09.790 --> 07:17.110
+interceptor and we can rely on object working and this will just ensure that when ever we don't need
+
+07:17.680 --> 07:20.560
+the Bergere Boulder or component anymore.
+
+07:20.560 --> 07:25.810
+And of course it is not the case right now in the application but will soon be that we clean up the
+
+07:25.820 --> 07:33.200
+interceptors which we attached duty using with air handler on the Bergere Boulder so that if we really
+
+07:33.200 --> 07:39.490
+was with air handler in our application we don't create more and more interceptors with the old ones
+
+07:39.490 --> 07:40.810
+living on.
+
+07:40.810 --> 07:48.700
+So with that I can remove my code here at the aperture as file to have a normal working application
+
+07:48.700 --> 07:55.570
+again so remove all the code we added to state and the component that with the set time timeout so that
+
+07:55.570 --> 07:58.680
+we have the same app cavorted as before.
+
+07:58.810 --> 08:04.470
+But now again with the improved application where we actually remove interceptors we don't need anymore.

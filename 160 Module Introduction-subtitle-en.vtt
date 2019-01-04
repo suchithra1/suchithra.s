@@ -1,0 +1,67 @@
+WEBVTT
+
+00:02.110 --> 00:07.510
+So welcome back to our course project our Bergere Boulder now the Bergere Boulder is already pretty
+
+00:07.510 --> 00:07.920
+great.
+
+00:07.930 --> 00:12.610
+We can build burgers with it which doesn't sound too bad for this kind of application.
+
+00:12.610 --> 00:15.000
+Now we can continue to check out and read.
+
+00:15.010 --> 00:19.240
+Now when we click this nothing happens except for this alert.
+
+00:19.240 --> 00:24.430
+Now in the last module we learned how we can actually send HTP requests.
+
+00:24.430 --> 00:28.680
+So this sounds like a great opportunity to actually store that order.
+
+00:28.730 --> 00:35.570
+The customer customers about to place on a server now will then find you in his application later in
+
+00:35.570 --> 00:40.840
+the course once we know how to create different pages in our single page app and have for show a check
+
+00:40.840 --> 00:42.280
+out for them and so on.
+
+00:42.490 --> 00:50.350
+But for now storing the order and getting the orders that would be an amazing advancement in our application.
+
+00:50.350 --> 00:57.340
+So this is what this model is about will implement the backend so that we can actually store our orders
+
+00:57.580 --> 00:59.580
+so that we have a way of retrieving them.
+
+00:59.710 --> 01:07.780
+Even after our page was reloaded for that story on the back end I'm going to use firebase firebase is
+
+01:07.780 --> 01:09.760
+a service offered by Google.
+
+01:09.970 --> 01:15.890
+It's essentially out of the box working back and which includes a database.
+
+01:15.910 --> 01:22.840
+The cool thing is we can use it for free and for the amount of fuel we're going to apply in this course
+
+01:22.840 --> 01:29.410
+project it's going to stay free and we don't have to write any server side code which discours of course
+
+01:29.440 --> 01:36.170
+is not about but the way we communicate with firebase is the same we communicate with any other backend.
+
+01:36.190 --> 01:40.220
+So does is representative for your back and in your project.
+
+01:40.390 --> 01:47.080
+Now with that let's dive into that and let's create our fire best project in the next lecture so that
+
+01:47.110 --> 01:50.150
+we then can start storing our orders there.

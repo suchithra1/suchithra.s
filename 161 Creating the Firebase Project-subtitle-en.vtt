@@ -1,0 +1,154 @@
+WEBVTT
+
+00:02.190 --> 00:04.630
+So let's use this firebase service.
+
+00:04.680 --> 00:09.470
+As I said simply just as kind of a dummy back end because it's easy to get started with it.
+
+00:09.630 --> 00:12.600
+And for our needs here it's free.
+
+00:12.600 --> 00:18.480
+Check out the pricing page on fire based at Google dot com slash pricing to learn what's included in
+
+00:18.480 --> 00:21.580
+the free plan and when it's going to cost money.
+
+00:21.600 --> 00:28.080
+That's especially important of course if you plan on using days in production environments for your
+
+00:28.170 --> 00:29.670
+real application.
+
+00:29.670 --> 00:34.370
+No worries though if you stay in the free plan you actually can't be charged.
+
+00:34.470 --> 00:40.080
+You'll just be limited once you exceed the free limits which of course you also don't want to encounter
+
+00:40.170 --> 00:43.040
+in your protection ready application.
+
+00:43.050 --> 00:46.020
+Now enough of the talking about the pricing it's free for our needs.
+
+00:46.020 --> 00:49.810
+So let's click on go to console for Dad you'll need a Google account.
+
+00:49.830 --> 00:53.530
+So that is something you will need to create before you can continue.
+
+00:53.670 --> 00:57.710
+And on that console you can now create a new project here.
+
+00:57.960 --> 01:04.350
+So let's create the project I'm going to name a re-act my burger you can choose any name you like.
+
+01:04.350 --> 01:09.450
+And then you choose a country or region here and you can choose to a country where you are located.
+
+01:09.510 --> 01:13.980
+This won't affect where the data will be stored in the end.
+
+01:14.310 --> 01:16.320
+And then click Create project.
+
+01:16.450 --> 01:21.770
+As I said this will now configure up back and project for you which automatically gives you some rest.
+
+01:21.780 --> 01:29.430
+API endpoints and Mongo D-B like database which you can use to store data so that we don't have to write
+
+01:29.490 --> 01:31.080
+any server side code.
+
+01:31.170 --> 01:33.300
+The console is going to look like this.
+
+01:33.410 --> 01:34.520
+Now no worries.
+
+01:34.520 --> 01:37.430
+You don't need any deeper firebase understanding here.
+
+01:37.440 --> 01:43.490
+We're going to use the database because we want to store data and firebase has is Sendak's Where the
+
+01:43.500 --> 01:48.810
+API endpoints are directly mapped to endpoints or two tables.
+
+01:48.840 --> 01:51.250
+You could say in your database.
+
+01:51.330 --> 01:55.620
+So it's super easy to get started storing data there.
+
+01:55.650 --> 01:58.910
+Now this is the API endpoint.
+
+01:58.920 --> 02:04.080
+We're going to use so you of course have a different one for your project but this is the end point
+
+02:04.080 --> 02:09.560
+where we can send data to you and then it will automatically be stored in that database.
+
+02:09.570 --> 02:12.710
+Still we won't be connecting to the database directly.
+
+02:12.780 --> 02:19.610
+We're just sending HTP request and firebase is doing the mapping of HTP endpoints to the database.
+
+02:19.620 --> 02:25.260
+That's the cool thing about this service now for this to be available there's one thing we need to set
+
+02:25.260 --> 02:33.660
+up under rules here on database rules you should set read and write x' simply to true.
+
+02:33.690 --> 02:36.910
+Now by default it's only enabled for authenticated users.
+
+02:37.000 --> 02:40.790
+And this makes sense for production ready application.
+
+02:41.010 --> 02:43.770
+But we haven't implemented user authentication yet.
+
+02:43.830 --> 02:46.070
+So we have know of any kind of users.
+
+02:46.260 --> 02:51.080
+So for the moment let's turn this to true so that everyone can read or write.
+
+02:51.120 --> 02:55.950
+Of course not something you want for your real application which you ship.
+
+02:56.070 --> 03:00.020
+At least that's the most likely use case that you don't want to give global.
+
+03:00.030 --> 03:01.650
+Read or write access.
+
+03:01.650 --> 03:03.990
+Make sure to publish your updated rules.
+
+03:04.230 --> 03:06.120
+And with that we're already ready to go.
+
+03:06.150 --> 03:06.930
+That's all.
+
+03:06.960 --> 03:08.790
+We don't have to configure anything else.
+
+03:08.850 --> 03:15.750
+We can get started and we can start sending HPB request to dis and point or some nested endpoints as
+
+03:15.750 --> 03:17.100
+you going to see.
+
+03:17.250 --> 03:18.820
+Now with that in the next lecture.
+
+03:18.840 --> 03:25.170
+Let's dive right into that and let's start sending HTP requests to our Bacchante here.

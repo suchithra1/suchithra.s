@@ -1,0 +1,370 @@
+WEBVTT
+
+00:02.150 --> 00:05.940
+So in the last lecture we made sure that we can send a POST request.
+
+00:05.980 --> 00:11.860
+Now in a typical application we want to show something to the user once the request is on its way.
+
+00:11.900 --> 00:13.170
+Now I will have to add.
+
+00:13.180 --> 00:16.790
+Firebase is really really quick.
+
+00:17.000 --> 00:23.030
+So we probably won't even have a chance to see a loading screen or something which you want to show
+
+00:23.030 --> 00:25.640
+to the user was the request is on its way.
+
+00:25.640 --> 00:30.890
+Still it is a good practice to show something like this because in case we have some latency or maybe
+
+00:30.890 --> 00:32.460
+the user network is slow.
+
+00:32.570 --> 00:36.230
+You definitely want to show the user hey something is happening.
+
+00:36.260 --> 00:37.750
+So what do we want to show.
+
+00:37.850 --> 00:40.840
+Well I want to show a spinner inside this modem.
+
+00:40.850 --> 00:47.030
+So instead of the order summary I want to show a spinner so that the user can see that something is
+
+00:47.030 --> 00:47.940
+happening here.
+
+00:48.050 --> 00:54.660
+And once you are done the Malda should get closed and the splitter therefore of course will also disappear.
+
+00:55.010 --> 00:56.740
+So how do we do that.
+
+00:56.780 --> 01:01.600
+First of all we need a Spener component that is clearly a UI element.
+
+01:01.610 --> 01:08.180
+So I here I will add a spinner folder and then there as Baynard J as file.
+
+01:08.180 --> 01:16.570
+Now the spinner can simply be a simple functional component where I will return some j s accent as always.
+
+01:16.590 --> 01:24.410
+Therefore import re-act from react and export the spinner function to your ass to file default of course.
+
+01:24.410 --> 01:26.960
+Now to create a SEUS as a spinner.
+
+01:26.960 --> 01:31.120
+We can simply take advantage of some resources we can find on the internet.
+
+01:31.310 --> 01:37.940
+If you search for C-s as spinner's you're going to find that awesome project here the very first search
+
+01:37.940 --> 01:44.930
+result which you can see in the video which is a page with loads of C-s as spinner's and the code for
+
+01:44.930 --> 01:47.620
+it which you can simply use.
+
+01:47.640 --> 01:52.190
+You can also adjust them here by picking a background color.
+
+01:52.190 --> 02:01.360
+And here I'm going to enter a hex coat of white for the background and then a front color of this Nye's
+
+02:01.530 --> 02:05.770
+properly or with that you can choose any spinner.
+
+02:05.920 --> 02:12.210
+Be this one you're about whichever one you like and then you'll see this is as cold responsible for
+
+02:12.210 --> 02:13.310
+it as spinner.
+
+02:13.320 --> 02:15.540
+Now I'm going to grab all that code.
+
+02:15.730 --> 02:21.180
+You all CDH HTML code which is really simple and cango to grab all that code and then head back to the
+
+02:21.180 --> 02:23.190
+re-act application there.
+
+02:23.190 --> 02:26.300
+I'll add a spinner's see SS file and paste in the code.
+
+02:26.310 --> 02:27.630
+I just copied.
+
+02:27.930 --> 02:34.610
+No what I'll do is all quickly rename loader your to loader with a capital L.
+
+02:34.710 --> 02:40.860
+Just to be in line with the avaricious fallenness I'm using in this project and then I'm going to grab
+
+02:40.860 --> 02:49.650
+that HDMI I'll kill it here on the spinner and I'll use that in my spinner component as X and the class
+
+02:49.710 --> 02:51.200
+of course has to be adjusted.
+
+02:51.210 --> 02:56.680
+It's a class name and I need to have ordered the classes from Mei's C is as follows.
+
+02:56.680 --> 03:03.870
+I'm importing it from spitters C S S and then of that class name equal to classes start loader with
+
+03:03.870 --> 03:10.170
+a capital L and that actually is all the loading in between as like a fallback in case the CSSA isn't
+
+03:10.170 --> 03:10.970
+displayed.
+
+03:11.040 --> 03:12.410
+Then this will be shown.
+
+03:12.600 --> 03:15.370
+That actually is all the code I need for a spinner.
+
+03:15.390 --> 03:19.880
+Now I only need some logic to show it inside the modal whilst we are loading.
+
+03:19.920 --> 03:26.290
+So essentially I conditionally want to render order summary or my spinner.
+
+03:26.460 --> 03:30.420
+Now for did I need a new state in my Bergere builder.
+
+03:30.420 --> 03:37.310
+Here are eight at a state which will name loading and which is false initially when it is true.
+
+03:37.320 --> 03:39.690
+I want to show the splitter when it is false.
+
+03:39.720 --> 03:42.800
+I want to show the order summary in this component.
+
+03:43.290 --> 03:44.940
+So in the render method.
+
+03:44.970 --> 03:53.650
+Now add a check where I say if this state loading then I want to show the splitter and first of all
+
+03:53.710 --> 04:01.020
+I'll set up the alternative which is my order summary a year which should simply be that element here
+
+04:01.020 --> 04:02.490
+that order summary element.
+
+04:02.490 --> 04:04.310
+We have nested in the modal.
+
+04:04.650 --> 04:12.210
+I'll store it in this order summary variable up here which I created with the let keyword and override
+
+04:12.210 --> 04:14.570
+it in case we have to loading state.
+
+04:14.640 --> 04:19.350
+Then here I want to use that new Spener component we just created.
+
+04:19.380 --> 04:25.950
+So let's order a spinner then I'll add it here import Spener from.
+
+04:26.130 --> 04:31.710
+And now we have to go to the components folder of course to the UI folder and there to the spinner folder
+
+04:31.710 --> 04:39.570
+and implored the spinner fall from there and now we can grab that spinner and use it down there in our
+
+04:39.570 --> 04:40.850
+render method.
+
+04:41.070 --> 04:48.180
+Here I now want to set order summary should be my spinner and this is simply a self-closing tag.
+
+04:48.600 --> 04:53.250
+With that we can save does it now we should output the order summary year.
+
+04:53.250 --> 04:56.240
+This variable we just created between the modal tax.
+
+04:56.250 --> 05:01.320
+So now we either show this better or we show the order summary.
+
+05:01.590 --> 05:07.370
+So let's save this and let's make sure that we now which does loading state which we're checking here.
+
+05:07.380 --> 05:13.820
+We of course want to switch it here when we actually are continuing with the purchase.
+
+05:13.980 --> 05:15.420
+There right at the start.
+
+05:15.450 --> 05:22.140
+I want to call this set state and said loading to true of course because now we are loading the request
+
+05:22.200 --> 05:26.830
+is about to get sent once the response is there though.
+
+05:26.850 --> 05:34.140
+Here where I log it I no longer want to log it but I want to stop loading and I want to stop loading
+
+05:34.140 --> 05:38.800
+no matter what the response is because the request is done even if it failed.
+
+05:38.850 --> 05:45.330
+So here I will now call this set state and set the loading to false again.
+
+05:45.390 --> 05:48.920
+Of course so that we go back to the Ivor.
+
+05:49.080 --> 05:51.620
+Well paged the state.
+
+05:51.990 --> 05:58.380
+I also of course want to said loading two files if we have an error or because even if an error occurred
+
+05:58.650 --> 06:02.830
+we want to stop loading We don't want to show the spinner anymore because our.
+
+06:02.860 --> 06:06.390
+You would be stuck in this case and the user would think it still.
+
+06:06.420 --> 06:07.950
+Well loading.
+
+06:08.310 --> 06:11.500
+Of course that I also want to close the motile.
+
+06:11.820 --> 06:18.900
+Well that can be done easily because the modem is only shown if the state purchasing property here is
+
+06:18.900 --> 06:20.000
+set to true.
+
+06:20.250 --> 06:23.550
+So we should simply have to set chasing to false here.
+
+06:23.730 --> 06:31.190
+So in both cases I will also set for chasing to false so that we close the modal.
+
+06:31.350 --> 06:31.930
+So if that.
+
+06:31.940 --> 06:32.820
+Let's it out.
+
+06:32.850 --> 06:38.910
+If we go back to our burger and we create a burger I click order now and continue.
+
+06:39.710 --> 06:42.980
+We didn't actually see the spinner did we.
+
+06:43.170 --> 06:46.780
+Now this makes sense due to the way we configured our app.
+
+06:46.790 --> 06:52.940
+But do you know why we didn't see the spinner can be hard to spot but I'll give you a chance to post
+
+06:52.940 --> 06:57.850
+a video and find the issue on your own for I will then show you why it's not working.
+
+06:59.590 --> 07:01.750
+Did you find out what's wrong.
+
+07:02.110 --> 07:08.870
+Now I can't tell you we are correctly setting loading and so on and order summary all is to spin are
+
+07:08.880 --> 07:09.560
+therefore.
+
+07:09.760 --> 07:15.730
+But somehow our motile doesn't update and doesn't show this when we said this.
+
+07:15.740 --> 07:17.880
+Now there's a good reason for that.
+
+07:18.040 --> 07:26.270
+Consider our modal code we use should cavorted up that year and we basically only update decomposed
+
+07:26.440 --> 07:34.090
+if the show state changed changes here however the children of the component simply change to prop's
+
+07:34.090 --> 07:35.380
+children changed.
+
+07:35.380 --> 07:39.910
+We're passing a new child repassing the spinner instead of the order summary.
+
+07:40.240 --> 07:47.380
+That doesn't trigger an update here so we simply have to fine tune our should compose and update method
+
+07:47.470 --> 07:49.330
+in the modal component.
+
+07:49.510 --> 07:57.430
+And we have to check if next prop's children is actually different to this prop's children so that it
+
+07:57.430 --> 08:04.120
+does update if it gets new children with that change in place once you saved it if you now go back to
+
+08:04.120 --> 08:09.250
+your application and build a burger no you have to watch closely because it's only going to stator for
+
+08:09.250 --> 08:15.960
+a fraction of a second but if you click Continue you see that loader and you see that the styling was
+
+08:15.950 --> 08:16.690
+a bit broken.
+
+08:16.690 --> 08:18.140
+Let's quickly fix this.
+
+08:18.240 --> 08:26.120
+We have to go into the spinner and there the background color on that loader before rule should be white.
+
+08:26.140 --> 08:33.030
+So f f f the loader off true color should also be white and with dad.
+
+08:33.030 --> 08:37.890
+Now if we save this and we create one more burger and order dat.
+
+08:37.980 --> 08:39.500
+Now we have a nice looking spinner.
+
+08:39.590 --> 08:43.020
+Again we don't see it that long because firebase is that fast.
+
+08:43.080 --> 08:45.220
+Feel free to comment it out.
+
+08:45.250 --> 08:49.130
+Does post request here to see it a little bit longer.
+
+08:49.150 --> 08:50.160
+I'm going to do that.
+
+08:50.160 --> 08:54.810
+So now we're not sending a request and we're never changing back from the loading state.
+
+08:54.810 --> 08:57.420
+Now you can see the spinner here.
+
+08:57.420 --> 09:01.930
+So now we get a spinner in place which we're showing while something is happening.
+
+09:02.110 --> 09:07.800
+Nothing's happening know of course because I commented out but now we got this handled.
+
+09:07.810 --> 09:11.680
+Now let's also now handle the case dead.
+
+09:11.730 --> 09:17.910
+Our HTP request fails because we want to inform the user about such a failure to.
