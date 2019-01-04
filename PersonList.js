@@ -17,7 +17,8 @@ const personList = (props) => {
                     {props.persons.map((person, index) => <Table key = {index}
                                                             // index = {person.index}
                                                                 data = {person} 
-                                                               remove = {props.click}/>)
+                                                               remove = {props.deleteClicked}
+                                                               select = {props.rowClicked}/>)
                     }
                 </table>
         </div>

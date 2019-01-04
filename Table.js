@@ -4,7 +4,7 @@ import './App.css';
 const table = (props) => {
     
     return(
-        <tr className="Record">
+        <tr className="Record"  onClick={props.select}>
                 <td>{props.data.id}</td>
                 <td>{props.data.firstName}</td>
                 <td>{props.data.lastName}</td>

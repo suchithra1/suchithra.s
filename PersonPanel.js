@@ -19,13 +19,15 @@ class PersonPanel extends Component {
         birthDate: '',
         items:[],
         deletePerson: false,
-        rows: []
+        rows: [],
+        isRowSelected : false
         }
     
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleDeleteRow = this.handleDeleteRow.bind(this);
         this.handleSubmitForm = this.handleSubmitForm.bind(this);
         this.handleResetForm = this.handleResetForm.bind(this);
+        this.handleRowSelect = this.handleRowSelect.bind(this);
     }
 
 
@@ -40,14 +42,12 @@ class PersonPanel extends Component {
         })
     }
 
-
-
-    handleDeleteRow = (index) => {
+    handleDeleteRow = (person) => {
         console.log('deleting');
-        let rows = [...this.state.persons ];
-        rows.splice(index, 1);
+        let index = this.state.persons.indexOf(person);
+        this.state.persons.splice(index, 1);
         this.setState({ 
-                persons: rows,
+                persons: this.state.persons,
                 deletePerson: true 
             });
         }
@@ -55,6 +55,13 @@ class PersonPanel extends Component {
     handleInputChange(event) {
         this.setState({ [event.target.name]: event.target.value });
         
+    }
+
+    handleRowSelect(event, index) {
+        console.log('row selected');
+        let items = this.state.persons.indexOf(index);
+        this.setState({isRowSelected: true});
+        console.log(items);
     }
 
     handleSubmitForm() {
@@ -86,7 +93,8 @@ class PersonPanel extends Component {
             <div className="PersonPanel">
                 <div> 
                     <PersonList persons={this.state.persons}
-                                click={this.handleDeleteRow}
+                                deleteClicked={this.handleDeleteRow}
+                                rowClicked={this.handleRowSelect}
                                 /> 
                                 {/* {rows} */}
                     <button id="add" >ADD</button>
@@ -105,11 +113,16 @@ class PersonPanel extends Component {
 }
 
 PersonPanel.proptypes = {
+    persons: Proptypes.array,
     id: Proptypes.number,
     firstName: Proptypes.string,
     lastName: Proptypes.string,
     email: Proptypes.string,
-    birthDate : Proptypes.string
+    birthDate : Proptypes.string,
+    items: Proptypes.array,
+    rows: Proptypes.array,
+    isRowSelected: Proptypes.bool,
+    deletePerson: Proptypes.bool
 }
 
 export default PersonPanel;
