@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import Form from './Form.js';
-import Table from './Table.js';
 
 const personInfo = (props) => {
 
@@ -9,18 +8,19 @@ const personInfo = (props) => {
       <div className="PersonInfo">
           {/* <Table content={props.persons} />  */}
           {/* { props.persons.map((person) => < Form data={person}/>)} */}
-                             
+
         { <Form 
-              id = { props.persons.id }
-              firstName = { props.persons.firstName }
-              lastName = { props.persons.lastName}
-              email = { props.persons.email}
-              birthDate = {props.persons.birthDate}
+              id = { props.personSelected.id }
+              firstName = { props.personSelected.firstName }
+              lastName = { props.personSelected.lastName}
+              email = { props.personSelected.email}
+              birthDate = {props.personSelected.birthDate}
               formSubmit = { props.submitClick } 
               inputChange= { props.change }
               formReset = {props.resetClick}
-          />}
-        </div>
+              formPopulate = {props.rowClicked}
+          />}                     
+      </div>
       );
     }
   

@@ -3,30 +3,23 @@ import './App.css';
 import SidePanel from './SidePanel.js';
 import PersonPanel from './PersonPanel.js';
 import PropTypes from 'prop-types';
+import Axios from 'axios';
 
 class App extends Component {
   
   state = {
     persons : [],
-    showPersonPanel: false
+    entityClicked : '',
   }
    
   personClicked = () => {
     console.log('clicked');
-    this.setState ({showPersonPanel: true})
+    this.setState ({entityClicked: 'person'})
   }
-
-  // componentDidMount() {
-  //   //  import('./person.json')
-  //   //   .then(response => this.setState({ data: response.default }))
-  //   const data = require('./person.json');
-  //   this.setState({ persons : data })
-  //   console.log(this.state.persons);
-  // }
 
   render() {
     let personPanel = null;
-    if(this.state.showPersonPanel) {
+    if(this.state.entityClicked === 'person') {
       personPanel = <PersonPanel/>
     }
 
@@ -42,7 +35,7 @@ class App extends Component {
 
 App.propTypes = {
   persons : PropTypes.array,
-  showPersonPanel: PropTypes.bool
+  entityClicked: PropTypes.string
 }
 
 export default App;

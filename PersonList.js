@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import Table from './Table.js';
 
@@ -17,8 +17,8 @@ const personList = (props) => {
                     {props.persons.map((person, index) => <Table key = {index}
                                                             // index = {person.index}
                                                                 data = {person} 
-                                                               remove = {props.deleteClicked}
-                                                               select = {props.rowClicked}/>)
+                                                            remove = {() => props.deleteClicked(person)}
+                                                            select = {() => props.rowClicked(person)}/>)
                     }
                 </table>
         </div>
