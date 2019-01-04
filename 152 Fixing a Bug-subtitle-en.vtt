@@ -1,0 +1,22 @@
+WEBVTT
+
+00:02.260 --> 00:06.800
+So over the last lectures I introduced you to how you send requests to access.
+
+00:06.870 --> 00:10.470
+Now I found a little bug which I didn't recognize earlier.
+
+00:10.480 --> 00:16.930
+We of course don't see the body here for the chosen post that simply happens because in the full post
+
+00:16.930 --> 00:22.120
+component I try to load content here but body would be correct.
+
+00:22.210 --> 00:28.180
+So exchange content with body and you will see the post body of course everything else still works.
+
+00:28.210 --> 00:30.530
+Before that cestus a tiny fix.
+
+00:30.580 --> 00:31.570
+I want to apply.

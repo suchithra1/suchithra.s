@@ -1,0 +1,55 @@
+WEBVTT
+
+00:02.120 --> 00:07.850
+So how does sending age to the peer requests work in re-act applications typically.
+
+00:07.920 --> 00:14.540
+And I'm saying typically because if you're creating a multi-page re-act application there actually isn't
+
+00:14.540 --> 00:16.030
+anything special to it.
+
+00:16.070 --> 00:22.870
+You probably have your application your page where you submit a form and that sends a request to your
+
+00:22.880 --> 00:29.230
+back and you get back a new age team page with potentially new re-act code in there.
+
+00:29.300 --> 00:31.670
+You don't have a single page application.
+
+00:31.670 --> 00:34.300
+You don't have a strong decoupling going on.
+
+00:34.490 --> 00:40.690
+If you have such a single page application you have a strong differentiation between your front end
+
+00:40.730 --> 00:47.840
+your react EP and your back and though do react up and the servers still need to communicate from time
+
+00:47.840 --> 00:53.660
+to time but they don't communicate by exchanging H.E. e-mail pages.
+
+00:53.720 --> 00:56.470
+So overreactive sends a request to a server.
+
+00:56.630 --> 01:03.860
+You don't get back and you age G-mail page instead you can back some Jason data typically or you send
+
+01:03.860 --> 01:05.950
+some Jason data to the server.
+
+01:06.020 --> 01:11.840
+If you want to create some resources on the server for example this is how that works you have that
+
+01:11.840 --> 01:14.050
+decoupling and your server.
+
+01:14.060 --> 01:22.340
+Therefore typically it's a restful API just exposing some API endpoints to which you can send requests
+
+01:22.550 --> 01:28.870
+to get or sense data from your stand alone react application of your approach.
+
+01:28.880 --> 01:33.130
+I will show you in this Marchal and I will show you how to do that.

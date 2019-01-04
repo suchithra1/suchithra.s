@@ -1,0 +1,277 @@
+WEBVTT
+
+00:02.130 --> 00:05.510
+In the last lecture you learn how to make the post selectable.
+
+00:05.660 --> 00:10.380
+But that of course has nothing to do with axioms or with HTP requests.
+
+00:10.400 --> 00:13.070
+It was Manila re-act a nice practice.
+
+00:13.070 --> 00:17.230
+But now let's move on and let's actually send HGP request.
+
+00:17.330 --> 00:22.670
+Once we got a valid ID now which lifecycle hook should we use here.
+
+00:22.910 --> 00:27.630
+Let's have a look if we have a look at the lifecycle hook for updating components.
+
+00:27.740 --> 00:34.100
+And we are of course speaking about the update lifecycle hook because the computer is there right from
+
+00:34.100 --> 00:35.060
+the start.
+
+00:35.210 --> 00:38.900
+But data should be fetched once we receive a new prop ID.
+
+00:38.960 --> 00:46.030
+So that is what we're looking for then component that update is a good place for causing side effects.
+
+00:46.250 --> 00:48.110
+It also has one issue though.
+
+00:48.260 --> 00:55.690
+If we update the state in there we update the component again and we therefore enter it infinite loop.
+
+00:55.700 --> 00:57.890
+That is something we'll have to watch out for.
+
+00:58.040 --> 01:03.000
+But first of all let's make the HTP request I'll head over to full post.
+
+01:03.200 --> 01:12.620
+And first of all we need to import x year X years from the X years package then in full post in the
+
+01:12.620 --> 01:21.050
+component we can implement component did update and make the HTP request so they can use X years get
+
+01:21.460 --> 01:29.240
+in now do you or else has to target one single post by the ID if we have a look at our Dammy backend.
+
+01:29.540 --> 01:37.910
+There is a route for that get and then post slash the ID so we can copy that you r l and now make a
+
+01:37.910 --> 01:44.810
+request to that you are Adell though of course will not hard code one in there but instead use plus
+
+01:44.900 --> 01:49.440
+this props ID to take the ID we got on the props.
+
+01:49.700 --> 01:53.820
+Of course we also don't want to send this request if ID is null.
+
+01:53.830 --> 01:55.630
+So we don't want to do this.
+
+01:55.910 --> 01:57.930
+And if the idea is invalid.
+
+01:58.490 --> 02:04.240
+So I would check if does prop's idea is treated as true which means it is a valid ID.
+
+02:04.520 --> 02:11.030
+And then we can actually send this request with x' and to get Meffert to debt.
+
+02:11.030 --> 02:23.750
+You are l Now if I do reps at that then block your I can output debt with console log response and we
+
+02:23.750 --> 02:28.380
+should see a response as soon as we clicked on one element.
+
+02:28.400 --> 02:32.480
+So if I click on aliment here we see the response.
+
+02:32.480 --> 02:34.660
+Now this works fine here.
+
+02:34.850 --> 02:36.680
+However of course you want to output it.
+
+02:36.920 --> 02:44.270
+So we should also manage some state in here and maybe we have like a loaded post in this element in
+
+02:44.270 --> 02:54.740
+this component which is initially set to NULL then year we can output loaded post title and loaded post
+
+02:54.920 --> 02:57.950
+content in our post.
+
+02:57.950 --> 03:05.750
+J.S. X content and in your where I locked the response I wont log it anymore.
+
+03:05.930 --> 03:07.630
+Instead what I want to do here is.
+
+03:07.670 --> 03:16.190
+I want to call this set state and there set sets loaded post tooter response data which will be the
+
+03:16.230 --> 03:23.330
+post-edit we fetched from the back end and an hour J as X code of course we should X-ists loaded post
+
+03:23.570 --> 03:32.380
+on this state like that now if that if we go to our application and reload it and I click on a post
+
+03:33.130 --> 03:38.050
+we actually receive an error that we can't read title of.
+
+03:38.050 --> 03:46.620
+Now this makes a lot of sense because here in our GSX code for full post we immediately X-ists this
+
+03:46.630 --> 03:52.090
+state loaded post title and we do it as soon as we get a valid property.
+
+03:52.090 --> 03:58.960
+Now we get a valid property before we have a valid loaded post because as you learned fetching data
+
+03:58.960 --> 04:00.320
+is asynchronous.
+
+04:00.340 --> 04:06.940
+So first we get the ID and then a little bit later we get the loaded post but we reran the dorm immediately
+
+04:06.940 --> 04:08.770
+after we got the idea.
+
+04:09.310 --> 04:15.970
+We can simply fix this by adding a check for the validity of the ID with this prop's ideas we already
+
+04:15.970 --> 04:24.910
+have it and say that in this case post should actually be a paragraph still but maybe a paragraph where
+
+04:24.910 --> 04:31.130
+we simply say loading because we selected a post but the data isn't there yet.
+
+04:31.180 --> 04:37.600
+And then in the bottom if statement we check if state loaded post has been set because initially it's
+
+04:37.600 --> 04:40.020
+now or it would be treated as false.
+
+04:40.180 --> 04:44.470
+But as soon as we got one this will return to true or resolve to true.
+
+04:44.650 --> 04:47.020
+And hence we will render this GSX code.
+
+04:47.230 --> 04:53.710
+And now if I saved this and I click on a post we see loading for a fraction of a second and then we
+
+04:53.710 --> 04:55.390
+see the post.
+
+04:55.390 --> 04:57.320
+We also got an issue here though.
+
+04:57.550 --> 05:05.890
+If we open the network tab you'll see that we're resending after request after request after request.
+
+05:06.100 --> 05:08.990
+We can simply reload the page to make sure this stops.
+
+05:09.190 --> 05:20.920
+But why are we seeing this we are seeing these infinite requests because we're updating the state from
+
+05:20.920 --> 05:27.940
+within component that update and this creates an infinite loop because when we call said state the component
+
+05:27.940 --> 05:31.950
+will be updated and component did update will execute again.
+
+05:32.320 --> 05:41.080
+So we have to make sure that we only send this HTP request and hence update the state if we actually
+
+05:41.100 --> 05:42.880
+loaded a new post.
+
+05:42.880 --> 05:44.510
+So how do we do that.
+
+05:44.710 --> 05:53.470
+We can enter if check inside the outer If check here and there we can show if we already have loaded
+
+05:53.470 --> 05:55.350
+post if that is true.
+
+05:55.360 --> 05:59.020
+So that is a first indicator that we did already load up posts.
+
+05:59.230 --> 06:06.310
+Then of course we all want to make sure that Ford days loaded post the ID is not the same ID as we just
+
+06:06.310 --> 06:12.940
+got by our props because that would mean the ID for which we want to fetch new data is the ID we already
+
+06:12.940 --> 06:16.940
+have loaded so we don't need to make a HTP request in this case.
+
+06:17.320 --> 06:20.080
+So hearable check if we have a loaded post.
+
+06:20.080 --> 06:29.170
+And then if this state loaded post ID is an equal to prop's ID.
+
+06:29.230 --> 06:35.770
+So if we essentially try to get data for a new post which is fine in which case I want to make DHC request
+
+06:36.130 --> 06:37.200
+in all our cases.
+
+06:37.210 --> 06:41.740
+I won't go ahead and make it because then we're trying to fetch data for requests request.
+
+06:41.770 --> 06:47.560
+We already have for a post we already have to ship this prompts of course.
+
+06:47.560 --> 06:51.070
+Now let's see if I load that page and I click on a post.
+
+06:51.430 --> 06:54.010
+Well we never get the post data.
+
+06:54.010 --> 06:57.000
+So somehow our check here is failing.
+
+06:57.250 --> 07:03.040
+Well we have to amend it a little bit because initially it will of course fail because loaded post is
+
+07:03.040 --> 07:04.230
+null initially.
+
+07:04.270 --> 07:07.530
+So this would only succeed if we had at least one post loaded.
+
+07:07.840 --> 07:16.270
+So I will instead check if we don't have this state loaded post or if we do have it but if it then also
+
+07:16.270 --> 07:19.600
+has a different ID than the ID we plan on loading.
+
+07:19.630 --> 07:25.660
+So we go ahead and make the request even if we have no loaded post or if we do have one but the IDs
+
+07:25.660 --> 07:26.590
+are different.
+
+07:26.760 --> 07:27.060
+Whoops.
+
+07:27.100 --> 07:28.620
+This should be loaded post though.
+
+07:28.660 --> 07:34.930
+So now if we save this and we go back to the application on the network tab click a post it loads and
+
+07:35.020 --> 07:37.510
+it doesn't start sending infinity requests.
+
+07:37.720 --> 07:42.940
+And it can still switch but we only get one request per switch and that is exactly what we want.
+
+07:42.940 --> 07:49.600
+So now we got a way of safely fetching data in component did update and still a completed update is
+
+07:49.600 --> 07:54.410
+the right place because we want to fetch data whenever we receive new prompts.

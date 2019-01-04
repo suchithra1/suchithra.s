@@ -1,0 +1,232 @@
+WEBVTT
+
+00:02.290 --> 00:09.130
+Handling errors locally in components makes sense a lot because you probably want to do different things
+
+00:09.130 --> 00:12.900
+with errors depending on which component you're at.
+
+00:12.910 --> 00:17.410
+Maybe here you want to show something went wrong and an integral component you want to show something
+
+00:17.410 --> 00:17.980
+different.
+
+00:18.070 --> 00:22.650
+But sometimes in some places you maybe want to execute some code globally.
+
+00:22.660 --> 00:31.480
+So no matter which HTP request you send from within which component you want to do something when that
+
+00:31.480 --> 00:35.950
+request gets sent and or when the response returns.
+
+00:36.370 --> 00:41.190
+You can do it with X years with the help of so-called interest setters.
+
+00:41.200 --> 00:47.470
+These are functions you can define globally which will be executed for every request leaving your app
+
+00:47.650 --> 00:50.370
+and every response returning into it.
+
+00:50.380 --> 00:56.830
+It is especially useful for example for setting some common headers like offer sation head or maybe
+
+00:57.220 --> 00:58.980
+or for responses.
+
+00:58.990 --> 01:06.670
+If you want to log responses or 1 to handle errors globally I will show you how to add interceptors
+
+01:06.670 --> 01:08.400
+in this lecture.
+
+01:08.410 --> 01:14.200
+Let's go to the next genius file because this is the most global file we have an hour re-act app.
+
+01:14.260 --> 01:19.740
+It's deep file where we actually start our react by mounting it to the dawn.
+
+01:19.780 --> 01:28.000
+So here I now also want to import x years from the Xs package and all these X years imports actually
+
+01:28.000 --> 01:31.060
+all share the same configuration.
+
+01:31.120 --> 01:37.600
+So that is why we cannot also use access here an X is a special interest setter's object.
+
+01:37.660 --> 01:43.300
+And again this will be then shared not only in this file but across all files in your project.
+
+01:43.300 --> 01:47.130
+So it will affect all requests said from anywhere in your app.
+
+01:47.560 --> 01:55.790
+There we can access the request object and now simply add use to register a new interceptor that interest
+
+01:55.790 --> 02:03.540
+Sadr takes a function as an input which receives the conflict or the request you could say.
+
+02:03.670 --> 02:10.330
+Now let's simply lock that request to be canceled for now so that we can see what's inside of it.
+
+02:10.330 --> 02:15.770
+I'm calling it request but it mainly is just to request conflict that's important to keep in mind.
+
+02:15.820 --> 02:17.340
+Now let's save this.
+
+02:17.740 --> 02:21.020
+And if we go back to the app we may see something in the log.
+
+02:21.090 --> 02:28.450
+Does ISDE request which was sent the request configuration at least you see the headers which are added
+
+02:28.780 --> 02:29.280
+and.
+
+02:29.350 --> 02:29.760
+Yeah.
+
+02:29.800 --> 02:31.580
+This is our request.
+
+02:31.660 --> 02:35.070
+This is what we got sent here when we got the posts.
+
+02:35.320 --> 02:41.300
+Now something went wrong here though because we actually are blocking their requests right now.
+
+02:41.590 --> 02:50.520
+In your interest setter function here you need to always return the request or the request.
+
+02:50.830 --> 02:53.260
+Otherwise you're blocking the request.
+
+02:53.260 --> 02:58.360
+Now of course you can also edit the request conflict before you return it.
+
+02:58.360 --> 03:00.230
+That's the idea behind the interceptor.
+
+03:00.310 --> 03:03.260
+You can add headers do stuff like that.
+
+03:03.610 --> 03:09.360
+So now if we save this we get the posts and if I click on one you will see a number lock because number
+
+03:09.370 --> 03:11.410
+request was sent and four dead.
+
+03:11.410 --> 03:15.690
+The interceptor also ran even though it was fired from a different component.
+
+03:15.760 --> 03:21.580
+As I said all components all areas of Europe are covered with that.
+
+03:22.180 --> 03:24.480
+Now for dead interceptor here.
+
+03:24.640 --> 03:31.210
+We can also pass a second function besides that request configuration changing function.
+
+03:31.210 --> 03:35.150
+We can add a function which handles any errors.
+
+03:35.260 --> 03:40.060
+So here we can log an error like this.
+
+03:40.090 --> 03:47.860
+We should also return promise reject error here though so that we still forward it to our request as
+
+03:47.860 --> 03:53.590
+you wrote it in a component where we can handle it again with the catch method does make sense if you
+
+03:53.590 --> 04:00.340
+have some local task you want to do like show something on the UI but also globally you want to log
+
+04:00.340 --> 04:04.040
+it in the log file which you send to a server or something like that.
+
+04:04.450 --> 04:05.930
+So let's see how this works.
+
+04:05.950 --> 04:13.510
+If I now save that file and now turn my posts my get posts you are invalid again.
+
+04:15.200 --> 04:21.410
+Now you see something went wrong here but you don't actually see the costs a lot from the error handler
+
+04:21.410 --> 04:23.020
+from the interceptor.
+
+04:23.090 --> 04:28.390
+The reason for this is that this airier is related to sending the request.
+
+04:28.430 --> 04:32.900
+For example if you had no Internet connectivity or something like that it should pop up.
+
+04:33.080 --> 04:40.670
+So if you request sending Fales we can also add an interceptor to handle responses though we do in the
+
+04:40.670 --> 04:46.190
+same way as you do it for the request but we use the response object on the interceptors object.
+
+04:46.190 --> 04:52.470
+Then we also use two functions here one function and I'm copying it from above.
+
+04:52.670 --> 05:00.250
+One function which will receive the success response we can also log it here and we should return it
+
+05:00.350 --> 05:05.370
+so that we can all still use it in the component in the then block.
+
+05:05.450 --> 05:11.390
+So that is one way we should return it and we all fetch errors and we should also recheck them here
+
+05:11.600 --> 05:16.760
+so that we can still handle them in the catch block locally in a component.
+
+05:16.790 --> 05:23.150
+Now if Dad added with that response and said or added and the error function being present now we go
+
+05:23.150 --> 05:23.930
+back.
+
+05:23.930 --> 05:28.330
+We actually see the log here and we still handle it locally.
+
+05:28.730 --> 05:30.790
+So both works.
+
+05:30.800 --> 05:33.760
+If I now go to the block container and turn my.
+
+05:33.760 --> 05:36.170
+You are led to a valid you are ill again.
+
+05:36.380 --> 05:39.350
+We see just a lock for the response.
+
+05:39.350 --> 05:43.460
+So this is coming from the interceptor as you can tell by the file name and line number.
+
+05:43.730 --> 05:52.160
+And this is another way of course of potentially manipulating that response here or logging it or doing
+
+05:52.160 --> 05:53.260
+whatever you want.
+
+05:53.360 --> 05:57.740
+So being able to define Deis interceptors can be quite powerful.
+
+05:57.770 --> 06:04.640
+Again a very common use case is for the request interceptor to add some common headers.
+
+06:04.640 --> 06:13.970
+For example an authorization header though we also have a different way of accessing global access configuration.
+
+06:13.970 --> 06:16.580
+I'll show you how this works in the next picture.

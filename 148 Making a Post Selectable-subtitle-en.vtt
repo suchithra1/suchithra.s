@@ -1,0 +1,142 @@
+WEBVTT
+
+00:02.010 --> 00:09.620
+Now you'll learn the basics about sending requests in our example here with the help of years and using
+
+00:09.620 --> 00:15.500
+that data let's move on and let's not see how we can make sure that we can click on one of these posts
+
+00:15.860 --> 00:20.900
+and then load the post stated there so fetched the data for de-selected post.
+
+00:20.960 --> 00:26.850
+When we selected it for this of course mean to make sure that we can click our and single posts here.
+
+00:27.080 --> 00:33.440
+So in the post component of first of all add a listener to the whole article aliment and there I expect
+
+00:33.440 --> 00:39.070
+to get a property which holds a reference to the method which should be executed upon a click.
+
+00:39.260 --> 00:43.730
+So here I'll name the prop collect in the block container.
+
+00:43.730 --> 00:49.880
+I now need to pass dead click prop queue to post and I'll just split it over multiple lines to make
+
+00:49.880 --> 00:56.930
+it a bit easier to read and clicked here as I've just said should hold that method reference which should
+
+00:56.930 --> 00:59.130
+get executed on a click.
+
+00:59.150 --> 01:03.780
+So we have a class based container here let's add such a method.
+
+01:03.920 --> 01:12.450
+The Post clicked or maybe post selected handler and there I expect to get an argument.
+
+01:12.530 --> 01:20.440
+The idea of the post which was selected now down there where we rendered a list of posts I can pass
+
+01:20.510 --> 01:27.620
+and E-6 function arrow function as a reference which should be executed when we click on a post and
+
+01:27.620 --> 01:31.470
+they don't want to execute the post select that handler.
+
+01:31.640 --> 01:35.920
+But now I can pass post ID as an argument to that method.
+
+01:36.110 --> 01:42.830
+So now I got an idea to work with now that ID should be passed to the full post component.
+
+01:43.070 --> 01:51.260
+So we should probably store it in the state on maybe selected post property like this state selected
+
+01:51.260 --> 01:59.990
+post ID so that inside full post we can listen to us getting a new ID and that fetched they afforded
+
+02:00.010 --> 02:01.170
+ID.
+
+02:01.220 --> 02:08.280
+So now we need to create debt selected posts id property in the state of the block container and then
+
+02:08.360 --> 02:17.060
+their posts like that handler we can call this set state and set the selected post ID to the ID we received
+
+02:17.090 --> 02:18.640
+as an argument here.
+
+02:18.650 --> 02:21.810
+So now were passing that ID to the full post component.
+
+02:23.000 --> 02:27.010
+And maybe you should also define Selecta post ID to be an initial.
+
+02:27.010 --> 02:29.430
+Now maybe here on the state.
+
+02:29.780 --> 02:31.640
+So now we added that code.
+
+02:31.640 --> 02:36.530
+Now we have to go to the full post component and do something with the idea here.
+
+02:36.710 --> 02:40.870
+Now there first of all we can use the ID to output either.
+
+02:40.880 --> 02:47.410
+Please select the post or de-selected post depending on whether we have an ID or not.
+
+02:47.420 --> 02:52.850
+So lets say the default should be 3 3C please select the post and I'll add some inline styling here
+
+02:52.850 --> 02:57.270
+to centredness by simply setting text align to center.
+
+02:57.860 --> 03:02.380
+And now I want to check if this prompts ID.
+
+03:02.600 --> 03:11.210
+If this is true ish initially ID in the block container is null and we're passing this to full post
+
+03:11.570 --> 03:13.700
+and NULL is treated as false.
+
+03:13.700 --> 03:16.400
+So initially it does check here.
+
+03:16.550 --> 03:21.070
+Will return false so we won't get inside the if block.
+
+03:21.350 --> 03:28.480
+If we do get inside which we only do once the ID is something which is not treated as false.
+
+03:28.520 --> 03:35.540
+So something above 1 or equal to or higher than 1 and all the IDs we get from the server are equal to
+
+03:35.540 --> 03:36.910
+or higher than 1.
+
+03:37.040 --> 03:40.100
+Once this is the case I want to output that post.
+
+03:40.280 --> 03:45.970
+So now we should have the following behavior that if I saved this we now can click on one of these posts.
+
+03:46.190 --> 03:47.580
+And now we see it.
+
+03:47.690 --> 03:51.760
+And as you saw before I clicked it we see police select post.
+
+03:51.980 --> 03:52.920
+So that's working.
+
+03:52.940 --> 03:58.070
+Now in the next lecture let's make sure that we also fetched the data for that given post.
+
+03:58.190 --> 03:59.330
+Once we selected it.

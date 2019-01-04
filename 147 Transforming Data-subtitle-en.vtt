@@ -1,0 +1,94 @@
+WEBVTT
+
+00:02.060 --> 00:08.210
+In the last lecture we fetched some post data and we can render it to the screen by updating our state.
+
+00:08.550 --> 00:14.990
+But of course we're fetching too many posts here now for a real application.
+
+00:15.000 --> 00:20.280
+You probably can send some query parameter to your back and to restrict the amount of data you want
+
+00:20.280 --> 00:22.880
+to fetch some pagination basically.
+
+00:23.160 --> 00:26.370
+But of course we can all transform the data once we got it.
+
+00:26.370 --> 00:29.160
+So here I'll add a new constant posts.
+
+00:29.190 --> 00:36.300
+I'm now in the van block of component that mount and sign response data here.
+
+00:36.540 --> 00:43.380
+Now I'll call the slice method on that array and only get the elements 1 to 4 to only fetch the first
+
+00:43.380 --> 00:44.600
+four posts.
+
+00:44.610 --> 00:51.360
+Actually I fetched him all but I only store 4 of them in that post constant of them create a second
+
+00:51.360 --> 00:57.290
+constant updated posts even because I want to add an awful field to my posts.
+
+00:57.300 --> 01:02.540
+Now typically you would of course get this from your back end but are fake back and doesn't have it.
+
+01:02.700 --> 01:08.010
+So I simply added here to all to show you that of course you can edit the data you fetch from the server.
+
+01:08.010 --> 01:13.090
+We're just working with javascript in the end so we can add any javascript code we want.
+
+01:13.470 --> 01:22.920
+So here I will take my posts called a map method on them and for each post I want to return a new javascript
+
+01:22.950 --> 01:30.610
+object where I distribute the property off the post so the properties we got from the server basically.
+
+01:30.990 --> 01:38.640
+And then also add a new offer property which all hard code to max with data go got the updated posts
+
+01:38.650 --> 01:42.660
+now and I'll set the posts to my steady state to them.
+
+01:42.660 --> 01:49.890
+Now the data we get back from the server was shortened and transformed in that we added the offer field
+
+01:50.280 --> 01:55.170
+and that of course is just one example of transformation to showcase that you can of course work with
+
+01:55.170 --> 02:00.270
+the data you will get back before setting it to the state with that change in place.
+
+02:00.270 --> 02:05.990
+We now got that off revealed that all is a field of one output in that post element.
+
+02:06.210 --> 02:08.380
+So there I expect to get.
+
+02:08.820 --> 02:10.410
+Offer Propp.
+
+02:10.500 --> 02:14.100
+I can now set this prob in the block container here.
+
+02:14.220 --> 02:14.710
+I can.
+
+02:14.740 --> 02:25.080
+All the pastis this offer should be post offer that offer field we just added to each object we store
+
+02:25.080 --> 02:26.230
+in the state.
+
+02:26.370 --> 02:31.960
+We save this we now see the offer here and we see only four posts.
+
+02:32.010 --> 02:37.590
+This is how you can transform the data how you can work with the data in component did MT.
+
+02:37.590 --> 02:38.520
+In this example.

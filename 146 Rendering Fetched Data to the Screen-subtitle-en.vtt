@@ -1,0 +1,154 @@
+WEBVTT
+
+00:01.990 --> 00:05.440
+In the last lecture we edit the code to get some data.
+
+00:05.590 --> 00:11.950
+Of course that is a huge first step but it would be even more useful if we could write that data to
+
+00:11.950 --> 00:18.940
+the screen if it could render it to the screen and replaced is a ray of Dammy posts here with dynamically
+
+00:18.940 --> 00:26.380
+generated array based on the posts we fetched for does we need to manage some state of course and we
+
+00:26.380 --> 00:29.340
+should have some posts in that state.
+
+00:29.470 --> 00:32.290
+Initially this can be an empty array.
+
+00:32.320 --> 00:38.530
+Now I want to update this state once we fetch data from the server and therefore the place to call this
+
+00:38.620 --> 00:42.140
+set state is inside the then method.
+
+00:42.460 --> 00:50.200
+If we would call it outside of this so ofter does X-ers get Meffert we wouldn't have depost yet because
+
+00:50.200 --> 00:51.860
+of the thing I mentioned earlier.
+
+00:52.090 --> 00:58.900
+The code javascript doesn't wait for this to finish so if immediately calling this set state after the
+
+00:58.900 --> 01:02.020
+get method the data won't have been fetched yet.
+
+01:02.440 --> 01:10.550
+So inside the then block is the right place and there we can set posts to response data.
+
+01:10.600 --> 01:16.510
+You just saw in the console that the data property is available on that response object and that the
+
+01:16.510 --> 01:24.460
+data property holds an array of posts so I'll comment out the response logging and instead set my state
+
+01:24.490 --> 01:26.170
+to the posts.
+
+01:26.170 --> 01:30.380
+Now let's output posts dynamically in the render method forwarded.
+
+01:30.400 --> 01:38.260
+I'll create a new constant to your posts and that should be an array of GSX elements so I will use this
+
+01:38.350 --> 01:40.180
+state posts to state.
+
+01:40.180 --> 01:46.720
+We just updated that with the server data and there as you learned it called the map method to map it
+
+01:46.780 --> 01:52.570
+into an array of various x elements and the map method of course returns a new array which I store in
+
+01:52.570 --> 01:54.790
+that posts constant.
+
+01:54.890 --> 01:56.830
+Now in the map method your.
+
+01:56.840 --> 02:03.560
+I get my individual posts as an input in that function we're passing to the map method and there I want
+
+02:03.560 --> 02:05.480
+to return a j as x element.
+
+02:05.480 --> 02:08.100
+I want to return my single post here.
+
+02:09.030 --> 02:11.420
+Like does down there.
+
+02:11.420 --> 02:18.060
+I then of course want to output this array of posts which is stored in that posts constant.
+
+02:18.060 --> 02:21.210
+Now this post of course at least output the title.
+
+02:21.210 --> 02:25.260
+If we inspect the post component we see I output tile here.
+
+02:25.650 --> 02:27.210
+So therefore your.
+
+02:27.270 --> 02:32.180
+I probably want to get some props maybe a props with the name title.
+
+02:32.180 --> 02:35.810
+So should pasters title property to a single post.
+
+02:35.970 --> 02:43.680
+So in the block container I need to set a title property here and pass post taught that title the title
+
+02:43.680 --> 02:50.130
+property on this post element is available because of the data we fetched from the server just to reassure
+
+02:50.130 --> 02:50.710
+you.
+
+02:51.060 --> 02:52.940
+You already got spoiled that it worked.
+
+02:53.190 --> 02:58.260
+But today we get back from the service Desirae and each element here has a title property.
+
+02:58.710 --> 03:01.450
+So as you can clearly see it already works here.
+
+03:01.650 --> 03:02.970
+Styling is a bit off.
+
+03:02.970 --> 03:08.580
+We also output all the posts which might be too much and we haven't set to keep proper.
+
+03:08.640 --> 03:10.750
+So let's fix these three things.
+
+03:10.770 --> 03:12.280
+Let's set the key.
+
+03:12.510 --> 03:16.450
+And as it can verify by checking out the data we get back from the server.
+
+03:16.560 --> 03:19.760
+You'll see that there is id property on each post.
+
+03:19.800 --> 03:23.750
+That of course makes up for a perfect key because it's unique.
+
+03:23.790 --> 03:30.120
+Now regarding the styling and the amount of posts for the styling Let's go to the post component and
+
+03:30.120 --> 03:33.320
+change to with 2 maybe 250 pixels.
+
+03:33.690 --> 03:37.020
+Now they have a little bit more room for the title.
+
+03:37.020 --> 03:41.920
+Still there are too many posts and that is something I'll take care about in the next lecture.
+
+03:42.000 --> 03:44.750
+When I show you how to transform the data you get back.

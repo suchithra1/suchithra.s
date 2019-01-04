@@ -1,0 +1,154 @@
+WEBVTT
+
+00:02.080 --> 00:06.510
+So over the last lectures I show you a lot how you can get data.
+
+00:06.520 --> 00:12.450
+Now of course I also want to show you how you can post data to a server and for Debbie get the ad a
+
+00:12.510 --> 00:15.290
+post area here at the bottom.
+
+00:15.370 --> 00:21.070
+It's managed by the new post component which is a class based component which manages its own state
+
+00:21.340 --> 00:27.020
+and hence is a container because we're not passing or distributing the state to any other components.
+
+00:27.100 --> 00:33.230
+And now I want to hook up this ad post button to essentially send a POST request to our Dammy backend
+
+00:33.740 --> 00:34.640
+for this.
+
+00:34.660 --> 00:42.290
+First of all add a Meffert the post data handler or post post handler if you want to do it.
+
+00:42.300 --> 00:45.330
+And then there of course I need to use x yes.
+
+00:45.340 --> 00:53.260
+Now first of all let's hope this method up by adding the on click listener down there this postdate
+
+00:53.270 --> 00:54.330
+a handler.
+
+00:54.670 --> 01:00.180
+And now let's import years so we can send a post request.
+
+01:00.550 --> 01:02.290
+Now say think post requests.
+
+01:02.310 --> 01:04.180
+Still use the axes object.
+
+01:04.320 --> 01:08.440
+But now of course not the get method but the post method.
+
+01:08.700 --> 01:15.360
+The post if it still takes a u r l as an input and for our dummy back end we can simply use the same
+
+01:15.480 --> 01:21.090
+or else we used for the get request it also accepts post requests.
+
+01:21.120 --> 01:27.390
+Now a post request needs more than you are Eldo it needs a second argument which is that data we want
+
+01:27.390 --> 01:32.850
+to send because obviously a post request without data does make that much sense.
+
+01:32.850 --> 01:39.930
+The data I want to send is a javascript object which contains title body an offer of a post.
+
+01:39.930 --> 01:45.900
+So I'll create a new constant which should be a javascript object and there will set up a title to this
+
+01:46.140 --> 01:47.940
+state title.
+
+01:48.020 --> 01:55.290
+I'll set the body to this state content and you can of course choose any properties you want for that
+
+01:55.290 --> 02:00.980
+object and I will set the offer to this state of offer.
+
+02:00.990 --> 02:02.450
+Again you can add more.
+
+02:02.520 --> 02:06.500
+You can expand this form here at the bottom of course.
+
+02:06.660 --> 02:13.230
+Then I will said post this constant your second argument to the post method.
+
+02:13.470 --> 02:18.840
+And of course this is just called post because what resubmitting is some data about a post you can name
+
+02:18.840 --> 02:20.080
+does what ever you want.
+
+02:20.100 --> 02:22.360
+You can also named as data.
+
+02:22.860 --> 02:27.120
+Now you can also pass a third argument to configure this request but we don't need that.
+
+02:27.120 --> 02:29.500
+You're important for us.
+
+02:29.550 --> 02:35.460
+This of course is a javascript object but Access will automatically basically string you fighters so
+
+02:35.460 --> 02:37.160
+turned us into Jason data.
+
+02:37.170 --> 02:43.200
+It will do it for us just as it extract the adjacent data and get requests for us too.
+
+02:43.680 --> 02:46.820
+And now does all of course runs asynchronously.
+
+02:46.860 --> 02:54.210
+We can listen to the response just like we can do it for get requests and we can present it to the console
+
+02:54.210 --> 02:55.290
+here.
+
+02:55.290 --> 02:56.480
+Now let's try this out.
+
+02:56.480 --> 02:57.680
+Let's save this.
+
+02:57.900 --> 03:03.570
+Let's open the console and let's enter some content here.
+
+03:03.580 --> 03:09.670
+Does some test content maybe switch you offer to menu and hit ad post.
+
+03:10.020 --> 03:18.000
+And here's the response status text 201 which indicates that it was successful and now that dummy back
+
+03:18.000 --> 03:24.540
+into here won't store the data of course it just returns the data in the response so that we can see
+
+03:24.540 --> 03:27.880
+that we did send it successfully and looks like we did.
+
+03:27.910 --> 03:28.620
+Does this to date.
+
+03:28.620 --> 03:32.640
+We did send again for a real server of course for your own server.
+
+03:32.640 --> 03:38.430
+You probably have some logic on the server to dentals the stored is in the database.
+
+03:38.430 --> 03:44.250
+This is how we can post data that is all that's do it just exchanging the word here the name of the
+
+03:44.250 --> 03:47.460
+method and passing the data as a second argument.
+
+03:47.610 --> 03:50.350
+And now we can also send data to servers.

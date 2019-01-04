@@ -1,0 +1,34 @@
+WEBVTT
+
+00:02.360 --> 00:10.040
+Well I come to this module where we will learn how we can send h to requests from our re-act application
+
+00:10.040 --> 00:17.390
+to a server because re-act of course is a library which allows you to create the front end of your application.
+
+00:17.390 --> 00:22.530
+Basically the HVM our code the thing the code running in the browser.
+
+00:22.670 --> 00:27.660
+And if you're creating a single page application something you're often doing with react.
+
+00:27.830 --> 00:35.720
+Then you have an even more decoupled application more decoupled from your back and therefore it's of
+
+00:35.720 --> 00:42.200
+course important to understand how you can actually send aid to the P Or since we have that decoupling
+
+00:42.200 --> 00:50.000
+going on A-check request specifically from your re-act front and from your javascript code to your server
+
+00:50.000 --> 00:51.800
+side back end.
+
+00:51.830 --> 00:54.680
+Now let me show you how this works in the next lecture.
+
+00:54.770 --> 00:59.780
+And then of course let me show you how to actually implement it into a re-act application.
+
+00:59.900 --> 01:01.340
+Throughout this module.

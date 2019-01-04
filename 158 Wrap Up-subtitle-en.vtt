@@ -1,0 +1,25 @@
+WEBVTT
+
+00:02.160 --> 00:07.920
+So in this module we learn a lot about sending aid to the requests from re-act you learn that it works
+
+00:07.920 --> 00:13.650
+by sending Ajax requests and that it's best to use a package like X years for X use who learned how
+
+00:13.650 --> 00:20.700
+it worked and that you can set some default configuration at address centers or even split the configuration
+
+00:20.700 --> 00:22.790
+with custom instances.
+
+00:22.800 --> 00:29.440
+Now of course practicing always is the best thing you can do to get comfortable using a certain tool.
+
+00:29.670 --> 00:36.730
+And that is why in the next module we will also add some HTP functionality to our Bergere bowler so
+
+00:36.750 --> 00:43.200
+that when we click that order button we really send the request to our server to at least fake that
+
+00:43.200 --> 00:44.660
+we really placed the order.

@@ -1,0 +1,145 @@
+WEBVTT
+
+00:02.100 --> 00:07.220
+Attached to this lecture here you'll find the starting project you can see here.
+
+00:07.250 --> 00:16.250
+I just started it with NPM start it uses create Riak project I did and edited to use CSSA modules instead
+
+00:16.250 --> 00:20.920
+of just import CSA as files so that they affect the project globally.
+
+00:21.020 --> 00:23.360
+But that doesn't pose an issue here.
+
+00:23.630 --> 00:28.220
+And I got a couple of containers or one container and a couple of components.
+
+00:28.220 --> 00:33.530
+As you can see at the example of the full post component here which is responsible for rendering this
+
+00:33.530 --> 00:40.160
+part here I even have class based components here as components because I plan on adding some local
+
+00:40.160 --> 00:45.940
+state and some lifecycle hooks to these components which is why I set them up like this.
+
+00:45.950 --> 00:52.100
+Still I only have one component which will distribute some properties down to Obert components.
+
+00:52.130 --> 00:58.730
+This is the root page you could say which should render some posts at the top then a full post with
+
+00:58.730 --> 01:04.730
+some details about a post be clicked on and the area for creating a new post you can see all these features
+
+01:04.730 --> 01:06.790
+here on that page.
+
+01:06.800 --> 01:13.230
+Now I do have some dummy content here because I want to load that post data from a server.
+
+01:13.370 --> 01:16.230
+And for that we're not going to use a real server.
+
+01:16.310 --> 01:22.930
+We will do that though in the next module when we apply some HTP functionality to our course project.
+
+01:23.180 --> 01:31.070
+But here I will use some placeholder which you can find at J some placeholder dot type code dot com
+
+01:31.220 --> 01:37.070
+which simply is a back end a restful API backend which you typically use as I explained in the last
+
+01:37.070 --> 01:44.350
+lecture where you can send requests to to fetch some dummy data or to simulate storing sometimes data
+
+01:44.390 --> 01:47.510
+there though you won't actually store something on that.
+
+01:47.510 --> 01:53.510
+Of course it's just faking some data but exactly what we need for learning how to send age to repeat
+
+01:53.510 --> 01:54.730
+requests.
+
+01:54.770 --> 02:02.030
+For example you can send a request to Dad you earlier a GET request and you will get an array of javascript
+
+02:02.060 --> 02:04.220
+object of dummy posts.
+
+02:04.220 --> 02:06.730
+And this actually is what I want to start with.
+
+02:06.800 --> 02:10.010
+So we will start with that in the next lecture.
+
+02:10.040 --> 02:15.280
+But we of course need some way of sending DS Ajax requests.
+
+02:15.470 --> 02:18.870
+And here you have basically two options.
+
+02:19.250 --> 02:25.040
+Javascript of course has the Exham l h to the request object.
+
+02:25.130 --> 02:32.010
+This object here with that you can construct your own Ajax requests and send them to a specific your
+
+02:32.050 --> 02:33.890
+L and handle the response.
+
+02:33.890 --> 02:39.330
+Nothing wrong with dead since re-act is just about writing javascript everywhere.
+
+02:39.350 --> 02:46.640
+You can of course use all the javascript features including Exham L.H. TDP request but writing and configuring
+
+02:46.640 --> 02:50.400
+requests with that object manually is quite cumbersome.
+
+02:50.630 --> 02:57.560
+So the second option is to use package a third party library which makes that easier.
+
+02:57.710 --> 03:04.130
+And for that I recommend using X years x years as a third party javascript library which you can add
+
+03:04.160 --> 03:06.170
+to any javascript project.
+
+03:06.170 --> 03:08.850
+It's not connected to react at all.
+
+03:08.990 --> 03:15.890
+But of course it fits nicely into the EC because it's well javascript and DXi is page here on get have
+
+03:15.980 --> 03:18.970
+is a good starting point to learn more about the package.
+
+03:19.010 --> 03:23.300
+I will of course walk you for some of its core features in this module though.
+
+03:23.330 --> 03:29.720
+But again this is not something I strongly connect to react ex-U.S. can be used in any javascript code.
+
+03:29.720 --> 03:36.710
+So let's install X-ists in this lecture already and then get started using it in the next lecture to
+
+03:36.710 --> 03:37.480
+install X.
+
+03:37.470 --> 03:44.750
+Yes I will quick my development server with control C and then run NPM install ex-U.S. dash dash save
+
+03:44.750 --> 03:48.640
+to all the store and entry the package adjacent file.
+
+03:48.650 --> 03:54.200
+This will download and store the package and with that we can start using it in the next lecture to
+
+03:54.200 --> 04:01.580
+fetch some posts so that we restart development server with NPM start and then you in the next lecture
+
+04:01.940 --> 04:04.460
+to download some posts and output them there.

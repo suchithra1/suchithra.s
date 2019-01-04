@@ -1,0 +1,109 @@
+WEBVTT
+
+00:02.120 --> 00:07.670
+In the last lecture I showed you how to add interest setters Now sometimes you don't want to intercept
+
+00:07.670 --> 00:12.270
+the request but you want to set up some global configuration.
+
+00:12.470 --> 00:18.420
+Let's say you are you are sending the requests to and your application is always the same.
+
+00:18.560 --> 00:25.040
+So it's always someplace or older type II code in our case here and then slash something.
+
+00:25.040 --> 00:27.840
+So that starting part is always the same.
+
+00:28.130 --> 00:34.040
+So what would be nice if we could cut it out here and just send the request to get posts and automatically
+
+00:34.260 --> 00:37.980
+apprentice to some comments starting your l.
+
+00:38.000 --> 00:44.100
+Turns out we can do that in the next index as fall which is a good place because it runs First it starts
+
+00:44.100 --> 00:45.160
+to react.
+
+00:45.440 --> 00:52.040
+We can use X years and their exes to defaults object to set up defaults which are true for all requests
+
+00:52.070 --> 00:59.600
+which are being sent and there we can find a base you are l and this you are l will now be used well
+
+00:59.600 --> 01:05.420
+as the names digests as a base your L to which d our POVs are then simply appended.
+
+01:05.450 --> 01:11.110
+Now with that set up here we have set by the way important should be base Eurail with capital characters
+
+01:11.130 --> 01:13.650
+here for the Ural casing is important here.
+
+01:13.790 --> 01:18.480
+Now we already removed it from get all posts here in the block container.
+
+01:18.680 --> 01:23.730
+Now in new post we can all get rid of it when posting data.
+
+01:24.110 --> 01:31.760
+And in the full post there we have two places one where we get to single post and one where we delete
+
+01:31.840 --> 01:37.550
+a single post so we can get rid of that starting your L everywhere and if we go back to the app you
+
+01:37.550 --> 01:39.440
+see it still loads it still works.
+
+01:39.440 --> 01:47.810
+Everything still works fine here because we didn't really change to the way we sent requests but we
+
+01:47.810 --> 01:52.750
+made it a bit easier for us because of that global configuration.
+
+01:52.760 --> 01:56.560
+Now you're also not limited to just adding the base your L here.
+
+01:56.720 --> 02:05.030
+You can also access defaults headers and there set a common header though on that common object of authorization
+
+02:05.240 --> 02:11.450
+common headers or simply the general headers which are set for all types of requests and there you could
+
+02:11.450 --> 02:15.730
+set this to your of token if you had one or whatever that is.
+
+02:15.830 --> 02:23.350
+You can also set headers just for specific request types like for post requests only where you maybe
+
+02:23.370 --> 02:30.110
+want to set the content type you're sending to application Chaisson which you don't need to that's the
+
+02:30.120 --> 02:32.160
+default anyways just to show this.
+
+02:32.420 --> 02:38.420
+So now if you do this if you go back to the application and you inspect the request which was sent you
+
+02:38.420 --> 02:42.620
+will see that under headers we've got the offerings sation autopen.
+
+02:42.950 --> 02:50.570
+And for a post request yeard we do that you will see that there if we inspect the request configuration
+
+02:50.860 --> 02:53.810
+we got the off reception header and Content-Type.
+
+02:53.810 --> 02:55.970
+Application Jason.
+
+02:55.970 --> 02:58.280
+So that's another cool feature of.
+
+02:58.400 --> 03:04.640
+Setting a default configuration which will be used application wide super awesome.
+
+03:04.640 --> 03:08.140
+Helps you to optimize your code quite a lot.

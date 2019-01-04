@@ -1,0 +1,121 @@
+WEBVTT
+
+00:02.250 --> 00:08.010
+It's great that we now know how we can send requests and this is a super important part of most web
+
+00:08.010 --> 00:09.820
+applications of course.
+
+00:10.030 --> 00:13.250
+However requests don't always succeed.
+
+00:13.380 --> 00:17.020
+You also need to know how you may handle errors.
+
+00:17.220 --> 00:22.790
+And this is something I want to show you now handling errors is super simple with Access.
+
+00:23.100 --> 00:28.500
+Let's say we've fetched a posts incorrectly and of course you can handle errors in the way I'm going
+
+00:28.500 --> 00:28.970
+to show you.
+
+00:28.970 --> 00:32.150
+Now for every type of request you send.
+
+00:32.250 --> 00:38.400
+So here in the block container let's say we sent the request to posts that are incorrect.
+
+00:38.400 --> 00:40.750
+You are Elswyth with that many esus at the end.
+
+00:41.190 --> 00:47.380
+So what we can now see is that if we reload this we get an error here but it's unhandled.
+
+00:47.670 --> 00:49.500
+We of course want to handle it.
+
+00:49.710 --> 00:56.640
+Now since ex-U.S. uses promises we don't only have to then method we can chain but we can also add a
+
+00:56.640 --> 00:59.180
+second method simply changed after that.
+
+00:59.230 --> 01:06.030
+Then the catch method as to names of gests this catches any errors you get.
+
+01:06.060 --> 01:14.520
+So your That's for now simply Konsole lock dead air or if I do that at the request of course still fails
+
+01:14.550 --> 01:16.850
+because your else still is incorrect.
+
+01:16.890 --> 01:22.260
+But now the error is handled and here I'm simply printing does with console log.
+
+01:22.380 --> 01:24.940
+Of course you can do more than logging this here.
+
+01:24.960 --> 01:27.110
+You can update your UI.
+
+01:27.120 --> 01:33.600
+You can update the state to show something went wrong that you showed us here we can see the error property
+
+01:33.780 --> 01:42.550
+which is set to false initially and in that catch method to your I don't want to lock the error in stokehole
+
+01:42.720 --> 01:46.550
+set state and set error or two true.
+
+01:47.130 --> 01:54.390
+And now all we can do is we can render something different to the screen instead of storing the poster
+
+01:54.390 --> 02:02.740
+in a constant or create a new variable posts where all initially say something went wrong.
+
+02:03.930 --> 02:12.260
+And let me quickly add some inline styling to centredness so I'll simply add text align center and I'll
+
+02:12.260 --> 02:17.240
+only override these posts very little if error is not set.
+
+02:17.250 --> 02:24.480
+So if this state error if this is not true indicated by the exclamation mark at the beginning then I
+
+02:24.480 --> 02:29.170
+will overwrite posts to my array of posts.
+
+02:29.250 --> 02:33.630
+So now if that if we save this and center should be a string.
+
+02:33.630 --> 02:34.400
+Thank you.
+
+02:34.410 --> 02:41.950
+If we save this now we see something went wrong here because now we have this error.
+
+02:41.950 --> 02:51.880
+Now if I return to my application and fix posts here to the correct your L we would see the posts again
+
+02:51.910 --> 02:52.860
+instead.
+
+02:53.200 --> 02:58.570
+So that is a pretty cool way of handling errors and that is something you definitely also need to be
+
+02:58.570 --> 02:59.490
+aware of.
+
+02:59.680 --> 03:05.680
+Things don't always succeed so you should have a way of catching errors and then doing something with
+
+03:05.680 --> 03:12.280
+them logging them to the console sending some error log requests to your own server to lock the error
+
+03:12.670 --> 03:19.810
+and or show something on the UI to allow the user to still continue or to give instructions what the
+
+03:19.810 --> 03:21.500
+user should do instead.

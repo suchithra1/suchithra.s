@@ -1,0 +1,91 @@
+WEBVTT
+
+00:02.160 --> 00:05.730
+Now did we learn how to post data in the last lecture.
+
+00:05.730 --> 00:10.110
+Let me also show you how to send the delete request to really wrap this up.
+
+00:10.230 --> 00:17.520
+Now just like for posting data deleting here will not really delete any data from the back and it just
+
+00:17.520 --> 00:22.240
+mirror back the data we send with our response we get basically.
+
+00:22.320 --> 00:27.570
+But still I can show you how you send it and you would use it on any other server in the same way.
+
+00:27.570 --> 00:34.850
+Of course the server needs to accept the delete HTP word for a given you are now the delete button is
+
+00:34.850 --> 00:36.650
+in the full post component.
+
+00:36.870 --> 00:41.560
+So they're simply hooked us back up to a method which handles this.
+
+00:41.580 --> 00:42.830
+I'll implement this method here.
+
+00:42.840 --> 00:51.090
+The lead post handler maybe doesn't require any input and let's hope this method up your two on click
+
+00:51.450 --> 00:55.400
+should execute this delete post handler or Befort.
+
+00:55.500 --> 00:57.960
+We already import access in here.
+
+00:58.200 --> 01:05.860
+So now let's simply use X-ists and there we can use to delete Meffert to issue delete requests then
+
+01:06.080 --> 01:08.580
+delete Meffert obscure.
+
+01:08.600 --> 01:10.890
+I need to add a equals sign.
+
+01:10.940 --> 01:17.450
+The Delete method also takes a u r l and we need to target a specific post with it so we can simply
+
+01:17.450 --> 01:20.690
+take to you or else we use for fetching a single post.
+
+01:20.690 --> 01:27.230
+It's the same your L we need for deleting and we don't pass any extra data because dead your cell already
+
+01:27.230 --> 01:28.820
+contains all the data we need.
+
+01:28.820 --> 01:36.870
+It targets a specific resource which should be deleted and then changed then because again this is asynchronous.
+
+01:36.980 --> 01:45.560
+We will get some response and then I can lock the response here to see what happened on the server.
+
+01:45.560 --> 01:46.460
+Let's now see those.
+
+01:46.460 --> 01:49.710
+Let's load a post and click delete.
+
+01:50.660 --> 01:55.200
+And you can see we successfully get back a response.
+
+01:55.250 --> 01:56.960
+We don't get actual data here.
+
+01:56.990 --> 02:00.140
+That is just what the dummy back and returns us here.
+
+02:00.290 --> 02:03.780
+But the state has killed two hundred indicates that it was successful.
+
+02:03.800 --> 02:11.960
+Again it wasn't really deleted but I just want to show you that sending delete requests also is as simple
+
+02:12.140 --> 02:19.100
+as exchanging one method get or post exchange it for delete and of course comparable methods are available
+
+02:19.100 --> 02:21.690
+for Port patch and so on.

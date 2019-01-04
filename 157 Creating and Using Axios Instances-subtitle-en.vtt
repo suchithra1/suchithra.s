@@ -1,0 +1,181 @@
+WEBVTT
+
+00:02.150 --> 00:05.740
+Being able to set a default configuration for X is pretty awesome.
+
+00:05.840 --> 00:11.570
+But what if you actually don't want to use the same base your for your entire application but only four
+
+00:11.570 --> 00:17.060
+parts of it and for other parts you have a different Eurail and the same of course for the headers and
+
+00:17.060 --> 00:17.960
+so on.
+
+00:18.350 --> 00:24.770
+In such a case you can do a half measure by creating a cool feature provided by X-ists which is called
+
+00:24.860 --> 00:26.510
+instances.
+
+00:26.510 --> 00:27.880
+Let me create a new file.
+
+00:27.900 --> 00:30.430
+EXISTE Arjay as in the source folders.
+
+00:30.430 --> 00:38.780
+So on the same level as the index Cheras fall there I will import x years from the actual package and
+
+00:38.840 --> 00:45.650
+on ex-U.S. we can execute a special create function or method to be precise or store the result in a
+
+00:45.650 --> 00:47.870
+constant which I've named instance.
+
+00:47.870 --> 00:49.850
+And again I use X-ists create.
+
+00:49.850 --> 00:56.330
+Now this creates a instance of X years like a copy of the Xs object you could say and you can create
+
+00:56.330 --> 00:58.340
+multiple such copies.
+
+00:58.340 --> 01:05.150
+Now here are all paths of Java's could object to configure this and set the base you are l and I'll
+
+01:05.150 --> 01:06.120
+grab that base.
+
+01:06.130 --> 01:09.910
+You're all set up in the root configuration.
+
+01:10.100 --> 01:14.290
+Now when X is Chase fall I will simply set this up your.
+
+01:14.570 --> 01:17.780
+And now a word commented out in the next chair as follows.
+
+01:18.640 --> 01:23.660
+Now if that we got one part of the whole thing but we're not finished.
+
+01:23.890 --> 01:29.800
+We now get to our own Xs instance and you could of course create multiple instances in different files
+
+01:30.100 --> 01:32.580
+for different parts of your application.
+
+01:32.590 --> 01:36.190
+I will show you how to use these instances in a second.
+
+01:36.190 --> 01:43.140
+Now by default the instance your will also assume the default set up your butt override anything which
+
+01:43.140 --> 01:46.000
+it sets up in the instance itself.
+
+01:46.000 --> 01:52.800
+For example I could leave the authorization had are being set up here.
+
+01:53.000 --> 01:55.620
+But I also want to set it up for my own instance.
+
+01:55.790 --> 01:59.490
+So after creating the instance where we can assign the base your l.
+
+01:59.630 --> 02:07.160
+Now for the letters I replace X defaults with instance defaults Hatteras common and so on.
+
+02:07.220 --> 02:14.810
+And now here I can set this two off token from instance to override it for all requests which are sent
+
+02:14.810 --> 02:16.550
+using this instance.
+
+02:16.680 --> 02:23.810
+Now we have to export this instance as the fall defaults and we can use an Abra Foz and now let me show
+
+02:23.810 --> 02:24.980
+you how to use it.
+
+02:25.220 --> 02:30.390
+That saying the block container where we use X years to get all the block posts.
+
+02:30.620 --> 02:37.390
+Lets say we no longer import exis from the axioms package but we set these X years variable here are
+
+02:37.400 --> 02:45.890
+a constant to our x' instance by pointing to that file where we export that instance as the default.
+
+02:46.010 --> 02:49.780
+You can of course also named as x' instance or what ever you want.
+
+02:50.000 --> 02:54.390
+I'll leave X's here so that I don't have to adjust my code down there.
+
+02:54.650 --> 03:00.630
+Make sure to save all the files and if you then go back to your application it should still work fine.
+
+03:00.680 --> 03:08.720
+Now you will notice one thing though you no longer see the interceptor printing the log for the request
+
+03:08.720 --> 03:15.110
+which was sent and the response which was fetched because the interceptor was set up for the global
+
+03:15.110 --> 03:23.990
+access object which we're not using anymore here in the block container if I now try to post some post
+
+03:24.470 --> 03:31.200
+we even get an error because now you are Ellas incorrect because I remove dbase your L from the index
+
+03:31.500 --> 03:31.880
+file.
+
+03:31.880 --> 03:38.490
+I commented it out and put it into my instance which I'm only using in a block container though everywhere
+
+03:38.510 --> 03:43.670
+else in my application I'm still importing the actual package itself.
+
+03:44.060 --> 03:51.450
+So I could of course also comment the default base you're in again so that we are able to use the actual
+
+03:51.470 --> 03:57.650
+package with it's default but also use our own instance in places where we want to use our application
+
+03:57.920 --> 04:04.920
+to override some of the settings for the places where we use that instance instead of the default object.
+
+04:04.970 --> 04:07.060
+And now we get the best of both worlds.
+
+04:07.130 --> 04:13.280
+We got our own instance configured for fetching all posts but for posting a post we use the default
+
+04:13.280 --> 04:14.200
+package again.
+
+04:14.240 --> 04:17.550
+So that is why we also still see our interceptors working here.
+
+04:17.840 --> 04:24.140
+And of course we could also add interceptors to our IN own instance you can simply use instance interceptors
+
+04:24.140 --> 04:31.130
+request just like you did it for the default instance to default axes object.
+
+04:31.250 --> 04:37.880
+I wanted to show you this because being able to use instances can give you the flexibility you need
+
+04:37.880 --> 04:39.260
+in your application.
+
+04:39.260 --> 04:46.670
+It allows you to control in detail in which part of your app you want to use which default settings
+
+04:47.060 --> 04:53.360
+and awesome feature and something which rounds up this module where you hopefully get a good understanding
+
+04:53.360 --> 05:01.370
+about how you sent HTP requests and how does X use package can give you a lot of nice convenience features.
