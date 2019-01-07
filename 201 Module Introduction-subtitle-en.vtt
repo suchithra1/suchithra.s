@@ -1,0 +1,58 @@
+WEBVTT
+
+00:02.240 --> 00:05.200
+Back we are an hour Bergere project.
+
+00:05.200 --> 00:12.460
+Time to add some routeing to it and use the things we learned at the last course module in a real re-act
+
+00:12.460 --> 00:14.150
+application.
+
+00:14.350 --> 00:20.560
+Now definitely feel free to jump ahead from time to time possed video and implement some feature.
+
+00:20.560 --> 00:24.580
+I'm about to show you to practice using the router.
+
+00:25.060 --> 00:32.760
+I want to start by adding a page which allows us to actually check our Bergere out read no check out
+
+00:32.760 --> 00:33.550
+it looks like this.
+
+00:33.550 --> 00:39.700
+We add an ingredient we click order now we click continue and then we already send the request to the
+
+00:39.700 --> 00:43.890
+back and to submit that burger and to save it there.
+
+00:43.960 --> 00:50.980
+Now I'd like to change this so that I have to actually enter some information in a check out for him
+
+00:51.220 --> 00:54.000
+before we really save the burger.
+
+00:54.250 --> 00:59.130
+So this should be the first page I want to have at check out page.
+
+00:59.140 --> 01:05.630
+I also have a link here at the top which might allow us to navigate there though will probably replaced
+
+01:05.630 --> 01:10.620
+us for this module with my orders page because that makes more sense.
+
+01:10.630 --> 01:16.840
+But let's start with the checkout component and let's start with Boulding debt in the next lecture.
+
+01:16.840 --> 01:21.610
+Definitely feel free to jump ahead and bullshit on your own but also feel free to do it together with
+
+01:21.610 --> 01:27.520
+me because obviously there are a lot of different ways of creating check out component and creating
+
+01:27.520 --> 01:32.330
+the component itself is a nice practice but not really related to routing.
+
+01:32.380 --> 01:33.700
+See you in the next lecture.

@@ -1,0 +1,430 @@
+WEBVTT
+
+00:02.120 --> 00:03.680
+So let's implement this.
+
+00:03.680 --> 00:11.210
+Check out component are actually implemented it is a container because it will be a component which
+
+00:11.210 --> 00:16.590
+manages its own state and also passes this down to Avro components.
+
+00:16.640 --> 00:22.690
+So add a new folder in containers and I'll name it checkout and in there I'll add that check out.
+
+00:22.730 --> 00:27.010
+JS file which well should hold my check out component.
+
+00:27.080 --> 00:34.190
+It'll be a class based components and state will be involved and therefore I extend the component object
+
+00:34.190 --> 00:42.380
+which I have to import from react to Gabr with the re-act package itself to support as X..
+
+00:42.680 --> 00:45.610
+So let's add this class.
+
+00:45.830 --> 00:53.720
+Let's then export it as a default office file and then let's plan how does it check out component shoat
+
+00:53.810 --> 00:56.000
+look like it should behave.
+
+00:56.000 --> 01:02.970
+What I want to have in the checkout component is a tiny summary of the checkout.
+
+01:03.020 --> 01:10.290
+So basically what the user is about to buy and the price probably and then a button to cancel the checkout
+
+01:10.310 --> 01:15.460
+process and go back to the Bergere Boulder and of course a button to continue.
+
+01:15.680 --> 01:22.580
+And I guess for the summary it would be nice to not again show just a list of the ingredients but maybe
+
+01:22.580 --> 01:24.210
+show the burger itself.
+
+01:24.230 --> 01:26.060
+Rebuild the burger in this.
+
+01:26.060 --> 01:27.850
+Check out summary.
+
+01:27.950 --> 01:30.760
+So that's the goal here Chaudiere summary.
+
+01:30.830 --> 01:36.700
+And then when the user clicks on continue I don't want to load the contact form.
+
+01:37.040 --> 01:44.780
+So step by step the goal therefore is to create a checkout summary form which allows me to display a
+
+01:44.780 --> 01:52.280
+preview of the burger and showed you continue or Cancel buttons for that all go into my components folder
+
+01:52.370 --> 01:55.340
+and add a new folder in there.
+
+01:55.340 --> 01:56.530
+What's your name.
+
+01:56.660 --> 02:05.770
+Check out or maybe order to place all order related components there like to check out component check
+
+02:05.780 --> 02:05.960
+out.
+
+02:05.960 --> 02:07.740
+It should be named.
+
+02:07.820 --> 02:09.980
+Check out summary maybe.
+
+02:10.130 --> 02:13.270
+And then there to create a check out summary.
+
+02:13.330 --> 02:14.840
+J.S. fall into.
+
+02:15.020 --> 02:20.310
+Check out summary CSSA fall for the styling.
+
+02:20.540 --> 02:27.440
+Now let's have a look at the check out summary dodgiest fall they're all used to functional form to
+
+02:27.440 --> 02:29.950
+create the check out summary component.
+
+02:29.990 --> 02:33.580
+So basically just check out Samari function here as you know it.
+
+02:33.700 --> 02:39.630
+We will probably receive some props to render the burger and then return some GSX.
+
+02:39.680 --> 02:44.810
+So therefore we definitely need to import re-act from the Riak package.
+
+02:45.020 --> 02:47.260
+And of course it always export.
+
+02:47.270 --> 02:50.150
+Check out summary as the default.
+
+02:50.150 --> 03:00.180
+Now the goal is to display a preview of all or burger year and then show continue or Cancel buttons.
+
+03:00.200 --> 03:09.500
+So what I'll do is in the J is X which I want to return here all first of all Raptor's in a div which
+
+03:09.500 --> 03:14.900
+I'll also use for styling purposes to give discommode in some style.
+
+03:14.900 --> 03:19.640
+Then I want to have each one tag where I say we hope it tastes well.
+
+03:19.640 --> 03:22.940
+Something like that and their offer.
+
+03:22.960 --> 03:29.420
+Now I want to have a box in a div basically where I want to preview my Bergere component.
+
+03:29.620 --> 03:33.650
+Does Davis require to set the boundaries of that Bergere component.
+
+03:33.650 --> 03:37.240
+And of course I'm going to reuse my Bergere component which I already have.
+
+03:37.250 --> 03:38.180
+That's that cool thing.
+
+03:38.180 --> 03:45.590
+We can reuse it so I'll set some inline styling here on that wrapping div which will hold my burger
+
+03:46.040 --> 03:55.420
+just to set the width of that save 300 pixels and then also our height of let's say 300 pixels and let's
+
+03:55.430 --> 04:00.180
+then also set the margin to auto here.
+
+04:00.180 --> 04:06.970
+Now inside that div I want to use my burger components only to import it all import Bergere from and
+
+04:06.970 --> 04:11.620
+now navigate up into the Bergere folder and there is Steve J as file.
+
+04:11.650 --> 04:15.730
+Does hour Bergere component which I can now conveniently add like this.
+
+04:15.740 --> 04:17.790
+The burger a self-closing tag.
+
+04:18.440 --> 04:24.050
+I there also need to pass my ingredients for dad.
+
+04:24.050 --> 04:29.740
+It will of course be important to know how I received these ingredients.
+
+04:29.750 --> 04:37.220
+I assume that for now I can simply just set the ingredients property of my burger component which it
+
+04:37.280 --> 04:40.080
+does expect if we have a look at the burger component.
+
+04:40.220 --> 04:47.060
+We have prop's ingredients in there which we use so I should ALL the past is today's ingredient at Tudor's
+
+04:47.240 --> 04:48.380
+component.
+
+04:48.440 --> 04:50.670
+Perhaps not or do a summary check out summary.
+
+04:50.690 --> 04:51.630
+Here we are.
+
+04:51.920 --> 04:58.460
+So we expect the ingredients in the burger so we should pass it and for now just expect that in the
+
+04:58.460 --> 04:59.970
+checkout summary component.
+
+05:00.050 --> 05:08.450
+I'll also get ingredients property which I then just pass on below that I don't want to show my buttons
+
+05:08.480 --> 05:16.160
+and afford it all import my own buttons I built so that button component from the UI folder and there
+
+05:16.160 --> 05:24.130
+from the button folder and then the button just fall of course and DS buttons as you probably know support
+
+05:24.170 --> 05:25.640
+two different styles.
+
+05:25.640 --> 05:31.850
+We have success and the danger class here which we can't pass and we do pass it with the button type
+
+05:31.850 --> 05:33.200
+properties.
+
+05:33.500 --> 05:35.900
+So I'll add my buttons below.
+
+05:35.900 --> 05:38.210
+There are at the first button.
+
+05:38.210 --> 05:39.890
+Where else at the button type.
+
+05:40.430 --> 05:48.260
+Let's say danger with a capital D because the FCC has a class name where R is simply want to say cancel.
+
+05:48.260 --> 05:55.850
+Maybe all caps for stalling purposes only and then are duplicated to all the have is access button with
+
+05:55.850 --> 06:00.210
+a capital S where I will have say continue.
+
+06:00.230 --> 06:01.800
+So these are the two buttons.
+
+06:01.880 --> 06:08.510
+You also know that the buttons expose the click property which simply indicates that we clicked on the
+
+06:08.510 --> 06:11.910
+button so that is something I'll all need to do.
+
+06:12.020 --> 06:14.210
+Let's split this over multiple lines.
+
+06:14.240 --> 06:18.460
+Implement clicked here and then do something up on a click.
+
+06:18.500 --> 06:23.810
+Now that is something I will add for now I just want to finish the styling of this component.
+
+06:23.810 --> 06:29.970
+So with that we got our check out summary JSA X code.
+
+06:29.990 --> 06:36.820
+Now let me also assign a class name to the wrapping div and this is a class I want to set up and check
+
+06:36.820 --> 06:42.900
+out summary sucessful all at check out summary see business class here.
+
+06:42.950 --> 06:50.290
+Because remember we're back in our course project we're using CSSA modules here to scope our styles.
+
+06:50.330 --> 06:57.080
+They're all set text aligned to center to center everything or set the width to 80 percent maybe and
+
+06:57.080 --> 07:01.440
+a margin of auto 2 then Center does div or does element.
+
+07:01.760 --> 07:08.300
+And I'll add a media query where a check if we have a minimum with of 600 pixels at which point of time
+
+07:08.330 --> 07:13.110
+I simply want to limit the width so that it's no longer a percent.
+
+07:13.280 --> 07:16.730
+But here I will limit it to 500 pixels.
+
+07:16.730 --> 07:24.560
+Now with that I have to import does see is as code or the classes object you should be precise from
+
+07:24.560 --> 07:27.860
+check out summary C S S and then assign it here.
+
+07:27.860 --> 07:30.500
+So here all add classes.
+
+07:30.500 --> 07:32.050
+Check out summary.
+
+07:32.120 --> 07:35.190
+Taking advantage of C S S modules here.
+
+07:35.450 --> 07:38.280
+Now we get to check out summary component.
+
+07:38.300 --> 07:46.640
+I know when to use stat in my check out file in my check out container to be precise so there will quickly
+
+07:46.640 --> 07:54.170
+import that check out the summary component we just created from the components folder.
+
+07:54.170 --> 08:01.050
+Therefore there I created that order folder which hold the check out summary folder and there the check
+
+08:01.050 --> 08:03.690
+out summary Ejay as file.
+
+08:03.740 --> 08:11.070
+Now inside my check out component where I'll implement a render method where I then of course returns
+
+08:11.080 --> 08:17.270
+I'm GSX there I want to have a div which wraps my entire page because this will be used as a page with
+
+08:17.270 --> 08:21.940
+the re-act router of course and they're all now at.
+
+08:21.950 --> 08:24.340
+Check out summary like this.
+
+08:24.410 --> 08:25.250
+Keep in mind.
+
+08:25.280 --> 08:32.630
+Check out summary expects to get ingredients as a prop so it should pass ingredients here and that of
+
+08:32.630 --> 08:34.860
+course is an interesting question.
+
+08:34.880 --> 08:38.560
+Where do I get my ingredients from.
+
+08:38.560 --> 08:46.290
+For now I'll simply pass a dummy ingredients object but of course this is something I will replace.
+
+08:46.360 --> 08:54.210
+I will add state to the checkout component and there in the state I'll add ingredients and ingredients
+
+08:54.220 --> 09:01.700
+for now will be salad one meat one cheese one and bacon one.
+
+09:01.750 --> 09:05.430
+And this again is just some dummy data which I'll replace.
+
+09:05.440 --> 09:12.330
+So for now that allows me to pass these state ingredients we will have to use routeing to repasts ingredients
+
+09:12.340 --> 09:13.830
+later.
+
+09:13.840 --> 09:17.930
+Now we get the check out summer and check out container here.
+
+09:18.160 --> 09:26.170
+I know want to use it of course and for that I will hard coded into my apt Cheras fall right below the
+
+09:26.170 --> 09:27.540
+Bergere Boulder.
+
+09:27.760 --> 09:38.260
+Here are import but check out container from dot slash containers check out checkout just to see how
+
+09:38.260 --> 09:39.220
+it looks.
+
+09:39.430 --> 09:42.700
+We will load and wire routing soon.
+
+09:42.700 --> 09:49.630
+Make sure to save all files and make sure NPM start is running and they're offer if you with your page.
+
+09:49.630 --> 09:54.500
+We get an error regarding the on click listener but that shouldn't be a problem right now.
+
+09:54.520 --> 09:56.960
+This is how it looks like our.
+
+09:56.980 --> 09:59.360
+Check out summary component.
+
+09:59.590 --> 10:05.470
+Now we can see that somehow does stave with the burger is not really centered so it is something we
+
+10:05.470 --> 10:06.670
+should fix.
+
+10:06.700 --> 10:11.890
+For that I'll go back to check out summary where I used the burger and one thing I should adjust here
+
+10:11.890 --> 10:18.070
+is that I should what use with 100 percent to take the full width of the check out summary component.
+
+10:18.070 --> 10:25.080
+Now with that that looks much better on both small devices and bigger devices now and small otherwise.
+
+10:25.080 --> 10:29.050
+Last year we got a little bit much height.
+
+10:29.180 --> 10:32.020
+Does this something we can fix by disabling this height.
+
+10:32.050 --> 10:34.630
+Not always setting it to free pixels.
+
+10:34.750 --> 10:37.990
+So let's just get rid of the hide property here.
+
+10:38.120 --> 10:40.970
+For the styling that was a little bit too much.
+
+10:41.020 --> 10:47.020
+Now we can definitely use that on mobile devices and on the desktop.
+
+10:47.020 --> 10:47.870
+This looks good.
+
+10:47.880 --> 10:55.620
+Q Now of course there is still some space but we need some space for bigger Burger's so does is to liberate
+
+10:56.500 --> 11:02.830
+but the main thing I now want to work on is that I don't always display this but instead this should
+
+11:02.860 --> 11:03.770
+be displayed.
+
+11:03.880 --> 11:12.130
+If I click on order now continue then I want to load to check out summary instead of the burger builder.
+
+11:12.150 --> 11:15.430
+Dats the goal and for data of course we need routing.
+
+11:15.430 --> 11:22.510
+Now feel free to go ahead and implement this on your own and then compare your solution with mine which
+
+11:22.510 --> 11:24.790
+I'll start building in the next lecture.

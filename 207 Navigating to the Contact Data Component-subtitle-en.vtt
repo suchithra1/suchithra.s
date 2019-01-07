@@ -1,0 +1,319 @@
+WEBVTT
+
+00:02.210 --> 00:09.320
+Let's add context data component and actually that will also be a container not only because it's loaded
+
+00:09.320 --> 00:16.940
+to our routing but because it will manage its own state especially once we covered forums in react.
+
+00:16.940 --> 00:25.640
+So let me edit as a subfolder to check out in the containers folder all at the contact data folder there
+
+00:25.910 --> 00:27.940
+with the contact data.
+
+00:28.150 --> 00:35.930
+Faults and my contact data component and they're all create this as a class contact data and therefore
+
+00:35.930 --> 00:40.930
+of course extend this component element this component object.
+
+00:40.940 --> 00:48.790
+So in order to react and component like this from react.
+
+00:49.130 --> 00:51.710
+Now let's see how we show it.
+
+00:51.710 --> 00:56.050
+Creators are what should go inside of this contact data component.
+
+00:56.240 --> 01:04.460
+First of all though all export contact data class now in there we can fetch which ever contact data
+
+01:04.460 --> 01:11.300
+we want and I'll set up states to manage all these inputs and I will not really work on the form.
+
+01:11.300 --> 01:17.120
+I will not finish it in this module because we'll have a whole module about forms and validating forms
+
+01:17.360 --> 01:19.230
+after discourse Marchal.
+
+01:19.250 --> 01:22.980
+Still I want to fetch let's say the user name here.
+
+01:23.030 --> 01:31.650
+Maybe I want to fetch an email and maybe I want to fetch an address which also is an object where I
+
+01:31.650 --> 01:37.580
+have like the street maybe and a postal code.
+
+01:37.740 --> 01:39.000
+So something like that.
+
+01:39.030 --> 01:44.620
+This could be the data I want to fetch year and we can always continue working on that.
+
+01:44.640 --> 01:47.390
+I also need my render method of course.
+
+01:47.400 --> 01:50.210
+And as I said I went to have a four in there.
+
+01:50.300 --> 02:00.140
+So in the render method will return some GSX and in there I need a device which basically is.
+
+02:00.210 --> 02:04.500
+Well the wrapper for my contact data container.
+
+02:04.740 --> 02:15.060
+And in this day if I want to have the form which I use now also at age 14 where I say entry your contact
+
+02:15.210 --> 02:25.830
+data like this and below that a form using the HMO form element where I then can add to 4 in the way
+
+02:25.830 --> 02:26.800
+I want to add add.
+
+02:26.970 --> 02:29.600
+Now as I said A won't spend too much time on the form here.
+
+02:29.640 --> 02:31.950
+I will do this in the modules thereafter.
+
+02:31.950 --> 02:40.320
+So for now all really just create a quick form year with a couple of inputs input of type text for my
+
+02:40.320 --> 02:41.380
+name essentially.
+
+02:41.400 --> 02:47.130
+So where I will set name equal to names so that we can see for what it should be there.
+
+02:47.250 --> 02:57.060
+I'll add a placeholder or say your name and that should be self-closing and then I'll add one for the
+
+02:57.060 --> 03:02.740
+email type email and then we got this address part.
+
+03:02.780 --> 03:13.820
+So I need one for the street and one WIPs Street written like that and one for the postal code.
+
+03:14.130 --> 03:22.430
+So here I was to code maybe here let's write your mail and your name with a capital N just like debt
+
+03:23.550 --> 03:27.570
+and then of course also add a button and I'll use my own button component for this.
+
+03:27.570 --> 03:30.420
+So quickly import buttons from.
+
+03:30.420 --> 03:37.800
+And now let's go to the components folder there to the UI folder into the button folder and the button
+
+03:37.810 --> 03:39.300
+Jr's fall in there.
+
+03:40.110 --> 03:43.950
+And let's then use that but in the year below all our inputs.
+
+03:43.950 --> 03:51.970
+You're like a component of course of say order here because that is the final button after which we
+
+03:52.060 --> 03:56.540
+do place to order button type therefore we should be success here.
+
+03:56.560 --> 04:00.480
+And of course we'll later also add a click listener to it.
+
+04:00.500 --> 04:09.170
+Now once you gift is contact form here some styling so add a contact data that C-s as follows.
+
+04:09.200 --> 04:13.870
+And of course you could also create a subcomponent which handles the style if you want it to do that.
+
+04:14.150 --> 04:23.750
+So here I'll add context data maybe add a margin top and bottom and centered with auto then add with
+
+04:23.870 --> 04:28.750
+80 percent and align all the text into the central let's say.
+
+04:28.940 --> 04:35.330
+And let's also add a media query to limit the width on pick the Wise's just as we did it for the check
+
+04:35.330 --> 04:36.440
+out summary to.
+
+04:36.590 --> 04:42.180
+So your contact data will then have a width of 500 pixels at most.
+
+04:42.200 --> 04:44.500
+With that we get the contact data component.
+
+04:44.510 --> 04:51.830
+Now I'm going to load it through routing and I will do this in a check out container chippy a nested
+
+04:51.830 --> 04:58.160
+route below the summaries so it should not place to check out summary though we could of course do that.
+
+04:58.190 --> 05:04.130
+Instead I want to load it below their all to show that this is of course something you use in reality
+
+05:04.130 --> 05:06.130
+two nested routes.
+
+05:06.230 --> 05:16.020
+So import route from re-act router down inside my check out container and then I use route here below
+
+05:16.020 --> 05:23.640
+my check out summary to load something for a path which should now depend on the path we're currently
+
+05:23.640 --> 05:27.220
+on plus slash contact data.
+
+05:27.510 --> 05:29.900
+So justis props.
+
+05:30.270 --> 05:41.700
+And then we can use match u r l or also for Boulding payoffs and routes you might use puffier plus slash
+
+05:42.000 --> 05:43.860
+contact data.
+
+05:44.220 --> 05:50.390
+And this should also be part of the dynamic part here this string.
+
+05:50.400 --> 05:52.530
+So now we're loading this route in this case.
+
+05:52.530 --> 05:55.900
+Of course we need to define what component to render.
+
+05:55.950 --> 06:04.010
+So for it all import my contact data container from dot slash contact data entered the contact data
+
+06:04.040 --> 06:05.310
+J.S. fall.
+
+06:05.640 --> 06:12.820
+So let's grab Quantic data and let's set it up as a component down there on this route component.
+
+06:12.870 --> 06:19.400
+So there are pastie component Propp and pass contact data just like that.
+
+06:19.570 --> 06:22.780
+With that let's save all the files.
+
+06:23.160 --> 06:25.520
+And now if the click continue here.
+
+06:25.980 --> 06:28.320
+Here is the contact data.
+
+06:28.410 --> 06:36.130
+Now it looks pretty ugly to be honest because I forgot to use my contact data as.
+
+06:36.210 --> 06:45.240
+I of course need to import Klaas's from dot slash contact data C-s s and then assign this year on the
+
+06:45.240 --> 06:51.080
+wrapping div with class name and then classes contact data.
+
+06:51.120 --> 06:54.190
+Let's quickly do that and thereafter.
+
+06:54.200 --> 06:55.350
+This is how it looks now.
+
+06:55.390 --> 06:59.520
+If we load this page by reloading it as we just did automatically.
+
+06:59.680 --> 07:03.590
+You see the query parents are gone and therefore the burger is empty.
+
+07:03.640 --> 07:11.480
+Now if I go there differently by building a burger and continuing and then if I click and continues
+
+07:11.670 --> 07:17.320
+the burger is still there because even though the parents are lost it doesn't overwrite the old state
+
+07:17.380 --> 07:24.550
+because we did set state and it doesn't really render this component as you've learned so therefore
+
+07:24.640 --> 07:30.430
+component that Mount where we built the Burga where we set the state depending on the query perms isn't
+
+07:30.430 --> 07:31.270
+running again.
+
+07:31.390 --> 07:37.050
+Just because we loaded a new component so that is why the burger's still looks like this.
+
+07:37.060 --> 07:43.440
+So if we go there by clicking through the various steps we will have a nicely stalled burger.
+
+07:43.450 --> 07:46.600
+Now again the form is not super nice.
+
+07:46.600 --> 07:52.690
+The reason for this is that I won't finish it in this module will work on this later.
+
+07:52.690 --> 07:58.540
+The one thing I want to do though is I want to make sure that all the inputs you're Do you at least
+
+07:58.540 --> 08:02.800
+have their own line each so that they have a line wrap there.
+
+08:02.860 --> 08:09.880
+And that the button also has its own line and to achieve this all simply add a styling for the input
+
+08:09.910 --> 08:18.580
+element so I'll add a new input class maybe where else say display should be Block and this will automatically
+
+08:18.580 --> 08:27.290
+add a line wrap because it's now a block element so I'll add class name classes input to all these inputs
+
+08:27.830 --> 08:29.980
+and with that looks a bit nicer.
+
+08:30.020 --> 08:32.820
+Well now of course sitting on the left here.
+
+08:32.830 --> 08:34.710
+But again will work on that.
+
+08:35.210 --> 08:37.480
+So this is our order form.
+
+08:37.490 --> 08:44.030
+Does our summary here above that we can still improve the styling of the contact data form a little
+
+08:44.030 --> 08:46.780
+bit by going to contact data.
+
+08:47.030 --> 08:55.070
+Adding a box shell of maybe 0 2 pixels free pixels at this light gray and a border of even lighter gray
+
+08:55.220 --> 08:59.400
+like this and adding some padding inside of it.
+
+08:59.760 --> 09:03.840
+That's Then all the set box sizing to border POCs.
+
+09:03.860 --> 09:10.510
+So this is just some styling on the contact data component with that looks a bit nicer I believe.
+
+09:10.670 --> 09:13.870
+So with that we're able to load the contact data component.
+
+09:13.970 --> 09:20.900
+The next step is to make sure that when we click the order button we actually do send these request
+
+09:20.990 --> 09:22.110
+to our server.
+
+09:22.130 --> 09:28.610
+Now let's build this together in the next lecture because getting the ingredients into the contact data
+
+09:28.610 --> 09:31.790
+component now is kind of tricky as you will see.

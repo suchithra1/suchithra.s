@@ -1,0 +1,181 @@
+WEBVTT
+
+00:02.300 --> 00:09.590
+Let's implement the logic to pastie real ingredients we picked on to checkout container I'll do this
+
+00:09.590 --> 00:16.390
+here in my Bergere Boulder component obviously where I push to the checkout page there.
+
+00:16.430 --> 00:19.520
+I now want to push a javascript object.
+
+00:19.610 --> 00:27.320
+Well said Prof named slash check out but where then can specify a search parameter or a search query
+
+00:27.860 --> 00:30.880
+which is how I want to pass the ingredients.
+
+00:30.890 --> 00:38.570
+Now for that I of course somehow need to encode my ingredients into such a search query.
+
+00:38.570 --> 00:39.780
+How can I do that.
+
+00:41.250 --> 00:46.840
+I will try a new constant which a name query parents name is up to you of course and this will be an
+
+00:46.840 --> 00:49.020
+empty array initially.
+
+00:49.130 --> 01:00.130
+Then I want you add elements to date array of doodles with a for loop and all loop through all the properties
+
+01:00.160 --> 01:06.470
+in this state ingredient so in the ingredients I have now I will Porche.
+
+01:06.730 --> 01:09.710
+Each ingredient to describe the parent's array.
+
+01:10.730 --> 01:16.640
+But there I will use a little helper method which is provided by javascript and code.
+
+01:16.640 --> 01:23.340
+You are a component which simply encodes my elements such that they can be used in the U r l.
+
+01:23.360 --> 01:26.820
+This is rather bad for whitespace and so on.
+
+01:26.950 --> 01:34.130
+They're all used to property name it which wouldn't need encoding in my case because it will work like
+
+01:34.130 --> 01:35.270
+that solid and so on.
+
+01:35.270 --> 01:38.110
+These are all non-critical elements.
+
+01:38.480 --> 01:46.130
+Then add an equal sign because we have key equals something inquiry parens and then also encode the
+
+01:46.130 --> 01:47.010
+value again.
+
+01:47.030 --> 01:52.910
+This wouldn't really be needed here because the value is just a number which is non-critical.
+
+01:53.180 --> 01:59.530
+But here I'll then use this state ingredients for decie we're currently at.
+
+01:59.570 --> 02:05.000
+So I asked to key these are the property names in mind regions in the end just.
+
+02:05.090 --> 02:11.840
+And here I'm setting property name equal to well the value for that property name.
+
+02:11.960 --> 02:19.040
+So this is an array which now just has a couple of strings which is property name equal property value.
+
+02:19.070 --> 02:23.960
+Now this array of strings is what I want to join with the end sign.
+
+02:24.080 --> 02:30.650
+So I'll add a query string constant here where I'll use my query parens array called the join method
+
+02:30.680 --> 02:40.120
+and showing it with the end sign and then finally I went to attach it here with questionmark and then
+
+02:40.690 --> 02:48.100
+my query string which is just my string of well ingredients let me save Doesn't that see if that works
+
+02:48.220 --> 02:50.130
+for go back to the burger Polder.
+
+02:50.290 --> 02:56.210
+And yes the links aren't godlings they are still the old things which are deep but fine for now.
+
+02:56.440 --> 03:00.860
+So let's build a burger now like Order now and click continue.
+
+03:01.060 --> 03:06.350
+And you can see that I do pass it on like this in the U r l.
+
+03:06.430 --> 03:12.100
+Now of course I need to parse this in the checkout component and then I'll do this in component did
+
+03:12.100 --> 03:12.920
+mount.
+
+03:13.210 --> 03:19.900
+I won't use component did update or anything like that because whenever I load this component it will
+
+03:19.900 --> 03:20.770
+mount itself.
+
+03:20.770 --> 03:27.180
+There is no way I can route to it without it being mounted again because it's not nested in some other
+
+03:27.190 --> 03:29.360
+page or anything like that.
+
+03:29.360 --> 03:36.400
+Now there I will want to use the code you saw before to extract the query parameters all treat a new
+
+03:36.400 --> 03:43.010
+constant which I'll name Querrey where I used d or else search Perens constructor.
+
+03:43.140 --> 03:51.700
+Pass this prop's location search which includes the questionmark and so on but where you are I'll search
+
+03:51.700 --> 03:54.020
+Peronist I can basically extract that.
+
+03:54.190 --> 04:01.910
+Then I'll add a new ingredient object here because I want to store and ingredients object in this form
+
+04:01.930 --> 04:09.070
+you're in the state and then I will use for let Param of Querrey entries.
+
+04:09.070 --> 04:14.410
+As you learn to loop through the friend Querrey parents and I separate.
+
+04:14.440 --> 04:22.230
+Each entry will have this format the key like sell it and then the value like one.
+
+04:22.240 --> 04:31.490
+Now of course I want to turn this into this object format so I will simply say ingredient Param element
+
+04:31.580 --> 04:37.430
+0 which is just a name like this which is then used as a property name and added to that ingredient
+
+04:37.460 --> 04:40.330
+object Shippy equals Q..
+
+04:40.370 --> 04:48.080
+And now comes to well-you which is just Param element one does value and we can convert this into a
+
+04:48.080 --> 04:50.170
+number by adding a plus.
+
+04:50.210 --> 04:55.610
+And of course there should be ingredients here using this javascript object.
+
+04:55.610 --> 05:02.330
+Now once this is done I can call this set state and hopefully successfully set my ingredients to the
+
+05:02.330 --> 05:05.130
+ingredients I created and extract that here.
+
+05:05.510 --> 05:08.240
+Let's save doesn't let's see if it works.
+
+05:08.360 --> 05:10.880
+Looks pretty good if I now manually change.
+
+05:10.900 --> 05:16.680
+Let's say that she's 2 2 in the query parameter we extract and lotas successfully.
+
+05:16.700 --> 05:21.940
+So now we're able to pass the data with query Perens a huge advancement of course.
+
+05:22.010 --> 05:25.310
+Let's next work on that contact data.

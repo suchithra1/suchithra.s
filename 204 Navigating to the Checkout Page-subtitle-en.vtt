@@ -1,0 +1,169 @@
+WEBVTT
+
+00:02.140 --> 00:08.230
+The last lecture I set up routeing no one to prove this and I want to make sure that when I click on
+
+00:08.230 --> 00:16.240
+continue in that mode here on the order summary that I actually load a different route.
+
+00:16.570 --> 00:21.220
+Now it's the chase continued händler a year which is interesting.
+
+00:21.290 --> 00:25.630
+Dad is the handler which gets fired when I click continue.
+
+00:25.630 --> 00:33.170
+Right now this is where I said loading to true and where I then placed my order and send it to the web.
+
+00:33.310 --> 00:39.340
+I will comment all this code out because I no longer want to store it on firebase immediately here.
+
+00:39.490 --> 00:42.920
+I went to go to the check out component instead.
+
+00:42.940 --> 00:51.490
+Now as you learned since Burgard Boulder is part of their route to all areas of our project we have
+
+00:51.490 --> 00:55.500
+access to the match location and history props.
+
+00:55.510 --> 01:01.950
+I can prove this by adding Konsole lock this props in component.
+
+01:02.010 --> 01:03.920
+MT We have a look.
+
+01:03.940 --> 01:08.040
+We see the problem with history location and match.
+
+01:08.150 --> 01:16.930
+Now by the way since in here we also use a couple of components like the broken component just in case
+
+01:16.930 --> 01:21.010
+you're wondering do we also have access to these props here.
+
+01:21.280 --> 01:27.160
+Let's simply lock props in the Bergere function in the Bergere component.
+
+01:27.160 --> 01:30.110
+There you see we only have two ingredients.
+
+01:30.220 --> 01:35.840
+We don't have access to match and so on there because while this is of course part of the Roudebush
+
+01:35.890 --> 01:44.720
+area burger is not loaded through a route object only burger burglarious burger Bolar is loaded for
+
+01:44.770 --> 01:50.830
+this route and everything which is loaded for a route but only the direct components are only Burgard
+
+01:50.830 --> 01:56.990
+Boulder itself gets these special props components nested inside Bergrin builder.
+
+01:57.040 --> 02:00.720
+Don't get them we would have to pass them on manually.
+
+02:00.730 --> 02:08.830
+There is a way we could still get the props in the burger component too though and this really is a
+
+02:08.830 --> 02:11.940
+bit advanced and not something we need here.
+
+02:11.950 --> 02:14.380
+But I want to show it nonetheless.
+
+02:14.380 --> 02:19.600
+Let me reintroduce that lock statement to see the problem and we saw that we don't have the match and
+
+02:19.600 --> 02:21.000
+history thing.
+
+02:21.340 --> 02:31.570
+If we use a special higher order component provided by re-act router Dom we can actually kind of inject
+
+02:32.350 --> 02:38.410
+or make them available inject these special props in any component.
+
+02:38.800 --> 02:47.230
+The higher order component is named with router and if we wrap our export with it so like this with
+
+02:47.230 --> 02:51.440
+router Bergere here I now save this.
+
+02:51.580 --> 02:59.140
+Now you see that in the router We also have match location and history and matchable referred to the
+
+02:59.230 --> 03:07.090
+nearest match so to the nearest route which was matched in the past in this case the route which matched
+
+03:07.150 --> 03:11.750
+the Bergere bolder it does is something I also wanted to share with you.
+
+03:11.770 --> 03:14.870
+We will use it later again when we really need it.
+
+03:14.890 --> 03:16.630
+Just want to show this little trick.
+
+03:16.750 --> 03:24.190
+If you ever need direct access to match history on any location and you don't want to manually pass
+
+03:24.190 --> 03:28.760
+it on from the top level component you can use with router.
+
+03:28.900 --> 03:31.610
+I did mention this in the routing section already.
+
+03:31.810 --> 03:40.990
+Well back to our original task in the Bergere Boulder component in the method which gets executed when
+
+03:40.990 --> 03:43.140
+we click continue there.
+
+03:43.150 --> 03:45.910
+I of course had access to this props.
+
+03:45.910 --> 03:49.380
+History is one of these special props provided by the router.
+
+03:49.480 --> 03:55.240
+And there we have this push prop which allows us to basically switch to page portion you page onto that
+
+03:55.240 --> 03:57.450
+stack of pages.
+
+03:57.460 --> 04:03.210
+So now here I can simply say that I want to go to slash checkout.
+
+04:03.430 --> 04:09.880
+If we save this let's see what happens if I start pulling my Bergere here and I click order now and
+
+04:09.880 --> 04:11.530
+click continue.
+
+04:11.530 --> 04:13.360
+Now I'm on the checkout page.
+
+04:13.360 --> 04:16.520
+I get an error because the listeners aren't hooked up yet.
+
+04:16.690 --> 04:20.800
+But besides that it's working now a won't connect.
+
+04:20.800 --> 04:27.010
+Just check out the navigation link here because I'm going to replace it with my order slings soon anyways
+
+04:27.550 --> 04:34.570
+so that's something I won't do here but the next step I want to do is let's add more functionality so
+
+04:34.570 --> 04:38.710
+that when we click Cancel here we actually are taken back.
+
+04:38.710 --> 04:45.940
+We go back to the Berggruen Boulder whilst when clicking continue we show up for him where we can enter
+
+04:45.940 --> 04:46.920
+some data.
+
+04:47.110 --> 04:48.810
+This is what I want to build next.
