@@ -1,0 +1,94 @@
+WEBVTT
+
+00:02.170 --> 00:10.810
+One more information about the links you set up here to slash to slash new post the way you write your
+
+00:10.810 --> 00:11.890
+links here.
+
+00:11.980 --> 00:15.370
+Doesn't the fact whether it's an absolute or relative path.
+
+00:15.550 --> 00:18.930
+Now what does absolute and relative mean anyways.
+
+00:19.420 --> 00:23.310
+An absolute payoff is always a pendant to your domain.
+
+00:23.440 --> 00:29.720
+So if you're serving this app from example dot com then you want to go to New post.
+
+00:29.950 --> 00:37.360
+If you navigate to slash new post that simply means always attach slash new post right after the domain.
+
+00:37.420 --> 00:45.430
+Even if you previously were an example that composts you wouldn't add new post at the end of that Tournay
+
+00:45.440 --> 00:51.890
+get it to post new post but turning it into exampled a new post and omitting posts.
+
+00:52.140 --> 00:54.550
+Is what an absolute paff does.
+
+00:54.550 --> 01:00.260
+Now when setting up two you can't control whether it's an absolute or relative POV.
+
+01:00.340 --> 01:06.620
+It's always treated as an absolute POV so no matter if it's slash new post or just new posts.
+
+01:06.730 --> 01:11.420
+It's an absolute POV and will always be appended to your root domain.
+
+01:11.770 --> 01:15.990
+Now what if you wanted to turn this into a relative part though.
+
+01:16.000 --> 01:23.080
+So if you wanted to make sure that if you are on your domain slash posts you actually go to your domain
+
+01:23.080 --> 01:28.640
+slash posts slash new posts so you append this to the end of the current path.
+
+01:28.780 --> 01:35.650
+Then you actually need to build this path dynamically by taking into advantage that you know at which
+
+01:35.650 --> 01:37.810
+POF you are currently on.
+
+01:37.810 --> 01:41.230
+Remember that you have access to this props match.
+
+01:41.230 --> 01:48.620
+We inspected this in the console the match object has d u r l object which is the currently loaded Hauf
+
+01:48.630 --> 01:50.010
+in the end.
+
+01:50.020 --> 01:56.860
+Now you can Shane slash new post to disk you can build a dynamic path like this.
+
+01:56.860 --> 02:00.470
+Now it's a relative one because it takes the page you're currently on.
+
+02:00.490 --> 02:07.480
+The payoff you're currently on and append stays at the end and all of a sudden you built a relative
+
+02:07.480 --> 02:08.210
+path.
+
+02:08.530 --> 02:15.110
+So if you ever want to build a link which simply appends the path to the end of the current path.
+
+02:15.150 --> 02:16.730
+Use this approach.
+
+02:17.140 --> 02:21.650
+Oberweis this always generates an absolute path.
+
+02:21.700 --> 02:23.910
+There is no better or worse here.
+
+02:23.920 --> 02:30.060
+It really depends on which behavior you want added to the root domain or appended to the current path.
+
+02:30.070 --> 02:32.470
+I wanted to make you aware how to achieve both.

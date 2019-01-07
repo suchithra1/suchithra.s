@@ -1,0 +1,124 @@
+WEBVTT
+
+00:02.100 --> 00:07.680
+In the last video we learned about the props we can output this utility information.
+
+00:07.850 --> 00:14.540
+And regarding the history object do utility methods even we can use to navigate around or find out where
+
+00:14.540 --> 00:17.080
+we are at now.
+
+00:17.150 --> 00:22.930
+What if we actually want to get this information not in one of our containers.
+
+00:23.030 --> 00:31.820
+So not in a component which was loaded through a route as defined in the block as fall but in a component
+
+00:31.850 --> 00:38.390
+which is rendered as part of such a container like the Post's container the post container is loaded
+
+00:38.660 --> 00:46.190
+with this route here in the block container and the post container simply renders the post component
+
+00:46.220 --> 00:47.200
+then.
+
+00:47.330 --> 00:57.080
+Now if we go into that post component and for a second we turn does post component into a component
+
+00:57.620 --> 01:01.760
+where we actually return J as X like this.
+
+01:01.760 --> 01:03.150
+If we dare.
+
+01:03.290 --> 01:06.320
+Now console log the props.
+
+01:06.680 --> 01:12.640
+Then you will actually see that the props in the post component's we see that four times because we're
+
+01:12.640 --> 01:16.710
+rendering four posts is just offer a clicked title.
+
+01:16.850 --> 01:24.560
+There is no match location history prop in there as we have it in the posts component pleuro not a single
+
+01:24.560 --> 01:25.700
+one.
+
+01:25.700 --> 01:34.100
+So the routing relay the props are not passed down the componentry we can't access them in components
+
+01:34.100 --> 01:39.980
+which we simply embed as part of d.j as X code of a container.
+
+01:39.980 --> 01:45.440
+Now if you wanted to use the props there are two ways to get access.
+
+01:45.470 --> 01:53.680
+One of course is we can pass them on with the spread operator and this props this passes any props.
+
+01:53.690 --> 01:57.590
+This post container has onto the post component.
+
+01:57.590 --> 02:03.560
+Of course it could also explicitly target certain props like for example if you want to pass on the
+
+02:03.560 --> 02:04.890
+matched property.
+
+02:04.910 --> 02:08.320
+We could also do this props match.
+
+02:08.330 --> 02:10.500
+Now this is one way of passing it on.
+
+02:10.640 --> 02:16.820
+But there also is a higher order component we can use on the post component there.
+
+02:16.850 --> 02:24.050
+We can import something which is called with router from re-act router Daum.
+
+02:24.170 --> 02:32.070
+Now with router is a higher order component which we use by wrapping our export with it just like that.
+
+02:32.450 --> 02:40.310
+With this added If we now save all files you see that now that the props are output for the individual
+
+02:40.310 --> 02:45.030
+posts they do have a history location and match property.
+
+02:45.320 --> 02:52.990
+So with router Anstey's props to Avro components to any component we wrap with it.
+
+02:53.300 --> 03:00.560
+So with router is a nice way of making dat component route aware and it will use or it will get to prop's
+
+03:00.890 --> 03:05.240
+containing information for the nearest loaded route.
+
+03:05.240 --> 03:11.840
+So in this case since post is included in posts we get the same probs as we receive in posts.
+
+03:12.080 --> 03:18.170
+I'm going to remove it here but this is one way for you to get access to routing related prop's which
+
+03:18.170 --> 03:25.910
+you might need for calling push on the history Propp or for getting information about the loaded route.
+
+03:25.910 --> 03:27.980
+This is one way of getting access.
+
+03:28.070 --> 03:35.420
+Using this approach of accessing prop's with the higher order component here.
+
+03:35.420 --> 03:37.060
+Now again I'm removing it here.
+
+03:37.130 --> 03:40.490
+So I'm going back to the original state for my post component.
+
+03:40.640 --> 03:42.780
+I just wanted to share this with you.
