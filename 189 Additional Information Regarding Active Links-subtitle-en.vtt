@@ -1,0 +1,88 @@
+WEBVTT
+
+00:02.140 --> 00:06.600
+So I want to leave the realm of Route parameters and so on soon.
+
+00:06.610 --> 00:13.360
+One more thing I want to do though we have to add homilies which is not marked as active when being
+
+00:13.420 --> 00:17.150
+on a single post and it kind of makes sense by the label of it.
+
+00:17.440 --> 00:22.910
+But what if this was named posts which would make sense because we have a lot of posts there.
+
+00:22.930 --> 00:26.720
+So let's maybe rename that link to be posts.
+
+00:27.190 --> 00:34.410
+If we do this now it will be strange that it's not highlighted when we are on a single post.
+
+00:34.450 --> 00:43.420
+We certainly would want is not a reason for this of course is exect since exect is set this only is
+
+00:43.420 --> 00:48.570
+treated as active if we well have exactly this.
+
+00:48.580 --> 00:55.040
+You are at L and just slash and not slash free which we have of course for the post with ID.
+
+00:55.060 --> 01:01.150
+The problem is that if we remove exactly what we saw that before now it will be marked as active for
+
+01:01.150 --> 01:04.810
+a single post but also for a new post.
+
+01:04.900 --> 01:11.340
+So this is kind of tricky and it's only really tricky for this exact case that we're talking about do
+
+01:11.340 --> 01:13.010
+you root you are l.
+
+01:13.120 --> 01:19.600
+If we have slashed posts then it will be a different story and we could absolutely use this prefix because
+
+01:19.600 --> 01:23.760
+we probably have no conflicts with our routes in the application.
+
+01:23.770 --> 01:30.850
+It's really just that rude or else this rude POV of just slash which happens to be part of any page
+
+01:30.880 --> 01:32.060
+in our app.
+
+01:32.200 --> 01:37.610
+So this is just an edge case here a special case and I'm going to add exact again.
+
+01:37.650 --> 01:40.720
+Therefore not getting highlighting for a single post.
+
+01:40.720 --> 01:46.120
+And again it is fine for me because this is an added case which you will rarely face.
+
+01:46.120 --> 01:53.950
+Most of the time your posts are going to be at slash posts and I'm just not changing it here to deliberately
+
+01:54.070 --> 01:57.200
+leave this case here for reference.
+
+01:57.220 --> 01:59.450
+I just wanted to bring this to your awareness.
+
+01:59.470 --> 02:03.130
+You can face issues when using the root POV.
+
+02:03.190 --> 02:08.190
+Just slash and you want to style some chawl components but not all of them.
+
+02:08.290 --> 02:11.550
+So some parts which follow it but not all POS.
+
+02:11.560 --> 02:13.210
+This is really tricky to do.
+
+02:13.210 --> 02:14.580
+Not really possible.
+
+02:14.680 --> 02:20.510
+You typically use more specific routes like Slash posts though so this shouldn't be an issue.

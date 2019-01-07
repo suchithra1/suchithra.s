@@ -1,0 +1,127 @@
+WEBVTT
+
+00:02.090 --> 00:07.030
+In the last lectures we learn how to pass and extract dynamic route parameters.
+
+00:07.030 --> 00:12.600
+Now we also see that this somehow leads to issues with our new post route.
+
+00:12.700 --> 00:18.760
+There is word as can be seen if we have a look at the block container there where we set up our routes.
+
+00:19.090 --> 00:24.160
+We have the new post route which loads the new post component and that flexible ID route.
+
+00:24.310 --> 00:31.900
+Now I said that I would move it to the end so that it doesn't capture this route here because it is
+
+00:31.900 --> 00:32.590
+flexible.
+
+00:32.590 --> 00:38.290
+Id partir would of course also interpret new post as an ID.
+
+00:38.320 --> 00:46.390
+Now it doesn't capture this route but remember that all routes here are rendered if they match the path
+
+00:47.260 --> 00:53.020
+does of course is a problem here because our flexible partir Denis always rendered when you post this
+
+00:53.060 --> 01:00.340
+render that we could of course fix this by naming this posts slash ID and also fixing this here in our
+
+01:00.340 --> 01:03.540
+link to posts slash ID.
+
+01:03.670 --> 01:10.720
+If we do that now you see we only load the new post for and if I click on a single post we are at slash
+
+01:10.720 --> 01:14.950
+posts one and therefore only see a single post.
+
+01:14.980 --> 01:22.150
+Definitely Y able but sometimes you simply have to use a given you or L because you or you or else would
+
+01:22.180 --> 01:23.110
+otherwise look.
+
+01:23.230 --> 01:28.580
+Well not the way you want them to look in the end so therefore maybe we have to use that setup.
+
+01:28.690 --> 01:37.210
+We can still tell re-act router to load only one of all these routes at a time by wrapping our route
+
+01:37.240 --> 01:43.710
+config here with a number of component provided by the re-act router Dom package does.
+
+01:43.720 --> 01:45.200
+Which component.
+
+01:45.520 --> 01:47.650
+Switch Telsey re-act router.
+
+01:47.720 --> 01:50.980
+Hey please only load one of the routes.
+
+01:51.010 --> 01:56.190
+The first one actually you find that matches from a given set of routes.
+
+01:56.200 --> 02:03.400
+So now we can wrap our free routes with switch and the first route that matches a given path will be
+
+02:03.400 --> 02:11.150
+loaded and thereafter it will just stop analyzing the routes it won't render any Our route.
+
+02:11.650 --> 02:18.100
+With this in place now you will see that if I go back to home and click on a single post we load that
+
+02:18.100 --> 02:19.020
+post.
+
+02:19.120 --> 02:25.780
+If I click on new post we only load that form and no longer see that single post.
+
+02:25.780 --> 02:34.120
+We also now see that if I changed the order and put ID first that we can never reach new post in this
+
+02:34.120 --> 02:35.090
+scenario.
+
+02:35.230 --> 02:41.230
+And of course we get an error because new post is now treated as the idea and obviously an invalid ID
+
+02:41.230 --> 02:42.680
+for our backend.
+
+02:43.120 --> 02:49.500
+So now we see that it does stop after finding the first fitting route which is of course this one with
+
+02:49.500 --> 02:53.540
+a flexible parameter and therefore a new post never gets rendered.
+
+02:53.560 --> 02:59.740
+So do your order is important especially when using switch of course switch however is important if
+
+02:59.740 --> 03:02.510
+you want to ensure that only one route gets loaded.
+
+03:02.830 --> 03:04.420
+And of course you can also mix it.
+
+03:04.510 --> 03:10.570
+You can put one route outside of switch so this will always get analyzed at least and potentially also
+
+03:10.570 --> 03:11.810
+rendered if it fits.
+
+03:12.040 --> 03:14.060
+And then one of the following.
+
+03:14.110 --> 03:19.580
+And then maybe add one more thereafter so you can really mix and match this as you want.
+
+03:19.600 --> 03:24.910
+That's the cool thing about the router it's really flexible so this is one potential set up where we
+
+03:24.910 --> 03:30.960
+can use to you or else you want to use and still ensure that we only load one route at a time.

@@ -1,0 +1,130 @@
+WEBVTT
+
+00:02.110 --> 00:05.560
+So now were successfully passing parameters and using them.
+
+00:05.690 --> 00:09.380
+Let me now go back to that Post's component again.
+
+00:09.650 --> 00:15.830
+Right now we're using a link to load a single post and navigate to its page and there's nothing wrong
+
+00:15.830 --> 00:17.190
+with that.
+
+00:17.210 --> 00:24.320
+However I now want to show you an alternative and for this or comment out the link heart here with a
+
+00:24.320 --> 00:30.470
+normal comment because I'm not inside GSX here so I don't raptus in a link.
+
+00:30.480 --> 00:36.520
+Therefore I need to add the key to post again because now post is again the top most element in our
+
+00:36.520 --> 00:37.770
+array we're returning.
+
+00:38.090 --> 00:40.490
+But now I'm not using link any more.
+
+00:40.820 --> 00:46.760
+And I can therefore remove the import and actually remove the whole import statement.
+
+00:46.760 --> 00:50.220
+I have to find some other way of going to that post.
+
+00:50.390 --> 00:56.150
+And remember that we have this clicked listener where we execute this post selected handler where we
+
+00:56.150 --> 00:57.960
+also pass the ID.
+
+00:58.370 --> 00:59.710
+We can use that method.
+
+00:59.720 --> 01:01.950
+And here I don't want to use the state instead.
+
+01:01.960 --> 01:04.230
+I want to navigate programmatically.
+
+01:04.490 --> 01:10.070
+And I was showing this here as a demo of course using the link would be fine for this use case but you
+
+01:10.070 --> 01:16.640
+also sometimes have use cases where you want to navigate after something finished after HTP request
+
+01:16.640 --> 01:17.060
+was sent.
+
+01:17.060 --> 01:20.080
+For example we'll see this again later.
+
+01:20.090 --> 01:25.770
+Now to do this we can take advantage of that history object we received on the props.
+
+01:25.850 --> 01:32.600
+Remember here in the props we got history and there we actually have some functions we can execute functions
+
+01:32.720 --> 01:38.690
+for navigating around like go back or go forward which do exactly what they sound like they basically
+
+01:38.690 --> 01:41.910
+do the same you have with the forward and backward buttons.
+
+01:41.960 --> 01:50.360
+There also is this push method which allows you to push a new page onto the stack of pages because navigation
+
+01:50.600 --> 01:53.860
+basically just is about a stack of pages.
+
+01:53.900 --> 01:59.420
+That is why the back and forward buttons work in the browser because you can go back to the last page
+
+01:59.450 --> 02:05.100
+on the stack or forward again to that page on the stack you have on the top of it.
+
+02:05.120 --> 02:07.330
+Before you went back.
+
+02:07.340 --> 02:12.160
+So therefore we can use this prop's history push.
+
+02:12.530 --> 02:23.690
+And then a string or Also an object so essentially the same we use in router link on the two property
+
+02:24.200 --> 02:27.080
+to navigate to a page.
+
+02:27.110 --> 02:36.300
+So there we could navigate to a javascript object where a said lbf name to slash and then plus the ID.
+
+02:36.410 --> 02:41.650
+And this is just the same I had down there with link to just using the object notation.
+
+02:41.720 --> 02:48.350
+But again the alternative which I'll comment out would be to just go to slash plus ID.
+
+02:48.350 --> 02:52.220
+So just passing a string so both will work now.
+
+02:52.680 --> 02:53.560
+And with.
+
+02:53.600 --> 02:59.910
+If I go back to my application to home and I click on a post that still works.
+
+02:59.960 --> 03:07.430
+Now however programmatically and chust demonstrate that it does work even with the Aberg notation let
+
+03:07.430 --> 03:09.690
+me comment it this way.
+
+03:09.710 --> 03:15.000
+Now if I go back to home and click on a post we still go to that post.
+
+03:15.070 --> 03:21.950
+So now we're navigating program magically which can be important from time to time mostly used after
+
+03:22.040 --> 03:23.730
+a given operation finished.

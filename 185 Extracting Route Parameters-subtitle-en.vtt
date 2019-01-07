@@ -1,0 +1,115 @@
+WEBVTT
+
+00:02.050 --> 00:09.660
+In the last lecture we added code to pass route parameters and I mention that you simply do this by
+
+00:09.660 --> 00:16.860
+wrapping your element in a lane as we do it there we don't use to we turn that into an absolute path
+
+00:17.160 --> 00:23.680
+and we pass post ID which we are able to receive because we set up a flexible path here.
+
+00:23.790 --> 00:27.560
+However we now need to retrieve that parameter too.
+
+00:27.600 --> 00:30.030
+So in the full post component there.
+
+00:30.120 --> 00:33.220
+Now this prop's ID doesn't work anymore.
+
+00:33.810 --> 00:34.800
+I print that.
+
+00:34.800 --> 00:36.080
+Props to the console.
+
+00:36.090 --> 00:38.710
+Earlier though if inspected.
+
+00:38.830 --> 00:40.430
+This is four different components.
+
+00:40.440 --> 00:43.310
+But the object always has the same structure.
+
+00:43.380 --> 00:45.140
+You see that under match.
+
+00:45.270 --> 00:47.870
+There actually is as parents object.
+
+00:48.270 --> 00:59.580
+And if we print console lock this props in our full post component there and important also turn component
+
+00:59.580 --> 01:05.420
+that update into component that mount because now we're not updating this.
+
+01:05.580 --> 01:08.850
+It's getting added or removed to and from the dawn.
+
+01:08.850 --> 01:18.260
+So this needs to be a component at Mount if we do that then we see the object in our post component
+
+01:18.620 --> 01:23.250
+and they're under a match we see that parents we have the ideal parent.
+
+01:23.540 --> 01:30.950
+And it's called I.D. because that is the name we set up as the name for this flexible element in this
+
+01:30.950 --> 01:34.590
+route definition in the block component.
+
+01:35.120 --> 01:37.880
+Now of course that allows us to extract this.
+
+01:37.940 --> 01:45.530
+So here we can not only log it we can also access this props match parents start ID and we know it will
+
+01:45.530 --> 01:52.750
+be there because this component is only loaded through this route which defines this idea Paran.
+
+01:53.060 --> 02:01.060
+So now if we save this you see we get an error here so something is better the error we do get is that
+
+02:01.060 --> 02:06.080
+somehow we still access the wrong ID the wrong post ID we're sending.
+
+02:06.220 --> 02:12.610
+Well the reason for that simply is to add in the full post we are making it to the HTP request but there
+
+02:12.610 --> 02:14.840
+we still access disk prop's ID.
+
+02:14.840 --> 02:21.970
+This of course also has to be this prop's match parents ID and with data if we save everything and we
+
+02:21.970 --> 02:28.480
+reload the app now it successfully loads post number free or if we exchange this with for post number
+
+02:28.480 --> 02:29.070
+four.
+
+02:29.110 --> 02:32.130
+And of course also if we click on them here.
+
+02:32.530 --> 02:39.850
+So now we really have an application where we have a dynamic element because we are successfully passing
+
+02:39.850 --> 02:42.770
+route parameters and extracting them.
+
+02:42.790 --> 02:46.840
+Now there are still a couple of things which don't exactly work to say we want to work.
+
+02:46.870 --> 02:53.440
+For example if you click on new post we are loading the new posts form but we also load that single
+
+02:53.440 --> 02:54.580
+post.
+
+02:54.580 --> 02:57.560
+Now do you know why this happens.
+
+02:57.730 --> 03:01.360
+Let's take a closer look at this issue and how to fix it in the next lecture.
