@@ -1,0 +1,103 @@
+WEBVTT
+
+00:02.120 --> 00:05.370
+In the last lecture we learn how to conditionally redirect.
+
+00:05.480 --> 00:12.020
+And that is a nice way of redirecting now to be honest the way we redirect in the new post component
+
+00:12.410 --> 00:19.560
+is maybe not the way you're always going to do that in the end after submitting a post successfully.
+
+00:19.700 --> 00:26.090
+You just want to switch to page and for Dad you can of course also use that history Propp which you
+
+00:26.090 --> 00:35.240
+get on every component which is loaded inside a browser or router wrapped component and your post is
+
+00:35.250 --> 00:36.680
+in the end loaded for block.
+
+00:36.680 --> 00:43.280
+So therefore it is wrap by browser router in there we have access to that match location and history
+
+00:43.310 --> 00:45.070
+prob I showed you earlier.
+
+00:45.380 --> 00:51.260
+And that history prob has a couple of convenience methods we can use for replacing the current route
+
+00:51.350 --> 00:53.170
+or pushing a new route.
+
+00:53.540 --> 01:02.330
+So we can also change the page here without changing the state and therefore by never rendering that
+
+01:02.390 --> 01:09.740
+redirect component but instead by accessing disk prop's history and there the push method which allows
+
+01:09.740 --> 01:11.330
+us to portion you page.
+
+01:11.330 --> 01:18.130
+So here we could all go to slash posts and this will essentially lead to the same behavior as before
+
+01:18.710 --> 01:20.570
+we can go to new posts.
+
+01:20.750 --> 01:27.780
+We can enter a new post and once it is done we push a new page and we are redirected technically.
+
+01:27.890 --> 01:30.850
+Porsche pushes this page onto the stack.
+
+01:30.950 --> 01:37.670
+So if you click the backpack open we go back to the new post page where as redirect replaces current
+
+01:37.670 --> 01:38.290
+page.
+
+01:38.390 --> 01:42.700
+So if we then click the back button and you can of course try this out after you comment this.
+
+01:42.710 --> 01:48.330
+And again if you click the back button often redirecting and not by pushing.
+
+01:48.650 --> 01:54.830
+You can go back but you won't go back to the last page because redirect replaces the current page on
+
+01:54.830 --> 02:00.290
+the stack it doesn't push a new one though you can also replicate this behavior by not using Porsche
+
+02:00.620 --> 02:04.750
+but replace your on the history object if you use data.
+
+02:04.760 --> 02:08.350
+You go to new post if you now enter something here.
+
+02:08.510 --> 02:12.320
+We also leave the page but now press the back button.
+
+02:12.470 --> 02:19.940
+We're still on post because we were there before we visit new post because new post was replaced on
+
+02:19.940 --> 02:21.460
+a stack of pages.
+
+02:21.770 --> 02:27.650
+So replace basically does the same as redirecting and therefore you can use it as an alternative.
+
+02:27.680 --> 02:32.780
+I wanted to show you both methods though because maybe you have a use case where you want to render
+
+02:32.780 --> 02:35.070
+that redirect component conditionally.
+
+02:35.150 --> 02:37.720
+And then this is an easy way of doing it.
+
+02:37.910 --> 02:44.360
+If you don't want to use the approach of rendering the component replace or Porsche or there's a way
+
+02:44.450 --> 02:47.630
+of changing the page after some operation finished.

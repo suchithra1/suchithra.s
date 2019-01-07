@@ -1,0 +1,112 @@
+WEBVTT
+
+00:02.220 --> 00:09.840
+In the last lecture I talked about Garth's Now one to consider for for a case so that we're accessing
+
+00:09.840 --> 00:11.840
+a route which is unknown.
+
+00:11.910 --> 00:18.600
+We actually saw one way of handling it with redirect here because if we try to access new posts when
+
+00:18.600 --> 00:22.630
+unauthenticated this route is unknown because it's not rendered.
+
+00:22.670 --> 00:29.940
+And as you could see if we still click on new post we are essentially redirected back to post.
+
+00:29.960 --> 00:32.900
+This is one way of handling for four requests.
+
+00:32.900 --> 00:36.010
+You can simply redirect to another route.
+
+00:36.500 --> 00:40.430
+However you can also handle them in a different way.
+
+00:40.880 --> 00:47.750
+If you want to handle them differently I have to comment is out of the way this will catch any unknown
+
+00:47.750 --> 00:49.100
+requests.
+
+00:49.100 --> 00:57.410
+You can specify the route component here and if you leave out the path so you don't add path you can
+
+00:57.410 --> 01:06.080
+simply define a component or the render method you learn about to render something for any unknown route.
+
+01:06.080 --> 01:09.390
+So here I'm going to outpoured not found.
+
+01:09.440 --> 01:16.810
+Of course you could again just said it use component and render for 0 for error page component you created
+
+01:17.030 --> 01:21.900
+but this route will catch any routes which are not handled prior to it.
+
+01:22.070 --> 01:26.450
+So any unknown routes in our case and it will output this.
+
+01:26.660 --> 01:32.170
+Now it won't work together with redirecting from the route route because it is all to catch us all and
+
+01:32.170 --> 01:34.600
+what ever order you use one or the other wins.
+
+01:34.610 --> 01:39.920
+So the other one doesn't do anything for any other use cases where you don't redirect from the route
+
+01:39.920 --> 01:40.660
+route though.
+
+01:40.700 --> 01:42.270
+You can use them together.
+
+01:42.650 --> 01:50.390
+But here this is a nice catch all route which should always come last and show an appropriate page or
+
+01:50.390 --> 01:53.590
+render some dummy content for unknown routes.
+
+01:53.630 --> 01:59.420
+Let me show this to you if we now click on new post which is unknown because we're not rendering that
+
+01:59.420 --> 02:02.780
+route component due to us not being authenticated.
+
+02:02.900 --> 02:07.110
+We see not found the same for the route you are alibied away.
+
+02:08.470 --> 02:13.180
+There we all the see not found because it's not defined right now.
+
+02:13.180 --> 02:15.470
+Posts still works though.
+
+02:16.000 --> 02:18.190
+So this is a catch all route.
+
+02:18.200 --> 02:24.930
+Another important concept especially for it for 4 cases to catch any unknown routes.
+
+02:24.970 --> 02:31.930
+Now as I said it won't work together with redirect if you redirect from slash if you redirect from any
+
+02:31.930 --> 02:33.560
+error page and slash.
+
+02:33.580 --> 02:34.640
+It'll work though.
+
+02:34.690 --> 02:40.420
+The reason they don't work together is that hear from is treated as a prefix and therefore does catch
+
+02:40.420 --> 02:47.200
+us all routes asked us this and therefore no matter how you order them it won't work together.
+
+02:47.200 --> 02:53.920
+I still wanted to show you both because you rarely have the case that two routes collide here and then
+
+02:53.920 --> 02:59.940
+you have a powerful way of handling four or four era cases with a route without a path.

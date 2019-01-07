@@ -1,0 +1,91 @@
+WEBVTT
+
+00:02.210 --> 00:08.890
+So enough about route parameters and nested routes Let's talk about redirecting the user.
+
+00:08.900 --> 00:11.190
+Sometimes you want to redirect to user.
+
+00:11.240 --> 00:18.350
+For example let's say that you also want to lead the user to slash posts.
+
+00:18.350 --> 00:25.280
+If you visit just slash of course you can duplicate that route and also handle this slash case here.
+
+00:25.430 --> 00:29.780
+In this case you could render a component posts.
+
+00:29.840 --> 00:36.640
+Now if you save this and you reload the page you'll see that you load the post component.
+
+00:36.650 --> 00:44.480
+Even if you go onto shust slash without slash posts and if you then click on a post the link still leads
+
+00:44.480 --> 00:46.900
+to slash posts slash ID.
+
+00:46.940 --> 00:49.340
+So now you're back to the old world.
+
+00:49.340 --> 00:51.590
+This of course works and there's nothing wrong with it.
+
+00:51.620 --> 00:56.930
+You can definitely have multiple routes with different paths which render the same content.
+
+00:57.020 --> 00:59.090
+That's absolutely fine.
+
+00:59.090 --> 01:03.950
+I'm still going to comment this out because I want to show you a different solution.
+
+01:03.950 --> 01:12.470
+You can also use a special component provided by re-act router Dohm the redirect component.
+
+01:12.670 --> 01:19.570
+The redirect component as it is a component is simply used in your GSX code there.
+
+01:19.610 --> 01:27.860
+You can add it to your switch statement and then you specify a from properties so from which route you
+
+01:27.860 --> 01:36.960
+want to navigate to which for example from Slash to slash posts and then it's a self-closing component.
+
+01:37.310 --> 01:44.300
+If you use it outside of the switch statement from can't be specified then you can just always redirect
+
+01:44.300 --> 01:49.630
+to switch slash posts and not respect the path you were navigating to.
+
+01:49.640 --> 01:54.770
+I'll come back to conditional redirects outside of switch in the next lecture though.
+
+01:54.980 --> 02:00.670
+So now we have that redirect statement in the switch statement and it's just like another route.
+
+02:00.680 --> 02:08.060
+The only difference is it doesn't render content it simply just changes to you or Elea so that we don't
+
+02:08.060 --> 02:11.380
+reach another route for which we render content.
+
+02:11.750 --> 02:19.520
+If you save all of that and we now load our route your Allegan you'll see that you are changes to slash
+
+02:19.520 --> 02:22.940
+posts because we are redirected.
+
+02:23.000 --> 02:31.130
+This is how we can redirect to ensure that the user is removed or is well navigated to the route you
+
+02:31.130 --> 02:32.580
+want to have him on.
+
+02:33.020 --> 02:34.310
+That's redirection.
+
+02:34.400 --> 02:40.210
+However I just mentioned that there also is some conditional redirection we can use.
+
+02:40.220 --> 02:43.590
+Let me show you what I mean with that in the next lecture.

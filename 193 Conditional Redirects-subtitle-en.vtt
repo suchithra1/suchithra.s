@@ -1,0 +1,97 @@
+WEBVTT
+
+00:02.060 --> 00:04.790
+In the last lecture we learned about redirect.
+
+00:04.790 --> 00:08.130
+Now let me show you a number usage of redirect.
+
+00:08.130 --> 00:13.790
+Actually in the new post component dare we probably want to redirect.
+
+00:13.800 --> 00:21.600
+Once we clicked the submit button your and once we made our HDP request we often don't want to change
+
+00:21.600 --> 00:26.490
+the page and not remain on that page using the redirect component.
+
+00:26.490 --> 00:27.940
+We can easily do that.
+
+00:28.230 --> 00:36.470
+We can import read direct from re-act router Dom just like before.
+
+00:36.570 --> 00:43.320
+Now if we place redirect in GSX here outside of a switch statement we always have to redirect with the
+
+00:43.320 --> 00:46.970
+two property though we can't use from.
+
+00:46.980 --> 00:50.240
+So here we could redirect to slash posts.
+
+00:50.250 --> 00:57.690
+For example the issue with that of course is now if I save to code like this if we click onto new post
+
+00:58.290 --> 01:04.190
+we are immediately redirected back to posts because the redirect component is rendered and when whenever
+
+01:04.190 --> 01:06.600
+this is rendered it redirects us.
+
+01:06.600 --> 01:09.480
+So we have no chance of entering content.
+
+01:09.600 --> 01:12.500
+Therefore we need to render this conditionally.
+
+01:12.750 --> 01:20.130
+And since it's a normal component as all of this re-act router is we just have to render it conditionally
+
+01:20.400 --> 01:23.400
+as we render any other content conditionally.
+
+01:23.400 --> 01:25.500
+So we could add a new state here.
+
+01:25.580 --> 01:31.590
+Maybe submitted which initially is false which we then set to true.
+
+01:31.710 --> 01:40.210
+Once we made the HTP request so there alcohol said state and said submitted to true.
+
+01:40.220 --> 01:45.180
+Now I can use submitted to determine whether or not to render redirect.
+
+01:45.450 --> 01:51.060
+So in the render method I could have a redirect variable which is null by default.
+
+01:51.440 --> 01:59.390
+But then I'd check if this state submitted is true and if it is then redirect is equal to that redirect
+
+01:59.390 --> 02:06.290
+component and then I return J as X which includes that redirect variable which is even now or do you
+
+02:06.290 --> 02:07.850
+redirect component.
+
+02:07.850 --> 02:16.640
+If we save dat code we can successfully go to new post but as soon as I do submit a post and it is hitting
+
+02:16.640 --> 02:21.840
+the server I am redirected with a conditional redirect.
+
+02:21.860 --> 02:26.310
+Now this is our way of using redirect outside of us which statement.
+
+02:26.390 --> 02:30.460
+Not with Thrawn but instead deconditioned just is.
+
+02:30.470 --> 02:37.700
+Did something happen so that I want to render this component and then we only render it when we want
+
+02:37.700 --> 02:38.750
+to redirect.
+
+02:38.810 --> 02:45.440
+Might feel strange at first that you render a component to leave the page but this is just how it works.

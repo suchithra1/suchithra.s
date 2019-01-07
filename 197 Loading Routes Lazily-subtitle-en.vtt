@@ -1,0 +1,412 @@
+WEBVTT
+
+00:02.090 --> 00:08.240
+We're nearing the end there's one more advanced concept though not difficult to implement but one advanced
+
+00:08.240 --> 00:10.580
+concept I want to cover.
+
+00:10.970 --> 00:15.060
+Let's go back to our application and to really show what I mean.
+
+00:15.230 --> 00:20.550
+Let me set off to true so that we can go to new post again.
+
+00:20.690 --> 00:23.100
+Now you've seen you post can be loaded.
+
+00:23.120 --> 00:27.910
+And let's go to the Network tab and the developer tools there.
+
+00:27.920 --> 00:32.870
+If we have a look at all the requests once we load the page.
+
+00:32.870 --> 00:38.310
+So we're going to posts you see that we're loading this bundle J as follows.
+
+00:38.330 --> 00:40.560
+This contains all our source code.
+
+00:40.640 --> 00:43.940
+And here is relatively big because we're in development mode.
+
+00:43.940 --> 00:47.400
+It will be much smaller ones who are shipping to us for production.
+
+00:47.450 --> 00:53.430
+It's optimized power build workflow automatically then we'll talk about this later when we deployed.
+
+00:53.430 --> 01:02.210
+Yep still loading the entire bundle with all the code of our application up front can be bad if we have
+
+01:02.210 --> 01:10.190
+a big application with distinct features and distinct areas and tiap where a user might never wizards
+
+01:10.340 --> 01:14.180
+a certain area like an hour app we have the posts.
+
+01:14.270 --> 01:19.840
+If the user never wins it's new post loading the code responsible for that component.
+
+01:20.000 --> 01:23.790
+Doesn't make a lot of sense if we have a look at our routes.
+
+01:23.840 --> 01:28.080
+I'm talking about the new post component here.
+
+01:28.130 --> 01:33.120
+This should only be loaded if the user actually navigates to slash new posts.
+
+01:33.350 --> 01:38.340
+Otherwise new posts and all potential children are never needed.
+
+01:38.480 --> 01:46.310
+So why should we download de-code up front would be better to not download it and hence have a smaller
+
+01:46.460 --> 01:53.510
+upfront chunk to download and instead download de-code responsible for this component and its children
+
+01:53.840 --> 01:55.350
+when needed.
+
+01:55.370 --> 02:01.880
+Now for a tiny application as ours here this is not super useful because making that extra request for
+
+02:01.880 --> 02:03.500
+one kilobyte or something.
+
+02:03.500 --> 02:06.310
+What this component is worth when it comes to its size.
+
+02:06.560 --> 02:12.730
+That's not super useful but it is useful to know this technique for real for bigger applications you
+
+02:12.730 --> 02:17.550
+are building where does might matter where you are downloading quite a bit.
+
+02:17.600 --> 02:25.430
+The technique of downloading only what you need is known as code splitting or lazy loading.
+
+02:25.880 --> 02:33.190
+And there you would essentially want to make sure that in your component you're only loading the component
+
+02:33.440 --> 02:34.730
+once you need it.
+
+02:34.880 --> 02:41.750
+How does this work to implement code splitting or lazy loading with create re-act app and re-act route
+
+02:41.750 --> 02:42.720
+or forth.
+
+02:43.190 --> 02:44.500
+And that's important.
+
+02:44.510 --> 02:49.250
+This technique will work for re-act Robert Ford and for create react at.
+
+02:49.250 --> 02:54.400
+Because code splitting depends heavily on the WePay configuration you are using.
+
+02:54.440 --> 02:56.870
+It is an advanced concept after all.
+
+02:56.870 --> 03:03.380
+So the way I'm showing you is the way it works with the config from create re-act app which is a pretty
+
+03:03.380 --> 03:11.030
+modern and good configuration though so chances are it also works in any decently set up WePay project
+
+03:11.360 --> 03:13.920
+or as I said at the beginning of this course.
+
+03:13.970 --> 03:17.390
+I strongly recommend using create re-act them anyways.
+
+03:17.780 --> 03:23.900
+So for this to work in this setup we need a higher order component.
+
+03:23.900 --> 03:30.710
+So let's create a new folder Agios see and then they all add a new component which will name a sync
+
+03:30.980 --> 03:33.750
+component async component.
+
+03:33.760 --> 03:34.520
+J.S..
+
+03:34.640 --> 03:41.390
+That's the javascript file name because this component or this code here should help me load a component
+
+03:41.480 --> 03:45.320
+asynchronously i.e. only when it's needed.
+
+03:45.320 --> 03:51.790
+Now here in this async component file I will create a new consonantal function the end which will name
+
+03:51.840 --> 03:54.290
+a sync component.
+
+03:54.580 --> 04:03.220
+There I expect to get my import component argument which will in the end be a function and I'll come
+
+04:03.220 --> 04:10.590
+back to how to use this async component function and what to pass here exactly over the next seconds.
+
+04:10.660 --> 04:18.200
+So there I now need to return something and I will return a class here which extends component.
+
+04:18.400 --> 04:21.020
+So a normal re-act component.
+
+04:21.100 --> 04:30.490
+Therefore I need to import react because it will also use some GSX and component from re-act now in
+
+04:30.490 --> 04:32.960
+the body of that class here.
+
+04:33.180 --> 04:35.550
+I now of course also need a render method.
+
+04:35.890 --> 04:43.870
+But before we come to this I'll set up a state and there are one to have a state which with a component
+
+04:43.870 --> 04:51.490
+property which is now does state here does component property will be set to the dynamically loaded
+
+04:51.490 --> 04:56.230
+component and the code for this will get implemented in component.
+
+04:56.350 --> 04:57.610
+Date MT.
+
+04:57.820 --> 05:04.790
+So once this component was mounted here this wrapping higher order component.
+
+05:05.260 --> 05:10.950
+No as I said import component should be a function reference in the end.
+
+05:11.350 --> 05:20.140
+So what I want to do is I want to execute import component here and this actually will be a function
+
+05:20.560 --> 05:23.710
+which will return as a promise.
+
+05:23.710 --> 05:30.220
+I notice because I know who I am how I'm going to use this async component in the function of this.
+
+05:30.250 --> 05:37.990
+Then block will get an argument CMPD maybe the name is up to you which will have one property default
+
+05:38.530 --> 05:42.010
+which will be the component we loaded dynamically.
+
+05:42.340 --> 05:52.900
+So in this then lock I can call this set state and set my component states to CMPD default this is the
+
+05:52.900 --> 05:56.590
+case due to be set up we're using here with create react.
+
+05:57.100 --> 06:04.090
+It is all of course heavily reliant on the type of function import component will refer to and which
+
+06:04.090 --> 06:06.180
+I'll show you in the next minutes.
+
+06:06.190 --> 06:08.160
+As I said no worries.
+
+06:08.260 --> 06:15.580
+So now at some point of time we will have loaded the actual component we want to use and it will be
+
+06:15.580 --> 06:23.080
+stored in our state hence the render method we want to render it all treat a constant name it's C and
+
+06:23.080 --> 06:26.920
+this should be this state component.
+
+06:27.140 --> 06:34.850
+Then I want to return GSX and this render method and I'll check if C is set in a turn every expression.
+
+06:34.970 --> 06:40.690
+If it is set then I'll render C as a normal re-act component.
+
+06:40.790 --> 06:49.910
+I'll use this this prop's spreads trickier to pass any problem we might need to this component and also
+
+06:49.910 --> 06:53.860
+set it to know if c is not set yet.
+
+06:53.870 --> 07:01.550
+So if the component hasn't been resolved yet of course I now also need to export this async component
+
+07:01.550 --> 07:02.570
+function here.
+
+07:03.500 --> 07:10.290
+Now we can save this fall and now we can go back to the block component where we do import new posts.
+
+07:10.310 --> 07:13.660
+I want to load this dynamically now.
+
+07:13.670 --> 07:21.650
+Now the thing is when ever you are importing something like this here with import something from somewhere
+
+07:22.280 --> 07:29.390
+you basically Inforum Westpac DB built tool which gets you was behind the scenes about this dependency
+
+07:29.690 --> 07:34.230
+and it will include it in the global bundle does its job.
+
+07:34.700 --> 07:39.090
+Now for a lazy loading this is exactly the opposite of what we want to do.
+
+07:39.110 --> 07:41.780
+We don't want to include it in the bundle.
+
+07:41.780 --> 07:44.100
+We want to load it when needed.
+
+07:44.110 --> 07:51.140
+Still wet pack needs to be able to dynamically prepare some extra pandal for this potentially loaded
+
+07:51.140 --> 07:52.050
+code.
+
+07:52.520 --> 07:57.920
+So what we have to do is we have to comment out this old way of importing and instead will create a
+
+07:57.920 --> 08:03.390
+new constant Witchell name async new host the name of course is up to you.
+
+08:03.440 --> 08:10.040
+This will now use this new async component function we created in O C folder.
+
+08:10.310 --> 08:15.340
+So all import sync component from.
+
+08:15.350 --> 08:20.980
+And now all move up to the HAMC folder and imported from that async component file.
+
+08:22.080 --> 08:28.450
+And I'll then use async components you're and execute it.
+
+08:28.480 --> 08:36.450
+Now async component this function requires an argument and I told you that this argument in that function
+
+08:36.450 --> 08:42.510
+we named it import component that this argument should be a function which is why we executed like one
+
+08:42.510 --> 08:44.430
+hearing component at Mt..
+
+08:45.030 --> 08:52.800
+So we have to pass some function to async component and this should be an anonymous function.
+
+08:52.800 --> 08:56.040
+I'm using as 6 Erol function here.
+
+08:56.340 --> 09:00.020
+The interesting part is what we return in this function.
+
+09:00.330 --> 09:05.810
+And keep in mind if you write it in one line whatever comes right of the error is immediately returned.
+
+09:05.970 --> 09:10.710
+If you use curly braces you need to return something with the return keyword.
+
+09:10.710 --> 09:13.530
+So I'm going to take a longer approach.
+
+09:13.530 --> 09:17.750
+They're all used to import keyword as a function.
+
+09:17.780 --> 09:19.900
+This is a special syntax.
+
+09:20.030 --> 09:29.790
+The dynamic import syntax which means whatever comes between the parentheses here is only important
+
+09:29.910 --> 09:38.490
+when that function here is executed and that function here will only be executed once we render async.
+
+09:38.520 --> 09:40.720
+You post to the screen.
+
+09:41.220 --> 09:49.650
+So here I didn't take my original lbf to new post and now I'm only importing this when this constant
+
+09:49.650 --> 09:51.420
+gets used somewhere.
+
+09:51.420 --> 09:53.700
+Now of course I want to use it somewhere.
+
+09:53.940 --> 10:01.920
+I want to use it down at the bottom of my block container at the new post route instead of using new
+
+10:01.920 --> 10:03.250
+post as a component.
+
+10:03.390 --> 10:06.800
+I want to use async new post as a component.
+
+10:06.810 --> 10:13.660
+Eventually this will be a component because keep in mind async component returns a component.
+
+10:13.680 --> 10:15.270
+We have a higher order component.
+
+10:15.270 --> 10:17.280
+It returns a class with a render method.
+
+10:17.400 --> 10:19.620
+So this is a valid component.
+
+10:19.620 --> 10:25.830
+This component will eventually render some dynamically loaded component and we decide which component
+
+10:25.960 --> 10:30.600
+should be with the function we passed to async component.
+
+10:30.600 --> 10:37.530
+Now if we save this and we go back to our application watched up hard on the bottom right.
+
+10:37.540 --> 10:44.710
+When I click on new post once I click there you'll see that as one chunk as follows.
+
+10:44.710 --> 10:47.400
+Loaded which is very small.
+
+10:47.400 --> 10:55.780
+This is the extra web page created because whilst bundling our code it detected this dynamic syntax
+
+10:55.780 --> 11:01.450
+here which it knows due to our set up we're using to build workflow setup and therefore it created the
+
+11:01.450 --> 11:07.900
+extra bandwidth a new post component and all potential child components that were exclusive to that
+
+11:07.900 --> 11:09.880
+component if any.
+
+11:09.880 --> 11:12.550
+But it didn't add it to the main bundle.
+
+11:12.550 --> 11:15.600
+Instead it's prepared to load it when needed.
+
+11:15.820 --> 11:24.760
+When we actually include async new post which we only do when navigating to slash new post daises how
+
+11:24.760 --> 11:27.400
+you load components asynchronously.
+
+11:27.580 --> 11:35.470
+And as I mentioned this is extremely useful in bigger apps where there are bigger chunks of code a whole
+
+11:35.470 --> 11:42.190
+feature area in your application for example which might not even be visited by the user so you can
+
+11:42.190 --> 11:46.990
+save that code up front to only load it when needed.

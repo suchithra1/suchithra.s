@@ -1,0 +1,121 @@
+WEBVTT
+
+00:02.130 --> 00:06.270
+Knouted we covered all the redirection techniques you can use.
+
+00:06.480 --> 00:12.500
+Let's talk about something which is kind of related with redirecting navigation guards.
+
+00:13.080 --> 00:20.400
+Guard is something you might know from other frameworks and the routers typically Garda's for example
+
+00:20.400 --> 00:25.030
+used when you don't know where every user is authenticated or not.
+
+00:25.170 --> 00:32.790
+And there are some parts in your application some routes you only want to allow the user to visit if
+
+00:32.790 --> 00:42.360
+he is offending hated wifi re-act router you might need to have to think about discards in a new way.
+
+00:42.360 --> 00:49.080
+For example in the block components you're in a blocked container where we set up the routing for a
+
+00:49.080 --> 00:51.300
+new post and so on.
+
+00:51.370 --> 00:58.020
+The sense in the end all we're doing here is just rendering some components the route component the
+
+00:58.020 --> 01:04.170
+switch component if we want to make sure the new posts can't be reached.
+
+01:04.170 --> 01:08.340
+We can't simply render this conditionally.
+
+01:08.340 --> 01:16.670
+So let's say we have some off state here I add state and that state off is false initially.
+
+01:18.050 --> 01:25.430
+Now what I can of course do is I can go down into my renderers statement and even now use a variable
+
+01:25.430 --> 01:31.530
+which returns NULL or dead route or to use the quick and dirty inline solution.
+
+01:31.700 --> 01:39.350
+I can check if this state off is true in which case I want to render that route otherwise I return NULL.
+
+01:39.380 --> 01:45.890
+Now there is no way the user can access new post if he's not offene catered So if the off state is false
+
+01:46.070 --> 01:50.340
+because this route is basically unknown then because it's not rendered.
+
+01:50.660 --> 01:56.750
+So now if I save this and keep in mind the default state now is that of is false.
+
+01:56.750 --> 02:04.350
+If this is the case and I click on new post I redirect it back to the starting page because what essentially
+
+02:04.350 --> 02:08.250
+is happening here is that redirect kicks in here.
+
+02:08.370 --> 02:15.630
+As I said from your basically chust is used as a prefix and therefore it catches everything which isn't
+
+02:15.660 --> 02:19.740
+caught before and redirects me to posts.
+
+02:19.740 --> 02:21.590
+This is a guard.
+
+02:21.630 --> 02:27.480
+It's totally different that we use guards in Bangalore or any any other framework.
+
+02:27.570 --> 02:32.610
+But in the end this is how you can conveniently control wherever the user is allowed to access this
+
+02:32.610 --> 02:34.440
+page or not.
+
+02:34.440 --> 02:42.230
+Of course an alternative to this would be to go to the guarded page and inside component it mount here.
+
+02:42.450 --> 02:49.080
+You could also check if the user is authentic hated and it of course depends on the application from
+
+02:49.140 --> 02:51.200
+where you are getting that information.
+
+02:51.480 --> 03:01.060
+But then you could also check that here and simply use dis prop's history replace posts.
+
+03:01.260 --> 03:04.940
+If user is vindicated for example like that.
+
+03:05.190 --> 03:11.460
+So this also is an alternative using component amounts to essentially redirect to use or if it's not
+
+03:11.490 --> 03:12.780
+true.
+
+03:12.780 --> 03:19.680
+This is how you work with the re-act router This is how I once used to think about it you control a
+
+03:19.680 --> 03:20.620
+lot of it.
+
+03:20.740 --> 03:23.080
+By the way you render its components.
+
+03:23.160 --> 03:27.240
+And if that route isn't rendered you can't reach that route.
+
+03:27.240 --> 03:32.790
+The definition isn't rendered so the component connected to it can't be loaded.
+
+03:33.240 --> 03:38.310
+This is how you have to think about it and how you have to structure your application.
+
+03:38.460 --> 03:44.070
+Wrap your head around this this is really crucial to get right and crucial to understand.

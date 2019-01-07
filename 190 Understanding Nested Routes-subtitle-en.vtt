@@ -1,0 +1,253 @@
+WEBVTT
+
+00:02.190 --> 00:09.600
+Thus far in our application we loaded the single post route as part of our blog page so that when we
+
+00:09.600 --> 00:15.310
+click on a post we exchanged the Post's page for a single post page.
+
+00:15.330 --> 00:18.330
+Now we can absolutely do that of course.
+
+00:18.330 --> 00:25.350
+However sometimes you also have a set up where you want to create a nested route so where you want to
+
+00:25.380 --> 00:33.360
+load a certain component or where you want to render certain content inside of another component which
+
+00:33.360 --> 00:35.540
+is also loaded via routing.
+
+00:35.790 --> 00:41.850
+So right now we have only one level where we do routing here in the block container we load different
+
+00:41.850 --> 00:45.810
+components for different routes and that's absolutely fine.
+
+00:45.810 --> 00:54.090
+Now lets say we want to load a specific host not inside the block component but inside the host component
+
+00:54.330 --> 00:56.730
+right beneath our posts here.
+
+00:57.090 --> 01:06.060
+So for that I will wrap does it at Dith and add my route in there my route component in there sometime
+
+01:06.180 --> 01:09.390
+in the post component added there.
+
+01:09.390 --> 01:16.780
+Therefore of course I also need to add an import at the top where I import route from re-act router
+
+01:16.890 --> 01:25.350
+on all of that in the post component and I now get an error of course because the full post component
+
+01:25.380 --> 01:28.740
+I'm referring to here is also not present in that file.
+
+01:28.770 --> 01:33.900
+So I need to add an import to that to import full post from.
+
+01:33.900 --> 01:39.570
+And now let's go to that full post folder and import it from the full post file.
+
+01:39.570 --> 01:47.890
+And now I can render a single post beneath my list of posts because I use route in a different component
+
+01:48.300 --> 01:51.050
+and this is in general something you can of course do.
+
+01:51.120 --> 01:56.010
+You can use the route component where ever you want in your application.
+
+01:56.250 --> 02:04.110
+As long as the page the component where you are using it is trapped by that browser router and that
+
+02:04.110 --> 02:08.670
+of course is the case because we're wrapping the block component with it.
+
+02:08.760 --> 02:14.490
+And since the post component is just a child component of the block component loaded through a route
+
+02:14.820 --> 02:16.680
+this works.
+
+02:16.800 --> 02:22.000
+Now the switch statement here in the block component of course is a bit redundant.
+
+02:22.010 --> 02:29.280
+Now I only have one component in there so maybe I move my outer route in there though technically this
+
+02:29.280 --> 02:34.400
+is not required because these two routes will never match for the same path.
+
+02:34.470 --> 02:40.710
+So we could remove the switch statement we'll leave it here simply as a reference so that you can still
+
+02:40.710 --> 02:43.700
+compare your code to it.
+
+02:43.830 --> 02:49.310
+What we can also do in the block component now is we can get rid of the full post import which we're
+
+02:49.310 --> 02:50.790
+not using here anymore.
+
+02:51.110 --> 02:58.850
+Now if you save all the files and you go to your post component and you click on a single post you will
+
+02:58.850 --> 03:01.290
+see that you are updates.
+
+03:01.520 --> 03:05.600
+But the post isn't rendered and the posts are gone too.
+
+03:05.630 --> 03:08.940
+The reason for this is that we now create a nested route.
+
+03:09.170 --> 03:16.940
+We have the route route let's say here in the block container does the top most level where we react
+
+03:16.970 --> 03:22.790
+to any route changes and then the post component which we load from a router.
+
+03:22.790 --> 03:24.200
+Keep that in mind we loaded.
+
+03:24.200 --> 03:27.760
+We implemented through the router in this component here.
+
+03:27.980 --> 03:29.800
+We now again use route.
+
+03:29.840 --> 03:33.290
+The issue is for Slash some ID.
+
+03:33.470 --> 03:40.640
+We're not going to reach that route because we have the exact matching for just slash slash ID doesn't
+
+03:40.640 --> 03:41.870
+match that route.
+
+03:41.900 --> 03:47.810
+So the Post component never gets rendered which is too bad because it would be in that component that
+
+03:47.810 --> 03:53.840
+we want to render our full post component for a given ID.
+
+03:53.870 --> 04:03.500
+Now to fix this we can of course remove exect then this will match slash and slash one slash two and
+
+04:03.500 --> 04:04.520
+so on.
+
+04:04.520 --> 04:11.120
+We should then changed your order though so that slash doesn't also consume the new posts first and
+
+04:11.120 --> 04:17.730
+now which also makes sense again because now this route would also be rendered for a slash new post
+
+04:18.020 --> 04:24.980
+but since slash new post is found first this will be rendered first and the router will then stop thereafter.
+
+04:24.980 --> 04:31.290
+So now with this set up you will see that indeed we can load a single route beneath our routes.
+
+04:31.310 --> 04:38.120
+So if I go to just slash we see just the posts but if I click on a post we load that beneath the posts.
+
+04:38.540 --> 04:41.420
+This already is a nested route.
+
+04:41.420 --> 04:49.290
+We face an issue though lets say we have Slash posts here and not slash nothing.
+
+04:49.670 --> 04:57.140
+And of course this means that in the post component where we navigate if we were to use a link we would
+
+04:57.140 --> 04:59.660
+have to update this to slash posts.
+
+04:59.810 --> 05:06.200
+The same here for this programmatic routing and for the one we're actually using.
+
+05:06.350 --> 05:14.000
+So that now we're navigating to slash posts ID and now if this in place you will see and I should also
+
+05:14.000 --> 05:17.970
+update the navigational link here to slash posts.
+
+05:18.820 --> 05:26.020
+So now you will see that if I click on posts here we load the posts and I can click on a post of course.
+
+05:26.020 --> 05:34.930
+Now you see all of that fails though we get an error because our nested route here in the post is component.
+
+05:34.930 --> 05:45.340
+This route parses slash ID and this is not appended to the path of the route which was responsible for
+
+05:45.340 --> 05:47.230
+loading the post component.
+
+05:47.380 --> 05:50.460
+So this is not automatically resolved.
+
+05:50.470 --> 05:52.030
+Two posts ID.
+
+05:52.030 --> 05:54.490
+This is not happening.
+
+05:54.490 --> 06:03.670
+Instead this still is slash route slash ID so we would have to update this to slash posts ID to to have
+
+06:03.670 --> 06:10.100
+working nested routing again with our new you are l which is slash posts slash.
+
+06:10.110 --> 06:14.780
+ID is of course very cumbersome to do so.
+
+06:15.310 --> 06:19.000
+So instead of using post like this.
+
+06:19.000 --> 06:28.990
+A better way is to get the current path dynamically so that this really is a dynamic a flexible nested
+
+06:29.080 --> 06:35.760
+route and for that pauvres should be set to something dynamic here not a hardcoded string.
+
+06:36.160 --> 06:45.700
+And then there we probably should use this prop's match mismatch object and in there there is a u r
+
+06:45.710 --> 06:49.550
+l property which is basically D or l.
+
+06:49.570 --> 06:50.980
+We loaded thus far.
+
+06:51.010 --> 06:59.630
+So d u r l which was responsible for loading this posts component and that of course is except to depart.
+
+06:59.740 --> 07:08.610
+We need to prepend to our flexible part there after so we can now merge this inside of the Cauley braces
+
+07:08.670 --> 07:11.130
+though with our IDs.
+
+07:11.130 --> 07:18.350
+So with Slash colon ID and remove the part offer to call the braces.
+
+07:18.350 --> 07:27.470
+Now this will match posts ID and if we ever were to load this component differently let's say on slash
+
+07:27.530 --> 07:33.950
+all posts then this would automatically resolve to all posts here because it is dynamic.
+
+07:34.340 --> 07:41.410
+So now with that if we save this we get the same behavior as before but this just proves that it's working.
+
+07:41.430 --> 07:49.760
+We're dynamically adding slash posts here for our nested route and this is how you create truly nested
+
+07:49.760 --> 07:53.170
+routes in your re-act application with re-act rowdier.
