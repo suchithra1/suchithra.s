@@ -1,14 +1,36 @@
 .App {
   /* position: relative; */
-  background-color:lavenderblush;
+  background-color:lightblue;
   width: 1920px;
   height: 945px;
 }  
 
+.PersonList ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* width: 100%;
+  text-align: center: */
+}
+
+.PersonList a:hover, .PersonList a:active, .PersonList a:active {
+  color:indigo
+}
+
+.PersonList li {
+  display: inline-block;
+  margin: 20px;
+}
+
+.PersonList a{
+  text-decoration: none;
+  color: black;
+}
+
 .LeftPanel {
   float: left;
   /* position: absolute; */
-  background-color:cornsilk; 
+  background-color:grey; 
   width: 120px;
   height: 945px;
 }
@@ -41,9 +63,9 @@ th {
 } 
 
 
-.PersonPanel {
+.PersonList {
   position: absolute;
-  background-color:blanchedalmond;
+  background-color:lightblue;
   float:right;
   margin-left:120px;
   width: 1800px;

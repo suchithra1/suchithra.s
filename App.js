@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import {BrowserRouter} from 'react-router-dom';
 import './App.css';
 import SidePanel from './SidePanel.js';
-import PersonPanel from './PersonPanel.js';
+import PersonList from './PersonList.js';
 import PropTypes from 'prop-types';
-import Axios from 'axios';
 
 class App extends Component {
   
@@ -18,17 +18,18 @@ class App extends Component {
   }
 
   render() {
-    let personPanel = null;
+    let personList = null;
     if(this.state.entityClicked === 'person') {
-      personPanel = <PersonPanel/>
+      personList = <PersonList/>
     }
 
     return (
-      <div className='App'>
-        <SidePanel click={this.personClicked}/>
-        {personPanel}
-        
-      </div>
+      <BrowserRouter>
+        <div className='App'>
+          <SidePanel click={this.personClicked}/>
+          {personList}
+        </div>
+      </BrowserRouter>
     );
   }
 }
