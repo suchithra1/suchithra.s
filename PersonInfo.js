@@ -2,70 +2,36 @@ import React, {Component} from 'react';
 import './App.css';
 import Form from './Form.js';
 
-class PersonInfo extends Component {
+const personInfo = (props) => {
     
-    constructor(props) {
-        super(props);
+    // componentDidMount() {
+    //     let personInfo = null;
+    //     if(this.props.match.params.id) {
+    //       if(!this.props.isRowSelected) {
+    //           console.log(this.props.match.params.index);
+    //             axios.get('http://localhost:8080/ws/person.html?id=%d&includeAddress=false', this.props.id)
+    //             .then(response=> console.log(response))
+    //       }  
+    //     }
+    // }    
 
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmitForm = this.handleSubmitForm.bind(this);
-        this.handleResetForm = this.handleResetForm.bind(this);
-        this.handlePopulateForm = this.handlePopulateForm.bind(this);
-    }
+    // componentDidUpdate()
 
-    handleResetForm = () => {
-        console.log('reset');
-        this.setState({
-            persons: {}
-            // id: '',
-            // firstName: '',
-            // lastName: '',
-            // email: '',
-            // birthDate: ''
-        })
-    }
-
-    handleInputChange(event) {
-        console.log(event.target.value);
-        this.setState({ [event.target.name]: event.target.value });
-    }
-
-    handlePopulateForm = () => {
-        console.log('form populate');
-        this.state.persons.map((person) => <Form key={person} />)
-        
-    }
-
-    handleSubmitForm(person) { 
-        console.log('submiting');
-        let id = this.state.id; 
-        let firstName = this.state.firstName;
-        let lastName = this.state.lastName;
-        let email = this.state.email;
-        let birthDate = this.state.birthDate;
-    
-        let elements = this.state.persons.slice();
-        elements.push({id: id, firstName: firstName, lastName: lastName, email: email, birthDate: birthDate});
-        this.setState({ persons: elements, id: '', firstName: '', lastName: '', email: '', birthDate: '', isUpdate: true });
-        }
-    
-    render() {
-        return(
+    return (
             <div className="PersonInfo">
-            { <Form 
-              id = { this.props.personSelected.id }
-              firstName = { this.props.personSelected.firstName }
-              lastName = { this.props.personSelected.lastName}
-              email = { this.props.personSelected.email}
-              birthDate = {this.props.personSelected.birthDate}
-              formSubmit = { this.handleSubmitForm } 
-              inputChange= { this.handleInputChange }
-            //   formReset = {props.resetClick}
-            //   formPopulate = {props.rowClicked}
-          />}                     
+            { <Form  
+              id = { props.personSelected.id }
+              firstName = {props.personSelected.firstName }
+              lastName = { props.personSelected.lastName}
+              email = { props.personSelected.email}
+              birthDate = {props.personSelected.birthDate}
+              formSubmit = {props.handleSubmitForm } 
+              inputChange = {props.handleInputChange }
+              formReset = {props.resetClick}
+              add = {props.addClick}
+            />}                     
       </div>
       );
    }
-}
 
-export default PersonInfo;
+export default personInfo;

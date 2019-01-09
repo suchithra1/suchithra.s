@@ -8,34 +8,35 @@ const form = (props) => {
                 <label id="labelId">Id</label>
                 <input id="inputId" className="FormFields" 
                        type="number" placeholder="Enter id" name="id" value={props.id}
-                       onBlur={props.inputChange} />
+                       onChange={props.inputChange} />
             </div>
             <div>
                 <label>FirstName</label>
                 <input id="inputFname" className="FormFields"
                     type="text" placeholder="Enter FirstName" name="firstName" value={props.firstName}
-                    onBlur={props.inputChange} />
+                    onChange={props.inputChange} />
             </div>
             <div>
                 <label>LastName</label>
                 <input id="inputLname" className="FormFields"
                     type="text" placeholder="Enter LastName"  name="lastName" value={props.lastName}
-                    onBlur={props.inputChange}/>
+                    onChange={props.inputChange}/>
             </div>
             <div>
                 <label>Email</label>
                 <input id="inputEmail" className="FormFields"
                     type="text" placeholder="Enter email" name="email" value={props.email}
-                    onBlur={props.inputChange}/>
+                    onChange={props.inputChange}/>
             </div>
             <div >
                 <label>BirthDate</label>
                 <input id="inputBirthDate" className="FormFields"
                     type="text" placeholder="Enter BirthDate" name="birthDate" value={props.birthDate}
-                    onBlur={props.inputChange} />
+                    onChange={props.inputChange} />
             </div>
             <button id="submit" onClick = {props.formSubmit}>SUBMIT</button>
             <button id="reset" onClick= {props.formReset}>RESET</button>
+            
         </div>
     );
 }
