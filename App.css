@@ -80,8 +80,38 @@ th {
   margin:50px;
 }
 
-.FormFields {
+/* .FormFields {
   margin:2px;
-  padding: 5px;
+  padding: 2px;
   margin-left: 50px;
+} */
+
+.Input {
+  /* width: 70%; */
+  padding: 5px;
+  /* box-sizing: border-box; */
+  /* background-color:white; */
+  height: 10px;
 }
+
+.Label {
+  padding: 50px;
+  font-weight: bold;
+  /* display: block; */
+  margin-bottom: 9px;
+}
+
+.InputElement {
+  margin:2px;
+  outline: none;
+  border: 2px solid gray;
+  background-color: white;
+  font: inherit;
+  /* display: block; */
+}
+
+.InputElement :focus{
+  outline: none;
+  background-color: gray;
+}
+

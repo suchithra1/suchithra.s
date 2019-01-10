@@ -24,8 +24,8 @@ class PersonList extends Component {
         rows: [],
         isRowSelected : false,
         selectedPerson: {},
-        isUpdate: false,
-        isAdd: false
+        shouldUpdate: false,
+        shouldAdd: false
         }
            
         this.handleDeleteRow = this.handleDeleteRow.bind(this);
@@ -37,11 +37,13 @@ class PersonList extends Component {
        
     }
 
-    handleAddPerson() {
+    handleAddPerson(person) {
         console.log('adding');
-        this.setState({persons: [],
-                      isAdd: true
+        person = '';
+        this.setState({persons: person,
+                      shouldAdd: true
                 });
+        this.props.history.push('/person/new');
     }
          
     handleDeleteRow = (person) => {
@@ -67,12 +69,12 @@ class PersonList extends Component {
     handleResetForm = () => {
         console.log('reset');
         this.setState({
-            persons: {}
-            // id: '',
-            // firstName: '',
-            // lastName: '',
-            // email: '',
-            // birthDate: ''
+            persons: {},
+            id: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            birthDate: ''
         })
     }
 
@@ -93,7 +95,8 @@ class PersonList extends Component {
         let elements = this.state.persons.slice();
         elements.push({id: id, firstName: firstName, lastName: lastName, email: email, birthDate: birthDate});
         this.setState({ persons: elements, id: '', firstName: '', lastName: '', email: '', birthDate: '', isUpdate: true });
-       
+        this.props.history.push('/person/' + id);
+       //change array to object
     }
        
     // componentDidMount() {
@@ -145,19 +148,21 @@ class PersonList extends Component {
                                                                 // index = {person}
                                                                     data = {person} 
                                                                     remove = {() => this.handleDeleteRow(person)}
-                                                                    select = {() => this.handleRowSelect(person)}/>)
+                                                                    select = {() => this.handleRowSelect(person)}
+                                                                    add = {() => this.handleAddPerson(person)}/>)
                         }
                     </table>
+                <button id="add" onClick={this.props.add}>ADD</button>
                 </div>
-                <button id="add" onClick={this.handleAddPerson}>ADD</button>
    
-                <Route path='/:id'  render = { () => <PersonInfo               
-                                                    persons={this.state.persons}
+                <Route path='/:id'  render = { (props) => <PersonInfo               
+                                                    persons={this.state.persons} //details
                                                     personSelected={this.state.selectedPerson}
                                                     change={this.handleInputChange}
-                                                    submitClick={this.handleSubmitForm}
-                                                    resetClick={this.handleResetForm} 
+                                                    submitClick={()=> this.handleSubmitForm(props.person)}
+                                                    resetClick={this.handleResetForm} // return person
                                                     addClick={this.handleAddPerson}  /> } /> 
+              
                </div>
         );
     }

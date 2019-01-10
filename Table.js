@@ -14,6 +14,7 @@ const table = (props) => {
                     <td><input type="button" id="deleteButton" onClick={props.remove} value="DELETE" /></td>
             </tr>
         </tbody>
+       
     );
 }
 
