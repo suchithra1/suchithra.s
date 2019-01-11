@@ -1,117 +1,237 @@
 .App {
+
   /* position: relative; */
+
   background-color:lightblue;
+
   width: 1920px;
+
   height: 945px;
+
 }  
 
+
+
 .PersonList ul {
+
   list-style: none;
+
   margin: 0;
+
   padding: 0;
+
   /* width: 100%;
+
   text-align: center: */
+
 }
+
+
 
 .PersonList a:hover, .PersonList a:active, .PersonList a:active {
+
   color:indigo
+
 }
+
+
 
 .PersonList li {
+
   display: inline-block;
+
   margin: 20px;
+
 }
+
+
 
 .PersonList a{
+
   text-decoration: none;
+
   color: black;
+
 }
+
+
 
 .LeftPanel {
+
   float: left;
+
   /* position: absolute; */
+
   background-color:grey; 
+
   width: 120px;
+
   height: 945px;
+
 }
+
+
 
 #itemButton {
+
   padding: 5px;
+
   margin: 7px;
+
   width: 60px;
+
 }
+
+
 
 .Record {
+
   border: 1px solid black;
+
   border-collapse: collapse;
+
 }
+
+
 
 table,th,td {
+
   margin:30px;
+
   padding: 5px;
+
   border-collapse: collapse;
+
   border: 1px solid black;
+
 }
+
+
 
 th {
+
   background-color: cornsilk;
+
 }
 
+
+
 #add,#submit,#reset {
+
   margin-top: 10px;
+
   margin-left: 60px;
+
 } 
 
 
+
+
+
 .PersonList {
+
   position: absolute;
+
   background-color:lightblue;
+
   float:right;
+
   margin-left:120px;
+
   width: 1800px;
+
   height: 945px;
+
 }
+
+
 
 .PersonInfo {
+
   /* border:5px solid coral; */
+
   width: 600px;
+
   height: 300px;
+
   padding: 10px;
+
   margin:50px;
+
 }
+
+
 
 /* .FormFields {
+
   margin:2px;
+
   padding: 2px;
+
   margin-left: 50px;
+
 } */
 
+
+
 .Input {
+
   /* width: 70%; */
+
   padding: 5px;
+
   /* box-sizing: border-box; */
+
   /* background-color:white; */
+
   height: 10px;
+
 }
+
+
 
 .Label {
+
   padding: 50px;
+
   font-weight: bold;
+
   /* display: block; */
-  margin-bottom: 9px;
+
+  /* margin-bottom: 9px; */
+
 }
+
+
 
 .InputElement {
-  margin:2px;
+  margin-bottom:20px;
+
+  /* margin:2px; */
+
   outline: none;
+
   border: 2px solid gray;
+
   background-color: white;
+
   font: inherit;
+
   /* display: block; */
+
 }
+
+
 
 .InputElement :focus{
+
   outline: none;
+
   background-color: gray;
+
 }
 
+#labelId{
+  padding: 2px;
+  margin-top: 50px;
+}
