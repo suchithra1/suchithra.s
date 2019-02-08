@@ -1,0 +1,55 @@
+Problem Statement:
+  Assigning roles to a user
+
+  Inferred Requirement:
+    id(user), firstname, lastname, roles, courses
+
+Possibilities:
+  Positive Possibilities:
+  Negative Possibilities:
+
+Jobs to be done:
+  1.Selecting a specific role from the list of roles displayed
+      StartState: List of roles to be assigned to a user along with the selected
+                  courses will be displayed.
+      EndState: Specific role will be selected and its related courses will be
+                displayed
+      Implementaion Plan: 
+        -  a container assignRoles will be created to hold two functional
+           components (selectRoles and selectCourses).
+        -  two stateless components selectRoles  and selectCourses will be
+           created to return a division displaying a list of roles and courses 
+           respectively. A search bar will be created on top of the courses to
+           allow admin to search for a specific course in the latter.
+        -  On selecting a role, the corresponding courses available for that
+           specific role will be displayed aside with check-boxes for each
+           course. 
+
+  2.Searching for a specific course by entering a valid and available course in
+    the search field
+      StartState: empty search bar will be displayed on top of the courses
+                  division
+      EndState: Searched course will be diplayed with an empty check-box
+      Implementaion Plan:
+        - On searching for a course, an api call will be initiated to search for
+          the course and display it if available.  
+
+  3.Searching for a specific course by entering an invalid (or) empty
+    course_name in the search field
+      StartState: empty search bar will be displayed on top of the courses
+                  division
+      EndState: Error message will be diplayed in the page
+
+  4.Selecting a new course to be assigned
+      StartState: List of courses related to the role will be diplayed with
+                  empty check-boxes 
+      EndState: Course to be assigned for the role will be selected.
+      Implementaion Plan: 
+        - Check-box of a specific course will be selected indicatin
+
+
+  5.Submitting the roles for the user
+      StartState: a specific role and its related courses to be assigned
+                  will be selected 
+      EndState: Role will be assigned to the user.
+      Implementaion Plan: 

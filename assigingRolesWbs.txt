@@ -1,0 +1,368 @@
+Story: Assigning roles to a user
+
+ORIGINAL REQUIREMENTS:
+  To assign roles to a user
+
+INFERRED REQUIREMENTS:
+  id(user), firstname, lastname, roles, courses
+
+FILENAME:
+  App.js
+  App.scss
+  AssignRoles.js
+  AssignRoles.scss
+  SearchRoles.js
+  SearchRoles.scss
+
+Task: Searching for users to assign roles  
+TASK BREAKDOWN:
+  - A file named SearchRoles.js holding a class component SearchRole which
+    contains search bar and a table.
+  - searchUser function is created accepting the user data(id, firstname,
+    lastname)as its input parameters and it is displayed on the table using an
+    API(data fetched).
+  - The table contains user data which has the roles and the assigned courses
+    along with the checkbox for selecting one/more users.
+  - removeCourse function is created for removing the course for a role.
+  - enableCourse function is created for adding the course to the role(- icon
+    will be displayed after adding the course).
+  - disableCourse function is created when the course is assigned to a 
+    particular role and the icon gets faded out(+ icon will be displayed after
+    disabling the course).
+  - SearchRole.js will be exported to be used in App.js
+
+EVENTS:
+1. Admin clicking on search button
+
+  START STATE:
+    Empty search box has to be displayed with search button
+    
+  JOBS TO BE DONE:
+  1. Enter search params(id/firstname/lastname/combination of all) in the search
+     box
+  2. Fetch the relevant user data after clicking on the search button
+  3. Display the searched user data on the table
+  
+  POSITIVE POSSIBILITIES:
+  1. Admin searches by using id
+  2. Admin searches by using firstname
+  3. Admin searches by using lastname
+  4. Admin searches by using combination of all
+  
+    JOBS TO BE DONE:
+    1. Admin searches valid id/name
+    
+    END STATE:
+    User data is displayed on the table
+  
+  NEGATIVE POSSIBILITIES:
+  1. Admin searches with an empty textbox
+  2. Admin searches using special characters
+  3. Admin searches invalid id/name
+  4. Admin searches both id and name without a comma separator
+  5. Admin searches by combining name and special characters/ white spaces
+  
+    JOBS TO BE DONE:
+    1. Admin searches invalid id/name or special characters/white spaces or 
+       with an empty checkbox or combination of name and special characters or 
+       without a comma separator
+    
+    END STATE:
+    Error message is displayed
+  
+  END STATE:
+    User data has been displayed on the table
+ 
+2. Removing one/more courses assigned to a role
+ 
+  START STATE:
+    User data has to be pre-populated on the table
+    
+  JOBS TO BE DONE:
+  1. Remove the selected courses
+  
+  END STATE:
+    Selected course has to be removed
+    
+3. Disabling the course for a role temporarily 
+
+  START STATE:
+    Selected course should have been assigned to the role already
+    
+  JOBS TO BE DONE:
+  1. Disabled course has to be faded out
+  2. Enable the add course icon (changes - to +)
+  
+  END STATE:
+    Selected course has to be enabled
+    
+4. Enabling the course for a role
+
+  START STATE:
+    Add course icon has to be enabled for the course
+    
+  JOBS TO BE DONE:
+  1. Enabled course has to be highlighted
+  2. Disable the add course icon (changes + to -)
+  
+  END STATE:
+    Selected course has to be disabled
+    
+5. Selecting check box for one/more users
+
+  START STATE:
+    List of user data with unselected check box
+    
+  JOBS TO BE DONE:
+  1. Selecting one/more user
+  
+  END STATE:
+    List of selected user data
+    
+PSEUDOCODE:
+  class SearchRole extends Component {
+    searchUser = (id,firstname,lastname) => {
+      // fetches data relevant to the input param
+      // and displays it
+    }
+    removeCourse = (course, role) => {
+      // removes a course assigned to the role of user
+    }
+    enableCourse = (course, role) => {
+      // adds a course to be assigned for a role
+    }
+    disableCourse = (course, role) => {
+      // disables a course temporarily for the role
+    }
+    render () {
+      return (
+        //jsx code to App.js
+      )
+    }
+  }
+--------------------------------------------------------------------------------
+
+Task: Assigning roles to the user
+Task breakdown:
+
+  - a file named assignRoles.js holding a functional component(stateless) will
+    be created.
+  - the stateless component assignRoles will return a division displaying a list
+    of roles. On selecting a role, the corresponding courses available for
+    that specific role will be displayed aside with check-boxes for each course.
+  - a search-bar will be provided on the top of the aside division to let the
+    admin search for a particular course by entering the course name and
+    clicking on the search icon
+  - assignRoles will be expored to be used in App.js
+
+6. Admin selecting a specific role from the list of roles 
+
+  START STATE:
+    List of roles and its relevant courses has to be displayed
+  
+  JOBS TO BE DONE:
+    1. Select a particular role to be assigned to the user
+    2. Display courses relevant to that role
+  
+  END STATE:
+    One/more role(s) will be selected to be assigned for a user
+
+7. Admin clicking on search icon to search for a specific course
+
+  START STATE:
+    List of courses has to be displayed with search icon
+  
+  POSSIBILITIES:
+    a. admin entering a valid and available course in the search field
+    
+      JOBS TO BE DONE:
+      1. Enter the course to be searched in the search bar
+      2. Display the course
+    
+    END STATE:
+      Searched courses has to be displayed 
+    
+    b. admin entering an invalid course in the search field
+    
+      JOBS TO BE DONE:
+      1. Enter the course to be searched in the search bar
+      2. Display error/alert message
+  
+    END STATE:
+      Error message has to be dispalyed
+    
+    c. admin searching with empty search-box
+    
+      JOBS TO BE DONE:
+      1.Display error/alert message
+      
+    END STATE:
+      Error message has to be dispalyed
+
+8. Selecting a particular course
+  START STATE:
+    List of roles and its relevant courses has to be displayed
+  
+  POSSIBILITIES:
+  a. admin selecting a course which is pre-selected
+  
+    JOBS TO BE DONE:
+    1. Select a course to be assigned to the role
+    
+  END STATE:
+    The course will be unselected 
+  
+  b. admin selecting a new course to be assigned
+  
+    JOBS TO BE DONE:
+    1. Select a course(s) to be assigned to the role
+  
+  END STATE:
+    Specific course will be selected
+  
+9. Submitting the roles for the user
+
+  START STATE:
+    List of roles to be assigned to a user along with the selected courses will
+    be displayed.
+  
+  JOBS TO BE DONE:
+  1. Submit the roles for the user
+  
+  END STATE:
+    Roles will be assigned to the user and displayed in the table.
+
+Pseudocode:
+assignRoles(role, course) {
+  return(
+  // div containing list of roles
+  // aside div containing courses corresponding to the roles
+  // search bar
+  );
+}
+
+Story: Assigning roles to a user
+
+PROBLEM REQUIREMENTS:
+  To assign roles to users
+
+INFERRED REQUIREMENTS:
+  id(user), firstname, lastname, roles, courses
+  
+POSSIBILITIES:
+1. POSITIVE POSSIBILITIES:
+	Valid search - providing valid id/name
+	User selection - Selecting one/more user
+	Role selection - Selecting a role or assigning courses to the role
+	
+2. NEGATIVE POSSIBILITIES:
+	Invalid search - providing invalid id/name/white-space/special characters
+				   - searching with empty textbox
+	User selection - no user selected
+	Role selection - no role selected 
+				   - Existing courses assigned for a role to a user
+				   - no course assigned for a role
+
+JOBS TO BE DONE:
+1.  Admin clicking on search button
+2. 	Removing a course assigned to a role
+3. 	Disabling the course for a role temporarily
+4.  Enabling the course for a role
+5.  Selecting the users
+				
+IMPLEMENTATION DESIGN:
+	
+	
+Task: Searching for users to assign roles  
+TASK BREAKDOWN:
+  - A file named SearchRoles.js holding a class component SearchRole which
+    contains search bar and a table.
+  - searchUser function is created accepting the user data(id, firstname,
+    lastname)as its input parameters and it is displayed on the table using an
+    API(data fetched).
+  - The table contains user data which has the roles and the assigned courses
+    along with the checkbox for selecting one/more users.
+  - removeCourse function is created for removing the course for a role.
+  - enableCourse function is created for adding the course to the role(- icon
+    will be displayed after adding the course).
+  - disableCourse function is created when the course is assigned to a 
+    particular role and the icon gets faded out(+ icon will be displayed after
+    disabling the course).
+  - SearchRole.js will be exported to be used in App.js
+
+EVENTS:
+1. Admin clicking on search button
+
+  START STATE:
+    Empty search box has to be displayed with search button
+    
+  JOBS TO BE DONE:
+  1. Enter search params(id/firstname/lastname/combination of all) in the search
+     box
+  2. Fetch the relevant user data after clicking on the search button
+  3. Display the searched user data on the table
+  
+  POSITIVE POSSIBILITIES:
+  1. Admin searches by using id
+  2. Admin searches by using firstname
+  3. Admin searches by using lastname
+  4. Admin searches by using combination of all
+  
+    JOBS TO BE DONE:
+    1. Admin searches valid id/name
+    
+    END STATE:
+    User data is displayed on the table
+  
+  NEGATIVE POSSIBILITIES:
+  1. Admin searches with an empty textbox
+  2. Admin searches using special characters
+  3. Admin searches invalid id/name
+  4. Admin searches both id and name without a comma separator
+  5. Admin searches by combining name and special characters/ white spaces
+  
+    JOBS TO BE DONE:
+    1. Admin searches invalid id/name or special characters/white spaces or 
+       with an empty checkbox or combination of name and special characters or 
+       without a comma separator
+    
+    END STATE:
+    Error message is displayed
+  
+  END STATE:
+    User data has been displayed on the table
+ 
+2. Removing one/more courses assigned to a role
+ 
+  START STATE:
+    User data has to be pre-populated on the table
+    
+  JOBS TO BE DONE:
+  1. Remove the selected courses
+  
+  END STATE:
+    Selected course has to be removed
+    
+3. Disabling the course for a role temporarily 
+
+  START STATE:
+    Selected course should have been assigned to the role already
+    
+  JOBS TO BE DONE:
+  1. Disabled course has to be faded out
+  2. Enable the add course icon (changes - to +)
+  
+  END STATE:
+    Selected course has to be enabled
+    
+4. Enabling the course for a role
+
+  START STATE:
+    Add course icon has to be enabled for the course
+    
+  JOBS TO BE DONE:
+  1. Enabled course has to be highlighted
+  2. Disable the add course icon (changes + to -)
+  
+  END STATE:
+    Selected course has to be disabled
