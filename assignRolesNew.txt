@@ -1,0 +1,182 @@
+Story: Assigning roles to a user
+
+ORIGINAL REQUIREMENTS:
+  To assign roles to a user
+
+INFERRED REQUIREMENTS:
+  id(user), firstname, lastname, roles, courses
+
+FILENAME:
+  App.js
+  App.sass
+  AssignRole.js
+  AssignRole.sass
+  SelectRole.js
+  SelectCourse.js
+  SearchRols.js
+  SearchRole.sass
+  SearchUser.js
+  SelectUser.js
+
+Task: Searching for users to assign roles  
+
+Task Breakdown:  
+  
+  POSITIVE POSSIBILITIES:
+	1. Searching for a user by entering valid id in the search bar
+	2. Searching for a user by entering valid firstname in the search bar
+	3. Searching  for a user by entering valid lastname in the search bar
+	4. Searching for a user by entering any combination of the
+	   three(id,firstname,lastname) in the search bar.
+ 	5. Removing a course assigned to a role
+	6. Disabling the course for a role temporarily 
+	7. Enabling the course for a role
+	8.Selecting one/more users to be assigned to a role
+
+
+  NEGATIVE POSSIBILITIES:
+       1. Searching for a user by entering invalid id/name in the searh bar
+       2. Searching for a user by entering special characters in the searh bar
+       3. Searching for a user by entering both id and name without a comma separator in the searh bar
+       4. Searching for a user by combining name and special characters/ white spaces in the searh bar
+  
+ 
+    JOBS TO BE DONE:
+    1. Admin searches for a user by entering a valid id/firstname/lastname or a combination of all
+	StartSate: empty searchbar will be displayed to search for the user
+	
+	Possibilities:
+	
+	Success:
+	EndState:  corresponding user data is displayed in the selectUser division   
+
+	Implementaion Plan:
+	 - a container searchRole will be created to contain two components,
+	   searchUser and selectUser
+	 - searchUser component will contain a search bar on along with a search button
+	   which accepts the user data(id, firstname,lastname) as its input
+	 - On entering tha data and clicking on search, an api call is inititated to search for the user.
+
+	Failure:
+	EndState: Error message will be displayed on the page (no data is fetched)
+    
+     2. Removing a course assigned to a role
+ 
+     StartState: User data has to be pre-populated on the selectUser division
+		 along with the roles and courses already assigned to the user if any
+     EndState: specific course for the role will be removed
+
+     Implementation plan:
+	- the selectUser division has to contain a table with columns holding
+	  information of user and the roles assigned to him/her with its corresponding
+	  courses along with the checkbox for selecting one/more users.
+        - every course should contain an remove icon, enable/disable icon aside.
+	- the table will be prepopulated with a set of user's data
+	- On clicking on the remove icon, an api call will be initiated to remove the 
+	  course specific to that corresponding icon
+
+     3. Disabling the course for a role temporarily 
+	StartState: Selected course will be assigned to the role already
+	EndState: The course will be disabled for the role.
+  	
+	Implementation plan:
+	 - On clicking on the disable icon of the course, an api call will be initiated, and the course
+	   specific to that disable icon will be disabled temporarily
+	- the disabled course has to be faded out the enable/disable icon would show
+		  enable symbol(+)
+     
+     4. Enabling the course for a role
+        StartState: Selected course will disabled temporarily for the role.
+	EndState: The course will be enabled for the role.
+	
+	Implementation plan:
+	 - On clicking on the enable icon of the course, an api call will be initiated, and the course
+	   specific to that enable icon will be enabled again
+	- the enabled course has to be highlighted and the enable/disable icon would show
+		  disable symbol(-)
+           
+  
+     5. Selecting one/more users to be assigned to a role
+
+	StartState: List of user data with unselected check box will be displayed as a table in
+		    the selectUser division
+    
+ 	EndState: One/more user will be selected to be assigned to a role
+	
+	Implementation Plan:
+	   - On selecting one/ more users , an api call will be initiated to assignRoles to those selected users only
+    
+
+--------------------------------------------------------------------------------
+
+Task : Assigning roles to selected users
+
+Task Breakdown:
+Possibilities:
+  Positive Possibilities:
+	1.Selecting a specific role from the list of roles displayed
+	2.Searching for a specific course by entering a valid and available course in
+    the search field
+	3.Selecting a new course to be assigned
+	4.Submitting the roles for the user
+
+  Negative Possibilities:
+	1.Searching for a specific course by entering an invalid (or) empty
+    course_name in the search field
+	2.Submitting the roles for the user without selecting a valid role/course
+
+Jobs to be done:
+  1.Selecting a specific role from the list of roles displayed
+      StartState: List of roles to be assigned to a user along with the selected
+                  courses will be displayed.
+      EndState: Specific role will be selected and its related courses will be
+                displayed
+      Implementaion Plan: 
+        -  a container assignRoles will be created to hold two functional
+           components (selectRoles and selectCourses) and a submit button
+	   enabling submission of roles.
+        -  two stateless components selectRoles  and selectCourses will be
+           created to return a division displaying a list of roles and courses 
+           respectively.
+	-  From the list of roles displayed in the selectRoles division,
+	   one/more roles has to be selected 
+	-  First role in the list will be selected by-dafault and its corresponding
+	   courses will be displayed.
+
+  2.Searching for a specific course by entering a valid and available course in
+    the search field
+	
+      StartState: empty search bar will be displayed on top of the courses
+                  division
+     
+     Possibilities: 
+     Success: 
+     EndState: Searched course will be diplayed with an empty check-box
+      Implementaion Plan:
+	-  On selecting a role, the corresponding courses available for that
+           specific role will be displayed aside with check-boxes for each
+           course.
+	- A search bar will be created on top of the courses to
+           allow admin to search for a specific course in the latter.
+        - On searching for a course, an api call will be initiated to search for
+          the course and display it if available. 
+     Failure:
+	EndState: Error message will be diplayed in the page
+  
+  3.Selecting a new course to be assigned
+      StartState: List of courses related to the role will be diplayed
+      EndState: Course to be assigned for the role will be selected.
+      Implementaion Plan: 
+        - Courses has to be displayed with empty check-boxes aside
+	- Selecting the check-box of a course indicated that it is
+	  to be assigned for that role.
+
+  4.Submitting the roles for the user
+      StartState: a specific role and its related courses to be assigned
+                  will be selected 
+      EndState: Role will be assigned to the user and displayed.
+      Implementaion Plan: 
+	- On clicking on submit button, an api call will be initiated
+          to assign the role to the user and will be displayed.
+
+  
