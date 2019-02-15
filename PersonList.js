@@ -13,7 +13,7 @@ class PersonList extends Component {
     constructor (){
         super();
         this.state = {
-            persons: [],
+        persons: [],
         id:'',
         firstName: '',
         lastName: '',
@@ -36,11 +36,12 @@ class PersonList extends Component {
         this.handleSubmitForm = this.handleSubmitForm.bind(this);
         this.handleResetForm = this.handleResetForm.bind(this);
         this.handleAddPerson = this.handleAddPerson.bind(this);
+        // this.handleFormValidation = this.handleFormValidation.bind(this);
    }
 
     handleAddPerson() {
         console.log('adding');
-        this.setState({persons: [],
+        this.setState({selectedPerson: '',
                       shouldAdd: true
                 });
         this.props.history.push('/person/new');
@@ -96,17 +97,17 @@ class PersonList extends Component {
    
         let elements = this.state.persons.slice();
         elements.push({id: id, firstName: firstName, lastName: lastName, email: email, birthDate: birthDate});
-        this.setState({ persons: elements, id: '', firstName: '', lastName: '', email: '', birthDate: '', isUpdate: true });
+        this.setState({ persons: elements, id: '', firstName: '', lastName: '', email: '', birthDate: '' });
         this.props.history.push('/person/' + id);
        //change array to object
     }
-
-    // createForm() {
-    //     return this.state.persons.values.map((field, index) =>
-    //             <div key={index}>
-    //               <input type='text' value={field||''} onChange={this.handleInputChange} />
-    //             </div>
-    //     )
+   
+    // handleFormValidation() {
+    //     if(this.state.firstName.length > 4) {
+    //         this.setState({isFirstNameValid: true,
+    //                       formErrors: 'please enter a valid firstName'})
+    //     console.log('firstName invalid');                  
+    //     }
     // }
 
     // componentDidMount() {
@@ -115,7 +116,7 @@ class PersonList extends Component {
     //     console.log(this.state.persons);
     // }
 
-    componentDidMount(){
+    componentWillMount(){
         console.log(this.props);
         // axios.get('http://localhost:8080/ws/authenticate?username=suchithra&password=suchi');
         axios.get('includeAddress=false')
@@ -170,7 +171,8 @@ class PersonList extends Component {
                                                     change={this.handleInputChange}
                                                     submitClick={()=> this.handleSubmitForm(props.person)}
                                                     resetClick={this.handleResetForm} // return person
-                                                    addClick={this.handleAddPerson}  /> } /> 
+                                                    // addClick={this.handleAddPerson} 
+                                                     /> } /> 
 
                 <Route path='/new'  render = { (props) => <PersonInfo               
                                                 persons={this.state.persons} //details
@@ -181,7 +183,7 @@ class PersonList extends Component {
                                                 resetClick={this.handleResetForm} // return person
                                                 addClick={this.handleAddPerson} /> } /> 
              
-               </div>
+            </div>
         );
     }
 }

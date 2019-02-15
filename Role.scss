@@ -1,0 +1,19 @@
+.RoleDetail { 
+    width: 500px;
+    height: 250px;
+    background-color:beige;
+    color: black;
+    text-align: center;
+    margin-left: 500px;
+}
+
+.Root {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.FormControl {
+    // margin: theme.spacing.unit;
+    min-width: 120;
+    max-width: 300;
+}

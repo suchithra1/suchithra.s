@@ -5,17 +5,17 @@ import Input from './Input.js';
 const form = (props) => {
     return(
         <div className="Form">
-            <div >
+            <div>
                 {/* {props.form} */}
                 <label id="labelId">Id</label>
                 <Input  id="inputId" type="number" placeholder="Enter id" name="id" value={props.id}
-                       onChange={props.inputChange} />
+                       onChange={props.inputChange}  />
             </div>
             <div>
                 <label>FirstName</label>
-                <Input id="inputFname"  ref={(ref) => this.mainInput= ref}
-                    type="text" placeholder="Enter FirstName" name="firstName" value={props.firstName}
-                    onChange={props.inputChange} />
+                <Input id="inputFname" type="text" placeholder="Enter FirstName"
+                       name="firstName" value={props.firstName}
+                       onChange={props.inputChange} />
             </div>
             <div>
                 <label>LastName</label>
