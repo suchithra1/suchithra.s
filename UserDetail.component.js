@@ -107,8 +107,18 @@ class EnhancedTable extends React.Component {
       createRole('', '', 'db'),
       createRole('java', 'java', 'java')
     ], 
-    texts: ''
-  };
+    texts: '',
+    name: '',
+    roles: [
+      {name: 'TRAINER'},{name: 'AUTHOR'}, {name:'EVALUATOR'}, {name:'OX'}],
+
+    courses:[{name:'JAVA'}, {name:'DATABASE'},{name:'OOPS'}]  ,
+      showCourse: false,
+      isChecked: true,
+      isRoleSelected: false,
+      isCourseSelected: false,
+      isUserSelected : false
+ };
 
 handleChange(e) {
   this.setState({texts: e.target.value})
@@ -116,11 +126,18 @@ handleChange(e) {
 
   handleSelectAllClick = event => {
     if (event.target.checked) {
-      this.setState(state => ({ selected: state.data.map(n => n.id) }));
+      this.setState(state => ({ selected: state.data.map(n => n.id),
+                                isUserSelected : true }));
       return;
     }
     this.setState({ selected: [] });
   };
+
+  handleRoleClick =  () => {
+      console.log("role is clicked")
+      this.setState({showCourse: true,
+                    isRoleSelected: true});
+  }
 
   handleClick = (event, id) => {
     const { selected } = this.state;
@@ -140,15 +157,41 @@ handleChange(e) {
       );
     }
 
-    this.setState({ selected: newSelected });
+    this.setState({ selected: newSelected,
+                    isUserSelected: true });
   };
 
   isSelected = id => this.state.selected.indexOf(id) !== -1;
 
+  showMenu(event) {
+    event.preventDefault();
+    
+    this.setState({ showMenu: true });
+  }
+    
+  toggleChange = () => {
+    
+    this.setState({
+      isChecked: !this.state.isChecked,
+      isCourseSelected: true
+    });
+  }
+
+  onSubmit = () => {
+    if((this.state.isRoleSelected && this.state.isCourseSelected) === true){
+      console.log('submit is clicked');
+    }
+    else if(this.state.isRoleSelected === false){
+      alert('Please select a role');
+    }
+    else alert('Please select a course');
+  }
+
+
   render() {
     const { classes } = this.props;
     const { data, roleData, selected} = this.state;
-   
+      
     return (
       <Paper className={classes.root}>
       <div>
@@ -191,8 +234,42 @@ handleChange(e) {
                 </TableRow>
               </TableBody>
           </Table>
-          <RoleDetail/>
+          
         </div>
+         <div className="RoleDetail">
+  
+            <h1> ASSIGN ROLES </h1>
+            <div className = "Search">
+            <input type='text'/>
+            <button id="search">SEARCH</button></div>
+            {this.state.roles.map((role) => <div> <button id="dropButton"
+              onClick = {this.handleRoleClick.bind(this)}>{role.name}</button> </div>)}
+             {/* <div><button  id="dropButton" >AUTHOR </button> </div>
+            <div><button id="dropButton" >EVALUATOR</button> </div>
+              <div><button id="dropButton">OX</button> </div> */}
+             <div className="Checkboxes">      
+        {this.state.showCourse ? (this.state.courses.map((course)=> 
+        <div>
+       <label>
+        <input type="checkbox"
+          
+          onChange={this.toggleChange.bind(this)}
+        />
+        
+        {course.name}
+        </label> </div>)) : null }
+        </div>
+        <button id="dropDown" onClick={this.onSubmit.bind(this)}> SUBMIT </button>
+        </div>   
+
+         
+        {/* {this.state.isUserSelected? (<RoleDetail role = {this.state.roles} 
+                    course ={this.state.courses}
+                    roleClicked = {this.handleRoleClick.bind(this)}
+                    submitClicked = {this.onSubmit.bind(this)}
+                    courseClicked = {this.toggleChange.bind(this)}
+        displayCourse = {this.state.showCourse}/> ) : null } */}
+        
       </Paper>
     );
   }

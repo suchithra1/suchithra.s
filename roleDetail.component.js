@@ -1,35 +1,35 @@
 import React from 'react';
-import './Role.scss';
-import MultipleSelect from './DropDown.js';
+import './App.css';
+
 
 const roleDetail = (props) => {
-    return(
-        <div className="RoleDetail">
-            ASSIGN ROLES
-            <MultipleSelect/>
-            {/* <div className={'Root'}>
-       <FormControl className={'FormControl'}>
-          {this.state.roles.map((role, index) => <InputLabel key ={index}>{role.name}</InputLabel>)}
-          <Select
-            multiple
-            value={this.state.name}
-            onChange={this.handleChange}
-            // input={<Input id="select-multiple-checkbox" />}
-            // renderValue={selected => selected.join(', ')}
-            MenuProps={MenuProps}
-          >
-            {names.map(name => (
-              <MenuItem key={name} value={name}>
-                <Checkbox checked={this.state.name.indexOf(name) > -1} />
-                <ListItemText primary={name} />
-              </MenuItem>
-            ))}
-          </Select>
+     return(
+      <div className="RoleDetail">
+  
+            <h1> ASSIGN ROLES </h1>
+            <div className = "Search">
+            <input type='text' />
+            <button id="search">SEARCH</button></div>
+            {props.role.map((role) => <div> <button id="dropButton"
+              onClick = {props.roleClicked} required>{role.name} </button> </div>)}
+            {/* <div><button  id="dropButton" >AUTHOR </button> </div>
+            <div><button id="dropButton" >EVALUATOR</button> </div>
+            <div><button id="dropButton">OX</button> </div> */}
+            <div className="Checkboxes">      
+        {props.displayCourse ? (props.course.map((course)=> 
+        <div>
+       <label>
+        <input type="checkbox"
           
-        </FormControl>
-           */}
-      {/* </div> */}
+          onChange={props.courseClicked}
+        />
+        
+        {course.name}
+        </label> </div>)) : null }
         </div>
+        <button id="dropDown" onClick={props.submitClicked}> SUBMIT </button>
+        </div>
+      
     );
 }
 

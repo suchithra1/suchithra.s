@@ -5,47 +5,6 @@
   height: 945px;
 }  
 
-.PersonList ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  /* width: 100%;
-  text-align: center: */
-}
-
-.PersonList a:hover, .PersonList a:active, .PersonList a:active {
-  color:indigo
-}
-
-.PersonList li {
-  display: inline-block;
-  margin: 20px;
-}
-
-.PersonList a{
-  text-decoration: none;
-  color: black;
-}
-
-.LeftPanel {
-  float: left;
-  /* position: absolute; */
-  background-color:grey; 
-  width: 120px;
-  height: 945px;
-}
-
-#itemButton {
-  padding: 5px;
-  margin: 7px;
-  width: 60px;
-}
-
-.Record {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-
 table,th,td {
   margin:30px;
   padding: 5px;
@@ -57,65 +16,52 @@ th {
   background-color: cornsilk;
 }
 
-#add,#submit,#reset {
-  margin-top: 10px;
-  margin-left: 60px;
-} 
 
-.PersonList {
-  position: absolute;
-  background-color:lightblue;
-  float:right;
-  margin-left:120px;
-  width: 1800px;
-  height: 945px;
+.RoleDetail { 
+  width: 500px;
+  height: 350px;
+  background-color:beige;
+  color: pink;
+  text-align: center;
+  margin-left: 500px;
 }
 
-.PersonInfo {
-  /* border:5px solid coral; */
-  width: 600px;
-  height: 300px;
-  padding: 10px;
-  margin:50px;
+
+.Checkboxes {
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin-left:250px;
+  margin-bottom:200px;
+  margin-top: -160px;
+  
 }
 
-/* .FormFields {
-  margin:2px;
-  padding: 2px;
-  margin-left: 50px;
-} */
-
-.Input {
-  width: 70%;
-  padding: 10px;
-  /* box-sizing: border-box; */
-  /* background-color:white; */
-  height: 5px;
+.Search{
+  margin-bottom: 2px;
+  margin-top: 2px;
 }
 
-.Label {
-  padding: 50px;
-  font-weight: bold;
-  /* display: block; */
-  margin-top: 9px;
+#search{
+  margin-bottom: 10px;
 }
 
-.InputElement {
-  /* margin-bottom:-300px; */
-  /* margin:2px; */
-  outline: none;
-  border: 2px solid gray;
-  background-color: white;
-  font: inherit;
-  /* display: block; */
-}
-
-.InputElement :focus{
-  outline: none;
-  background-color: gray;
-}
-
-#labelId{
-  padding: 2px;
+#dropDown {
+  /* margin-left: 50px; */
   margin-top: 50px;
+  margin-bottom: -30px;
+  background-color: burlywood;
+}
+#dropButton {
+  margin-right: 240px;
+  width:100px;
+  background-color: blueviolet;
+  height: 40px;
+  padding: 10px;
+  
+}
+
+.RoleDetail a:hover, .RoleDetail a:active {
+
+  color:orange;
 }
