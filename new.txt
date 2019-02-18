@@ -1,0 +1,68 @@
+shahul.shaik7:46 PM
+import React from 'react';
+
+import Aux from '../../lib/hoc/aux.component';
+import Chip from '@material-ui/core/Chip';
+import FaceIcon from '@material-ui/icons/Face';
+
+const author = (props) => {
+return props.authors.map((author, index) => {
+return (
+<Aux key={index}>
+<Chip
+icon={<FaceIcon/>}
+label={author.first_name + ' ' + author.last_name}
+onDelete={(author) => props.remove(author)}/>
+</Aux>
+);
+});
+};
+
+export default author;
+import React from 'react';
+
+import classes from './search.scss';
+
+const search = (props) => {
+let suggestion = null;
+if (props.suggest) {
+suggestion = (
+<ul className={classes.ul}>
+{props.suggest.map((item, index) => {
+return (
+<li
+className={classes.list}
+key={index}
+onClick={() => props.onClick(item)}>
+{item[props.show] ? item[props.show] : item[props.error]}
+</li>
+);
+})}
+</ul>
+);
+}
+
+return (
+<div>
+<label>{props.label}</label>
+<input 
+type='text' 
+placeholder={props.placeholder} 
+onChange={props.onChange}
+onBlur={props.onBlur}
+onKeyDown={props.onKeyDown}/>
+{suggestion}
+</div>
+);
+};
+
+export default search;
+search: {
+placeholder: 'Search for...',
+label: 'Search',
+show: 'first_name',
+suggest: [],
+allUsers: [],
+valid: false,
+touched: false
+}
