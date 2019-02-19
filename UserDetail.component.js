@@ -9,6 +9,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import RoleDetail from './roleDetail.component.js';
+import Search from './search.js';
+import {ToastContainer, ToastMessageFactory} from 'reactjs-toastr';
+import 'reactjs-toastr/lib/toast.css';
 
 let counter = 0;
 function createData(id, firstName, lastName, roles) {
@@ -112,12 +115,15 @@ class EnhancedTable extends React.Component {
     roles: [
       {name: 'TRAINER'},{name: 'AUTHOR'}, {name:'EVALUATOR'}, {name:'OX'}],
 
-    courses:[{name:'JAVA'}, {name:'DATABASE'},{name:'OOPS'}]  ,
+    courses:[{name:'JAVA'}, {name:'DATABASE'},{name:'OOPS'}, {name:'ANGULAR'}, {name: 'ORACLE'}]  ,
       showCourse: false,
       isChecked: true,
       isRoleSelected: false,
       isCourseSelected: false,
-      isUserSelected : false
+      isUserSelected : false,
+      searchedCourses: [],
+      isCourseSearched: false,
+      container: []
  };
 
 handleChange(e) {
@@ -178,14 +184,39 @@ handleChange(e) {
   }
 
   onSubmit = () => {
-    if((this.state.isRoleSelected && this.state.isCourseSelected) === true){
-      console.log('submit is clicked');
+    console.log('submit clicked');
+    this.state.container.success(`hi! Now is ${new Date()}`, `///title\\\\\\`, {
+          closeButton: true
+    // if((this.state.isRoleSelected && this.state.isCourseSelected) === true){
+    //   console.log('submit is clicked');
+    // }
+    // else if(this.state.isRoleSelected === false){
+    //   alert('Please select a role');
+    // }
+    // else alert('Please select a course');
+  })
+}
+
+  handleInputChange = (event) => {
+    let searchedText = event.target.value;
+    let filteredCourses = [];
+    let data = this.state.courses;
+    console.log(data);
+    data.filter((datas) => {
+      if(datas.name.toLowerCase().includes(searchedText.toLowerCase())) {
+        console.log(datas);
+        filteredCourses.push(data);
+      }
+    })
+    if(searchedText) {
+    this.setState({searchedCourses: filteredCourses,
+                    isCourseSearched: true})
+    } else {
+      this.setState({searchedCourses: [],
+                    isCourseSearched: false })
     }
-    else if(this.state.isRoleSelected === false){
-      alert('Please select a role');
-    }
-    else alert('Please select a course');
   }
+
 
 
   render() {
@@ -240,10 +271,12 @@ handleChange(e) {
   
             <h1> ASSIGN ROLES </h1>
             <div className = "Search">
-            <input type='text'/>
-            <button id="search">SEARCH</button></div>
+            <input  id='search' type='text' onChange={this.handleInputChange} />
+            <i class="fa fa-search" aria-hidden="true"></i> 
+            
             {this.state.roles.map((role) => <div> <button id="dropButton"
-              onClick = {this.handleRoleClick.bind(this)}>{role.name}</button> </div>)}
+              onClick = {this.handleRoleClick.bind(this)}>{role.name} <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+               </div>)}
              {/* <div><button  id="dropButton" >AUTHOR </button> </div>
             <div><button id="dropButton" >EVALUATOR</button> </div>
               <div><button id="dropButton">OX</button> </div> */}
@@ -258,8 +291,23 @@ handleChange(e) {
         
         {course.name}
         </label> </div>)) : null }
+        {this.state.isCourseSearched ? (<div className = 'SearchHolder'>
+        {this.state.searchedCourses.map((course) => <label> <input type='checkbox' />
+        {course.name}
+        </label> )}
+        </div>) : null }
         </div>
+        {/* <div> */}
+        {/* <ToastContainer ref={ref =>   this.state.container = ref}
+                className="toast-top-right"  />
+               </div> */}
+               {/* <div>
+        <ToastContainer ref="container"
+                        toastMessageFactory={ToastMessageFactory}
+                        className="toast-top-right" />
+         
         <button id="dropDown" onClick={this.onSubmit.bind(this)}> SUBMIT </button>
+      </div> */}
         </div>   
 
          
@@ -269,6 +317,7 @@ handleChange(e) {
                     submitClicked = {this.onSubmit.bind(this)}
                     courseClicked = {this.toggleChange.bind(this)}
         displayCourse = {this.state.showCourse}/> ) : null } */}
+        </div>
         
       </Paper>
     );

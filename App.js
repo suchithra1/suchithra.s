@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
+import {classes} from './App.css';
 import EnhancedTable from './UserDetail.component.js';
 // import MyComponent from './toast';
-import IntegrationReactSelect from './autoSuggest'
+// import IntegrationReactSelect from './autoSuggest'
 
 
 
@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div className='App' >
         <EnhancedTable/>
-        <IntegrationReactSelect/>
+        {/* <Integrati/onReactSelect/> */}
         
         {/* <MyComponent /> */}
   
