@@ -8,10 +8,29 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
-import RoleDetail from './roleDetail.component.js';
-import Search from './search.js';
-import {ToastContainer, ToastMessageFactory} from 'reactjs-toastr';
-import 'reactjs-toastr/lib/toast.css';
+import Icon from '@material-ui/core/Icon';
+import './App.scss';
+// import { ToastContainer, TpastMessageAnimated } from 'react-toastr';
+import toastr from 'toastr';
+import RoleDetail from './roleDetail.component';
+
+function Icons(props) {
+    let r = null;
+    if(props.toggle) {
+      r = <Icon color="secondary" onClick={props.clicked}>add_circle</Icon>
+    } else {
+      r = <Icon color="secondary" onClick={props.clicked}>remove_circle</Icon>
+    }
+    return (
+      <div>
+      <div>
+        {r}
+        <Icon id= "icon2" color="secondary" onClick ={props.delete}>delete</Icon>
+        {/* <Icon color="secondary"> */}
+      </div>
+      </div>
+    );
+}
 
 let counter = 0;
 function createData(id, firstName, lastName, roles) {
@@ -34,55 +53,10 @@ const rows = [
 ];
 
 const subRows = [
-  // {id: 'ROLES', numeric: false, label: 'ROLES'},
   {id: 'TRAINER', numeric: false, label: 'TRAINER'},
   {id: 'EVALUATOR', numeric: false, label: 'EVALUATOR'},
   {id: 'AUTHOR', numeric: false, label: 'AUTHOR'},
 ];
-
-class EnhancedTableHead extends Component {
-
-  render() {
-    const { onSelectAllClick, numSelected, rowCount } = this.props;
-
-    let header  = rows.map(row => {
-      let subHeader = null;
-      if (row.label === 'ROLES') {
-        subHeader = <TableRow>
-                <TableCell>Trainer</TableCell>
-                <TableCell>Evaluator</TableCell>
-                <TableCell>Author</TableCell>
-            </TableRow>
-      }
-      return <TableCell key={row.id}>
-                {row.label}
-                {subHeader}
-            </TableCell>
-    })
-
-    return (
-      <TableHead>
-        <TableRow>
-          <TableCell padding="checkbox">
-            <Checkbox
-              indeterminate={numSelected > 0 && numSelected < rowCount}
-              checked={numSelected === rowCount}
-              onChange={onSelectAllClick}
-              />
-          </TableCell>
-              {header}
-              
-              </TableRow>
-              </TableHead>
-              );
-            }
-          }
-          
-EnhancedTableHead.propTypes = {
-  numSelected: PropTypes.number.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
-  rowCount: PropTypes.number.isRequired
-};
 
 const styles = theme => ({
   root: {
@@ -97,7 +71,8 @@ const styles = theme => ({
   },
 });
 
-class EnhancedTable extends React.Component {
+class UserDetail extends Component {
+
   state = {
     selected: [],
     data: [
@@ -105,45 +80,88 @@ class EnhancedTable extends React.Component {
       createData(1, 'sounds', 'abi'),
       createData(1, 'sounds', 'abi')
     ],
-    roleData: [
-      createRole('java', 'java', 'java'),
-      createRole('', '', 'db'),
-      createRole('java', 'java', 'java')
-    ], 
-    texts: '',
+    
+    // texts: '',
+    // fields: {},
+    toggleIcon : false,
     name: '',
     roles: [
-      {name: 'TRAINER'},{name: 'AUTHOR'}, {name:'EVALUATOR'}, {name:'OX'}],
+      {name: 'TRAINER'},{name: 'AUTHOR'}, {name:'EVALUATOR'}, {name: 'OX'}],
 
-    courses:[{name:'JAVA'}, {name:'DATABASE'},{name:'OOPS'}, {name:'ANGULAR'}, {name: 'ORACLE'}]  ,
+    courses:[{name:'JAVA'}, {name:'UI'},{name:'OOPS'}, {name:'REACT'}]  ,
+    roleCourses:[{name:'JAVA'}, {name:'UI'},{name:'OOPS'}, {name:'REACT'}],
       showCourse: false,
       isChecked: true,
       isRoleSelected: false,
       isCourseSelected: false,
       isUserSelected : false,
-      searchedCourses: [],
-      isCourseSearched: false,
-      container: []
- };
-
-handleChange(e) {
-  this.setState({texts: e.target.value})
-}
-
-  handleSelectAllClick = event => {
-    if (event.target.checked) {
-      this.setState(state => ({ selected: state.data.map(n => n.id),
-                                isUserSelected : true }));
-      return;
-    }
-    this.setState({ selected: [] });
+      query: '',
+      results: [],
+      searchedText: '',
+      deleteCourse: false,
+      course: '',
+      searchedCourses:[],
+      container: [],
+      selectedCourses:[],
+      isCourseSearched: false
   };
 
-  handleRoleClick =  () => {
-      console.log("role is clicked")
-      this.setState({showCourse: true,
-                    isRoleSelected: true});
+
+  clicked = () => {
+    this.setState({
+        toggleIcon: !this.state.toggleIcon
+      })
+    }
+
+  componentWillMount () {
+      const data = require('./course.json');
+      this.setState({ results : data})
+      console.log(this.state.results);
+    }
+ 
+ 
+  handleInputChange = (event) => {
+    
+    let searchedText = event.target.value;
+    let filteredCourses = [];
+    let data = this.state.results;
+    data.filter(course => {
+        if (course.courseName.toLowerCase().includes(searchedText.toLowerCase())) {
+            filteredCourses.push(course);
+            // this.state.roleCourses.push(data);
+        } 
+    })
+    if (searchedText) {
+        this.setState({searchedCourses: filteredCourses,
+                      isCourseSearched : true})
+    } else {
+      this.setState({searchedCourses: [],
+                    isCourseSearched: false,
+                    showCourse: false
+                     })
+    }
   }
+
+    
+handleRoleClick =  () => {
+  console.log("role is clicked")
+  this.setState({showCourse: true,
+  isRoleSelected: true});
+}
+
+handleDeleteCourse = (course) => {
+   let index = this.state.courses.indexOf(course);
+   this.state.courses.splice(index, 1);
+   this.setState({courses: this.state.courses, deleteCourse: true });
+}
+
+handleSelectAllClick = event => {
+  if (event.target.checked) {
+    this.setState(state => ({ selected: state.data.map(n => n.id) }));
+    return;
+  }
+    this.setState({ selected: [] , isUserSelected: true});
+  };
 
   handleClick = (event, id) => {
     const { selected } = this.state;
@@ -163,83 +181,90 @@ handleChange(e) {
       );
     }
 
-    this.setState({ selected: newSelected,
-                    isUserSelected: true });
+    this.setState({ selected: newSelected, isUserSelected:true });
   };
 
   isSelected = id => this.state.selected.indexOf(id) !== -1;
 
-  showMenu(event) {
-    event.preventDefault();
-    
-    this.setState({ showMenu: true });
-  }
-    
-  toggleChange = () => {
-    
-    this.setState({
-      isChecked: !this.state.isChecked,
-      isCourseSelected: true
-    });
-  }
+  onSearch = (event) => {
+    const hasNumber = /\d/;
+    const specialCharacters = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+    const value = event.target.value.trim();
+    const isEmpty = '';
+    const error = '';
 
-  onSubmit = () => {
-    console.log('submit clicked');
-    this.state.container.success(`hi! Now is ${new Date()}`, `///title\\\\\\`, {
-          closeButton: true
-    // if((this.state.isRoleSelected && this.state.isCourseSelected) === true){
-    //   console.log('submit is clicked');
-    // }
-    // else if(this.state.isRoleSelected === false){
-    //   alert('Please select a role');
-    // }
-    // else alert('Please select a course');
-  })
-}
-
-  handleInputChange = (event) => {
-    let searchedText = event.target.value;
-    let filteredCourses = [];
-    let data = this.state.courses;
-    console.log(data);
-    data.filter((datas) => {
-      if(datas.name.toLowerCase().includes(searchedText.toLowerCase())) {
-        console.log(datas);
-        filteredCourses.push(data);
-      }
-    })
-    if(searchedText) {
-    this.setState({searchedCourses: filteredCourses,
-                    isCourseSearched: true})
-    } else {
-      this.setState({searchedCourses: [],
-                    isCourseSearched: false })
     }
+  
+  onCourseSelect = (course) => {
+        console.log('course is checked');
+        this.setState({
+          isChecked: !this.state.isChecked,
+          isCourseSelected: true,
+          selectedCourses: course
+        });
+        console.log(this.state.selectedCourses)
   }
-
-
-
+  
+  onSubmit = () => {
+    toastr.options = {
+    positionClass : 'toast-top-full-width',
+    hideDuration: 300,
+    timeOut: 6000
+  }
+        toastr.clear()
+        setTimeout(() => toastr.success(`Roles Assigned Successfully`), 300)
+          //   if((this.state.isRoleSelected && this.state.isCourseSelected) === true){
+          //   alert('roles assigned') 
+          // }
+          // else if(this.state.isRoleSelected === false){
+          //   alert('Please select a role');
+          // }
+          // else alert('Please select a course');
+    }
+    
+          
   render() {
     const { classes } = this.props;
     const { data, roleData, selected} = this.state;
-      
+
+    let header  = rows.map(row => {
+      let subHeader = null;
+      if (row.label === 'ROLES') {
+        subHeader = <TableRow>
+                <TableCell>Trainer</TableCell>
+                <TableCell>Evaluator</TableCell>
+                <TableCell>Author</TableCell>
+            </TableRow>
+      }
+      return <TableCell key={row.id}>
+                {row.label}
+                {subHeader}
+            </TableCell>
+    })
+   
     return (
       <Paper className={classes.root}>
       <div>
-        <input type = "text"  placeholder = "search for a user"  onBlur={this.handleChange}/>
-        <button disabled="false">search</button>
+        <input type = "text"  placeholder = "search for a user" size="30" maxlength="40" pattern="[A-z]{2}[0-9]{4}" />
+        <button onClick={this.onSearch}>search</button>
       </div>
-        
         <div className={classes.tableWrapper}>
           <Table className={classes.table}>
-            <EnhancedTableHead
-              numSelected={selected.length}
-              onSelectAllClick={this.handleSelectAllClick}
-              rowCount={data.length}
-            />
+            <TableHead>
+        <TableRow>
+          <TableCell padding="checkbox">
+            <Checkbox
+              indeterminate={selected.length > 0 && selected.length < data.length}
+              checked={selected.length === data.length}
+              onChange={this.handleSelectAllClick}
+              />
+          </TableCell>
+              {header}
+              </TableRow>
+              </TableHead>
             <TableBody>
               {data.map(n => {
-                  const isSelected = this.isSelected(n.id);
+                const isSelected = this.isSelected(n.id);
                   return (
                     <TableRow
                       hover
@@ -256,7 +281,12 @@ handleChange(e) {
                       <TableCell>{n.id}</TableCell>
                       <TableCell>{n.firstName}</TableCell>
                       <TableCell>{n.lastName}</TableCell>
-                      <TableCell>{n.roles}</TableCell>
+                      <TableCell>
+                        <TableRow>
+                          {this.state.courses.map((course) => <TableCell>{course.name}
+                          <Icons clicked={this.clicked} toggle={this.state.toggleIcon} delete = {this.handleDeleteCourse}/></TableCell> )}
+                        </TableRow>
+                      </TableCell>
                     </TableRow>
                   );
                 })}
@@ -266,66 +296,25 @@ handleChange(e) {
               </TableBody>
           </Table>
           
-        </div>
-         <div className="RoleDetail">
-  
-            <h1> ASSIGN ROLES </h1>
-            <div className = "Search">
-            <input  id='search' type='text' onChange={this.handleInputChange} />
-            <i class="fa fa-search" aria-hidden="true"></i> 
-            
-            {this.state.roles.map((role) => <div> <button id="dropButton"
-              onClick = {this.handleRoleClick.bind(this)}>{role.name} <i class="fa fa-caret-down" aria-hidden="true"></i></button>
-               </div>)}
-             {/* <div><button  id="dropButton" >AUTHOR </button> </div>
-            <div><button id="dropButton" >EVALUATOR</button> </div>
-              <div><button id="dropButton">OX</button> </div> */}
-             <div className="Checkboxes">      
-        {this.state.showCourse ? (this.state.courses.map((course)=> 
-        <div>
-       <label>
-        <input type="checkbox"
-          
-          onChange={this.toggleChange.bind(this)}
-        />
-        
-        {course.name}
-        </label> </div>)) : null }
-        {this.state.isCourseSearched ? (<div className = 'SearchHolder'>
-        {this.state.searchedCourses.map((course) => <label> <input type='checkbox' />
-        {course.name}
-        </label> )}
-        </div>) : null }
-        </div>
-        {/* <div> */}
-        {/* <ToastContainer ref={ref =>   this.state.container = ref}
-                className="toast-top-right"  />
-               </div> */}
-               {/* <div>
-        <ToastContainer ref="container"
-                        toastMessageFactory={ToastMessageFactory}
-                        className="toast-top-right" />
-         
-        <button id="dropDown" onClick={this.onSubmit.bind(this)}> SUBMIT </button>
-      </div> */}
-        </div>   
-
-         
-        {/* {this.state.isUserSelected? (<RoleDetail role = {this.state.roles} 
-                    course ={this.state.courses}
+         </div>
+       
+        {this.state.isUserSelected? (<RoleDetail role = {this.state.roles} 
+                    course ={this.state.results}
                     roleClicked = {this.handleRoleClick.bind(this)}
                     submitClicked = {this.onSubmit.bind(this)}
-                    courseClicked = {this.toggleChange.bind(this)}
-        displayCourse = {this.state.showCourse}/> ) : null } */}
-        </div>
+                    courseClicked = {this.onCourseSelect.bind(this)}
+                    inputChanged = {this.handleInputChange.bind(this)}
+                    coursesSearched = {this.state.searchedCourses}
+                    displayCourse = {this.state.showCourse}
+                    searchedCourse = {this.state.isCourseSearched}/> ) : null }
         
       </Paper>
     );
   }
 }
 
-EnhancedTable.propTypes = {
+UserDetail.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(EnhancedTable);
+export default withStyles(styles)(UserDetail);

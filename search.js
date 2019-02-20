@@ -1,37 +1,30 @@
 import React from 'react';
 
-import './App.css';
-
 const search = (props) => {
-let courses = null;
-if (props.course) {
-courses = (
-<ul >
-{props.course.map((item, index) => {
-return (
-<li
-key={index}
-onClick={() => props.onClick(item)}>
-{item[props.show] ? item[props.show] : item[props.error]}
-</li>
-);
-})}
-</ul>
-);
-}
+    let suggestion = null;
+    if (props.suggest) {
+        suggestion = (
+            <ul>
+              {props.suggest.map((item, index) => {
+                return (
+                    <li
+                      key={index}
+                      onClick={() => props.onClick(item)}>
+                      {item[props.show]}
+                    </li>
+                    );
+                })}
+            </ul>
+        );
+    }
 
-return (
-<div className ='RoleDetail'>
-<label>{props.label}</label>
-<input 
-type='text' 
-placeholder= 'search courses'
-onChange={props.onChange}
-onBlur={props.onBlur}
-onKeyDown={props.onKeyDown}/>
-{courses}
-</div>
-);
+    return (
+        <div>
+            <label>{props.label}</label>
+            <input type='text' placeholder={props.placeholder} onChange={props.onChange}/>
+            {suggestion}
+        </div>
+    );
 };
 
 export default search;

@@ -1,0 +1,50 @@
+#head {
+    width: 1900px;
+    background-color : gray;
+    color: pink;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+#search {
+    margin-bottom: 10px;
+}
+  
+#submit {
+    margin-left: 800px; 
+    margin-right: -400px;
+    margin-top: 50px;
+    margin-bottom: -30px;
+    background-color: gray;
+}
+  
+#role {
+    margin-right: 240px;
+    width:120px;
+    background-color: pink;
+    height: 40px;
+    padding: 10px;
+}
+
+.roleDetail { 
+    // position: absolute;
+    width: 1900px;
+    height: 400px;
+    background-color: white;
+    color: pink;
+    text-align: center;
+}
+
+.course {
+    // position: relative;
+    float: right;
+    width: 70px;
+    height: 20px;
+    margin-right:200px;
+    // margin-bottom:200px;
+    // margin-top: -80px;
+}
+
+.search {
+    margin-bottom: 15px;
+    margin-top: 2px;
+}

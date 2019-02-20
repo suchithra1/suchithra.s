@@ -1,0 +1,86 @@
+.App {
+  /* position: relative; */
+  background-color:lightblue;
+  width: 1920px;
+  height: 945px;
+}  
+
+table,th,td {
+  margin:30px;
+  padding: 5px;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+th {
+  background-color: cornsilk;
+}
+
+
+.RoleDetail { 
+  width: 500px;
+  height: 350px;
+  background-color:beige;
+  color: pink;
+  text-align: center;
+  margin-left: 500px;
+}
+
+
+.Checkboxes {
+  position: absolute;
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin-left:250px;
+  margin-bottom:200px;
+  margin-top: -160px;
+  /* overflow: auto; */
+  
+}
+
+.Search{
+  margin-bottom: 2px;
+  margin-top: 2px;
+ 
+  
+}
+
+#search{
+  margin-bottom: 10px;
+  width: 150px;
+  position: relative;
+}
+
+#dropDown {
+  /* margin-left: 50px; */
+  margin-top: 50px;
+  margin-bottom: -30px;
+  background-color: burlywood;
+}
+
+#dropButton {
+  margin-right: 240px;
+  width:100px;
+  background-color: blueviolet;
+  height: 40px;
+  padding: 10px;
+  
+}
+
+.SearchHolder {
+  position: absolute;
+  width: 150px;
+  height: 70px;
+  background-color: white;
+  margin-top: -10px;
+  margin-left: -74px;
+  top:0px;
+  left:0px;
+  z-index: 10px;
+}
+
+.RoleDetail a:hover, .RoleDetail a:active {
+
+  color:orange;
+}
