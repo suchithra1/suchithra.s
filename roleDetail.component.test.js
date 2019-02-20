@@ -1,28 +1,36 @@
 import React from 'react';
-import { shallow} from 'enzyme';
+import expect from 'expect';
+import { shallow } from 'enzyme';
 import RoleDetail from './roleDetail.component';
-import Adapter from 'enzyme-adapter-react-16';
 import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
-const props = {
-  role:['trainer', 'author']
-}
+describe('RoleDetail', () => {
 
-const clickFn = jest.fn();
 
-describe ("RoleDetail", () => {
-  it('renders without crashing', () => {
-    const wrapper = shallow(<RoleDetail {...props}/>);
-  });
-
-  
-  it('clicking on role should display a division', () => {
-    const component = shallow(<RoleDetail onClick={clickFn} />);
-    component.find('button#role')
-             .simulate('click');
-    expect(clickFn).toHaveBeenCalled();
+  beforeEach(() => {
+    let roleClicked = jest.fn();
   });
   
+  
+  it(' renders without crashing', () => {
+    const role = shallow(<RoleDetail role={['trainer', 'author', 'evaluator']}  />);
+    expect(role.find('h1').text()).toEqual(' ASSIGN ROLES ');
+  });
+
+  it('RoleDetai checks for roleClicked prop', () => {
+    roleClicked = jest.fn();
+    const role = shallow(<RoleDetail role={['trainer', 'author', 'evaluator']} roleClicked={roleClicked} />);
+    expect(role.props().roleClicked).toBeDefined();
+  });
+  
+  it('RoleDetail renders button', () => {
+    const role = shallow(<RoleDetail role={['trainer', 'author', 'evaluator']} roleClicked={roleClicked} />);
+    const button = role.find('button').first();
+    expect(button).toBeDefined();
+  });
+
+
 });

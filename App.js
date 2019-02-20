@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import './App.scss';
-// import EnhancedTable from './UserDetailco.js';
+import {classes} from './App.css';
+import EnhancedTable from './UserDetail.component.js';
 // import MyComponent from './toast';
-// import IntegrationReactSelect from './AutoSuggest'
-import UserDetail from './UserDetail.component';
-// import UserDetailComponent from './UserDetail.component';
-// import RoleDetail from './roleDetail.component'
-
+// import IntegrationReactSelect from './autoSuggest'
 
 
 
@@ -14,9 +10,8 @@ class App extends Component {
   render() {
     return (
       <div className='App' >
-        <UserDetail/>
-        {/* <IntegrationReactSelect/> */}
-        {/* <RoleDetail/> */}
+        <EnhancedTable/>
+        {/* <Integrati/onReactSelect/> */}
         
         {/* <MyComponent /> */}
   

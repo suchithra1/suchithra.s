@@ -1,5 +1,5 @@
 import React from 'react';
-import './roleDetail.scss';
+import './App.css';
 
 const roleDetail = (props) => {
     console.log(props.results);
@@ -9,7 +9,7 @@ const roleDetail = (props) => {
     if(props.coursesSearched.length > 0) {
         coursesShown = <div>
             { props.coursesSearched.map((course) => <div className='course'>
-                                                            <label> <input type='checkbox'
+                                                          <label> <input type='checkbox'
                                                             onChange = {props.courseClicked}/>
                                                             {course.courseName}  
                                                             </label>
@@ -17,24 +17,24 @@ const roleDetail = (props) => {
                 )}
         </div>
     } else {
-        coursesShown = <div>   { props.displayCourse ? (props.course.map((course)=> <div className='course'> <label>
+        coursesShown = <div>   {props.course.map((course)=> <div className='course'> <label>
             <input type='checkbox'
              onChange={props.courseClicked} />
              {course.courseName}
              </label>
-       </div>)) : null }
+        </div> ) }
 
         </div>
     }
     return (
-        <div className='roleDetail'>
-            <h1 id='head'> ASSIGN ROLES </h1>
-            <div className='search'>
+        <div className='RoleDetail'>
+            <h2 id='head'> ASSIGN ROLES </h2>
+            <div className='Search'>
                 <input  placeholder='Search Courses'
                         onChange={props.inputChanged} />
                         <i class="fa fa-search" aria-hidden="true"></i> 
             </div>
-            { props.role.map((role, index) => <div> <button id='role'
+            { props.role.map((role, index) => <div> <button className='role'
                                               key={index} 
                                               onClick = {props.roleClicked}>
                                               {role.name}
@@ -71,5 +71,10 @@ const roleDetail = (props) => {
        </div>
     );
 }
+
+// https://www.toptal.com/react/tdd-react-unit-testing-enzyme-jest
+// https://www.codementor.io/vijayst/unit-testing-react-components-jest-or-enzyme-du1087lh8
+// https://medium.com/wehkamp-techblog/unit-testing-your-react-application-with-jest-and-enzyme-81c5545cee45
+
 
 export default roleDetail;

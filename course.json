@@ -1,21 +1,21 @@
 [
-     {
-      "courseName" : "GRADLE",
-      "courseId" : 1
-      
-    }, {
-        "courseName" : "PYTHON",
-        "courseId" : 2
-    }, {
-        "courseName" : "DOTNET",
-        "courseId" : 3
-    },
     {
-        "courseName" : "NODE",
-        "courseId" : 4
-    },
-    {
-        "courseName" : "SPRING",
-        "courseId" : 5
-    }
+     "courseName" : "GRADLE",
+     "courseId" : 1
+     
+   }, {
+       "courseName" : "PYTHON",
+       "courseId" : 2
+   }, {
+       "courseName" : "DOTNET",
+       "courseId" : 3
+   },
+   {
+       "courseName" : "NODE",
+       "courseId" : 4
+   },
+   {
+       "courseName" : "SPRING",
+       "courseId" : 5
+   }
 ]

@@ -1,3 +1,5 @@
+import {ToastContainer} from 'react-toastr';
+import './toastr.css';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -9,9 +11,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import Icon from '@material-ui/core/Icon';
-import './App.scss';
+import './App.css';
 // import { ToastContainer, TpastMessageAnimated } from 'react-toastr';
-import toastr from 'toastr';
+// import toastr from 'toastr';
 import RoleDetail from './roleDetail.component';
 
 function Icons(props) {
@@ -155,12 +157,14 @@ handleDeleteCourse = (course) => {
    this.setState({courses: this.state.courses, deleteCourse: true });
 }
 
-handleSelectAllClick = event => {
+handleSelectAllClick = (event, id) => {
   if (event.target.checked) {
-    this.setState(state => ({ selected: state.data.map(n => n.id) }));
+    this.setState(state => ({
+      selected: state.data.map(n => n.id) }));
     return;
   }
-    this.setState({ selected: [] , isUserSelected: true});
+   else { this.setState({ selected: [] , isUserSelected: true});}
+    console.log(this.state.selected)
   };
 
   handleClick = (event, id) => {
@@ -195,24 +199,20 @@ handleSelectAllClick = event => {
 
     }
   
-  onCourseSelect = (course) => {
+  onCourseSelect = (event) => {
         console.log('course is checked');
         this.setState({
-          isChecked: !this.state.isChecked,
+          isChecked: event.target.value,
           isCourseSelected: true,
-          selectedCourses: course
+          selectedCourses: event.target.value
         });
         console.log(this.state.selectedCourses)
   }
   
   onSubmit = () => {
-    toastr.options = {
-    positionClass : 'toast-top-full-width',
-    hideDuration: 300,
-    timeOut: 6000
-  }
-        toastr.clear()
-        setTimeout(() => toastr.success(`Roles Assigned Successfully`), 300)
+    this.state.container.success(`hi! Now is ${new Date()}`, `///title\\\\\\`, {
+      closeButton: true,
+   
           //   if((this.state.isRoleSelected && this.state.isCourseSelected) === true){
           //   alert('roles assigned') 
           // }
@@ -220,7 +220,8 @@ handleSelectAllClick = event => {
           //   alert('Please select a role');
           // }
           // else alert('Please select a course');
-    }
+    })
+  }
     
           
   render() {
@@ -308,6 +309,9 @@ handleSelectAllClick = event => {
                     displayCourse = {this.state.showCourse}
                     searchedCourse = {this.state.isCourseSearched}/> ) : null }
         
+        <div className="container">
+      <ToastContainer ref={ref => this.state.container = ref}  className="toast-top-right" />
+      </div>
       </Paper>
     );
   }

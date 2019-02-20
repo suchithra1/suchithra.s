@@ -27,11 +27,11 @@ th {
 }
 
 
-.Checkboxes {
-  position: absolute;
+.course {
+  /* position: absolute; */
   float: left;
-  width: 100px;
-  height: 100px;
+  /* width: 100px; */
+  height: 2px;
   margin-left:250px;
   margin-bottom:200px;
   margin-top: -160px;
@@ -59,7 +59,7 @@ th {
   background-color: burlywood;
 }
 
-#dropButton {
+.role {
   margin-right: 240px;
   width:100px;
   background-color: blueviolet;
@@ -78,6 +78,13 @@ th {
   top:0px;
   left:0px;
   z-index: 10px;
+}
+
+#head {
+  width:100%;
+  height: 30px;
+  color: aqua;
+  background-color: bisque;
 }
 
 .RoleDetail a:hover, .RoleDetail a:active {
