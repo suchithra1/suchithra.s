@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import {classes} from './App.css';
-import EnhancedTable from './UserDetail.component.js';
+// import {classes} from './App.css';
+import UserDetail from './UserDetail.component';
+import Select from './multiSelect'
 // import MyComponent from './toast';
 // import IntegrationReactSelect from './autoSuggest'
-
-
+import ReactPicky from './Picky';
+import Demo from './Demo.js';
 
 class App extends Component {
   render() {
     return (
       <div className='App' >
-        <EnhancedTable/>
+      {/* <Select /> */}
+        <UserDetail/>
+        {/* <ReactPicky /> */}
+        {/* <Demo/> */}
         {/* <Integrati/onReactSelect/> */}
         
         {/* <MyComponent /> */}

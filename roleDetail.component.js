@@ -1,80 +1,38 @@
 import React from 'react';
-import './App.css';
+import './roleDetail.css';
+import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
+import Checkbox from '@material-ui/core/Checkbox';
+// import Picky from 'react-picky'
 
 const roleDetail = (props) => {
-    console.log(props.results);
-    console.log(props.coursesSearched);
-
-    let coursesShown;
-    if(props.coursesSearched.length > 0) {
-        coursesShown = <div>
-            { props.coursesSearched.map((course) => <div className='course'>
-                                                          <label> <input type='checkbox'
-                                                            onChange = {props.courseClicked}/>
-                                                            {course.courseName}  
-                                                            </label>
-                                                    </div>
-                )}
-        </div>
-    } else {
-        coursesShown = <div>   {props.course.map((course)=> <div className='course'> <label>
-            <input type='checkbox'
-             onChange={props.courseClicked} />
-             {course.courseName}
-             </label>
-        </div> ) }
-
-        </div>
-    }
     return (
-        <div className='RoleDetail'>
-            <h2 id='head'> ASSIGN ROLES </h2>
-            <div className='Search'>
-                <input  placeholder='Search Courses'
-                        onChange={props.inputChanged} />
-                        <i class="fa fa-search" aria-hidden="true"></i> 
-            </div>
-            { props.role.map((role, index) => <div> <button className='role'
-                                              key={index} 
-                                              onClick = {props.roleClicked}>
-                                              {role.name}
-                                               
-                                              <i class="fa fa-caret-down" aria-hidden="true"></i>
-                                              </button>
-                                       </div>
-            )}
-            
-        
-            {/* <div> */}
-                {/* { props.displayCourse ? (props.course.map((course)=> <div> <label>
-                                                                           <input type='checkbox'
-                                                                            onChange={props.inputChanged} />
-                                                                            {course.courseName}
-                                                                            </label>
-                                                                      </div>)) : null }
-                { props.coursesSearched.map((course) => <div className='Suggestion'>
-                                                            <label> <input type='checkbox'/>
-                                                            {course.courseName}  
-                                                            </label>
-                                                            </div>
-                )} */}
-                {/* {props.searchedCourse ? (<div className = 'SearchHolder'>
-                                         {props.coursesSearched.map((course) => <div> 
-                                                                                <label>
-                                                                               <input type='checkbox' />
-                                                                                {course.courseName}
-                                                                                </label> </div> )}
-                                                                                 </div>) : null } */}
-            {coursesShown}
-            {/* </div> */}
-       <button id='submit' onClick={props.submitClicked}> SUBMIT </button>
-       </div>
+        <div id='roleDetail' className= 'roleDetail' >
+           <h2 className='heading'>ASSIGN ROLES</h2>
+              
+
+              <div>{props.roles.map((role) => <div><label className='roleLabel'>{role}</label>
+              <div className='role'>
+              <ReactMultiSelectCheckboxes placeholder='Search Courses' placeholderButtonLabel='Courses'
+              	  options={props.courses} name={role}
+              onChange={props.courseSelected} /></div></div>)}</div>
+
+              <div className='noCourse'>
+                <div> <label className='roleLabel'>COORDINATOR</label>
+                  <Checkbox className='checkbox' name='COORDINATOR' 
+                     onChange={props.roleChecked} 
+                     defaultChecked={false} /> 
+                
+                </div>
+                <div> <label className='roleLabel'>RMO</label>
+                  <Checkbox className='checkbox' name='RMO' 
+                     onChange={props.roleChecked} 
+                     defaultChecked={false} /> 
+               
+                </div>
+                </div>
+          <button className='submit'  onClick={props.submitClicked}> SUBMIT </button>
+        </div>
     );
 }
-
-// https://www.toptal.com/react/tdd-react-unit-testing-enzyme-jest
-// https://www.codementor.io/vijayst/unit-testing-react-components-jest-or-enzyme-du1087lh8
-// https://medium.com/wehkamp-techblog/unit-testing-your-react-application-with-jest-and-enzyme-81c5545cee45
-
 
 export default roleDetail;

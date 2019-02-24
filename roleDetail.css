@@ -1,0 +1,74 @@
+.roleDetail{
+    width:900px;
+    height: 500px;
+    background-color: beige;
+    margin-left: 250px;
+}
+
+.heading{
+    width:100%;
+    height: 40px;
+    background-color: blueviolet;
+    color:palevioletred;
+    text-align: center;
+}
+
+.noCourse{
+    width: 900px;
+    margin-top: 50px;
+    margin-right: 100px;
+    /* background-color: orange; */
+}
+
+.role {
+    /* width:120px; */
+    height: 20px;
+    padding: 30px;
+    margin-left: 400px;
+    margin-top: -60px;
+    color:black;
+}
+
+.roleLabel{
+    border-radius: 25px;
+    display: block;
+    width: 120px;
+    height:30px;
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+    color:deeppink;
+    font-size: 15px;
+    line-height: 1.2;
+    /* padding: 10px; */
+    background-color: blueviolet
+}
+
+.course{
+    float: left;
+    width: 300px;
+    height: 20px;
+    margin-left: 700px;
+    margin-bottom: 20px;
+    margin-top: -30px
+    
+}
+
+.checkbox{
+    width:900px;
+    height: 20px;
+    padding: 10px;
+    /* float:right; */
+    /* margin-left: 700px; */
+    margin-bottom: -100px;
+    margin-top: -500px;
+    color:black;
+    /* background-color: brown; */
+}
+
+.submit{
+    width:80px;
+    height: 25px;
+    float:right;
+    margin-top: 30px;
+    margin-right: 400px;
+}

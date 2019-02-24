@@ -1,21 +1,32 @@
 [
     {
-     "courseName" : "GRADLE",
-     "courseId" : 1
-     
+     "label" : "BIGDATA",
+     "value" : 1
+    }, {
+    "label" : "JAVA",
+    "value" : 2
    }, {
-       "courseName" : "PYTHON",
-       "courseId" : 2
-   }, {
-       "courseName" : "DOTNET",
-       "courseId" : 3
+    "label" : "JAVASCRIPT",
+    "value" : 3
    },
    {
-       "courseName" : "NODE",
-       "courseId" : 4
+    "label" : "SPRING BOOT",
+    "value" : 4
    },
    {
-       "courseName" : "SPRING",
-       "courseId" : 5
+    "label" : "DATABASE",
+     "value" : 5
+   },
+   {
+    "label" : "OOPS",
+     "value" : 6
+   },
+   {
+    "label" : "REACT",
+     "value" : 7
+   },
+   {
+    "label" : "ANGULAR",
+     "value" : 8
    }
 ]

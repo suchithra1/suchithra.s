@@ -1,4 +1,4 @@
-import {ToastContainer, ToastMessageAnimated} from 'react-toastr';
+import {ToastContainer} from 'react-toastr';
 import './toastr.css';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
@@ -11,7 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import Icon from '@material-ui/core/Icon';
-
+import './App.css';
 // import { ToastContainer, TpastMessageAnimated } from 'react-toastr';
 // import toastr from 'toastr';
 import RoleDetail from './roleDetail.component';
@@ -88,9 +88,7 @@ class UserDetail extends Component {
     toggleIcon : false,
     name: '',
     roles: [
-      {name:'COORDINATOR'}, {name: 'MANAGEMENT'}],
-
-    role:['TRAINER','EVALUATOR','AUTHOR'],
+      {name: 'TRAINER'},{name: 'AUTHOR'}, {name:'EVALUATOR'}, {name: 'OX'}],
 
     courses:[{name:'JAVA'}, {name:'UI'},{name:'OOPS'}, {name:'REACT'}]  ,
     roleCourses:[{name:'JAVA'}, {name:'UI'},{name:'OOPS'}, {name:'REACT'}],
@@ -107,7 +105,6 @@ class UserDetail extends Component {
       searchedCourses:[],
       container: [],
       selectedCourses:[],
-      selectedRoles:[],
       isCourseSearched: false
   };
 
@@ -119,7 +116,7 @@ class UserDetail extends Component {
     }
 
   componentWillMount () {
-      const data = require('./course.json');
+      const data = require('./role.json');
       this.setState({ results : data})
       console.log(this.state.results);
     }
@@ -148,6 +145,12 @@ class UserDetail extends Component {
   }
 
     
+handleRoleClick =  () => {
+  console.log("role is clicked")
+  this.setState({showCourse: true,
+  isRoleSelected: true});
+}
+
 handleDeleteCourse = (course) => {
    let index = this.state.courses.indexOf(course);
    this.state.courses.splice(index, 1);
@@ -158,7 +161,6 @@ handleSelectAllClick = (event, id) => {
   if (event.target.checked) {
     this.setState(state => ({
       selected: state.data.map(n => n.id) }));
-      
     return;
   }
    else { this.setState({ selected: [] , isUserSelected: true});}
@@ -206,8 +208,7 @@ handleSelectAllClick = (event, id) => {
         });
         console.log(this.state.selectedCourses)
   }
- 
-
+  
   onSubmit = () => {
     this.state.container.success(`hi! Now is ${new Date()}`, `///title\\\\\\`, {
       closeButton: true,
@@ -221,27 +222,7 @@ handleSelectAllClick = (event, id) => {
           // else alert('Please select a course');
     })
   }
-
-  handleSelectRole(event){
-    console.log(event.target.checked, event.target.name);
-    const role = event.target.name
-    this.setState({selectedRoles:role});
-
-    };
-
-  handleOnSelectCourse(value,name) {
-    console.log(name.name)
-    let role = name.name;
-    let course = JSON.stringify(value)
-    console.log(course);
     
-    let coursesSelected = [];
-    coursesSelected.push(role,course);
-    console.log(coursesSelected);
-    
-    this.setState({ selectedCourses:coursesSelected });
-    console.log(this.state.selectedCourse);
-  }
           
   render() {
     const { classes } = this.props;
@@ -314,17 +295,22 @@ handleSelectAllClick = (event, id) => {
                   <TableCell colSpan={6} />
                 </TableRow>
               </TableBody>
-          </Table> */}
-     </div>
+          </Table>
+          
+         </div>
        
-       {this.state.isUserSelected ? ( <RoleDetail courses ={this.state.results}
+       {/* <RoleDetail role = {this.state.roles} 
+                    course ={this.state.results}
+                    roleClicked = {this.handleRoleClick.bind(this)}
                     submitClicked = {this.onSubmit.bind(this)}
-                    roleChecked = {this.handleSelectRole.bind(this)}
-                    roles = {this.state.role}
-                    courseSelected = {this.handleOnSelectCourse.bind(this)} />) : null }
-        
+                    courseClicked = {this.onCourseSelect.bind(this)}
+                    inputChanged = {this.handleInputChange.bind(this)}
+                    coursesSearched = {this.state.searchedCourses}
+                    displayCourse = {this.state.showCourse}
+                    searchedCourse = {this.state.isCourseSearched}/> 
+         */}
         <div className="container">
-      <ToastContainer  ref={ref => this.state.container = ref}  className="toast-top-right" />
+      <ToastContainer ref={ref => this.state.container = ref}  className="toast-top-right" />
       </div>
       </Paper>
     );
