@@ -94,6 +94,7 @@ class UserDetail extends Component {
 
     courses:[{name:'JAVA'}, {name:'UI'},{name:'OOPS'}, {name:'REACT'}]  ,
     roleCourses:[{name:'JAVA'}, {name:'UI'},{name:'OOPS'}, {name:'REACT'}],
+    newCourse: [ {'label' :  '', 'value' : '' }],
       showCourse: false,
       isChecked: true,
       isRoleSelected: false,
@@ -119,7 +120,13 @@ class UserDetail extends Component {
     }
 
   componentWillMount () {
+   
+    
       const data = require('./course.json');
+      
+      
+        
+        
       this.setState({ results : data})
       console.log(this.state.results);
     }
@@ -230,16 +237,23 @@ handleSelectAllClick = (event, id) => {
     };
 
   handleOnSelectCourse(value,name) {
+    console.log(JSON.stringify(value));
     console.log(name.name)
     let role = name.name;
     let course = JSON.stringify(value)
     console.log(course);
     
     let coursesSelected = [];
-    coursesSelected.push(role,course);
-    console.log(coursesSelected);
+    coursesSelected.push(course);
+    console.log(JSON.parse(coursesSelected));
+    let filteredCourses = [...this.state.results];
+    console.log(filteredCourses);
+    filteredCourses.splice(0, 0, coursesSelected);
+    console.log(JSON.stringify(filteredCourses));
+
+
     
-    this.setState({ selectedCourses:coursesSelected });
+    this.setState({ results: JSON.parse(coursesSelected) });
     console.log(this.state.selectedCourse);
   }
           
