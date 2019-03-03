@@ -1,50 +1,70 @@
 import React from 'react';
-import classes from './roleDetail.scss';
+import './roleDetail.css';
 import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
-import { Checkbox } from '@material-ui/core';
+import Checkbox from '@material-ui/core/Checkbox';
 
 const roleDetail = (props) => {
+  let labelClass = [];
+  labelClass.push('roleLabel');
+  if(props.isCourseSelected) {
+   labelClass.push('highlight')
+  }
+  console.log(labelClass);
 
-    let labelClass = [classes.roleLabel];
-    if(props.isCourseSelected) {
-        labelClass.push(classes.highlight);
-    } 
+  let displayRoles = [];
+  {props.role.map((role) => {
+    if(role.hasCourse) {
+      displayRoles.push( <div>
+                         <label className='roleLabel'>{role.name}</label>
+                         <div  className='role'>
+                          <ReactMultiSelectCheckboxes id='courses'
+                                                      placeholder='Search Courses'
+                                                      placeholderButtonLabel='Courses'
+                                                      options={props.courses} name={role.name}
+                                                      onChange={props.courseSelected}
+                                                      defaultChecked={false} /></div></div>
+                       )
+    } else {
+      displayRoles.push( <div className='noCourse'>
+                         <div> <label className='roleLabel'>{role.name}}</label>
+                        <Checkbox className='checkbox' name={role.name} 
+                                  onChange={props.roleChecked} 
+                                  defaultChecked={false} /> 
+      
+                         </div>
+                         </div>
+                        )
+   }
+  })}
 
     return (
-        <div id='roleDetail' className={classes.roleDetail} >
-            <h2 className={classes.heading}>ASSIGN ROLES</h2>
-                <div>
-                {props.roles.map((role, index) =>  <div><label className={classes.roleLabel}>{role.name}</label>
-                                                        <div className={classes.role}>
-                                                            <ReactMultiSelectCheckboxes placeholder='Search Courses' 
-                                                                                        placeholderButtonLabel='Courses'
-                                                                                        options={props.courses}
-                                                                                        name={role}
-                                                                                        key={index}
-                                                                                        onChange={props.courseSelected} />
-                                                        </div>
-                                                   </div>
-                )}
-                </div>
+        <div id='roleDetail' className= 'roleDetail' >
+           <h2 className='heading'>ASSIGN ROLES</h2>
+              
+              {displayRoles}
+              {/* <div>{props.role.map((role) => <div><label className='roleLabel'>{role.name}</label>
+              <div className='role'>
+              <ReactMultiSelectCheckboxes placeholder='Search Courses' placeholderButtonLabel='Courses'
+              	  options={props.courses} name={role.name}
+              onChange={props.courseSelected}
+              defaultChecked={false} /></div></div>)}</div>
 
-                <div className={classes.courseLess}>
-                    <label className={classes.roleLabel}>COORDINATOR</label>
-                    <div className={classes.checkbox}>
-                        <Checkbox name='COORDINATOR' 
-                                  onChange={props.roleSelected} 
-                                  defaultChecked={false} /> 
+              <div className='noCourse'>
+                <div> <label className='roleLabel'>COORDINATOR</label>
+                  <Checkbox className='checkbox' name='COORDINATOR' 
+                     onChange={props.roleChecked} 
+                     defaultChecked={false} /> 
                 
-                    </div>
-                    <label className={classes.roleLabel}>RMO </label>
-                    <div className={classes.checkbox}>
-                        <Checkbox name='RMO' 
-                                  onChange={props.roleSelected} 
-                                  defaultChecked={false} />
-                    </div>
                 </div>
-            <button className={classes.submit}  onClick={props.submitClicked}> SUBMIT </button>
+                <div> <label className='roleLabel'>RMO</label>
+                  <Checkbox className='checkbox' name='RMO' 
+                     onChange={props.roleChecked} 
+                     defaultChecked={false} /> 
+               
+                </div>
+                </div> */}
+          <button className='submit'  onClick={props.submitClicked}> SUBMIT </button>
         </div>
-
     );
 }
 

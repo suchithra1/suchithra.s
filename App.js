@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 // import {classes} from './App.css';
 import UserDetail from './UserDetail.component';
-import Select from './multiSelect'
 // import MyComponent from './toast';
 // import IntegrationReactSelect from './autoSuggest'
-import ReactPicky from './Picky';
+import Picky from './Picky';
 import Demo from './Demo.js';
 
 class App extends Component {
@@ -12,8 +11,10 @@ class App extends Component {
     return (
       <div className='App' >
       {/* <Select /> */}
-        <UserDetail/>
-        {/* <ReactPicky /> */}
+        <UserDetail />
+        {/* <MultipleSelect/> */}
+
+        {/* <Picky /> */}
         {/* <Demo/> */}
         {/* <Integrati/onReactSelect/> */}
         

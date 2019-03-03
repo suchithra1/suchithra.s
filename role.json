@@ -1,0 +1,27 @@
+[
+    {
+     "name" : "TRAINER",
+     "id" : 1,
+     "hasCourse":true
+    },
+    {
+        "name" : "AUTHOR",
+        "id" : 2,
+        "hasCourse":true
+    },
+    {
+        "name" : "EVALUATOR",
+        "id" : 3,
+        "hasCourse":true
+    },
+    {
+        "name" : "COORDINATOR",
+        "id" : 4,
+        "hasCourse":false
+    },
+    {
+        "name" : "RMO",
+        "id" : 5,
+        "hasCourse":false
+    }
+]

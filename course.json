@@ -1,32 +1,30 @@
 [
     {
-     "label" : "BIGDATA",
-     "value" : 1
-    }, {
-    "label" : "JAVA",
-    "value" : 2
-   }, {
-    "label" : "JAVASCRIPT",
-    "value" : 3
-   },
-   {
-    "label" : "SPRING BOOT",
-    "value" : 4
-   },
-   {
-    "label" : "DATABASE",
-     "value" : 5
-   },
-   {
-    "label" : "OOPS",
-     "value" : 6
-   },
-   {
-    "label" : "REACT",
-     "value" : 7
-   },
-   {
-    "label" : "ANGULAR",
-     "value" : 8
-   }
+     "name" : "BIGDATA",
+     "id" : 1
+    }, 
+    {
+     "name" : "JAVA",
+     "id" : 2
+    },
+    {
+     "name" : "JAVASCRIPT",
+     "id" : 3
+    },
+    {
+    "name" : "HADOOP",
+    "id" : 4
+    },
+    {
+    "name" : "SPRING BOOT",
+    "id" : 5
+    },
+    {
+    "name" : "MAVEN",
+    "id" : 6
+    },
+    {
+    "name" : "PYTHON",
+    "id" : 7
+    }
 ]

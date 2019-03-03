@@ -43,6 +43,10 @@
     background-color: blueviolet
 }
 
+.highlight {
+    background-color: aqua;
+}
+
 .course{
     float: left;
     width: 300px;
