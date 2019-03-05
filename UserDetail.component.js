@@ -112,8 +112,17 @@ class UserDetail extends Component {
       course: '',
       searchedCourses:[],
       container: [],
-      selectedCourses:[],
-      selectedRoles:[],
+      selectedUser:  [
+        { userId: '',
+          userName: '',
+          roles: [
+            { roleName: '',
+              courses: []
+            }
+          ]
+        }
+      ],
+      selectedRoles : [],
       isCourseSearched: false
   };
 
@@ -218,28 +227,46 @@ handleSelectAllClick = (event, id) => {
 
     };
 
+  handleCheckIfRoleExists (name) {
+    return this.state.selectedCourses(item => name.name === item.name);
+  }
+
   handleOnSelectCourse(value,name) {
-    console.log(name.name)
+    // console.log(name.name)
     let role = name.name;
     let course = JSON.stringify(value)
-    console.log(course);
+    // console.log(course);
     
-    let coursesSelected = [];
-    coursesSelected.push(role,course);
+    let coursesSelected = {};
+    
+    coursesSelected.role = role
+    coursesSelected.course = course;
+   
+    // console.log(coursesSelectedList);
+    // if(this.handleCheckIfRoleExists(role)) {
+    //   this.courseSelected[1].push(course)
+    // } else coursesSelected.push(role,course);
+
     console.log(coursesSelected);
+    // console.log(selectedCoursesList);
+    
+    
     // let filteredCourses = [...this.state.courses];
     // console.log(filteredCourses);
     // filteredCourses.splice(0, 0, coursesSelected);
     // console.log(JSON.stringify(filteredCourses));
-    this.setState({isCourseSelected : true})
+    this.setState(prevState => ({isCourseSelected : true,
+                  selectedRoles: [...prevState.selectedRoles, coursesSelected] }))
+    // console.log(this.state.selectedCourses);
 
 
     
     // this.setState({ results: JSON.parse(coursesSelected) });
-    console.log(this.state.selectedCourse);
+    
   }
           
   render() {
+    console.log(JSON.stringify(this.state.selectedRoles));
     const { classes } = this.props;
     const { data, roleData, selected} = this.state;
 

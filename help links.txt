@@ -1,0 +1,5 @@
+https://stackoverflow.com/questions/37435334/correct-way-to-push-into-state-array/37435577
+
+https://stackoverflow.com/questions/41028598/how-to-check-if-a-item-value-already-exists-in-local-storage
+
+http://brewhouse.io/blog/2015/03/24/best-practices-for-component-state-in-reactjs.html
