@@ -2,7 +2,6 @@ import React from 'react';
 import expect from 'expect';
 import { shallow } from 'enzyme';
 import RoleDetail from './roleDetail.component';
-import classes from './roleDetail.scss';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
@@ -15,7 +14,7 @@ describe('RoleDetail', () => {
     expect(role.find('h2').text()).toEqual('ASSIGN ROLES');
   });
 
-  // it('renders ReactMultiSelecte component', () => {
+  // it('renders ReactMultiSelect component', () => {
   //     const role = shallow(<RoleDetail roles={['trainer', 'author', 'evaluator']} />);
   //     expect(role.find(ReactMultiselectCheckboxes).length).toEqual(1);
   //   });
