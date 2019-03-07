@@ -4,30 +4,23 @@ import { Checkbox } from '@material-ui/core';
 import classes from './roleDetail.scss';
 
 const roleDetail = (props) => {
-
-    let label = [];
-    let labelClass = [classes.roleLabel];
-    label.name = [];
-    // label.name.push(roleToDisplay.name);
-    label.classes = [];
-    // if (props.isCourseSelected) {
-    //     label.key.push(props.selectedRole[0])
-    //     let roleName = label.key[0];
-    //     console.log(roleName);
-    //     labelClass.push(classes.roleName);
-    // }
-    // console.log(label);
-    
+ 
     let displayRoles = [];
     { props.role.map((roleToDisplay, index) => {
+
+        // roleToDisplay.class.push(classes.roleLabel);
+
         if (roleToDisplay.hasCourse === 'true') {
             displayRoles.push( <div>
-                               <label className = {labelClass.join(' ')}>
+                               <label
+                                // className = {roleToDisplay.class.join(' ')}
+                                >
                                     {roleToDisplay.name}
                                </label>
                                <div className = {classes.course}>
                                <ReactMultiSelectCheckboxes placeholder = 'Search Courses' 
                                                            placeholderButtonLabel = 'Courses'
+                                                           minWidth = '130px'
                                                            options = {props.courses}
                                                            name = {roleToDisplay.name}
                                                            key = {index}
@@ -36,7 +29,9 @@ const roleDetail = (props) => {
                                </div>)
         } else {
             displayRoles.push(  <div className = {classes.courseLess}>
-                                <label className = {classes.roleLabel}>
+                                <label 
+                                // className = {roleToDisplay.class.join(' ')}
+                                >
                                     {roleToDisplay.name}
                                 </label>
                                 <div className = {classes.checkbox}>
@@ -52,13 +47,17 @@ const roleDetail = (props) => {
     
     return (
         <div id='roleDetail' className={classes.roleDetail} >
-            <h2 className={classes.heading}>ASSIGN ROLES</h2>
+            <div className={classes.heading}>
+                <h2>ASSIGN ROLES</h2>
+            </div>
             <div className={classes.innerWrapper}> 
                 <div>
                     {displayRoles}
                 </div>
             </div>
-        <button className={classes.submit}  onClick={props.submitClicked}>SUBMIT</button>
+            <div className={classes.submit}>
+                <button id='submit' onClick={props.submitClicked}>SUBMIT</button>
+            </div>
         </div>
     );
 }

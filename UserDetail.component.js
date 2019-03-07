@@ -17,6 +17,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import RoleDetail from './RoleDetail/roleDetail.component';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import classes from './RoleDetail/roleDetail.scss';
 
 const Icons =  ( props ) => {
   let iconButton = null;
@@ -181,7 +182,6 @@ class UserDetail extends Component {
     state = {
         selectedRow: [],
         userData: [],
-        // roles: [{name:'TRAINER'},{name:'AUTHOR'},{name:'EVALUATOR'}],
         roles: [],
         toggleIcon : false,
         course: '',
@@ -203,12 +203,13 @@ class UserDetail extends Component {
     getCourses () {
       const data = require ( '../../assets/course.json' );
       let courseList = [];  
-      let label;
-      let value;
+      
       data.map((course) => { 
         let object = {};
         object.label = course.name;
         object.value = course.id;
+        object.description = course.description;
+        object.isActive = course.isActive;
         courseList.push(object);
       })
       console.log(courseList);
@@ -224,31 +225,61 @@ class UserDetail extends Component {
             object.name = role.name;
             object.id = role.id;
             object.hasCourse = role.hasCourse;
-            object.classes = [];
+            object.class = [];
             roleList.push(object);
         })
         this.setState({roles: roleList});
     }
               
     handleSelectCourse = (course, role) => {
-                                     
+        // console.log(course);
+        // console.log(role);
         let selectedRolesCourses = [...this.state.selectedRoleCourse];
         let roleName = role.name;
-             
-        let courses = [...course];
-
-        let filteredCourses = [...this.state.courses];
-        let courseIndex = filteredCourses.findIndex(element => element === course[course.length - 1]);
-        console.log(courseIndex);
-        filteredCourses.splice(courseIndex, 1);
-        filteredCourses.unshift(course[course.length - 1]);
-        console.log(filteredCourses);
-                                                    
         
-        let coursesSelected = {};
-        coursesSelected.role = roleName;
-        coursesSelected.course = courses;
+        let courseData = [...this.state.courses];
+        // console.log(courseData);
+        let courseList = [];
+        
+        course.map((data) => { 
+            let object = {};
+            object.id = data.value;
+            object.name = data.label;
+            object.description = data.description;
+            object.isActive = data.isActive;
+            courseList.push(object);
+        })
+                
+        let filteredCourses = courseData;
+        if (course.length > 0) {
+            // console.log(filteredCourses);
+            let courseIndex = filteredCourses.findIndex(element => element === course[course.length - 1]);
+            // console.log(courseIndex);
+            filteredCourses.splice(courseIndex, 1);
+            filteredCourses.unshift(course[course.length - 1]);
+            // console.log(filteredCourses);
+        }
+
+        let roleList = [...this.state.roles];
+        let courseRole = [];
+        let object = {};
+        { roleList.map((role) => {
+            if (role.name === roleName){
+            object.id = role.id;
+            object.name = role.name;
+            object.hasCourse = role.hasCourse;
+            object.course = courseList
+            courseRole.push(object);
+            }
+        })}
+        console.log(courseRole);
               
+        let coursesSelected = {};
+        let courses = [...courseList];
+
+        coursesSelected.role = roleName; 
+        coursesSelected.course = courses;
+        
         let isRoleExist = selectedRolesCourses.some((element)=> { return element.role === roleName});
         
         if (isRoleExist) {
@@ -262,16 +293,29 @@ class UserDetail extends Component {
             })
         } else {
             selectedRolesCourses.push(coursesSelected);
-            { this.state.roles.map((role) => {
+            { roleList.map((role) => {
                 if (coursesSelected.role === role.name) {
-                    role.classes.push('higlightRoleLabel')
+                    role.class.push(classes.highlightRoleLabel);
+                    // console.log(coursesSelected);
                 }
             }
-                
-            )
-            if (coursesSelected.role);
+            )}
         }
 
+        console.log(selectedRolesCourses);
+
+        let coursesRoles = courseRole;
+        let select = [];
+        { coursesRoles.map((course) => {
+            if (course.name === coursesSelected.role) {
+                coursesSelected.id = course.id;
+                coursesSelected.name = course.name;
+                coursesSelected.hasCourse = course.hasCourse;
+                select.push(coursesSelected);
+           }
+        })}
+        
+        console.log(select);
         this.setState({ isCourseSelected: true,
                         courses : filteredCourses,
                         selectedRoleCourse: selectedRolesCourses })
@@ -280,20 +324,40 @@ class UserDetail extends Component {
     handleSelectRole = (event) => {
         console.log(event.target.checked, event.target.name);
         const role = event.target.name;
-        let selectedRoles = [...this.state.selectedRole];
+        console.log(role);
 
+        let roleList = [...this.state.roles];
         let roleSelected = {};
-        roleSelected.role = role;
-              
-        if(!event.target.checked){
-            roleSelected.role = null;
+        {roleList.map((roles) => {
+            if(roles.name === role) {
+                roleSelected.id = roles.id;
+                roleSelected.name = roles.name;
+                roleSelected.hasCourse = roles.hasCourse;
+            }
+        })}
+        
+        let selectedRoles = [...this.state.selectedRole];
+        if (!event.target.checked) {
             selectedRoles.pop(roleSelected);
+            { roleList.map((role) => {
+                if (selectedRoles.length = 0) {
+                    role.class.pop(classes.highlightRoleLabel);
+                    console.log(role.class);
+                } 
+            })}
         } else {
             selectedRoles.push(roleSelected);
+            { roleList.map((role) => {
+                if (roleSelected.name === role.name) {
+                    role.class.push(classes.highlightRoleLabel);
+                    console.log(role.class);
+                } 
+            })}
         }
 
         this.setState({ isRoleSelected: true,
-                        selectedRole: selectedRoles });
+                        selectedRole: selectedRoles,
+                        roles: roleList });
     };
     
     handleSubmit = () => {
@@ -306,7 +370,7 @@ class UserDetail extends Component {
                 pauseOnHover: true,
                 draggable: true,
             });
-        } else alert('Please select a role and course');
+        } else alert('Please select a role and (or) course');
        
         let selectedUser = this.state.selectedRoleCourse.concat(this.state.selectedRole);
         console.log(selectedUser);
@@ -315,7 +379,7 @@ class UserDetail extends Component {
     handleToggle = ( event ) => {
         console.log(event.currentTarget);
         this.setState ( {
-            toggleIcon: !this.state.toggleIcon //direct toggle event.target has to be added using a row or an id
+            toggleIcon: !this.state.toggleIcon 
       })
     };
 
@@ -443,7 +507,8 @@ class UserDetail extends Component {
 
     render() {
         console.log(this.state.selectedRoleCourse);
-        console.log(this.state.selectedRole);
+        // console.log(this.state.selectedRole);
+        // console.log(this.state.roles);
        
         const { classes } = this.props;
         const { userData, roleData, selectedRow } = this.state;
