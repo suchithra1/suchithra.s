@@ -1,0 +1,142 @@
+STORY : Forum/Discussion Page
+
+INFERRED REQUIREMENTS:
+  - List of discussions on various topics:
+    - questions : questions raised on a particular topic of a course
+    - comments  : comments/replies given to the questions raised
+    - username  : identify the user who had posted the question (or) replied
+                 to it
+    - time of comment : identify the time of the posted comment
+    
+   - List of primary and secondary topics:
+    - primary   : identify topics closely related to the course chosen
+    - secondary : identify topics that can also be relevant to other
+                  course-topics
+                  
+POSITIVE POSSIBILITIES:
+
+  Search discussions:
+  - user searching with valid input
+  
+  Filter discussions:
+  - user selecting show discussions which I'am an author / show discussions which I'm following
+  - user sorting by recently added/recently replied
+  
+  Post a comment:
+  - user posting a comment as a reply to an ongoing discussion (or) as such
+  
+  Add new question:
+  - user selecting primary/secondary topic
+
+NEGATIVE POSSIBILITIES:
+  Search discussions:
+  - user searching with invalid input
+  - user searching with empty text field
+
+JOBS TO BE DONE:
+  1.Load the forum/discussions page
+  
+  Start State: Forum icon will be displayed in user's dashboard
+  End State  : Forum page will be loaded and displayed
+  
+  Implementation Plan:
+  
+  Forum.container.js(stateful component)
+    - componentDidMount()
+      - a get call using axios will be initiated to get the active discussions
+        from api
+      
+        Success:
+        1. if requested data is available
+        - response is set to discussions which is an array of objects in the state
+        - sortBy state will be set to the recently replied by-default
+        
+        2. if requested data is unavailable
+        - discussions state will be set to an empty array
+        
+        Failure:
+          - no discussions will be fetched
+          
+    - render()
+      - bind onSearch(discussion), onSort(discussion), onFilter(discussion),
+        onDefaultSort(discussion), onAddQuestion(discussion)
+      - Create a search bar with onKeyDown search which will invoke
+        onSearch(discussion)
+      - Create two checkboxes for selecting between show which I'm following
+        and show which I'm author, selecting these checkboxes will invoke
+        onFilter(discussion)
+      - Create a dropdown to sort discussions by choosing between recently added
+        and recently commented, bind onDefaultSort(discussion) to sort discussions
+        based on recently commented.Selecting a choice from dropdown will invoke
+        onDefaultSort(discussion).
+      - Create a ask-a-question button which on press will invoke
+        onAddQuestion(discussion).The state createDiscussion is set to true and
+        question componenet is rendered.
+      - Create a div containing list of cards to display each discussion
+      - Selecting a discussion card will render discussion component
+      
+  discussion.componenet.js(functional componenet)
+    - bind onPostComment(comment), onReply(comment), onFollowResponse(discussion)
+    - Create a divison displaying a card containing the discussion and its
+      related comments each with a reply button which on press will invoke
+      onReply(comment). 
+    - Create a follow-response button which on press will invoke
+      onFollowResponse(discussion)
+    - Create a text field with post comment button which on press will invoke
+      onPost(comment)
+      
+  question.componenet.js(functional componenet)
+    - bind onPostQuestion(question), onCancelQuestion(question),
+      onSelectTopic(topic)
+    - create two dropdowns each to display primary/secondary topics with
+      checkboxes aside. Selecting a topic will invoke onSelectTopic(topic).
+    - Create a divison containing two text fields with cancel and post button
+      which on press will invoke onCancelQuestion(question) and
+      onPostQuestion(question) respectively.
+
+  2.Searching discussions
+  
+  Start State: Empty search bar will be displayed to search for the discussion
+  
+  Possibilities :
+  
+    Success :
+      EndState :  Corresponding discussions is displayed if available
+      Implementation Plan :
+
+      - Forum.container.js
+
+        - onSearch(discussion)
+          - Validation is implemented using required attributes
+              - Special characters are not allowed
+              - White spaces will be trimmed
+              - Allow case insensitive
+          
+          - a get call using axios is initiated to get the discussions
+          1. if data available
+             The searched discussion is found and displayed on a card 
+
+          2. if data unavailable
+             The discussions are displayed as such with no updation
+
+    Failure :
+      EndState : The discussions are displayed as such since no data is fetched
+ 
+  3.Filtering discussions
+  
+  Start State: CheckBoxes for filtering discussions based on show which I'm
+               following/show which I'm an author will be displayed
+  
+  End State: Discussions will be displayed based on the filter applied
+  
+  Implementation Plan:
+  
+  - Forum.container.js
+  
+    - onFilter(discussion)
+      - 
+  
+
+
+
+
