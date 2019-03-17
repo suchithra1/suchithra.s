@@ -1,0 +1,55 @@
+.Forum {
+    width: 100%;
+    height:700px ;
+    /* margin-left: 50px; */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* margin-right:50px; */
+    background-color: antiquewhite;
+    display:flex;
+    flex-direction: column;
+}
+
+.searchHeader{
+    width: 80%;
+    height:100px ;
+    margin-left: 120px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-right:50px;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: row;
+    /* flex:1; */
+}
+
+.searchBar{
+    width: 700px;
+    height: 40px;
+    margin-left: 35px;
+    margin-top: 27px;
+    margin-right: 15px;
+    /* display: flex; */
+    flex:0.6;
+}
+
+.or{
+    margin-left: 500px;
+}
+.discussionCard {
+    margin-top: 100px;
+}
+.card{
+    width:80%;
+    margin-left: 120px;
+    margin-top: 3px;
+    background-color:red;
+}
+
+.askQuestionButton{
+    /* float: right; */
+    margin-left: 800px;
+    margin-top:-41px;
+    display: flex;
+    flex:0.3
+}

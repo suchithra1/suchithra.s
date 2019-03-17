@@ -1,0 +1,56 @@
+.question{
+    margin-top: 30px;
+}
+
+.questionTitle{
+    width: 80%;
+    height: 40px;
+    margin-left: 120px;
+    margin-top: 50px;
+    margin-right: 15px;
+
+}  
+
+.questionDescription{
+    width: 80%;
+    height:90px;
+    margin-left: 120px;
+    margin-top: 15px;
+}
+
+.questionButton {
+    width:80%;
+    height: 45px;
+    margin-left: 120px;
+    margin-right:50px;
+    margin-top: 20px;
+    background-color: aqua;
+}
+.postButton {
+    /* float:right; */
+    width:20%;
+    margin-bottom: 70px;
+    margin-top: 10px;
+    margin-left:220px;
+   }
+
+.cancelButton{
+    float:left;
+    width:30px;
+    margin-left: 120px;
+    margin-top: 10px;
+    /* margin-bottom: 200px; */
+    }
+
+
+.primaryTopic{
+    float:left;
+    margin-left: 950px;
+    margin-top: 30px;
+}
+
+.secondaryTopic{
+    float:right;
+    margin-right: 150px;
+    margin-top: 30px;
+}

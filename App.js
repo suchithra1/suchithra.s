@@ -4,18 +4,25 @@ import UserDetail from './UserDetail.component';
 // import MyComponent from './toast';
 // import IntegrationReactSelect from './autoSuggest'
 import Picky from './Picky';
-import Demo from './Demo.js';
+import ListExample from './Virtual.js';
+import Virtualize from './Virtual.js';
+import Forum from './Forum';
+// import Auto from './AutoSizer'
 
 class App extends Component {
   render() {
     return (
       <div className='App' >
       {/* <Select /> */}
-        <UserDetail />
+      <Forum/>
+      {/* <Auto/> */}
+      {/* <Virtualize/> */}
+        {/* <UserDetail /> */}
+        {/* <ListExample/> */}
         {/* <MultipleSelect/> */}
 
         {/* <Picky /> */}
-        {/* <Demo/> */}
+        {/* <SimpleCard/> */}
         {/* <Integrati/onReactSelect/> */}
         
         {/* <MyComponent /> */}

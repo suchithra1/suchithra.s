@@ -1,0 +1,23 @@
+.discussion{
+    margin-top: 20px;
+    margin-left: 120px;
+    background-color: aquamarine;
+    width: 80%;
+    height: 60px;
+}
+
+.replyButton{
+    margin-left: 850px;
+}
+
+.answer{
+    margin-top: 20px;
+    margin-left: 85px;
+    width:900px;
+    height: 65px;
+}
+
+.answerButton{
+    margin-left: 85px;
+    margin-top: 10px;
+}
