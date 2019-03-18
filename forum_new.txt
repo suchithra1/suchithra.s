@@ -1,0 +1,334 @@
+**STORY: FORUM/DISCUSSION PAGE**
+
+**INFERRED REQUIREMENTS:**
+  
+  - List of discussions on various topics:
+    - questions : questions raised on a particular topic of a course
+    - comments  : comments/replies given to the questions raised
+    - username  : identify the user who had posted the question (or) replied
+                  to it
+    - time of comment : identify the time of the posted comment
+    
+  
+  - List of primary and secondary topics:
+    - primary   : identify topics closely related to the course chosen
+    - secondary : identify topics that can also be relevant to other
+                  course-topics
+                  
+**POSITIVE POSSIBILITIES:**
+  
+  Search discussions:
+  - user searching with valid input
+    // valid - only alphabets with no white spaces
+  
+  Filter discussions:
+  - user selecting show discussions which I'am an author / show discussions 
+    which I'm following
+  - user sorting by recently added/recently replied
+  
+  Post a comment:
+  - user posting a comment as a reply to an ongoing discussion (or) as such
+  
+**NEGATIVE POSSIBILITIES:**
+  
+  Search discussions:
+  - user searching with invalid input
+   // invalid - combination of alphabets/special characters/numbers
+   
+  - user searching with empty text field
+  
+  Filter discussions:
+  - user selecting show discussions which I'am an author / show discussions
+    which I'm following  without following any response
+  
+
+**JOBS TO BE DONE:**
+  
+**1.Load the forum/discussions page**
+  
+  Start State: Forum icon will be displayed in user's dashboard
+  
+  End State  : Forum page will be loaded and displayed
+  
+  Implementation Plan:
+  
+**Forum.container.js(stateful component)**
+  
+    - componentDidMount()
+
+      - a get call using axios will be initiated to get the active discussions
+        from api
+      
+        Success:
+        1. if requested data is available
+        - response is set to state.discussions which is an array of objects 
+        - state.sortBy will be set to the 'recently-commented'
+        
+        2. if requested data is unavailable
+        - state.discussions will be set to an empty array of objects
+        
+        Failure:
+        - no discussions will be fetched
+          
+    - render()
+      
+      - bind onSearch(discussion), onFilter(discussion, filter),
+        onSort(discussion, sortBy), onAddQuestion(discussion),
+        onSelectDiscussion(discussion), onReplyComment(comment),
+        onFollowResponse(discussion), onPostComment(comment),
+        onSelectTopic(topicType, topic), onCancelQuestion(discussion),
+        onPostQuestion(discussion)
+        
+      - Create a search bar with onKeyDown search which will invoke
+        onSearch(discussion)
+        
+      - Create two checkboxes for selecting between show which I'm following
+        and show which I'm author, selecting these checkboxes will invoke
+        onFilter(discussion, filter)
+        
+      - Create a dropdown to sort discussions by choosing between recently added
+        and recently commented. Discussions will be sorted based on recently 
+        commented byDefault.Selecting a choice from dropdown will invoke
+        onSort(discussion, sortBy) - sortBy value is set to 'recently-commented'
+        by default.
+        
+      - Create a ask-a-question button which on press will invoke
+        onAddQuestion(discussion), state.createDiscussion is set to true and
+        question componenet is rendered.
+        
+      - Create a div containing list of cards to display each discussion
+      
+      - Selecting a discussion card will invoke onSelectDiscussion(discussion) 
+        and render discussion component
+      
+**discussion.componenet.js(functional componenet)**
+    
+    - return()
+    
+    - Create a divison displaying a card containing the discussion and its
+      related comments each with a reply button which on press will invoke
+      onReplyComment(comment)
+      
+    - Create a follow-response button which on press will invoke
+      onFollowResponse(discussion)
+      
+    - Create a text field with post comment button which on press will invoke
+      onPostComment(comment)
+      
+**question.componenet.js(functional componenet)**
+          
+    - return()
+    
+    - create two dropdowns each to display primary/secondary topics with
+      checkboxes aside. Selecting a topic will invoke
+      onSelectTopic(topicType, topic)
+      
+    - Create a divison containing two text fields with cancel and post button
+      which on press will invoke onCancelQuestion(question) and
+      onPostQuestion(question) respectively.
+      
+      
+**2.Searching discussions**
+  
+  Start State: Empty search bar will be displayed to search for the discussion
+  
+  Possibilities :
+     
+      Success :
+
+      EndState :  Corresponding discussions is displayed if available
+      
+      Implementation Plan :
+
+         - onSearch(discussion)
+           - Validation is implemented using required attributes
+              - Special characters are not allowed
+               {regex_spc_character =  /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/}
+              
+              - White spaces will be trimmed
+                {value.trim()}
+              
+              - Allow case insensitive
+                {value.trim().toLowerCase()}
+          
+          - a get call using axios is initiated to get the discussions
+              1.if data available
+                The data is set to state.searchedDiscussion and displayed
+                on a card 
+    
+              2.if data unavailable
+                The discussions are displayed as such with no updation
+             
+       
+      Failure :
+      EndState : The discussions are displayed as such since no data is fetched
+ 
+**3.Filtering discussions**
+  
+  Start State: CheckBoxes for filtering discussions based on show which I'm
+               following/show which I'm an author will be displayed
+  
+  Possibilities:
+
+    Success:
+
+    End State: Discussions will be displayed based on the filter applied
+  
+    Implementation Plan:
+  
+       - onFilter(discussion, filter)
+         - discussions relevant to chosen checkbox (show which I'm following/show 
+           which I'm an author) will be filtered from the data stored in the 
+           state.discussions
+          
+          1.if data available
+          - data is set to state.filteredDiscussions and only filtered
+            discussions will be displayed on the cards
+          
+          2.if data unavailable
+          - error message is displayed 
+              i) if not an author of any discussion
+                 errorMessage = 'not started any discussions yet'
+             ii) if not following any discussion's response
+                  errorMessage = 'not following any responses'
+          
+    Failure :
+   
+    EndState : Error message will be displayed based on applied filter as it does
+               not match the data available
+                 
+**4.Sorting discussions**
+  
+  Start State: Dropdown for sorting discussions based on recently added/replied
+               will be displayed with 'recently-commented' chosen by default
+
+  End State: The discussions will be displayed based on sortBy applied
+
+            
+  Implementation Plan
+
+    - onSort(discussion, sortBy)
+      - discussions relevant to selected option from the dropdown will be sorted
+        from the state.discussions array object and set to 
+        state.sortedDiscussions
+        
+      - only the state.sortedDiscussions will be displayed in cards.
+      
+**5.Adding new discussion**
+  
+  Start State: Ask a Question button will be displayed in the forum page
+  
+  End State: new discussion will be created and posted along with a toast 
+             message displayed for successful creation
+  
+  Implementation Plan:
+  
+    - onAddQuestion(discussion)
+      - state.isQuestionAsked is set to true when the button is clicked.
+     
+    - onSelectTopic(topicType, topic)
+      - selected topics is stored as objects in state.selectedTopic
+    
+    - onPostQuestion(discussion)
+      - validations:
+        - post button is enabled only if the discussion title and description 
+          is entered
+            
+            isPostEnabled = state.title > 0 && state.description > 0
+            post button {
+              < disabled={!isPostEnabled} >
+             }
+            
+              
+      - a post call using axios is initiated to create a new discussion
+        Success:
+        - discussion object is added to state.discussions
+                  
+        - state.doPostQuestion is set to true
+        
+        Failure:
+        - text field for entering the discussion title and description remains
+          with the entered value 
+        
+    - onCancelQuestion()
+      - state.doPostQuestion is set to false
+      
+      - title and description fields in the question componenet is cleared
+        and displayed
+          // state.title = '' && state.description = ''
+      
+**6. Viewing a specific discussion**
+  
+  Start State: list of discussions will be displayed
+
+  End State: Selected discussion and its comments will be displayed with reply
+             text field
+
+  Implementation Plan:
+  
+    - getTopics(topic)
+      - a get call using axios is initiated to get all the topics from api
+      
+      Success:
+      1. if requested data is available
+      - response is set to state.topics which is an array of objects
+            
+      2. if requested data is unavailable
+      - state.topics is set to an empty array
+      
+      Failure:
+        - no topics will be fetched
+
+    - getDiscussion(discussion)
+      - a get call using axios is initiated to get all the comments related
+        to specific discussion from api
+    
+      Success:
+      1. if requested data is available
+      - response is set to state.discussion which is an object
+            
+      2. if requested data is unavailable
+      - state.discussion is set to empty object
+          
+    - onSelectDiscussion(discussion)
+      - state.isDiscussionSelected is set to true 
+        
+      - getDiscussion(discussion) is invoked
+      
+    - onFollowResponse(discussion)
+    
+      - state.responseLabel = 'Follow-Response' is maintained
+        
+      - a post call using axios is initiated to send the user id and
+        discussion id 
+      
+        1.if success
+        - state.discussions.user_id is added to the discussion object
+        - follow-response button label will be changed to unfollow-response
+                
+                // this.setState(responseLabel = 'Unfollow-Response')
+        
+        2.if failure
+        - no change is updated
+        - state.responseLabel remains 'Follow-Response'
+      
+    - onPostComment(comment)
+      - a post call using axios is initiated to post the comment typed in the
+        text field 
+        
+          1.if success
+          - comment is added to state.discussion.comment and displayed
+          - comment field is cleared and displayed
+              //  state.comment = {};
+          
+          2.if failure
+          - comment field remains with the value entered as such
+    
+    - onReplyComment(comment)
+      - the specific discussion's question is displayed in the comment text
+        field as quoted string 
+        
+      - the cursor is made to blink in the next line letting the user to reply
+      
+      - onPostQuestion(discussion) is invoked
+
