@@ -6,8 +6,8 @@
     margin-bottom: 20px;
     /* margin-right:50px; */
     background-color: antiquewhite;
-    display:flex;
-    flex-direction: column;
+    /* display:flex;
+    flex-direction: column; */
 }
 
 .searchHeader{
@@ -18,8 +18,8 @@
     margin-bottom: 20px;
     margin-right:50px;
     background-color: blueviolet;
-    display: flex;
-    flex-direction: row;
+    /* display: flex;
+    flex-direction: row; */
     /* flex:1; */
 }
 
@@ -30,14 +30,15 @@
     margin-top: 27px;
     margin-right: 15px;
     /* display: flex; */
-    flex:0.6;
+    /* flex:0.6; */
 }
 
 .or{
     margin-left: 500px;
 }
+
 .discussionCard {
-    margin-top: 100px;
+    margin-top: 70px;
 }
 .card{
     width:80%;
@@ -50,6 +51,18 @@
     /* float: right; */
     margin-left: 800px;
     margin-top:-41px;
-    display: flex;
-    flex:0.3
+    /* display: flex;
+    flex:0.3 */
+}
+
+.followingFilter{
+    /* background-color: aqua; */
+    margin-top: 30px;
+    margin-left: 120px;
+    width: 250px;
+}
+
+.authorFilter{
+    margin-top: -22px;
+    margin-left: 390px;
 }

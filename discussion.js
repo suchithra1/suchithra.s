@@ -22,10 +22,11 @@ const discussion = (props) => {
                          {discussion.comment}
                          <div className='replyButton'>
                         <Button variant="contained" 
-                                color="primary"> Reply  </Button>
+                                color="primary"
+                                onClick = {props.reply}> Reply  </Button>
                         </div>
                     </div>  
-                    <div><input className='answer' type='text' placeholder='Write your response'/>
+                    <div><input className='answer' type='text' placeholder='Write your response' autoFocus/>
                     <div className='answerButton'>
                         <Button variant="contained" 
                                 color="primary"> Add an answer  </Button>
