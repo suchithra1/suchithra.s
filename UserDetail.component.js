@@ -1,448 +1,562 @@
-import {ToastContainer, ToastMessageAnimated} from 'react-toastr';
-import './toastr.css';
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Checkbox from '@material-ui/core/Checkbox';
-import Icon from '@material-ui/core/Icon';
-import './roleDetail.css';
-import Question from './question';
-
-// import { ToastContainer, TpastMessageAnimated } from 'react-toastr';
-// import toastr from 'toastr';
-import RoleDetail from './roleDetail.component';
-
-function Icons(props) {
-    let r = null;
-    if(props.toggle) {
-      r = <Icon color="secondary" onClick={props.clicked}>add_circle</Icon>
-    } else {
-      r = <Icon color="secondary" onClick={props.clicked}>remove_circle</Icon>
-    }
-    return (
-      <div>
-      <div>
-        {r}
-        <Icon id= "icon2" color="secondary" onClick ={props.delete}>delete</Icon>
-        {/* <Icon color="secondary"> */}
-      </div>
-      </div>
-    );
-}
-
-let counter = 0;
-function createData(id, firstName, lastName, roles) {
-  counter += 1;
-  return { id: counter, firstName, lastName, roles };
-}
-
-function createRole(Trainer, Evaluator, Author) {
-  counter += 1;
-  return {
-    id: counter, Trainer, Evaluator, Author
-  };
-}
-
-const rows = [
-  { id: 'ID', numeric: true,  label: 'ID' },
-  { id: 'FIRSTNAME', numeric: false, label: 'FIRSTNAME' },
-  { id: 'LASTNAME', numeric: false, label: 'LASTNAME' },
-  { id: 'ROLES', numeric: false, label: 'ROLES' },
-];
-
-const subRows = [
-  {id: 'TRAINER', numeric: false, label: 'TRAINER'},
-  {id: 'EVALUATOR', numeric: false, label: 'EVALUATOR'},
-  {id: 'AUTHOR', numeric: false, label: 'AUTHOR'},
-];
-
-const styles = theme => ({
-  root: {
-    width: '100%',
-    marginTop: theme.spacing.unit * 30,
-  },
-  table: {
-    minWidth: 1020,
-  },
-  tableWrapper: {
-    overflowX: 'auto',
-  },
-});
+import CheckBox from '@material-ui/core/checkBox';
+import HttpRequest from '../../../service/HttpRequest';
+import SearchUser from './search/searchUser';
+import RoleDetail from '../UserDetail/RoleDetail/roleDetail.component';
+import WrappedVirtualizedTable from './VirtualizedTable/VirtualizedTable';
+import Styles from './styles/styles';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import classes from '../UserDetail/RoleDetail/roleDetail.scss';
+import * as constants from './UserDetail.constants';
+import * as roleConstants from '../UserDetail/RoleDetail/roleDetail.constants';
 
 class UserDetail extends Component {
 
-  state = {
-    selected: [],
-    data: [
-      createData(1, 'sounds', 'abi'),
-      createData(1, 'sounds', 'abi'),
-      createData(1, 'sounds', 'abi')
-    ],
-    
-    // texts: '',
-    // fields: {},
-    toggleIcon : false,
-    name: '',
-  //   roles:[
-  //     {"name" : "TRAINER", "id" : 1,"hasCourse":true},
-  //     {"name" : "AUTHOR", "id" : 2, "hasCourse":true},
-  //     {"name" : "EVALUATOR", "id" : 3,"hasCourse":true},
-  //     {"name" : "COORDINATOR", "id" : 4,"hasCourse":false},
-  //     {"name" : "RMO", "id" : 5,"hasCourse":false}
-  // ],
-    roles: [],
-        // role:['TRAINER','EVALUATOR','AUTHOR'],
+    state = {
+        users: [],
+        isInvalidSearch: false,
+        errorMessage: null,
+        container: [],
+        isUserSelected: false,
+        isCourseSelected: false,
+        isRoleSelected:false,
+        column: {},
+        courses: [],
+        roles: [],
+        selectAll: false,
+        selectAllClicked: false,
+        selectedUsers: {},
+        selectedRoleCourse: [],
+        selectedRole: [],
+        selectedCourses: [],
+        userList: [],
+        searchedUsers: []
+    }
 
-    courses:[]  ,
-    roleCourses:[{name:'JAVA'}, {name:'UI'},{name:'OOPS'}, {name:'REACT'}],
-    newCourse: [ {'label' :  '', 'value' : '' }],
-      showCourse: false,
-      isChecked: true,
-      isRoleSelected: false,
-      isCourseSelected: false,
-      isUserSelected : false,
-      query: '',
-      results: [],
-      searchedText: '',
-      deleteCourse: false,
-      course: '',
-      searchedCourses:[],
-      container: [],
-      selectedUser:  [
-        { userId: '',
-          userName: '',
-          roles: [
-            { roleName: '',
-              courses: []
+    handleToggle = ( columnName, userId, name ) => {
+        let users = [...this.state.users];
+        users.map ( user => {
+            if ( user.id === userId ) {
+                let roleCourses = user [ columnName ];
+                roleCourses.map ( course => {
+                    if ( course.name === name ) {
+                        course.isActive = !course.isActive;
+                    }
+                } )
             }
-          ]
+        } )
+        this.setState ( {
+            users: users
+        } );
+    }
+
+    onSearchUsers = ( value, keyCode ) => {
+
+        if ( keyCode !== 13 ) {
+            return;
         }
-      ],
-      selectedRole : [],
-      selectedRoleCourse:[],
-      isCourseSearched: false
-  };
-
-  clicked = () => {
-    this.setState({
-        toggleIcon: !this.state.toggleIcon
-      })
-    }
-
-  componentDidMount () {
-    this.getRoles();
-      const data = require ( './course.json' );
-      let courseList = [];  
-      data.map((course) => { 
-        let object = {};
-        object.label = course.name;
-        object.value = course.id;
-        object.description = course.description;
-        object.isActive = course.isActive;
-        courseList.push(object);
-      })
-      console.log(courseList);
-      this.setState({courses : courseList })
-      console.log ( this.state.courses );
-    }
-
-    getRoles = () => {
-      const data = require('./role.json');
-        let roleList = [];
-        data.map((role) => {
-            let object = {};
-            object.name = role.name;
-            object.id = role.id;
-            object.hasCourse = role.hasCourse;
-            object.classes = [];
-            roleList.push(object);
-        })
-        this.setState({roles: roleList});
-    }
-   
-handleDeleteCourse = (course) => {
-   let index = this.state.courses.indexOf(course);
-   this.state.courses.splice(index, 1);
-   this.setState({courses: this.state.courses, deleteCourse: true });
-}
-
-handleSelectAllClick = (event, id) => {
-  if (event.target.checked) {
-    this.setState(state => ({
-      selected: state.data.map(n => n.id) }));
-      
-    return;
-  }
-   else { this.setState({ selected: [] , isUserSelected: true});}
-    console.log(this.state.selected)
-  };
-
-  handleClick = (event, id) => {
-    const { selected } = this.state;
-    const selectedIndex = selected.indexOf(id);
-    let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
-    }
-
-    this.setState({ selected: newSelected, isUserSelected:true });
-  };
-
-  isSelected = id => this.state.selected.indexOf(id) !== -1;
-
-  onSearch = (event) => {
-    const hasNumber = /\d/;
-    const specialCharacters = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-    const value = event.target.value.trim();
-    const isEmpty = '';
-    const error = '';
-
-    }
-  
-  onSubmit = () => {
-    
-      if((this.state.isRoleSelected && this.state.isCourseSelected) === true){
-        alert('roles assigned') 
-      this.state.container.success(`hi! Now is ${new Date()}`, `///title\\\\\\`, {
-        closeButton: true,
-       })
-      }
-          else alert('Please select a course');
-          let selectedUser = this.state.selectedRoleCourse.concat(this.state.selectedRole);
-          console.log(selectedUser);
-          
-    }
-
-  handleSelectRole(event){
-    console.log(event.target.checked, event.target.name);
-        const role = event.target.name;
-        console.log(role);
-        let roleList = [...this.state.roles];
-        let roleSelected = {};
-        {roleList.map((roles) => {
-            if(roles.name === role) {
-                roleSelected.id = roles.id;
-                roleSelected.name = roles.name;
-                roleSelected.hasCourse = roles.hasCourse;
+        let searchText = value.trim().toLowerCase();
+        const searchTextLength = value.trim().toLowerCase().length;
+        const specialCharacters = constants.REGEX_SPCL_CHAR_WITHOUT_COMMA;
+        let searched = [];
+        let searchedUsers = [...this.state.searchedUsers];
+        let users = [...this.state.users];
+        let validated = this.validateSearchText( searchText, searchTextLength, specialCharacters );
+        users.map ( user => {
+            if ( user.firstName.toLowerCase().includes( value.toLowerCase() ) ) {
+                searched.push( user );
             }
-        })}
-
-        let selectedRoles = [...this.state.selectedRole];
-        if (!event.target.checked) {
-            selectedRoles.pop(roleSelected);
-            { roleList.map((role) => {
-                if (selectedRoles.length = 0) {
-                    role.class.pop('highlightRoleLabel');
-                    console.log(role.class);
-                } 
-            })}
+            else if ( user.lastName.toLowerCase().includes( value.toLowerCase() ) ) {
+                searched.push( user );
+            }
+            let id = user.id.toString();
+            if ( id.includes ( value ) ) {
+                searched.push( user );
+            }
+        } );
+        if ( !searchText ) {
+            searchedUsers = this.state.users
         } else {
-            selectedRoles.push(roleSelected);
-            { roleList.map((role) => {
-                if (roleSelected.name === role.name) {
-                    role.class.push('highlightRoleLabel');
-                    console.log(role.class);
-                } 
-            })}
+            searchedUsers = searched;
         }
+        this.setState ( {
+            isInvalidSearch: validated[0],
+            searchedUsers: searchedUsers,
+            errorMessage: validated[1]
+        } );
+    }
 
-        this.setState({ isRoleSelected: true,
-                        selectedRole: selectedRoles,
-                        roles: roleList });
+    validateSearchText = (searchText, searchTextLength, specialCharacters) => {
+        let isInvalidSearch;
+        let errorMessage;
+        if( !searchText ) {
+            errorMessage = constants.INPUT_ERR_MSG;
+            isInvalidSearch = true;
+        } else if( searchTextLength >= 40 ) {
+            errorMessage = constants.TEXT_LENGTH_ERR;
+            isInvalidSearch = true;
+        }  else if( specialCharacters.test( searchText ) ) {
+            errorMessage = constants.MAX_CHAR_ERR;
+            isInvalidSearch = true;
+        }  else {
+            isInvalidSearch = false;
+        }
+        return [isInvalidSearch, errorMessage];
+    }
+
+    onSelectAll = checked => {
+        let users = this.onSelectAllUser();
+        if ( checked ) {
+            this.setState ( prevState => ( { 
+                selectAll: !prevState.selectAll,
+                isUserSelected: true,
+                selectAllClicked: true,
+                users: users
+            } ) )
+        } 
+        else {
+            this.setState ( prevState => ( { 
+                selectAll: !prevState.selectAll,
+                selectAllClicked: false,
+                users: users
+            } ) )
+        }
     };
 
-  handleOnSelectCourse(course,role) {
-    let selectedRolesCourses = [...this.state.selectedRoleCourse];
-        let roleName = role.name;
-        let courseData = [...this.state.courses];
-        console.log(courseData);
-        let courseList = [];
-        course.map((data) => { 
-            let object = {};
-            object.id = data.value;
-            object.name = data.label;
-            object.description = data.description;
-            object.isActive = data.isActive;
-            courseList.push(object);
-        })
-        let filteredCourses = courseData;
-        if (course.length > 0) {
-            console.log(filteredCourses);
-            let courseIndex = filteredCourses.findIndex(element => element === course[course.length - 1]);
-            console.log(courseIndex);
-            filteredCourses.splice(courseIndex, 1);
-            filteredCourses.unshift(course[course.length - 1]);
-            console.log(filteredCourses);
-        }
-        let roleList = [...this.state.roles];
-        let courseRole = [];
-        let object = {};
-        { roleList.map((role) => {
-
-            if (role.name === roleName){
-            object.id = role.id;
-            object.name = role.name;
-            object.hasCourse = role.hasCourse;
-            object.course = courseList
-            courseRole.push(object);
+    onSelectAllUser = () => {
+        let users = [...this.state.users];
+        users.map ( user => {
+            let updatedcheckedList = user.checkedList;
+            if ( this.state.selectAll ) {
+                updatedcheckedList.selected = false;
             }
-        })}
+        } );
+        return users;
+    };
 
-        console.log(courseRole);
+    // onFilterCourse = () => {
+    //     let coursesSelected = [...this.state.selectedCourses];
+    //     let courses = [...this.state.courses];
+    //     let filteredCourse = courses;
+    //     if ( coursesSelected.length > 0 ) {
+    //         let courseIndex = filteredCourse.findIndex ( filteredCourses => filteredCourses === coursesSelected [ coursesSelected.length - 1 ] );
+    //         filteredCourse.splice(courseIndex, 1);
+    //         filteredCourse.unshift(coursesSelected[coursesSelected.length - 1]);
+    //     }
+    // }
+      
+    onSelectCourse = ( selectedCourses, role ) => {
+        console.log(selectedCourses);
+        let roleName = role.name;
+        let selectedRolesCourses = [...this.state.selectedRoleCourse];
+        let courses = [...this.state.courses];
+        let roles = [...this.state.roles];
+        
+        let courseList = [];
+        selectedCourses.map((course) => { 
+            let newCourse = {};
+            newCourse.id = course.value;
+            newCourse.name = course.label;
+            newCourse.description = course.description;
+            newCourse.isActive = course.isActive;
+            courseList.push( newCourse );
+        })
+        
+        
+        let filteredCourse = courses;
+        if ( selectedCourses.length > 0 ) {
+            let courseIndex = filteredCourse.findIndex ( filteredCourses => filteredCourses === selectedCourses [ selectedCourses.length - 1 ] );
+            filteredCourse.splice(courseIndex, 1);
+            filteredCourse.unshift(selectedCourses[selectedCourses.length - 1]);
+        }
+        
         let coursesSelected = {};
-        let courses = [...courseList];
-        coursesSelected.role = roleName; 
-        coursesSelected.course = courses;
-        // let isRoleExist = selectedRolesCourses.some((element)=> { return element.role === roleName});
-        if (coursesSelected.hasOwnProprty('role')) {
+        let courseData = [...courseList];
+        let roleData = [...roles];
+       
+        coursesSelected.id = roleData[0].id;
+        coursesSelected.name = roleName;
+        coursesSelected.hasCourse = roleData[0].hasCourse;
+        coursesSelected.course = courseData;
+        
+        let isRoleExist = selectedRolesCourses.some (selectedRoleCourse => { return selectedRoleCourse.name === roleName});
+        
+        if ( isRoleExist ) {
             selectedRolesCourses.map((role) => {
-                if(role.role === roleName){
-                    role.course = [...courses];
-                    if (role.course.length == 0) {
-                       selectedRolesCourses.pop(coursesSelected);
+                if ( role.name === roleName ) {
+                    role.course = [...courseData];
+                    if ( role.course.length === 0 ) {
+                        selectedRolesCourses.pop ( coursesSelected );
+                        roles.map((role) => {
+                                if ( coursesSelected.course.length === 0 ) {
+                                    role.classes = [classes.roleLabel];
+                                }
+                        })
                     }
                 }
             })
         } else {
-            selectedRolesCourses.push(coursesSelected);
-            { roleList.map((role) => {
-                if (coursesSelected.role === role.name) {
-                    role.class.push('highlightRoleLabel');
-                    console.log(coursesSelected);
+            selectedRolesCourses.push ( coursesSelected );
+            roles.map ((role) => {
+                if (coursesSelected.name === role.name) {
+                    role.classes.push ( classes.highlightRoleLabel );
                 }
+            })
+        }
+        
+        this.setState ({ isCourseSelected: true,
+                         courses: filteredCourse,
+                         selectedCourses: selectedCourses,
+                         selectedRoleCourse: selectedRolesCourses 
+                      })
+    };
+        
+    onSelectRole = ( event) => {
+        const roleName = event.target.name;
+        let roles = [...this.state.roles];
+        let newRole = {};
+        roles.map((role) => {
+            if (role.name === roleName) {
+                newRole.id = role.id;
+                newRole.name = role.name;
+                newRole.hasCourse = role.hasCourse;
             }
-            )}
+        })
+        let selectedRoles = [...this.state.selectedRole];
+        if ( !event.target.checked ) {
+            selectedRoles.pop ( newRole );
+            roles.map ((role) => {
+                if (selectedRoles.length === 0) {
+                    role.classes = [classes.roleLabel];
+                }
+            }) 
+        } else {
+            selectedRoles.push(newRole);
+            roles.map((role) => {
+                if (newRole.name === role.name) {
+                    role.classes.push(classes.highlightRoleLabel);
+                } 
+            }) 
         }
 
-        console.log(selectedRolesCourses);
-        let coursesRoles = courseRole;
-        let select = [];
-        { coursesRoles.map((course) => {
-            if (course.name === coursesSelected.role) {
-                coursesSelected.id = course.id;
-                coursesSelected.name = course.name;
-                coursesSelected.hasCourse = course.hasCourse;
-                select.push(coursesSelected);
-           }
-        })}
-
-        console.log(select);
-        this.setState({ isCourseSelected: true,
-                        courses : filteredCourses,
-                        selectedRoleCourse: selectedRolesCourses })
-  }
-          
-  render() {
-    console.log(this.state.selectedRoles);
-    console.log(this.state.selectedRoleCourse);
-    const { classes } = this.props;
-    const { data, roleData, selected} = this.state;
-
-    let header  = rows.map(row => {
-      let subHeader = null;
-      if (row.label === 'ROLES') {
-        subHeader = <TableRow>
-                <TableCell>Trainer</TableCell>
-                <TableCell>Evaluator</TableCell>
-                <TableCell>Author</TableCell>
-            </TableRow>
-      }
-      return <TableCell key={row.id}>
-                {row.label}
-                {subHeader}
-            </TableCell>
-    })
-   
-    return (
-      <Paper className={classes.root}>
-      <div>
-        <input type = "text"  id='searchUser' placeholder = "search for a user" size="30" maxlength="40" pattern="[A-z]{2}[0-9]{4}" />
-        <button id='searchButton' onClick={this.onSearch}>search</button>
-      </div>
-        <div className={classes.tableWrapper}>
-          <Table className={classes.table}>
-            <TableHead>
-        <TableRow>
-          <TableCell padding="checkbox">
-            <Checkbox id='selectAllCheckbox'
-              indeterminate={selected.length > 0 && selected.length < data.length}
-              checked={selected.length === data.length}
-              onChange={this.handleSelectAllClick}
-              />
-          </TableCell>
-              {header}
-              </TableRow>
-              </TableHead>
-            <TableBody>
-              {data.map(n => {
-                const isSelected = this.isSelected(n.id);
-                  return (
-                    <TableRow
-                      hover
-                      onClick={event => this.handleClick(event, n.id)}
-                      // role="checkbox"
-                      aria-checked={isSelected}
-                      tabIndex={-1}
-                      key={n.id}
-                      selected={isSelected}
-                    >
-                      <TableCell padding="checkbox">
-                        <Checkbox checked={isSelected} />
-                      </TableCell>
-                      <TableCell>{n.id}</TableCell>
-                      <TableCell>{n.firstName}</TableCell>
-                      <TableCell>{n.lastName}</TableCell>
-                      <TableCell>
-                        <TableRow>
-                          {this.state.courses.map((course) => <TableCell>{course.name}
-                          <Icons clicked={this.clicked} toggle={this.state.toggleIcon} delete = {this.handleDeleteCourse}/></TableCell> )}
-                        </TableRow>
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              <TableRow >
-                  <TableCell colSpan={6} />
-                </TableRow>
-              </TableBody>
-          </Table> */}
-     </div>
-       
-       <RoleDetail courses ={this.state.courses}
-                    submitClicked = {this.onSubmit.bind(this)}
-                    roleChecked = {this.handleSelectRole.bind(this)}
-                    role = {this.state.roles}
-                    isCourseSelected = {this.state.isCourseSelected}
-                    courseSelected = {this.handleOnSelectCourse.bind(this)} />
-
-       <Question courses = {this.state.courses} />     
+        this.setState({ isRoleSelected: true,
+                        selectedRole: selectedRoles,
+                        roles: roles });
+    };
         
-        <div className="container">
-      <ToastContainer  ref={ref => this.state.container = ref}  className="toast-top-right" />
-      </div>
-      </Paper>
-    );
-  }
+    onSubmit = () => {
+        if (( this.state.isRoleSelected || this.state.isCourseSelected) && this.state.isUserSelected) {
+            toast.success ( roleConstants.SUCCESS_MESSAGE, {
+                position: roleConstants.TOP_CENTER,
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            } );
+        } else {
+            alert(roleConstants.ERROR_MESSAGE);
+        }
+        
+        let selectedUser = this.state.selectedRoleCourse.concat ( this.state.selectedRole );
+        let submitusers = [...this.state.userList];
+        let submitData = [];
+        submitusers.map ((users) => {
+            let userContent = {};
+            userContent.id = users.id;
+            userContent.firstName = users.firstName;
+            userContent.lastName = users.lastName;
+            userContent.role = selectedUser;
+            submitData.push(userContent);
+        })
+    };
+
+
+    getCourses () {
+        const data = require ( '../../assets/course.json' );
+        let courseList = []; 
+
+        data.map ( ( course ) => { 
+            let courseContent = {};
+            courseContent.label = course.name;
+            courseContent.value = course.id;
+            courseContent.description = course.description;
+            courseContent.isActive = course.isActive;
+            courseList.push( courseContent );
+        } )
+        this.setState ( {
+            courses : courseList 
+        } )
+    }
+
+    getRoles() {
+        const data = require('../../assets/role.json');
+        let roleList = [];
+        data.map ( ( role ) => {
+            let roleContent = {};
+            roleContent.name = role.name;
+            roleContent.id = role.id;
+            roleContent.hasCourse = role.hasCourse;
+            roleContent.classes = [];
+            roleList.push( roleContent );
+        } )
+        this.setState ( { 
+            roles: roleList 
+        } );
+    }
+
+    componentDidMount() {
+
+        this.getCourses();
+        this.getRoles();
+        let url = HttpRequest.get();
+        url.then ( response => {
+            let data = response.data;
+            let totalData = [];
+            data.map ( individualUser => {
+                let individualData = {};
+                let trainerCourses = [];
+                let evaluatorCourses = [];
+                let authorCourses = [];
+                let misc = [];
+                let checkedList = {};
+                checkedList.userId = individualUser.id;
+                checkedList.selected = false;
+                individualData.checkedList = checkedList;
+                individualData.id = individualUser.id;
+                individualData.firstName = individualUser.firstName;
+                individualData.lastName = individualUser.lastName;
+                
+                individualUser.role.map ( individualRole => {
+                
+                    if ( individualRole.name === constants.DATAKEY_TRAINER ) {
+                        individualRole.course.map ( individualCourse => {
+                            let course = {};
+                            course.name = individualCourse.name;
+                            course.userId = individualUser.id;
+                            course.isActive = individualCourse.isActive;
+                            trainerCourses.push ( course );
+                        } )
+
+                        individualData.Trainer = trainerCourses;
+
+                    } else if ( individualRole.name === constants.DATAKEY_EVALUATOR ) {
+                        individualRole.course.map ( individualCourse => {
+                            let course = {};
+                            course.name = individualCourse.name;
+                            course.userId = individualUser.id;
+                            course.isActive = individualCourse.isActive;
+                            evaluatorCourses.push ( course );
+                        } )
+
+                        individualData.Evaluator = evaluatorCourses;
+
+                    } else if ( individualRole.name === constants.DATAKEY_AUTHOR ) {
+                        individualRole.course.map ( individualCourse => {
+                            let course = {};
+                            course.name = individualCourse.name;
+                            course.userId = individualUser.id;
+                            course.isActive = individualCourse.isActive;
+                            authorCourses.push( course );
+                        } )
+
+                        individualData.Author = authorCourses;
+
+                    } else {
+                        let role = {};
+                        individualUser.isActive = true;
+                        role.name = individualRole.name;
+                        role.isActive = individualUser.isActive;
+                        role.userId = individualUser.id;
+                        misc.push( role );
+                        individualData.Misc = misc;
+                    }
+                } )
+
+                totalData.push( individualData );
+
+            } )
+                this.setState ( { 
+                    users: totalData
+                } );
+        }).catch = ( error ) => {
+                // handle error
+            }
+    }
+
+    onDeleteCourse = ( columnName, userId, name ) => {
+        let users = [...this.state.users];
+        users.map ( user => {
+            if ( user.id === userId ) {
+                let roleCourses = user [ columnName ];
+                roleCourses.map ( ( course, index ) => {
+                    if ( course.name === name ) {
+                        roleCourses.splice ( index, 1 );
+                    }
+                } )
+            }
+        } )
+        this.setState ( { 
+            users: users
+        } );
+    }     
+
+    onClick = ( userId ) => {
+        let users = [...this.state.users];
+        let selectAllClicked = this.state.selectAllClicked;
+        if ( selectAllClicked ) {
+            users.map ( user => {
+                let updatedcheckedList = user.checkedList;
+                if ( user.id === userId ) {
+                    updatedcheckedList.selected = false;
+                } else {
+                    updatedcheckedList.selected = true;
+                }
+            } );
+        } else {
+            users.map ( user => {
+                if ( user.id === userId ) {
+                    let usersSelected = [];
+                    let object = {};
+                    object.id = user.id;
+                    object.firstName = user.firstName;
+                    object.lastName = user.lastName;
+                    usersSelected.push(object);
+                    this.setState ( {
+                        selectedUsers: user,
+                        userList: usersSelected
+                    } );
+                    let updatedcheckedList = user.checkedList;
+                    if ( !updatedcheckedList.selected ) {
+                        updatedcheckedList.selected = true;
+                    } else {
+                        updatedcheckedList.selected = false;
+                    }
+                }
+            } );
+        }
+        this.setState( { 
+            users: users,
+            isUserSelected: true,
+            selectAllClicked: false
+        } );
+    }
+
+
+    render() {
+        let { users, searchedUsers } = this.state;
+        if( searchedUsers.length > 0 ) {
+            users = searchedUsers;
+        }
+        return (
+        <div>
+            <SearchUser 
+                {...this.props} 
+                searching = { this.onSearchUsers } 
+                searchValidate = { this.state.isInvalidSearch } 
+                errorMessage = {this.state.errorMessage}
+            />
+            <div >
+                <div style = { {
+                    borderStyle: 'ridge',
+                    width: '70.6%',
+                    marginTop: '100px',
+                    marginLeft: '180px',
+                    textAlign: 'right',
+                    height: '4%',
+                    padding: '10px'
+                    }}>
+                        <h3 style = { {
+                            marginLeft: '44%',
+                            textAlign: 'center',
+                            marginBottom: '3px'
+                        } }>ROLES </h3>
+                </div>
+                <Paper style = { { 
+                        height: 400, 
+                        width: '72%', 
+                        marginLeft: '180px',
+                        marginBottom: '40px'
+                    } }
+                >
+                    <WrappedVirtualizedTable
+                        rowCount = { users.length }
+                        rowGetter = { ( { index } ) => users[index] }
+                        handleClick = { this.onClick }
+                        handleToggle = { this.handleToggle }
+                        selectAll = { this.state.selectAll }
+                        handleDeleteCourse = { this.onDeleteCourse }
+                        toggleSelect = { this.onClick }
+                        selectAllClicked = { this.state.selectAllClicked }
+                        columns = { [
+                            {
+                                width: 180,
+                                label: <CheckBox  onChange = { ( event ) => this.onSelectAll( event.target.checked ) } />,
+                                dataKey: constants.CHECKED_LIST,
+                                numeric: false
+                            },
+                            {
+                                width: 150,
+                                label: constants.HEADER_ID,
+                                dataKey: constants.DATAKEY_ID,
+                                numeric: true
+                            },
+                            {
+                                width: 180,
+                                label: constants.HEADER_FIRSTNAME,
+                                dataKey: constants.DATAKEY_FIRSTNAME,
+                                numeric: false,
+                            },
+                            {
+                                width: 180,
+                                label: constants.HEADER_LASTNAME,
+                                dataKey: constants.DATAKEY_LASTNAME,
+                                numeric: false,
+                            },
+                            {
+                                width: 180,
+                                label: constants.HEADER_TRAINER,
+                                dataKey: constants.DATAKEY_TRAINER,
+                                numeric: false,
+                            },
+                            {
+                                width: 180,
+                                label: constants.HEADER_EVALUATOR,
+                                dataKey: constants.DATAKEY_EVALUATOR,
+                                numeric: false,
+                            },
+                            {
+                                width: 180,
+                                label: constants.HEADER_AUTHOR,
+                                dataKey: constants.DATAKEY_AUTHOR,
+                                numeric: false,
+                            },
+                            {
+                                width: 180,
+                                label: constants.HEADER_MISC,
+                                dataKey: constants.DATAKEY_MISC,
+                                numeric: false,
+                            },
+                        ] }
+                    />
+                </Paper>
+            </div>
+            <div className = { classes.roleDetailWrapper }>
+           { this.state.isUserSelected ? ( <RoleDetail  courses = { this.state.courses }
+                                                        role = { this.state.roles }
+                                                        isCourseSelected = { this.state.isCourseSelected }
+                                                        isRoleSelected = { this.state.isRoleSelected }
+                                                        submitClicked = { this.onSubmit.bind ( this ) }
+                                                        courseSelected = { this.onSelectCourse.bind ( this ) }
+                                                        roleSelected = { this.onSelectRole.bind ( this ) } /> ) : null }
+            <ToastContainer />
+            </div>
+        </div>
+        );
+    }
 }
 
-UserDetail.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(UserDetail);
+export default withStyles(Styles) (UserDetail);
